@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STREAMguide BD — নতুন রিলিজ, সব প্ল্যাটফর্মে</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0c0f; --surface:#15171c; --surface-2:#1d2027;
+    --text:#f1f0ec; --text-dim:#9a9a9e;
+    --marquee:#e8482c; --gold:#d9a441; --line:#2a2d34;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--bg); color:var(--text); font-family:'Hind Siliguri','Inter',sans-serif; -webkit-font-smoothing:antialiased; padding-bottom:60px; }
+  a{color:inherit; text-decoration:none;}
+
+  .ticker{ background:linear-gradient(90deg, var(--marquee), #b8341f); color:#fff; font-family:'Anton', sans-serif; letter-spacing:0.04em; font-size:13px; padding:6px 0; overflow:hidden; white-space:nowrap; }
+  .ticker-track{ display:inline-block; padding-left:100%; animation: scroll-left 34s linear infinite; }
+  @keyframes scroll-left{ 0%{transform:translateX(0);} 100%{transform:translateX(-100%);} }
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(11,12,15,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .header-inner{ max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 20px; gap:16px; }
+  .logo{ font-family:'Anton', sans-serif; font-size:26px; letter-spacing:-0.015em; display:flex; align-items:baseline; gap:2px; }
+  .logo span.stream{color:var(--text); font-weight:900; -webkit-text-stroke:0.4px var(--text);}
+  .logo span.guide-thin{color:var(--text); font-family:'Inter',sans-serif; font-weight:300; letter-spacing:0; margin-left:1px;}
+  .logo span.bd{color:var(--marquee); font-weight:900; margin-left:6px; -webkit-text-stroke:0.6px var(--marquee);}
+  .tagline{font-size:14px; color:var(--text-dim); margin-top:2px; letter-spacing:0.03em;}
+  .search-box{ flex:1; max-width:360px; display:flex; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:8px 14px; }
+  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-family:inherit; font-size:14px; width:100%; }
+  .search-box svg{flex-shrink:0; opacity:0.5;}
+
+  .filters{ max-width:1400px; margin:0 auto; display:flex; gap:8px; padding:14px 20px; overflow-x:auto; scrollbar-width:none; }
+  .filters::-webkit-scrollbar{display:none;}
+  .chip{ flex-shrink:0; border:1px solid var(--line); background:var(--surface); color:var(--text-dim); font-size:13px; font-weight:600; padding:8px 16px; border-radius:999px; cursor:pointer; transition:all .18s ease; white-space:nowrap; }
+  .chip:hover{color:var(--text); border-color:#3a3d45;}
+  .chip:focus-visible, .chip.active{ outline:none; border-color: var(--dot, var(--marquee)); color:var(--text); background:#22252c; box-shadow:0 0 0 2px color-mix(in srgb, var(--dot, var(--marquee)) 35%, transparent); }
+  .chip .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; background:var(--dot, var(--marquee)); vertical-align:middle; }
+
+  .hero{ max-width:1400px; margin:20px auto 8px; padding:0 20px; }
+  .hero-carousel{ position:relative; }
+  .hero-track{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+    border-radius:16px; scrollbar-width:none; outline:none;
+  }
+  .hero-track::-webkit-scrollbar{ display:none; }
+  .hero-card{ position:relative; flex:0 0 100%; scroll-snap-align:start; overflow:hidden; min-height:340px; display:flex; align-items:flex-end;
+    background: linear-gradient(0deg, rgba(11,12,15,0.96) 10%, rgba(11,12,15,0.3) 60%, rgba(11,12,15,0.5) 100%), var(--hero-grad);
+    padding:36px; border:1px solid var(--line); cursor:pointer; }
+  .hero-eyebrow{ font-family:'Anton', sans-serif; font-size:12px; letter-spacing:0.12em; color:var(--gold); margin-bottom:10px; }
+  .hero-title{ font-family:'Anton', sans-serif; font-size:44px; letter-spacing:0.01em; line-height:1.05; margin-bottom:10px; max-width:640px; }
+  .hero-meta{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; color:var(--text-dim); font-size:14px; margin-bottom:18px; }
+  .badge{ font-size:11px; font-weight:700; letter-spacing:0.03em; padding:4px 10px; border-radius:5px; background:var(--dot); color:#0b0c0f; }
+  .hero-cta{ display:inline-flex; align-items:center; gap:8px; background:var(--text); color:#0b0c0f; font-weight:700; font-size:14px; padding:11px 22px; border-radius:8px; border:none; cursor:pointer; }
+  .hero-cta:hover{background:var(--gold);}
+  .hero-note{ font-size:11px; color:var(--text-dim); margin-top:8px; }
+  .hero-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:6;
+    width:40px; height:40px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(9,10,13,0.55); color:#fff; font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-arrow:hover{ background:rgba(9,10,13,0.85); }
+  .hero-arrow.prev{ left:14px; }
+  .hero-arrow.next{ right:14px; }
+  .hero-dots{ display:flex; gap:6px; justify-content:center; margin-top:10px; }
+  .hero-dot{ width:7px; height:7px; border-radius:50%; background:var(--line); cursor:pointer; transition:all .15s ease; border:none; padding:0; }
+  .hero-dot.active{ background:var(--marquee); width:20px; border-radius:4px; }
+
+  .row-section{ max-width:1400px; margin:0 auto; padding:28px 20px 0; }
+  .row-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px; }
+  .row-title{ font-family:'Anton', sans-serif; font-size:19px; letter-spacing:0.02em; }
+  .row-sub{font-size:12px; color:var(--text-dim);}
+  .row-scroll{ display:flex; gap:14px; overflow-x:auto; padding:4px 4px 16px; scroll-snap-type:x proximity; }
+  .row-scroll::-webkit-scrollbar{height:6px;}
+  .row-scroll::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px;}
+
+  .card{ scroll-snap-align:start; flex:0 0 180px; cursor:pointer; outline:none; position:relative; border-radius:10px; overflow:hidden; transition:transform .16s ease, box-shadow .16s ease; background:var(--surface); border:1px solid var(--line); }
+  .card .poster{ height:250px; width:100%; background:var(--grad); display:flex; align-items:flex-end; padding:12px; position:relative; }
+  .card .poster-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  .card .poster::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.75) 100%); }
+  .card .poster-title{ position:relative; z-index:1; font-family:'Anton', sans-serif; font-size:16px; line-height:1.15; color:#fff; }
+  .card .platform-tag{ position:absolute; top:8px; left:8px; z-index:2; font-size:10px; font-weight:700; letter-spacing:0.03em; padding:3px 8px; border-radius:4px; background:var(--dot); color:#0b0c0f; }
+  .card .new-tag{ position:absolute; top:8px; right:8px; z-index:2; font-size:9px; font-weight:700; padding:3px 6px; border-radius:4px; background:#fff; color:#0b0c0f; }
+  .card-info{ padding:10px 12px 12px; font-size:12px; color:var(--text-dim); display:flex; flex-direction:column; gap:3px; }
+  .card-info .cname{ color:var(--text); font-weight:600; font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .card-info .meta-line{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .card .overlay{ position:absolute; inset:0; z-index:3; background:rgba(9,10,13,0.92); padding:14px; display:flex; flex-direction:column; justify-content:flex-end; opacity:0; transform:scale(0.98); transition:opacity .16s ease, transform .16s ease; pointer-events:none; }
+  .card:hover .overlay, .card:focus-visible .overlay, .card.tv-focus .overlay{ opacity:1; transform:scale(1); pointer-events:auto; }
+  .overlay-title{font-family:'Anton', sans-serif; font-size:16px; margin-bottom:6px;}
+  .overlay-meta{font-size:11.5px; color:var(--text-dim); line-height:1.6;}
+  .overlay-btn{ margin-top:10px; font-size:12px; font-weight:700; background:var(--marquee); color:#fff; padding:8px 10px; border-radius:6px; text-align:center; }
+  .overlay-btn.manual{ background:var(--surface-2); border:1px solid var(--line); color:var(--text-dim); font-weight:600; }
+  .card:focus-visible, .card.tv-focus{ box-shadow: 0 0 0 3px var(--gold), 0 0 24px 2px color-mix(in srgb, var(--gold) 55%, transparent); transform:translateY(-4px) scale(1.04); z-index:5; }
+
+  .empty-state{ max-width:1400px; margin:0 auto; padding:60px 20px; text-align:center; color:var(--text-dim); }
+  .empty-state b{color:var(--gold);}
+
+  /* ---------- detail modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200;
+    display:none; align-items:center; justify-content:center;
+    padding:24px; overflow-y:auto;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-backdrop{
+    position:fixed; inset:0; z-index:-1;
+    background-size:cover; background-position:center;
+    filter:blur(50px) brightness(0.35) saturate(1.2);
+    transform:scale(1.15);
+  }
+  .modal-card{
+    position:relative; width:100%; max-width:920px; max-height:88vh;
+    background:var(--surface); border:1px solid var(--line); border-radius:18px;
+    display:flex; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.6);
+    animation: modal-in .22s ease;
+  }
+  @keyframes modal-in{ from{opacity:0; transform:translateY(14px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);} }
+  .modal-close{
+    position:absolute; top:14px; right:14px; z-index:5;
+    width:34px; height:34px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(9,10,13,0.65); color:#fff; font-size:16px; line-height:1;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .modal-image{
+    flex:0 0 42%; min-height:280px; background-size:cover; background-position:center; position:relative;
+  }
+  .modal-image::after{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, transparent 60%, var(--surface) 100%); }
+  .modal-details{ flex:1; padding:32px 30px; overflow-y:auto; }
+  .modal-platform-badge{ display:inline-block; font-size:11px; font-weight:700; padding:4px 11px; border-radius:5px; background:var(--dot); color:#0b0c0f; margin-bottom:12px; }
+  .modal-title{ font-family:'Anton', sans-serif; font-size:28px; line-height:1.15; margin-bottom:14px; }
+  .modal-meta-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 20px;
+    font-size:13px; color:var(--text-dim); margin-bottom:18px;
+    padding-bottom:18px; border-bottom:1px solid var(--line);
+  }
+  .modal-meta-grid .label{ color:var(--text-dim); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:2px; }
+  .modal-meta-grid .value{ color:var(--text); font-size:14px; font-weight:600; }
+  .modal-synopsis-label{ font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-dim); margin-bottom:6px; }
+  .modal-synopsis{ font-size:14.5px; line-height:1.7; color:var(--text); margin-bottom:24px; }
+  .modal-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--marquee); color:#fff; font-weight:700; font-size:14.5px;
+    padding:13px 26px; border-radius:9px; border:none; cursor:pointer; width:100%; justify-content:center;
+  }
+  .modal-cta:hover{ background:#c93a22; }
+  .modal-cta.manual{ background:var(--surface-2); border:1px solid var(--line); color:var(--text-dim); }
+
+  @media (max-width:720px){
+    .modal-card{ flex-direction:column; max-height:92vh; }
+    .modal-image{ flex:0 0 240px; width:100%; }
+    .modal-image::after{ background:linear-gradient(0deg, var(--surface) 5%, transparent 40%); }
+    .modal-details{ padding:22px 20px; }
+    .modal-title{ font-size:22px; }
+    .modal-meta-grid{ grid-template-columns:1fr 1fr; }
+  }
+
+  footer{ max-width:1400px; margin:40px auto 0; padding:24px 20px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:12px; color:var(--text-dim); }
+  footer .dev-credit{color:var(--gold); font-weight:600;}
+  .notice{ max-width:1400px; margin:0 auto; padding:10px 20px 0; font-size:12px; color:var(--text-dim); }
+  .notice b{color:var(--gold);}
+
+  @media (max-width:640px){
+    .hero-title{font-size:30px;}
+    .hero-card{min-height:260px; padding:22px;}
+    .card{flex:0 0 130px;}
+    .card .poster{height:185px;}
+    .search-box{display:none;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="ticker"><div class="ticker-track">🎬 নতুন রিলিজ ট্র্যাক করছে — চরকি • বঙ্গ • দীপ্তলাইভ • আইস্ক্রিন • হইচই • বায়স্কোপ • উৎসব • বিঞ্জ • Netflix • Prime • Zee5 • SonyLIV — সব একজায়গায় —</div></div>
+
+  <header>
+    <div class="header-inner">
+      <div>
+        <div class="logo"><span class="stream">STREAM</span><span class="guide-thin">guide</span><span class="bd">BD</span></div>
+        <div class="tagline">সব OTT-র নতুন রিলিজ, একসাথে</div>
+      </div>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="টাইটেল খুঁজুন...">
+      </div>
+    </div>
+    <div class="filters" id="filters"></div>
+  </header>
+
+  <div class="notice">এখানে দেখানো ডেটা <b>ডেমো/স্যাম্পল</b> — লাইভ অটো-পুল স্ক্র্যাপার পরের ধাপে যুক্ত হবে। <b>আন্তর্জাতিক</b> ট্যাবের কনটেন্টে ক্লিক করলে সরাসরি অ্যাপ নাও খুলতে পারে — সেক্ষেত্রে নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজে নিতে হবে।</div>
+
+  <section class="hero" id="heroSection"></section>
+  <main id="rowsContainer"></main>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card" id="modalCard">
+      <button class="modal-close" id="modalClose" aria-label="বন্ধ করো">✕</button>
+    </div>
+  </div>
+
+  <footer>
+    <div>© 2026 STREAMguide BD</div>
+    <div class="dev-credit">Developed by @nazmulsblog</div>
+  </footer>
+
+<script>
+// ---------- Platforms (single flat list, in requested order) ----------
+const PLATFORMS = {
+  chorki:   { name:"চরকি",      color:"#e8482c", base:"https://www.chorki.com/en/movie/", manual:false },
+  bongo:    { name:"বঙ্গ",       color:"#f2c14e", base:"#", manual:false },
+  deepto:   { name:"দীপ্তলাইভ",  color:"#2ecc71", base:"#", manual:false },
+  iscreen:  { name:"আইস্ক্রিন",  color:"#9b59d6", base:"#", manual:false },
+  hoichoi:  { name:"হইচই",      color:"#f23557", base:"#", manual:false },
+  bioscope: { name:"বায়স্কোপ",   color:"#2ea3f2", base:"#", manual:false },
+  utsob:    { name:"উৎসব",      color:"#ff6f91", base:"#", manual:false },
+  binge:    { name:"বিঞ্জ",      color:"#00c2a8", base:"#", manual:false },
+  // international / indian — grouped under one filter chip, deep-link not reliable -> manual open
+  netflix:  { name:"Netflix",     color:"#e50914", base:"#", manual:true, group:"intl" },
+  prime:    { name:"Prime Video", color:"#00a8e1", base:"#", manual:true, group:"intl" },
+  disney:   { name:"Disney+",     color:"#113ccf", base:"#", manual:true, group:"intl" },
+  max:      { name:"Max (HBO)",   color:"#9013fe", base:"#", manual:true, group:"intl" },
+  hulu:     { name:"Hulu",        color:"#1ce783", base:"#", manual:true, group:"intl" },
+  zee5:     { name:"Zee5",        color:"#7b2ff7", base:"#", manual:true, group:"intl" },
+  sonyliv:  { name:"SonyLIV",     color:"#1ba1e2", base:"#", manual:true, group:"intl" },
+};
+
+const CHIP_ORDER = ["all","chorki","bongo","deepto","iscreen","hoichoi","bioscope","utsob","binge","intl"];
+
+const GRADIENTS = [
+  "linear-gradient(160deg,#3a1c1c,#1a1013)","linear-gradient(160deg,#1a2a3a,#101820)",
+  "linear-gradient(160deg,#2c1a3a,#160f1e)","linear-gradient(160deg,#1a3a26,#0f1c14)",
+  "linear-gradient(160deg,#3a2f14,#1c1608)","linear-gradient(160deg,#3a1a2c,#1c0f18)",
+];
+
+function daysAgo(n){ const d = new Date(); d.setDate(d.getDate()-n); return d; }
+function fmtDate(d){ return d.toLocaleDateString('bn-BD', {day:'numeric', month:'long', year:'numeric'}); }
+
+const TITLES = [
+  {p:"chorki", t:"Lifeline", dur:"1h 40m", days:12, img:"https://image.chorkicdn.com/uploads/images/2026/06/20/thumbnails_75c45f3483c9c9ac3cacb7fc1d26baf8_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/lifeline", synopsis:"How far would you go, and what would you risk for the one you love? What drives Ananya, a city girl, to this distant village."},
+  {p:"chorki", t:"Domm", dur:"2h 7m", days:43, img:"https://image.chorkicdn.com/uploads/images/2026/05/20/thumbnails_9a17986cf1a558e41096ed09c653767d_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/domm", synopsis:"Noor, a man from a small town, gets the chance to go abroad through his job. But in an unfamiliar country, Noor faces danger."},
+  {p:"chorki", t:"Cha Gorom", dur:"1h 42m", days:80, img:"https://image.chorkicdn.com/uploads/images/2026/04/13/thumbnails_19641cb69a27d1a77cd9e5aa7bb5b2ba_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/cha-gorom", synopsis:"After completing her MBBS, Jerin unexpectedly arrives at a remote, network-less tea estate in Sylhet."},
+  {p:"chorki", t:"Meu", dur:"1h 7m", days:120, img:"https://image.chorkicdn.com/uploads/images/2026/03/04/thumbnails_50c0741b2399441a9837abd4a6bf1890_goplay_1200x675jpg.jpeg?w=1080&q=75", url:"https://www.chorki.com/movie/meu", synopsis:"One morning, Raha's beloved cat, Meu, suddenly goes missing. Unable to find Meu, Raha becomes deeply distressed."},
+  {p:"chorki", t:"Dimlight", dur:"1h 59m", days:204, img:"https://image.chorkicdn.com/uploads/images/2025/12/10/thumbnails_dcb4f23445d9a6c77f59f3c2d268f454_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/dimlight", synopsis:"Tears hidden behind laughter, a quiet love tucked between family quarrels, and the struggle of a comedian."},
+  {p:"chorki", t:"Tomar Jonno Mon", dur:"1h 21m", days:163, img:"https://image.chorkicdn.com/uploads/images/2026/01/20/thumbnails_7602c855e3d86c458cebd63dc7aa0535_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/tomar-jonno-mon", synopsis:"During a trip to Cox's Bazar, Piu meets Raownak, a boy from her own town. Amid the waves and sunsets."},
+  {p:"chorki", t:"Little Miss Chaos", dur:"1h 14m", days:267, img:"https://image.chorkicdn.com/uploads/images/2025/10/08/thumbnails_3690da149158e806bd472fb368479b5f_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/little-miss-chaos", synopsis:"Ira grows up in the hollow of absence. A mother too distant, a father who never arrives."},
+  {p:"chorki", t:"Insaaf", dur:"2h 29m", days:302, img:"https://image.chorkicdn.com/uploads/images/2025/09/03/thumbnails_88e61279954d67b179d05e04fd3b516a_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/insaaf", synopsis:"Yusuf, a brutal underworld kingpin, clashes with a relentless cop as a mysterious vigilante wages war on crime."},
+  {p:"chorki", t:"Jaya Aar Sharmin", dur:"1h 26m", days:281, img:"https://image.chorkicdn.com/uploads/images/2025/09/24/thumbnails_7b3ca51bf2018bc6290c34ee404c06d0_goplay_1200x675.jpeg?w=1080&q=75", url:"https://www.chorki.com/movie/jaya-aar-sharmin", synopsis:"During the COVID-19 lockdown, an actress and her househelp, two women from vastly different worlds, find themselves together."},
+  {p:"chorki", t:"Taandob", dur:"2h 8m", days:330, img:"https://image.chorkicdn.com/uploads/images/2025/08/06/thumbnails_8644fc475624c0a8787a0d2553516f2d_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/taandob", synopsis:"A group of masked assailants storms the office of the country's top television channel, taking the staff hostage."},
+  {p:"chorki", t:"Utshob", dur:"1h 51m", days:330, img:"https://image.chorkicdn.com/uploads/images/2025/08/06/thumbnails_1196ea080b8e4339930b947e3243b8ec_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/utshob", synopsis:"Amidst Eid celebrations, miserly businessman Jahangir is visited by the spirits of his late cousin and three spirits."},
+  {p:"chorki", t:"Deyaler Desh", dur:"1h 59m", days:351, img:"https://image.chorkicdn.com/uploads/images/2025/07/16/thumbnails_04fd0112e51356819b6b06b843c4df33_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/deyaler-desh", synopsis:"At the hospital morgue, Baishakh discovers the dead body of his former lover Nohor and steals her body."},
+  {p:"chorki", t:"Daagi", dur:"2h 20m", days:392, img:"https://image.chorkicdn.com/uploads/images/2025/06/05/thumbnails_817748a5cc7b4de444f6ebc4e7b2fe55_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/daagi", synopsis:"Nishan spent more than twelve years behind bars. The story begins as he steps out of prison, only to find everything changed."},
+  {p:"chorki", t:"Borbaad", dur:"2h 17m", days:392, img:"https://image.chorkicdn.com/uploads/images/2025/06/05/thumbnails_17dae7674f112cf37015270e3b202eff_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/borbaad", synopsis:"Haunted by lost love and fueled by his father's unwavering affection, Ariyan Mirza seeks vengeance."},
+  {p:"chorki", t:"Jongli", dur:"2h 31m", days:392, img:"https://image.chorkicdn.com/uploads/images/2025/06/05/thumbnails_53b7c90a83310ef9c42325677a1a8c25_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/jongli", synopsis:"Liza made a difficult decision at the moment of the birth of her illegitimate child in the hospital."},
+  {p:"hoichoi", t:"The Eken: Kerala-e Kurukshetra (Film)", dur:"N/A", days:2, img:"https://image.hoichoicdn.com/unsafe/a9a09daad25d-446f-ae1f-b645d925ef8e-3x4.jpg", url:"https://www.bioscopeplus.com/movies/the-eken-kerala-e-kurukshetra-film", synopsis:"A few mysterious men from Kochi arrive out of nowhere and whisk away the ever-baffling Eken Babu to Kerala. Kidnapped or invited—who knows! As confusion turns into curiosity, Eken "},
+  {p:"hoichoi", t:"Ekshathe Alada", dur:"57m", days:182, img:"https://image.hoichoicdn.com/unsafe/f414c619c507-4c12-a315-83f4262a3091-EA_3x4_2.jpg", url:"https://www.bioscopeplus.com/movies/ekshathe-alada", synopsis:"When a couple realise their marriage is dead and mutually choose divorce, their families launch a relentless mission to keep them together—forcing them to fight not just for freedo"},
+  {p:"hoichoi", t:"The Eken", dur:"2h 10m", days:1643, img:"https://image.hoichoicdn.com/unsafe/dab0e9f7d34f-4cc4-af48-32589f1d3e62-1098x1626_3.jpg", url:"https://www.bioscopeplus.com/movies/the-eken", synopsis:"Eken Babu is in Darjeeling with friends Bapi and Pramatha for a vacation. Here, he crosses paths with the charming actress Bipasha Mitra, who gives him an unexpected proposal. The "},
+  {p:"hoichoi", t:"Byomkesh Hotyamancha", dur:"2h 6m", days:1643, img:"https://image.hoichoicdn.com/unsafe/7fa0ea9a-9799-4417-99f5-cbb5343c551d/images/2023/12/27/1703661680950_bh_1098x1626_new_3x4Images.jpg", url:"https://www.bioscopeplus.com/movies/byomkesh-hotyamancha", synopsis:"Byomkesh becomes witness to a murder on the centre stage when he attends a play at the theatre. And thus starts his quest for the truth behind the death, in the 70s Calcutta, strug"},
+  {p:"bongo", t:"Guti", dur:"১২৫ মিনিট", cast:"সিয়াম আহমেদ, বুবলি", days:4},
+  {p:"bongo", t:"Sotta", dur:"১৪০ মিনিট", cast:"শরিফুল রাজ", days:15},
+  {p:"bioscope", t:"Atom: 150 Years of Lies", dur:"56m", days:71, img:"https://dbcmsassets.docubay.com/featured-images/1776839663-atom150-years-of-lies-1080x1543-540x772.jpg", url:"https://www.bioscopeplus.com/documentaries/atom-150-years-of-lies-4832", synopsis:"From Chernobyl to Fukushima, this gripping investigation exposes the human cost of nuclear power. Through the testimonies of irradiated soldiers, workers and children, the document"},
+  {p:"bioscope", t:"Bow Barracks Forever", dur:"1h 53m", days:7883, img:"https://daex9l847wg3n.cloudfront.net/shemoutputimages/Bow-Barracks-Forever/69ae54bff4add5ccb96cc4c5/xl_image_2_3_1773322987.jpg?1773322972", url:"https://www.bioscopeplus.com/movies/bow-barracks-forever", synopsis:"A structure formerly used as military barracks becomes home to many families, the majority of which are Anglo Indians. Their crumbling lives are aptly reflected in the state of the"},
+  {p:"bioscope", t:"Noor", dur:"1h 30m", days:203, img:"https://asset.bioscopelive.com/uploads/images/2025/12/21/posters_692dcbee096884d42aa509214ebb741d_goplay_noor_new_poster.jpg", url:"https://www.bioscopeplus.com/movies/noor", synopsis:"Noor (Arefin Shuvo) is a man whose love burns brighter than reason. From the moment he meets Shiuli, she becomes the center of his world — his first thought every morning, his last"},
+  {p:"bioscope", t:"Nisshash", dur:"35m", days:1246, img:"https://asset.bioscopelive.com/uploads/images/2025/03/13/posters_d02e1d6e5b2a6abec78da4cd0707b1e0_goplay_800x1200.jpg", url:"https://www.bioscopeplus.com/drama/nisshash", synopsis:"\"Nisshash\" a new Bangla Natok, unfolds a story where an injured young man falls in love with the nurse while receiving treatment. They both have a pre-determined future to follow b"},
+  {p:"bioscope", t:"Chameli", dur:"1h 42m", days:8210, img:"https://daex9l847wg3n.cloudfront.net/shemoutputimages/Chameli/6932745d17c73119efdcf482/xl_image_2_3_1766726435.jpg?1766726423", url:"https://www.bioscopeplus.com/movies/chameli", synopsis:"Aman Kapoor, an investment banker, and Chameli, a prostitute, form a bond while finding shelter during the monsoon. He decides to free her from her pimp as his outlook to life chan"},
+  {p:"bioscope", t:"Shabd", dur:"2h 9m", days:7818, img:"https://daex9l847wg3n.cloudfront.net/shemoutputimages/Shabd/6932743917c73119efdcf47e/xl_image_2_3_1766575277.jpg?1766575265", url:"https://www.bioscopeplus.com/movies/shabd", synopsis:"Shaukat, a Booker Prize-winning author, is reeling from the failure of his last novel and suffering from a writer's block. So, he decides to write a new book revolving around a cha"},
+  {p:"bioscope", t:"Gadera: The Stream", dur:"1h 43m", days:783, img:"https://daex9l847wg3n.cloudfront.net/shemoutputimages/Gadera:-The-Stream/68e2fe92f4add590a1bd801c/xl_image_2_3_1759493263.jpg?1759738259", url:"https://www.bioscopeplus.com/movies/gadera-the-stream", synopsis:"In 1912, driven by greed, the British embark on a Himalayan expedition in colonial India. The Kumaoni and Garhwali people retaliate, highlighting the grave consequences of imperial"},
+  {p:"bioscope", t:"Plan B", dur:"N/A", days:277, img:"https://asset.bioscopelive.com/uploads/images/2025/10/12/posters_3b20fb7de370f440f285278b9cf5ac08_goplay_plan_b_new_prot.png", url:"https://www.bioscopeplus.com/movies/plan-b", synopsis:"Kayra, a bold software programmer in Bangladesh, divorces her cheating husband and starts over. At work, she bonds with Rupok, her kind but timid manager. Together, they join frien"},
+  {p:"bioscope", t:"Tento", dur:"2h 7m", days:913, img:"https://klikk.co.in/api/uploads/mv/IMG1761823744.jpg", url:"https://www.bioscopeplus.com/videos/tento", synopsis:"In a remote Himalayan village, Jyotirmoy invites his old college friends to celebrate his birthday, hoping to heal old wounds. But as dark memories return, the line between reality"},
+  {p:"bioscope", t:"Kajarya", dur:"1h 43m", days:287, img:"https://epcms.epicon.in/featured-images/1627390297-kajarya-verticals-xoriginal.jpg", url:"https://www.bioscopeplus.com/movies/kajarya", synopsis:"Set in the present times against two backdrops, New Delhi with its shining buildings and apparent cosmopolitan veneer, thinly veils an underbelly of crimes against women and corrup"},
+  {p:"iscreen", t:"Patok", dur:"N/A", days:317, img:"https://img.rockstreamer.com/220xauto/images/ClLdzFCEFpVgT6ruwzHz.jpg", url:"https://www.bioscopeplus.com/videos/patok", synopsis:"Students from various universities participated in the July Student Movement. The play is based on the July Movement."},
+  {p:"iscreen", t:"Dui Duari", dur:"1h 27m", days:259, img:"https://img.rockstreamer.com/220xauto/images/OqoCQsJRGyJvkjz1a76R.jpg", url:"https://www.bioscopeplus.com/videos/dui-duari", synopsis:"Suddenly a Stranger appeared in a family. He himself does not know where he came from and where he will go. He blends in with every character in that family & Everyone started beli"},
+  {p:"iscreen", t:"Jinn-3", dur:"N/A", days:339, img:"https://img.rockstreamer.com/220xauto/images/QxLHtBf6jHvOkjs1utsk.jpg", url:"https://www.bioscopeplus.com/videos/jinn-3", synopsis:"One day, Sumon, a young boy from the village, out of curiosity, calls out to a jinn. The jinn responds to that call and keeps Sumon as his own child. Which mother will win her son'"},
+  {p:"iscreen", t:"Paying Ghost", dur:"53m", days:317, img:"https://img.rockstreamer.com/220xauto/images/LfnaexG8XV7PJ8sNJitU.png", url:"https://www.bioscopeplus.com/videos/paying-ghost", synopsis:"Nitu will rent a house to a middle class family. A bachelor boy named Sajib rents the house and takes a place in Nitu's heart. But even after death, the incorporeal living will com"},
+  {p:"deepto", t:"Taandob", dur:"2h 8m", days:327, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/08/13/posters_5357101352723e0a50514035c40dd4e8_goplay_tandon_main_thumbnail_2.png", url:"https://www.deeptoplay.com/films/taandob", synopsis:"When a common man protests against a corrupt system and holds two ministers of a country hostage—ministers who once framed him in a false case and destroyed his life—he can be dang"},
+  {p:"deepto", t:"Amor Prem", dur:"N/A", days:359, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2026/03/01/posters_63e06223cb94c1428cc5fa7e964dc137_goplay_omor_prem_vod_2.jpg", url:"https://www.deeptoplay.com/films/amor-prem", synopsis:"Can and Zeynep come from two completely different worlds. Their love faces barriers of class, prejudice, and past secrets — but true love knows no limits."},
+  {p:"deepto", t:"Hide 'N Seek", dur:"1h 23m", days:387, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/06/24/posters_f258768d6c01d398bd7c6c621e7afcd7_goplay_hide_n_seek_thumbnail_up2.jpg", url:"https://www.deeptoplay.com/films/hide-n-seek", synopsis:"On the night of film star Imtiaz Khan's engagement,  Rasha attempts suicide, the rumors was that out of jealousy  Rasha atemted the suicide as she had a secret  relationship with I"},
+  {p:"deepto", t:"Khuni Poribar", dur:"N/A", days:398, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2026/03/01/posters_3a6f7ece7c11646aeef76206850d1681_goplay_khuni_poribar_vod_2.jpg", url:"https://www.deeptoplay.com/films/khuni-poribar", synopsis:"Khuni Poribar Turkish comedy film about a family that runs afoul of an international criminal gang in Türkiye and the funny and action-packed events that take place while on the ru"},
+  {p:"deepto", t:"Bibhabori", dur:"1h 27m", days:618, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2024/10/31/posters_979fb50b2c162c44efcf667abf82b4e1_goplay_bivabori_2_1.jpg", url:"https://www.deeptoplay.com/films/bibhabori", synopsis:"Nitu, a young student from a struggling family, works part-time to make ends meet. She starts sensing a strange presence in her rundown hostel. One night, during a lunar eclipse, s"},
+  {p:"deepto", t:"Amar Shontan", dur:"N/A", days:466, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2026/01/06/posters_78280522b8b5a96fe3261b698defd6fe_goplay_amar_shontan_vod_2.jpg", url:"https://www.deeptoplay.com/films/amar-shontan", synopsis:"Ali, a fisherman, devoted his life to his young son, Efe. Efe was the only son of Ali who was in this life. Efe is different from other children. Efe, who has a communication probl"},
+  {p:"deepto", t:"SHAAN", dur:"2h 26m", days:517, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/02/01/posters_a6ff646bf3014b01e41b3c8886bd6143_goplay_shaan_vod_2.jpg", url:"https://www.deeptoplay.com/films/shaan", synopsis:"The story of the film revolves around Shaan, who, after passing the Bangladesh Civil Service examinations, joins the police force to serve the nation. He is an honest and courageou"},
+  {p:"deepto", t:"Raat Jaga Phool", dur:"2h 2m", days:847, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2024/04/10/posters_e9caa46b2d9babbafb619abebffd0c26_goplay_raat_jaga_ful_2.jpg", url:"https://www.deeptoplay.com/films/raat-jaga-phool", synopsis:"Watch Raat Jaga Phool. Explore All Films on DeeptoPlay. Enjoy DeeptoPlay film Raat Jaga Phool Starring Mir Sabbir, Abu Hurayra Tanvir, Fazlur Rahman Babu and others. Directed By Mi"},
+  {p:"deepto", t:"Mukhosh", dur:"2h 7m", days:973, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2023/12/13/posters_c12df628a381fba7c798143209e432b4_goplay_mukhosh_vod_2.jpg", url:"https://www.deeptoplay.com/films/mukhosh", synopsis:"The story revolves around a writer's writing and psychology. How would the writer feel if his own character came in front of him? Is it possible to measure someone's worth in money"},
+  {p:"deepto", t:"Mastaner Upor Mastan", dur:"N/A", days:426, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/05/10/posters_c3e18e49406528ce2209e4ad643468e4_goplay_mastaner_upor_mastan_vod_2.jpg", url:"https://www.deeptoplay.com/films/mastaner-upor-mastan", synopsis:"Mastaner Upor Mastan (2002) is a high-octane Bangladeshi action drama directed by Montazur Rahman Akbar, starring Manna and Purnima. The film delivers a gripping tale of power, riv"},
+  {p:"deepto", t:"Meghna Konnya", dur:"2h 0m", days:705, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2024/09/21/posters_3673afe606c44670cd6cf41511f409d0_goplay_meghna_konna_movie_vod_2.jpg", url:"https://www.deeptoplay.com/films/meghna-konnya", synopsis:"A heartbroken dancer, Progga, retreats to the village of Ulania, where she discovers the tragic story of Hashi, a dancer trapped in a brothel. As Progga helps Hashi escape and conf"},
+  {p:"deepto", t:"Jersey Number 16", dur:"N/A", days:505, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/02/13/posters_fdcb069f6300124328bb2ea2a0d44bf5_goplay_jersey_no_16_2.png", url:"https://www.deeptoplay.com/films/jersey-number-16", synopsis:"Nusrat, the dashing girl of the village, dreamed of playing in the national team of Bangladesh one day. His hard work overcomes all obstacles and brings him success one day. That b"},
+  {p:"deepto", t:"Kothin Protisodh", dur:"N/A", days:566, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2024/12/14/posters_127ac304ae26893719b264dd69950fe9_goplay_kothin_protishodh_vod_2.jpg", url:"https://www.deeptoplay.com/films/kothin-protisodh", synopsis:"Badhon (Shakib Khan) is brought up by his uncle (Ali Raz) in Thailand. Dola (Apu Biswas) stays in Thailand along with her uncle. After a few misunderstandings, they fall in love. D"},
+  {p:"deepto", t:"Talash", dur:"N/A", days:569, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2024/12/11/posters_500366bb7f7c89a186a333600226035a_goplay_talash_2.jpg", url:"https://www.deeptoplay.com/films/talash", synopsis:"A bangla movie starring Fakhrul Basher Masum, Mili Basher, Ador Azad, Bubly written by Asad Zaman directed by Saikat Nasir."},
+  {p:"deepto", t:"Bhaia", dur:"N/A", days:426, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/05/10/posters_e304ba1254a82d8abecc0e166a4ee982_goplay_bhaiya_vod_2.jpg", url:"https://www.deeptoplay.com/films/bhaia", synopsis:"Bhaia is a heart-touching family drama that explores the powerful bond between siblings, set against the backdrop of love, sacrifice, and social conflict. Manna stars as a devoted "},
+  {p:"deepto", t:"Saatao", dur:"N/A", days:508, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/03/06/posters_c2417ea988986831eb82495bec7d6877_goplay_satao_vod_2.jpg", url:"https://www.deeptoplay.com/films/saatao", synopsis:"Putul and her beloved cow experience pregnancy at the same time, but tragedy strikes as she loses her child and the cow passes away post-delivery. Amidst the heartbreak, Putul find"},  {p:"utsob", t:"Prince", dur:"2h 27m", days:103, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_bbe04e8369060803811de11745d56f59_goplay_prince_poster_2.jpg", url:"https://www.utshob.live/movies/prince", synopsis:"In Dhaka, a larger-than-life figure navigates power, loyalty, and destiny."},
+  {p:"utsob", t:"Rakkhosh", dur:"2h 20m", days:103, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_ebe9e6f058cd88121c8ebe59ed48cc52_goplay_rakkhosh_poster_03.jpg", url:"https://www.utshob.live/movies/rakkhosh", synopsis:"Rakkhosh follows a simple man who, driven to his limits by love, greed, and betrayal, unleashes his dark inner demon to seek brutal revenge against society's monsters. The film int"},
+  {p:"utsob", t:"Sarder Barir Khela", dur:"2h 18m", days:55, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_d200796f073d3748f059aea1a0bd16a7_goplay_sbk_poster.jpg", url:"https://www.utshob.live/movies/sarder-barir-khela", synopsis:"The film is based on the traditional folk culture of Bengal, Lathikhela, and the difficult life and struggle of the Lathikhals involved in it. Along with this, the film depicts the"},
+  {p:"utsob", t:"Village Cup  - Season 1 - Episode 1", dur:"44m", days:19, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/13/images_6d3b78626879082b79d52e0ed305b938_goplay_village_cup_poster_01.jpg", url:"https://www.utshob.live/series/village-cup/episode/village-cup-season-1-episode-1", synopsis:"As the excitement of the 2026 World Cup reaches a small village, football becomes more than just a game—it turns into a battle of pride, dreams, and passion. **\"Village Cup\"** foll"},
+  {p:"utsob", t:"Agontuk ", dur:"2h 2m", days:25, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/22/posters_bd991ea5ee6992eafc0e719c9702368a_goplay_whatsapp_image_2026_06_22_at_61656_pm.jpeg", url:"https://www.utshob.live/movies/agontuk", synopsis:"Agontuk is a 2024 Bangladeshi Bengali language psychological thriller film."},
+  {p:"utsob", t:"Gayer Suvashini", dur:"1h 20m", days:45, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/30/posters_1f725bfab5228a37ff2bd2f904b95484_goplay_whatsapp_image_2026_06_29_at_95826_pm.jpeg", url:"https://www.utshob.live/movies/gayer-shuvashini", synopsis:"When the ordinary residents of a village begin to suspect one another following a bizarre incident in their peaceful surroundings, Suhasini—a spirited young woman from the village—"},
+  {p:"utsob", t:"Omar", dur:"2h 3m", days:812, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/17/posters_0383e460a2bb3d2a6572ecec6f5fbe8b_goplay_omar_poster.jpg", url:"https://www.utshob.live/movies/omar", synopsis:"\"Omar's closest friend, Rumon, is brutally murdered right before his eyes, but instead of seeking police or legal help, Omar decides to hunt down the killers himself, which forces "},
+  {p:"utsob", t:"Kotha Dilam", dur:"2h 16m", days:21, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/13/images_b8257fa79b52b606da08b1af2e279391_goplay_kotha_dilam.jpeg", url:"https://www.utshob.live/movies/kotha-dilam", synopsis:"The film 'Kotha Dilam', released in 2023, is essentially a social and family story-based film set in an authentic rural Bengali setting."},
+  {p:"utsob", t:"Jongli", dur:"2h 31m", days:458, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_68214e51e81602d4e7022331d9c14459_goplay_jongli_poster.jpg", url:"https://www.utshob.live/movies/jongli", synopsis:"\"His unexpected spiritual bond with a little girl named 'Pakhi' helps him overcome his extreme emotional trauma, learn to love anew, and choose his path to redemption.\""},
+  {p:"utsob", t:"Lipstick", dur:"2h 3m", days:812, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_7dc366b7213a0522b723474d7c15bdb5_goplay_lipstick_movie_posterjpg.jpeg", url:"https://www.utshob.live/movies/lipstick", synopsis:"\"The story follows Buchi, a simple village girl with big dreams of stardom, who eventually transforms into a famous actress. However, her path to fame turns dark when mysterious mu"},
+  {p:"utsob", t:"Jole Jwole Tara", dur:"1h 56m", days:503, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/02/posters_d31ad4fe33319d13f80c8544c16e4391_goplay_jole_jole_tara_ott_poster.jpg", url:"https://www.utshob.live/movies/jole-jwole-tara", synopsis:"After a tragic past leaves Tara isolated by the river, the arrival of Hossain Majhi sparks a flicker of hope in her lonely world. Together, they must brave the harsh currents of so"},
+  {p:"utsob", t:"Rajkumar", dur:"2h 13m", days:812, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_e7d3ea04844ef87755e5b17969472e19_goplay_rajkumar_poster.jpg", url:"https://www.utshob.live/movies/rajkumar", synopsis:"Rajkumar is the story of an emotional young man who travels all the way to America in search of his roots and his long-lost mother. The film portrays his indomitable struggle to re"},
+  {p:"utsob", t:"Bir", dur:"2h 15m", days:2330, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_320f0459709f23925aaf4f4c0e11ff8a_goplay_bir_poster.jpg", url:"https://www.utshob.live/movies/bir", synopsis:"The story of a self-motivated gangster under a political Godfather and a young lady who is the prisoner of the same politician. The two fall in love and want to escape from their i"},
+  {p:"utsob", t:"Shaan", dur:"2h 24m", days:1521, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_8f9aba7c27fd0e9806687c6d50036fa2_goplay_0101010101.jpg", url:"https://www.utshob.live/movies/shaan", synopsis:"Shaan, a courageous and honest officer, joins the force with a single goal: to serve and protect his country. Beyond his duty, he finds himself on a dangerous path where his braver"},
+  {p:"utsob", t:"Shatru", dur:"2h 8m", days:1167, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_7f89ce463c2c50d62cfe31406d2b59a5_goplay_shotru_ott_poster.jpg", url:"https://www.utshob.live/movies/shatru", synopsis:"With the city gripped by fear, Durjoy steps in to challenge the undisputed rule of the ruthless mob boss, Akbar Seth. It’s a deadly race against time where justice must be served t"},
+  {p:"utsob", t:"Black War", dur:"2h 5m", days:1266, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/02/posters_8fc59bbdc149038bfacb85667e82511f_goplay_black_war_poster_ott.jpg", url:"https://www.utshob.live/movies/black-war", synopsis:"As a deadly terrorist threat pushes the country to the brink, ADC Nabid dives into a dangerous game of cat and mouse against an unseen enemy. His mission is a race against the cloc"},
+  {p:"utsob", t:"Dunia", dur:"2h 1m", days:573, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/07/posters_0969a0943441e9b31ed66063edbae648_goplay_duniya_poster.jpg", url:"https://www.utshob.live/movies/dunia", synopsis:"When a ruthless terrorist, Misha Sawdagor, shatters the peace of a city, two fearless youths, Nirab and Milan, rise up for justice. Driven by personal loss and past scars, they emb"},
+  {p:"utsob", t:"Dark World", dur:"2h 13m", days:745, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_937252539c7e4237a4095215ef156414_goplay_dark_wolrd_poster_ottjpg.jpeg", url:"https://www.utshob.live/movies/dark-world", synopsis:"Bandarban's notorious terrorist Munna Khan suddenly enters the dark world of Dhaka at the call of Deepa Khandaker. Deepa's goal is to suppress the top terrorists of Dhaka's crimina"},
+  {p:"utsob", t:"Talash", dur:"1h 51m", days:1476, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_f7fd315c6ffefed48c85b77add46f9fd_goplay_talassh_poster.png", url:"https://www.utshob.live/movies/talash", synopsis:"Bubly lives for one person alone—Sumon—but destiny has a different plan for her singular devotion. Their thrilling romance leads her down a path of deep emotional struggle, raising"},
+  {p:"utsob", t:"Jontrona", dur:"2h 0m", days:965, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_8dfcc0dfe263e014307f74b725ff21bf_goplay_jontrona_ott_poster.jpg", url:"https://www.utshob.live/movies/jontrona", synopsis:"The story revolves around a complex love triangle filled with intense action and emotional turmoil. At its core, the film explores the struggles and sacrifices made in the name of "},
+  {p:"utsob", t:"Mission Extreme", dur:"2h 9m", days:1672, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_242e09b442a4f040832705fc2ac0c0f0_goplay_misshon_movie_poster.png", url:"https://www.utshob.live/movies/mission-extreme", synopsis:"Nabid Al Shahriar, a dedicated CTTC officer, leads an elite team on a high-stakes hunt for a dangerous terrorist cell. To protect the nation from chaos, he must outsmart an invisib"},
+  {p:"utsob", t:"Priyotoma", dur:"2h 17m", days:1099, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/22/posters_8d28f2b5334a9e822c22d2f0a032e090_goplay_whatsapp_image_2026_06_22_at_44552_pm_1.jpeg", url:"https://www.utshob.live/movies/priyotoma", synopsis:"Haunted by his brother’s tragic death, Sumon’s pursuit of vengeance leads him into an unforeseen world of love and sacrifice. A chance encounter with a captivating woman transforms"},
+  {p:"utsob", t:"Nobab LLB", dur:"2h 21m", days:1833, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_b474ece6fb8c99ed54df7b1e2c39d472_goplay_nabab_llb_poster.jpg", url:"https://www.utshob.live/movies/nobab-llb", synopsis:"\"Nabab LLB\" is a legal drama following a high-profile lawyer who fights for justice for a girl who survived a brutal gang rape. The story highlights the victim's struggle against a"},
+  {p:"utsob", t:"Samraat", dur:"1h 46m", days:21, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/13/posters_6c0331d53013409ffeeff618ef0fb3c7_goplay_somraat.jpeg", url:"https://www.utshob.live/movies/samraat", synopsis:"The plot follows the titular, undefeatable mafia kingpin (Shakib Khan) who returns to Bangladesh from Malaysia to seize control of the local underworld, igniting a fierce war again"},
+  {p:"utsob", t:"Guru Dev", dur:"1h 52m", days:8161, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/07/posters_314815ec9c81d0da2c3ba2b182accd80_goplay_guru_deb_ott_poster.gif", url:"https://www.utshob.live/movies/guru-dev", synopsis:"\"The movie 'Gurudeb' is primarily an action-drama. The story revolves around the protest against injustice and the dynamics of family relationships. Shakib Khan plays the role of a"},
+  {p:"utsob", t:"Lohar Shikol", dur:"2h 12m", days:8742, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/12/posters_ef1632e4223f1e343a4cc9cfdd351f40_goplay_lohar_sikol_movie_poster_ott.gif", url:"https://www.utshob.live/movies/lohar-shikol", synopsis:"\"A defiant young man finds himself imprisoned after being framed by the unjust demands of the society's corrupt and powerful forces. 'Lohar Shikol' is the story of his desperate st"},
+  {p:"utsob", t:"Kothin Protishod", dur:"2h 39m", days:4287, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/17/posters_995d759f6be0f02550018b0c8d5738ee_goplay_whatsapp_image_2026_05_17_at_62100_pm.jpeg", url:"https://www.utshob.live/movies/kothin-protishod", synopsis:"When Badhon and Dola's Thai romance leads them back to the fierce village rivalries of Bangladesh, they find themselves caught in a deadly family feud. Their love story transforms "},
+  {p:"utsob", t:"Bhangon", dur:"2h 14m", days:1329, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/04/19/posters_a57e702b5f85c9293bad615eb986c5fd_goplay_vangon_poster_ottjpg.jpeg", url:"https://www.utshob.live/movies/bhangon", synopsis:"Driven by river erosion, a group of displaced souls struggles to survive in Dhaka’s harsh urban landscape. Their stories weave a raw tapestry of resilience among the city's homeles"},
+  {p:"utsob", t:"Eti Chitra", dur:"2h 3m", days:986, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/30/posters_681d8e23b9aadba6c1b0d2c25b163046_goplay_eti_chitra.jpeg", url:"https://www.utshob.live/movies/eti-chitra", synopsis:"In a world built on love and dreams, Masuk and Chitra share a bond that defies distance. When Chitra leaves for the city to pursue her studies, Masuk embarks on a desperate journey"},
+  {p:"utsob", t:"Bhalo Theko", dur:"2h 21m", days:3065, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/16/posters_f2897665d894b7035b6132830652197a_goplay_whatsapp_image_2026_06_16_at_34543_pm.jpeg", url:"https://www.utshob.live/movies/bhalo-theko", synopsis:"The story revolves around a sweet romantic relationship between a talented architect and his client's daughter. However, their beautiful love story faces unexpected family complica"},
+  {p:"utsob", t:"Lal Shari", dur:"2h 8m", days:1099, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/04/19/posters_d86af7020248e029c7792b41d56c0a30_goplay_lal_sari_movie_poster.png", url:"https://www.utshob.live/movies/lal-shari", synopsis:"Lal Shari is a story about a young woman’s struggle through life, where she faces conflicts between her dreams, love, and social barriers. The red saree symbolizes her hopes, ident"},
+  {p:"utsob", t:"Mukhosh", dur:"2h 16m", days:1581, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/04/posters_e7188f6df8b79245d37fe40ecf175734_goplay_untitled_2jpg_1.jpeg", url:"https://www.utshob.live/movies/mukhosh", synopsis:"In a world full of deception, identifying the truth behind the masks people wear becomes a dangerous challenge. The story follows Farhan’s intense struggle to unmask the real culpr"},
+  {p:"utsob", t:"Jibon Pakhi", dur:"1h 31m", days:1350, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_bcab40480234a700538382fa0e89b557_goplay_jibon_pakhi_ott_posterjpg.jpeg", url:"https://www.utshob.live/movies/jibon-pakhi", synopsis:"The film Jibon Pakhi is based on a family and society-centric story. In the film, Mim runs away from home, and her father passes away in grief. On the other hand, Abul Kalam Azad's"},
+  {p:"utsob", t:"Jao Pakhi Bolo Tare", dur:"2h 13m", days:1364, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/02/posters_856d1498951a108bd86c1bbc60e21513_goplay_jao_pakhi_bolo_tare_movie_poster.png", url:"https://www.utshob.live/movies/jao-pakhi-bolo-tare", synopsis:"When the daughter of a powerful landlord becomes the center of a complicated love triangle, Majnu's unrequited devotion faces a heartbreaking clash. The story follows their intertw"},
+  {p:"binge", t:"Prohelika", dur:"৪০ মিনিট x ৬ পর্ব", cast:"ইরফান সাজ্জাদ", days:10},
+  {p:"binge", t:"Shohor Bangla", dur:"৩৫ মিনিট x ৮ পর্ব", cast:"মনোজ প্রামাণিক", days:26},
+  {p:"netflix", t:"Wednesday S3", dur:"৪৫ মিনিট x ৮ পর্ব", cast:"Jenna Ortega", days:2},
+  {p:"netflix", t:"The Night Agent S3", dur:"৫০ মিনিট x ১০ পর্ব", cast:"Gabriel Basso", days:10},
+  {p:"prime", t:"Fallout S2", dur:"৫৫ মিনিট x ৮ পর্ব", cast:"Ella Purnell", days:4},
+  {p:"prime", t:"Reacher S4", dur:"৫০ মিনিট x ৮ পর্ব", cast:"Alan Ritchson", days:18},
+  {p:"disney", t:"Andor S2", dur:"৪৫ মিনিট x ১২ পর্ব", cast:"Diego Luna", days:6},
+  {p:"max", t:"House of the Dragon S3", dur:"৬০ মিনিট x ৮ পর্ব", cast:"Emma D'Arcy", days:5},
+  {p:"max", t:"The Last of Us S3", dur:"৫৫ মিনিট x ৭ পর্ব", cast:"Pedro Pascal", days:21},
+  {p:"hulu", t:"The Bear S4", dur:"৩০ মিনিট x ১০ পর্ব", cast:"Jeremy Allen White", days:14},
+  {p:"zee5", t:"Rana Naidu S2", dur:"৪৫ মিনিট x ৮ পর্ব", cast:"Venkatesh Daggubati", days:11},
+  {p:"sonyliv", t:"Karakkam", dur:"N/A", days:30, img:"https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000020214/1782791820000909_karakkam_Portrait_Thumb_Dated.jpg", url:"https://www.bioscopeplus.com/movies/karakkam", synopsis:"A drunken New Year's prank goes horribly wrong when two young men remove sacred crosses from graves. Five restless ghosts emerge to haunt their every move, driving them to seek red"},
+  {p:"sonyliv", t:"Kalamkaval", dur:"2h 17m", days:167, img:"https://origin-staticv2.sonyliv.com/videoasset_images/blitz_assets/1590014678/portraitThumb/1768408879587_./Kalamkaval_2_Portrait_Thumb_NewMovie.jpg", url:"https://www.bioscopeplus.com/movies/kalamkaval", synopsis:"A routine Kerala Police inquiry in the quiet village of Kottayikonam takes an unexpected turn when a trail of seemingly minor clues unravels into a string of disturbing cases. The "},
+  {p:"sonyliv", t:"Marco", dur:"2h 21m", days:504, img:"https://origin-staticv2.sonyliv.com/videoasset_images/blitz_assets/1090468630/portraitThumb/1742383661968_marco_14mar_rev_hotpick_portrait_thumb.jpg", url:"https://www.bioscopeplus.com/movies/marco", synopsis:"A high-octane action thriller that delivers an unflinching look at the lengths one man will go to protect his family and honour, 'Marco' features Unni Mukundan in the titular role."},
+  {p:"sonyliv", t:"Anthakshari (Hindi)", dur:"2h 1m", days:1360, img:"https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000001917/1745827543035450_Antakshari_hindi_28apr_portrait_thumb.jpg", url:"https://www.bioscopeplus.com/movies/anthakshari-hindi", synopsis:"Circle Inspector Das is so obsessed with music that he plays the game of Antakshari with anyone, anywhere; whether it be for fun with his wife or to punish the culprits he arrests."},
+  {p:"sonyliv", t:"Maari", dur:"2h 5m", days:1067, img:"https://origin-staticv2.sonyliv.com/videoasset_images/maari_22july_portrait_thumb.jpg", url:"https://www.bioscopeplus.com/movies/maari-dub", synopsis:"A reformed ganster returns to reclaim his territory from a ruthless rival. Amidst action-packed clashes and unexpected alliances, he must protect his loved ones while facing his in"},
+  {p:"sonyliv", t:"Bromance", dur:"2h 16m", days:428, img:"https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000001943/1745940689660351_Bromance_Portrait_Thumb.jpg", url:"https://www.bioscopeplus.com/movies/bromance", synopsis:"In this heartwarming tale of camaraderie and self-discovery, a laid-back social media enthusiast, joined by his brother's group of eclectic friends, embarks on a journey to find hi"},
+];
+
+const DATA = TITLES.map((x,i)=>({
+  ...x, id:i, date: daysAgo(x.days), grad: GRADIENTS[i % GRADIENTS.length],
+  url: x.url || ((PLATFORMS[x.p].base !== "#" && x.slug) ? PLATFORMS[x.p].base + x.slug : PLATFORMS[x.p].base)
+}));
+
+let activeFilter = "all";
+let searchQuery = "";
+
+function renderFilters(){
+  const filtersEl = document.getElementById('filters');
+  let html = `<button class="chip active" data-p="all" tabindex="0">সব</button>`;
+  CHIP_ORDER.slice(1).forEach(key=>{
+    if(key === "intl"){
+      html += `<button class="chip" data-p="intl" style="--dot:#7d5fff" tabindex="0"><span class="dot"></span>আন্তর্জাতিক</button>`;
+    } else {
+      const plat = PLATFORMS[key];
+      html += `<button class="chip" data-p="${key}" style="--dot:${plat.color}" tabindex="0"><span class="dot"></span>${plat.name}</button>`;
+    }
+  });
+  filtersEl.innerHTML = html;
+  filtersEl.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      filtersEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      activeFilter = chip.dataset.p;
+      render();
+    });
+  });
+}
+
+function cardHTML(item){
+  const plat = PLATFORMS[item.p];
+  const btn = plat.manual
+    ? `<div class="overlay-btn manual">নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজুন</div>`
+    : `<div class="overlay-btn">${plat.name}-এ দেখুন ↗</div>`;
+  const posterImg = item.img ? `<img class="poster-img" src="${item.img}" loading="lazy" alt="${item.t}">` : '';
+  const castLine = item.cast
+    ? `অভিনয়ে: ${item.cast}`
+    : (item.synopsis ? `গল্প: ${item.synopsis}` : '');
+  return `
+  <div class="card" tabindex="0" data-id="${item.id}" style="--grad:${item.grad}; --dot:${plat.color}" data-url="${item.url}" data-manual="${plat.manual}">
+    <div class="poster">
+      ${posterImg}
+      <span class="platform-tag">${plat.name}</span>
+      ${item.days <= 7 ? '<span class="new-tag">NEW</span>' : ''}
+      <div class="poster-title">${item.t}</div>
+    </div>
+    <div class="card-info">
+      <div class="cname">${item.t}</div>
+      <div class="meta-line">${fmtDate(item.date)} • ${item.dur.split(' ')[0]}</div>
+    </div>
+    <div class="overlay">
+      <div class="overlay-title">${item.t}</div>
+      <div class="overlay-meta">রিলিজ: ${fmtDate(item.date)}<br>সময়: ${item.dur}${castLine ? '<br>'+castLine : ''}</div>
+      ${btn}
+    </div>
+  </div>`;
+}
+
+function shuffledSample(arr, n){
+  const copy = [...arr];
+  for(let i = copy.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, n);
+}
+
+function heroSlideHTML(item){
+  const plat = PLATFORMS[item.p];
+  const heroBg = item.img
+    ? `linear-gradient(0deg, rgba(11,12,15,0.96) 10%, rgba(11,12,15,0.3) 60%, rgba(11,12,15,0.5) 100%), url('${item.img}')`
+    : null;
+  return `
+    <div class="hero-card" data-id="${item.id}" style="--hero-grad:${item.grad}; ${heroBg ? `background-image:${heroBg}; background-size:cover; background-position:center;` : ''}">
+      <div>
+        <div class="hero-eyebrow">${activeFilter === 'all' ? 'তোমার জন্য' : 'সর্বশেষ রিলিজ'}</div>
+        <div class="hero-title">${item.t}</div>
+        <div class="hero-meta"><span class="badge" style="--dot:${plat.color}">${plat.name}</span><span>${fmtDate(item.date)}</span><span>•</span><span>${item.dur}</span></div>
+        <button class="hero-cta" style="border:none; cursor:pointer;" onclick="event.stopPropagation(); openModal(${item.id});">বিস্তারিত দেখো</button>
+      </div>
+    </div>`;
+}
+
+function renderHero(list){
+  const heroEl = document.getElementById('heroSection');
+  if(!list.length){ heroEl.innerHTML = ''; return; }
+
+  // হোম/সব ট্যাবে র‍্যান্ডম কয়েকটা কন্টেন্ট দিয়ে সোয়াইপযোগ্য ক্যারোসেল, নাহলে শুধু সবচেয়ে সাম্প্রতিকটা
+  const slides = activeFilter === 'all' ? shuffledSample(list, Math.min(6, list.length)) : [list[0]];
+
+  heroEl.innerHTML = `
+    <div class="hero-carousel">
+      ${slides.length > 1 ? `<button class="hero-arrow prev" aria-label="আগেরটা">‹</button>` : ''}
+      <div class="hero-track" id="heroTrack" tabindex="0">
+        ${slides.map(heroSlideHTML).join('')}
+      </div>
+      ${slides.length > 1 ? `<button class="hero-arrow next" aria-label="পরেরটা">›</button>` : ''}
+    </div>
+    ${slides.length > 1 ? `<div class="hero-dots" id="heroDots">${slides.map((_,i)=>`<button class="hero-dot ${i===0?'active':''}" data-i="${i}"></button>`).join('')}</div>` : ''}
+  `;
+
+  const track = document.getElementById('heroTrack');
+  const dotsEl = document.getElementById('heroDots');
+  let heroIdx = 0;
+
+  const goTo = (i)=>{
+    heroIdx = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: heroIdx * track.clientWidth, behavior: 'smooth' });
+    if(dotsEl) dotsEl.querySelectorAll('.hero-dot').forEach((d,idx)=> d.classList.toggle('active', idx===heroIdx));
+  };
+
+  heroEl.querySelectorAll('.hero-card').forEach(c=>{
+    c.addEventListener('click', ()=> openModal(Number(c.dataset.id)));
+  });
+
+  const prevBtn = heroEl.querySelector('.hero-arrow.prev');
+  const nextBtn = heroEl.querySelector('.hero-arrow.next');
+  if(prevBtn) prevBtn.addEventListener('click', ()=> goTo(heroIdx - 1));
+  if(nextBtn) nextBtn.addEventListener('click', ()=> goTo(heroIdx + 1));
+  if(dotsEl) dotsEl.querySelectorAll('.hero-dot').forEach(d=>{
+    d.addEventListener('click', ()=> goTo(Number(d.dataset.i)));
+  });
+
+  // রিমোট/কীবোর্ড দিয়ে সোয়াইপ (ট্র্যাকে ফোকাস থাকলে)
+  track.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowRight'){ e.preventDefault(); goTo(heroIdx + 1); }
+    else if(e.key === 'ArrowLeft'){ e.preventDefault(); goTo(heroIdx - 1); }
+  });
+
+  // টাচ সোয়াইপ নেটিভ স্ক্রলেই কাজ করে, স্ক্রল থামলে কোন স্লাইডে আছি সেটা ধরে ডট আপডেট করা
+  let scrollTimeout;
+  track.addEventListener('scroll', ()=>{
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(()=>{
+      heroIdx = Math.round(track.scrollLeft / track.clientWidth);
+      if(dotsEl) dotsEl.querySelectorAll('.hero-dot').forEach((d,idx)=> d.classList.toggle('active', idx===heroIdx));
+    }, 100);
+  });
+}
+
+const FALLBACK_MIN = 8;   // if fewer than this many items fall within 30 days, fall back
+const FALLBACK_COUNT = 15; // ...and show this many most-recent items instead
+
+function render(){
+  const rows = document.getElementById('rowsContainer');
+
+  let pool = DATA.filter(d=>{
+    if(activeFilter === "all") return true;
+    if(activeFilter === "intl") return PLATFORMS[d.p].group === "intl";
+    return d.p === activeFilter;
+  });
+  if(searchQuery) pool = pool.filter(d => d.t.toLowerCase().includes(searchQuery.toLowerCase()) || (d.cast||'').toLowerCase().includes(searchQuery.toLowerCase()) || (d.synopsis||'').toLowerCase().includes(searchQuery.toLowerCase()));
+  pool.sort((a,b)=> a.days - b.days);
+
+  renderHero(pool);
+
+  const within30 = pool.filter(d => d.days <= 30);
+  let html = '';
+
+  if(within30.length >= FALLBACK_MIN){
+    const last7 = within30.filter(d=>d.days<=7);
+    const rest30 = within30.filter(d=>d.days>7);
+    if(last7.length){
+      html += `<div class="row-section"><div class="row-head"><div class="row-title">গত ৭ দিনের নতুন রিলিজ</div><div class="row-sub">${last7.length}টি</div></div><div class="row-scroll">${last7.map(cardHTML).join('')}</div></div>`;
+    }
+    if(rest30.length){
+      html += `<div class="row-section"><div class="row-head"><div class="row-title">৮–৩০ দিনের মধ্যে</div><div class="row-sub">${rest30.length}টি</div></div><div class="row-scroll">${rest30.map(cardHTML).join('')}</div></div>`;
+    }
+  } else if(pool.length){
+    // not enough within 30 days -> fall back to most recent uploads regardless of date
+    const fallback = pool.slice(0, FALLBACK_COUNT);
+    html += `<div class="row-section"><div class="row-head"><div class="row-title">সাম্প্রতিক আপলোড</div><div class="row-sub">গত ৩০ দিনে যথেষ্ট কনটেন্ট নেই — সবচেয়ে নতুন ${fallback.length}টি দেখানো হচ্ছে</div></div><div class="row-scroll">${fallback.map(cardHTML).join('')}</div></div>`;
+  } else {
+    html = `<div class="empty-state">কোনো ফলাফল পাওয়া যায়নি।</div>`;
+  }
+  rows.innerHTML = html;
+
+  rows.querySelectorAll('.card').forEach(c=>{
+    c.addEventListener('click', ()=> openModal(Number(c.dataset.id)));
+    c.addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ c.click(); } });
+  });
+}
+
+document.getElementById('searchInput').addEventListener('input', (e)=>{ searchQuery = e.target.value; render(); });
+
+document.addEventListener('keydown', (e)=>{
+  const focused = document.activeElement;
+  if(!focused || !focused.classList.contains('card')) return;
+  const allRows = Array.from(document.querySelectorAll('.row-scroll'));
+  const currentRow = focused.closest('.row-scroll');
+  if(!currentRow) return;
+  const cardsInRow = Array.from(currentRow.querySelectorAll('.card'));
+  const idx = cardsInRow.indexOf(focused);
+  const rowIdx = allRows.indexOf(currentRow);
+  if(e.key === 'ArrowRight' && idx < cardsInRow.length-1){ e.preventDefault(); cardsInRow[idx+1].focus(); cardsInRow[idx+1].scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'}); }
+  else if(e.key === 'ArrowLeft' && idx > 0){ e.preventDefault(); cardsInRow[idx-1].focus(); cardsInRow[idx-1].scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'}); }
+  else if(e.key === 'ArrowDown' && rowIdx < allRows.length-1){ e.preventDefault(); const nextRowCards = Array.from(allRows[rowIdx+1].querySelectorAll('.card')); (nextRowCards[Math.min(idx, nextRowCards.length-1)] || nextRowCards[0]).focus(); }
+  else if(e.key === 'ArrowUp' && rowIdx > 0){ e.preventDefault(); const prevRowCards = Array.from(allRows[rowIdx-1].querySelectorAll('.card')); (prevRowCards[Math.min(idx, prevRowCards.length-1)] || prevRowCards[0]).focus(); }
+});
+
+// ---------- Detail modal ----------
+function openModal(id){
+  const item = DATA.find(d => d.id === id);
+  if(!item) return;
+  const plat = PLATFORMS[item.p];
+
+  const backdrop = document.getElementById('modalBackdrop');
+  backdrop.style.backgroundImage = item.img ? `url('${item.img}')` : `${item.grad}`;
+
+  const card = document.getElementById('modalCard');
+  const btn = plat.manual
+    ? `<button class="modal-cta manual" onclick="window.open('${plat.base !== '#' ? plat.base : item.url}','_blank')">নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজুন</button>`
+    : `<button class="modal-cta" onclick="window.open('${item.url}','_blank')">${plat.name}-এ দেখো ↗</button>`;
+
+  card.innerHTML = `
+    <button class="modal-close" id="modalClose" aria-label="বন্ধ করো">✕</button>
+    <div class="modal-image" style="background-image:${item.img ? `url('${item.img}')` : item.grad};"></div>
+    <div class="modal-details">
+      <span class="modal-platform-badge" style="background:${plat.color}">${plat.name}</span>
+      <div class="modal-title">${item.t}</div>
+      <div class="modal-meta-grid">
+        <div><div class="label">আপলোডের তারিখ</div><div class="value">${fmtDate(item.date)}</div></div>
+        <div><div class="label">রানটাইম</div><div class="value">${item.dur || 'N/A'}</div></div>
+        <div><div class="label">প্ল্যাটফর্ম</div><div class="value">${plat.name}</div></div>
+        <div><div class="label">রেটিং</div><div class="value">${item.rating || '—'}</div></div>
+        ${item.cast ? `<div style="grid-column:1/-1;"><div class="label">আর্টিস্ট</div><div class="value">${item.cast}</div></div>` : ''}
+      </div>
+      ${item.synopsis ? `<div class="modal-synopsis-label">ব্রিফিং</div><div class="modal-synopsis">${item.synopsis}</div>` : ''}
+      ${btn}
+    </div>`;
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalOverlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'modalOverlay') closeModal();
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') closeModal();
+});
+
+renderFilters();
+render();
+</script>
+</body>
+</html>
