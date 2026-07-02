@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STREAMguide BD — নতুন রিলিজ, সব প্ল্যাটফর্মে</title>
+<title>STREAMguide BD — দেশি বিদেশি কন্টেন্ট স্ট্রিমিং গাইড</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Anton&family=Inter:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0b0c0f; --surface:#15171c; --surface-2:#1d2027;
@@ -23,10 +23,10 @@
 
   header{ position:sticky; top:0; z-index:50; background:rgba(11,12,15,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
   .header-inner{ max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 20px; gap:16px; }
-  .logo{ font-family:'Anton', sans-serif; font-size:26px; letter-spacing:-0.015em; display:flex; align-items:baseline; gap:2px; }
-  .logo span.stream{color:var(--text); font-weight:900; -webkit-text-stroke:0.4px var(--text);}
-  .logo span.guide-thin{color:var(--text); font-family:'Inter',sans-serif; font-weight:300; letter-spacing:0; margin-left:1px;}
-  .logo span.bd{color:var(--marquee); font-weight:900; margin-left:6px; -webkit-text-stroke:0.6px var(--marquee);}
+  .logo{ font-family:'Anton', sans-serif; font-size:26px; letter-spacing:-0.015em; display:flex; align-items:baseline; gap:0px; }
+  .logo span.stream{color:var(--text); font-weight:900;}
+  .logo span.guide-thin{color:var(--text); font-family:'Sacramento',cursive; font-weight:400; font-size:34px; letter-spacing:0; margin-left:-6px; margin-bottom:-2px;}
+  .logo span.bd{color:var(--marquee); font-weight:900; margin-left:8px; -webkit-text-stroke:0.6px var(--marquee);}
   .tagline{font-size:14px; color:var(--text-dim); margin-top:2px; letter-spacing:0.03em;}
   .search-box{ flex:1; max-width:360px; display:flex; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:8px 14px; }
   .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-family:inherit; font-size:14px; width:100%; }
@@ -179,7 +179,7 @@
     <div class="header-inner">
       <div>
         <div class="logo"><span class="stream">STREAM</span><span class="guide-thin">guide</span><span class="bd">BD</span></div>
-        <div class="tagline">সব OTT-র নতুন রিলিজ, একসাথে</div>
+        <div class="tagline">কন্টেন্ট স্ট্রিমিং গাইড, সেরা প্ল্যাটফর্ম - প্রিয় রিলিজ</div>
       </div>
       <div class="search-box">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
@@ -189,7 +189,7 @@
     <div class="filters" id="filters"></div>
   </header>
 
-  <div class="notice">এখানে দেখানো ডেটা <b>ডেমো/স্যাম্পল</b> — লাইভ অটো-পুল স্ক্র্যাপার পরের ধাপে যুক্ত হবে। <b>আন্তর্জাতিক</b> ট্যাবের কনটেন্টে ক্লিক করলে সরাসরি অ্যাপ নাও খুলতে পারে — সেক্ষেত্রে নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজে নিতে হবে।</div>
+  <div class="notice">চরকি, উৎসব, দীপ্তলাইভ, বায়স্কোপ, হইচই, আইস্ক্রিন — এসবে <b>লাইভ ডেটা</b>। বঙ্গ, বিঞ্জ, ও বেশিরভাগ আন্তর্জাতিক প্ল্যাটফর্ম এখনো <b>ডেমো ডেটা</b> — শীঘ্রই যুক্ত হবে। <b>আন্তর্জাতিক</b> ট্যাবের কনটেন্টে ক্লিক করলে সরাসরি অ্যাপ নাও খুলতে পারে — সেক্ষেত্রে নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজে নিতে হবে।</div>
 
   <section class="hero" id="heroSection"></section>
   <main id="rowsContainer"></main>
