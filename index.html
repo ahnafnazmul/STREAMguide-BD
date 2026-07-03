@@ -18,19 +18,31 @@
   a{color:inherit; text-decoration:none;}
 
   .ticker{ background:linear-gradient(90deg, var(--marquee), #b8341f); color:#fff; font-family:'Anton', sans-serif; letter-spacing:0.04em; font-size:13px; padding:6px 0; overflow:hidden; white-space:nowrap; }
-  .ticker-track{ display:inline-block; padding-left:100%; animation: scroll-left 34s linear infinite; }
+  .ticker-track{ display:inline-block; padding-left:100%; animation: scroll-left 95s linear infinite; }
+  .ticker-icon{ width:15px; height:15px; border-radius:4px; margin:0 5px 0 0; vertical-align:-2px; object-fit:contain; background:#fff; padding:1px; }
+  .ticker-dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:#22c55e; margin-left:5px; vertical-align:middle; box-shadow:0 0 5px 1px rgba(34,197,94,0.85); }
+  .ticker-sep{ display:inline-block; margin:0 18px; color:rgba(255,255,255,0.55); font-weight:400; }
   @keyframes scroll-left{ 0%{transform:translateX(0);} 100%{transform:translateX(-100%);} }
 
   header{ position:sticky; top:0; z-index:50; background:rgba(11,12,15,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
-  .header-inner{ max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 20px; gap:16px; }
+  .header-inner{ max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 20px; gap:12px; }
+  .brand{ min-width:0; flex:1 1 auto; }
+  .tagline{font-size:14px; color:var(--text-dim); margin-top:2px; letter-spacing:0.03em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .logo{ font-family:'Anton', sans-serif; font-size:26px; letter-spacing:-0.015em; display:flex; align-items:baseline; gap:0px; }
   .logo span.stream{color:var(--text); font-weight:900;}
-  .logo span.guide-thin{color:var(--text); font-family:'Sacramento',cursive; font-weight:400; font-size:34px; letter-spacing:0; margin-left:-6px; margin-bottom:-2px;}
-  .logo span.bd{color:var(--marquee); font-weight:900; margin-left:8px; -webkit-text-stroke:0.6px var(--marquee);}
-  .tagline{font-size:14px; color:var(--text-dim); margin-top:2px; letter-spacing:0.03em;}
-  .search-box{ flex:1; max-width:360px; display:flex; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:8px 14px; }
-  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-family:inherit; font-size:14px; width:100%; }
-  .search-box svg{flex-shrink:0; opacity:0.5;}
+  .logo span.guide-thin{color:var(--marquee); font-family:'Sacramento',cursive; font-weight:400; font-size:34px; letter-spacing:0; margin-left:-6px; margin-bottom:-2px;}
+  .logo span.bd{color:var(--marquee); font-weight:900; margin-left:8px; -webkit-text-stroke:1.1px #fff; paint-order:stroke fill;}
+  .search-box{ flex:1; display:flex; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:7px; padding:5px 9px; min-width:0; }
+  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-family:inherit; font-size:12px; width:100%; min-width:0; text-overflow:ellipsis; }
+  .search-box svg{flex-shrink:0; opacity:0.5; width:13px; height:13px;}
+  .header-right{ flex:0 0 auto; width:135px; display:flex; flex-direction:column; gap:5px; }
+  .age-toggle{ width:100%; display:flex; align-items:center; justify-content:space-between; background:var(--surface); border:1px solid var(--line); border-radius:7px; padding:5px 9px; cursor:pointer; color:var(--text-dim); font-family:inherit; font-size:11px; font-weight:600; transition:all .18s ease; white-space:nowrap; }
+  .age-toggle:hover{ color:var(--text); border-color:#3a3d45; }
+  .age-toggle.on{ color:var(--text); }
+  .age-toggle-track{ flex-shrink:0; width:24px; height:14px; border-radius:999px; background:#3a3d45; position:relative; transition:background .2s ease; margin-left:6px; }
+  .age-toggle-thumb{ position:absolute; top:2px; left:2px; width:10px; height:10px; border-radius:50%; background:#fff; transition:left .2s ease; }
+  .age-toggle.on .age-toggle-track{ background:var(--marquee); }
+  .age-toggle.on .age-toggle-thumb{ left:12px; }
 
   .filters{ max-width:1400px; margin:0 auto; display:flex; gap:8px; padding:14px 20px; overflow-x:auto; scrollbar-width:none; }
   .filters::-webkit-scrollbar{display:none;}
@@ -38,6 +50,7 @@
   .chip:hover{color:var(--text); border-color:#3a3d45;}
   .chip:focus-visible, .chip.active{ outline:none; border-color: var(--dot, var(--marquee)); color:var(--text); background:#22252c; box-shadow:0 0 0 2px color-mix(in srgb, var(--dot, var(--marquee)) 35%, transparent); }
   .chip .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; background:var(--dot, var(--marquee)); vertical-align:middle; }
+  .chip-icon{ width:16px; height:16px; border-radius:4px; margin-right:7px; vertical-align:middle; object-fit:contain; background:#fff; padding:1px; }
 
   .hero{ max-width:1400px; margin:20px auto 8px; padding:0 20px; }
   .hero-carousel{ position:relative; }
@@ -80,6 +93,12 @@
   .card{ scroll-snap-align:start; flex:0 0 180px; cursor:pointer; outline:none; position:relative; border-radius:10px; overflow:hidden; transition:transform .16s ease, box-shadow .16s ease; background:var(--surface); border:1px solid var(--line); }
   .card .poster{ height:250px; width:100%; background:var(--grad); display:flex; align-items:flex-end; padding:12px; position:relative; }
   .card .poster-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  .card .poster-img.adult-blur{ filter:blur(24px) saturate(1.15); transform:scale(1.15); }
+  .adult-shield{ position:absolute; inset:0; z-index:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:rgba(11,12,15,0.45); color:#fff; text-align:center; padding:12px; }
+  .adult-shield svg{ width:22px; height:22px; opacity:0.9; }
+  .adult-shield span{ font-size:11px; font-weight:700; letter-spacing:0.02em; line-height:1.4; }
+  .modal-image.adult-blur{ filter:blur(30px) saturate(1.15); }
+  .modal-image .adult-shield{ background:rgba(11,12,15,0.55); }
   .card .poster::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.75) 100%); }
   .card .poster-title{ position:relative; z-index:1; font-family:'Anton', sans-serif; font-size:16px; line-height:1.15; color:#fff; }
   .card .platform-tag{ position:absolute; top:8px; left:8px; z-index:2; font-size:10px; font-weight:700; letter-spacing:0.03em; padding:3px 8px; border-radius:4px; background:var(--dot); color:#0b0c0f; }
@@ -159,6 +178,12 @@
 
   footer{ max-width:1400px; margin:40px auto 0; padding:24px 20px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:12px; color:var(--text-dim); }
   footer .dev-credit{color:var(--gold); font-weight:600;}
+  .disclaimer{
+    max-width:1400px; margin:36px auto 0; padding:16px 20px;
+    font-size:12.5px; line-height:1.25; color:var(--text); font-weight:600;
+    border-top:1px solid var(--line); text-align:center;
+  }
+  .disclaimer-label{ color:var(--marquee); font-weight:900; font-size:16px; }
   .notice{ max-width:1400px; margin:0 auto; padding:10px 20px 0; font-size:12px; color:var(--text-dim); }
   .notice b{color:var(--gold);}
 
@@ -167,29 +192,63 @@
     .hero-card{min-height:260px; padding:22px;}
     .card{flex:0 0 130px;}
     .card .poster{height:185px;}
-    .search-box{display:none;}
+    .header-inner{ padding:10px 14px; gap:8px; }
+    .logo{font-size:20px;}
+    .logo span.guide-thin{font-size:26px;}
+    .tagline{font-size:11px;}
+    .header-right{ width:108px; gap:4px; }
+    .search-box{ padding:4px 7px; border-radius:6px; }
+    .search-box input{ font-size:11px; }
+    .search-box svg{ width:12px; height:12px; }
+    .age-toggle{ padding:4px 7px; font-size:9.5px; border-radius:6px; }
+    .age-toggle-track{ width:20px; height:12px; margin-left:4px; }
+    .age-toggle-thumb{ width:8px; height:8px; }
+    .age-toggle.on .age-toggle-thumb{ left:10px; }
+  }
+
+  @media (max-width:380px){
+    .tagline{ display:none; }
   }
 </style>
 </head>
+<script type="module">
+  // Client-side NSFW image detection (runs entirely in the browser — no image ever leaves the device).
+  // Loaded as an ES module bundle via jsDelivr's +esm endpoint so it works from a plain <script> tag.
+  try {
+    const tf = await import("https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/+esm");
+    const nsfwjs = await import("https://cdn.jsdelivr.net/npm/nsfwjs@4.2.1/+esm");
+    window.__tf = tf;
+    window.__nsfwjs = nsfwjs;
+  } catch (err) {
+    console.warn("NSFW detection library failed to load — automatic blur will be skipped, manual adult flags still work.", err);
+    window.__nsfwjs = null;
+  }
+</script>
 <body>
 
-  <div class="ticker"><div class="ticker-track">🎬 নতুন রিলিজ ট্র্যাক করছে — চরকি • বঙ্গ • দীপ্তলাইভ • আইস্ক্রিন • হইচই • বায়স্কোপ • উৎসব • বিঞ্জ • Netflix • Prime • Zee5 • SonyLIV — সব একজায়গায় —</div></div>
+  <div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
 
   <header>
     <div class="header-inner">
-      <div>
+      <div class="brand">
         <div class="logo"><span class="stream">STREAM</span><span class="guide-thin">guide</span><span class="bd">BD</span></div>
         <div class="tagline">কন্টেন্ট স্ট্রিমিং গাইড, সেরা প্ল্যাটফর্ম - প্রিয় রিলিজ</div>
       </div>
-      <div class="search-box">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="searchInput" placeholder="টাইটেল খুঁজুন...">
+      <div class="header-right">
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="টাইটেল খুঁজুন...">
+        </div>
+        <button class="age-toggle" id="ageToggle" type="button" aria-pressed="false">
+          <span class="age-toggle-label">Enable 18+</span>
+          <span class="age-toggle-track"><span class="age-toggle-thumb"></span></span>
+        </button>
       </div>
     </div>
     <div class="filters" id="filters"></div>
   </header>
 
-  <div class="notice">চরকি, উৎসব, দীপ্তলাইভ, বায়স্কোপ, হইচই, আইস্ক্রিন — এসবে <b>লাইভ ডেটা</b>। বঙ্গ, বিঞ্জ, ও বেশিরভাগ আন্তর্জাতিক প্ল্যাটফর্ম এখনো <b>ডেমো ডেটা</b> — শীঘ্রই যুক্ত হবে। <b>আন্তর্জাতিক</b> ট্যাবের কনটেন্টে ক্লিক করলে সরাসরি অ্যাপ নাও খুলতে পারে — সেক্ষেত্রে নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজে নিতে হবে।</div>
+
 
   <section class="hero" id="heroSection"></section>
   <main id="rowsContainer"></main>
@@ -201,6 +260,8 @@
     </div>
   </div>
 
+  <div class="disclaimer"><span class="disclaimer-label">ডিসক্লেইমার:</span> STREAMguide BD-তে আমরা কোনো কনটেন্ট<br>আপলোড করি না, পাবলিকলি উপলভ্য ডেটা থেকে হোস্ট করি।</div>
+
   <footer>
     <div>© 2026 STREAMguide BD</div>
     <div class="dev-credit">Developed by @nazmulsblog</div>
@@ -209,22 +270,22 @@
 <script>
 // ---------- Platforms (single flat list, in requested order) ----------
 const PLATFORMS = {
-  chorki:   { name:"চরকি",      color:"#e8482c", base:"https://www.chorki.com/en/movie/", manual:false },
-  bongo:    { name:"বঙ্গ",       color:"#f2c14e", base:"#", manual:false },
-  deepto:   { name:"দীপ্তলাইভ",  color:"#2ecc71", base:"#", manual:false },
-  iscreen:  { name:"আইস্ক্রিন",  color:"#9b59d6", base:"#", manual:false },
-  hoichoi:  { name:"হইচই",      color:"#f23557", base:"#", manual:false },
-  bioscope: { name:"বায়স্কোপ",   color:"#2ea3f2", base:"#", manual:false },
-  utsob:    { name:"উৎসব",      color:"#ff6f91", base:"#", manual:false },
-  binge:    { name:"বিঞ্জ",      color:"#00c2a8", base:"#", manual:false },
+  chorki:   { name:"চরকি",      color:"#e8482c", base:"https://www.chorki.com/en/movie/", manual:false, domain:"chorki.com" },
+  bongo:    { name:"বঙ্গ",       color:"#f2c14e", base:"#", manual:false, domain:"bongobd.com" },
+  deepto:   { name:"দীপ্তলাইভ",  color:"#2ecc71", base:"#", manual:false, domain:"deeptoplay.com" },
+  iscreen:  { name:"আইস্ক্রিন",  color:"#9b59d6", base:"#", manual:false, domain:"iscreen.com.bd" },
+  hoichoi:  { name:"হইচই",      color:"#f23557", base:"#", manual:false, domain:"hoichoi.tv" },
+  bioscope: { name:"বায়স্কোপ",   color:"#2ea3f2", base:"#", manual:false, domain:"bioscopeplus.com" },
+  utsob:    { name:"উৎসব",      color:"#ff6f91", base:"#", manual:false, domain:"utshob.live" },
+  binge:    { name:"বিঞ্জ",      color:"#00c2a8", base:"#", manual:false, domain:"binge.buzz" },
   // international / indian — grouped under one filter chip, deep-link not reliable -> manual open
-  netflix:  { name:"Netflix",     color:"#e50914", base:"#", manual:true, group:"intl" },
-  prime:    { name:"Prime Video", color:"#00a8e1", base:"#", manual:true, group:"intl" },
-  disney:   { name:"Disney+",     color:"#113ccf", base:"#", manual:true, group:"intl" },
-  max:      { name:"Max (HBO)",   color:"#9013fe", base:"#", manual:true, group:"intl" },
-  hulu:     { name:"Hulu",        color:"#1ce783", base:"#", manual:true, group:"intl" },
-  zee5:     { name:"Zee5",        color:"#7b2ff7", base:"#", manual:true, group:"intl" },
-  sonyliv:  { name:"SonyLIV",     color:"#1ba1e2", base:"#", manual:true, group:"intl" },
+  netflix:  { name:"Netflix",     color:"#e50914", base:"#", manual:true, group:"intl", domain:"netflix.com" },
+  prime:    { name:"Prime Video", color:"#00a8e1", base:"#", manual:true, group:"intl", domain:"primevideo.com" },
+  disney:   { name:"Disney+",     color:"#113ccf", base:"#", manual:true, group:"intl", domain:"disneyplus.com" },
+  max:      { name:"Max (HBO)",   color:"#9013fe", base:"#", manual:true, group:"intl", domain:"max.com" },
+  hulu:     { name:"Hulu",        color:"#1ce783", base:"#", manual:true, group:"intl", domain:"hulu.com" },
+  zee5:     { name:"Zee5",        color:"#7b2ff7", base:"#", manual:true, group:"intl", domain:"zee5.com" },
+  sonyliv:  { name:"SonyLIV",     color:"#1ba1e2", base:"#", manual:true, group:"intl", domain:"sonyliv.com" },
 };
 
 const CHIP_ORDER = ["all","chorki","bongo","deepto","iscreen","hoichoi","bioscope","utsob","binge","intl"];
@@ -325,21 +386,56 @@ const TITLES = [
   {p:"utsob", t:"Jao Pakhi Bolo Tare", dur:"2h 13m", days:1364, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/02/posters_856d1498951a108bd86c1bbc60e21513_goplay_jao_pakhi_bolo_tare_movie_poster.png", url:"https://www.utshob.live/movies/jao-pakhi-bolo-tare", synopsis:"When the daughter of a powerful landlord becomes the center of a complicated love triangle, Majnu's unrequited devotion faces a heartbreaking clash. The story follows their intertw"},
   {p:"binge", t:"Prohelika", dur:"৪০ মিনিট x ৬ পর্ব", cast:"ইরফান সাজ্জাদ", days:10},
   {p:"binge", t:"Shohor Bangla", dur:"৩৫ মিনিট x ৮ পর্ব", cast:"মনোজ প্রামাণিক", days:26},
-  {p:"netflix", t:"Wednesday S3", dur:"৪৫ মিনিট x ৮ পর্ব", cast:"Jenna Ortega", days:2},
-  {p:"netflix", t:"The Night Agent S3", dur:"৫০ মিনিট x ১০ পর্ব", cast:"Gabriel Basso", days:10},
-  {p:"prime", t:"Fallout S2", dur:"৫৫ মিনিট x ৮ পর্ব", cast:"Ella Purnell", days:4},
-  {p:"prime", t:"Reacher S4", dur:"৫০ মিনিট x ৮ পর্ব", cast:"Alan Ritchson", days:18},
-  {p:"disney", t:"Andor S2", dur:"৪৫ মিনিট x ১২ পর্ব", cast:"Diego Luna", days:6},
+  {p:"netflix", t:"Obsession", dur:"N/A", days:2, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"netflix", t:"Sapio", dur:"N/A", days:5, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"netflix", t:"Madrid, 1987", dur:"N/A", days:8, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987", synopsis:"Find out how and where to watch \"Madrid, 1987\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"netflix", t:"Now & Later", dur:"N/A", days:11, img:"https://images.justwatch.com/poster/332415494/s718/now-and-later.jpg", url:"https://www.justwatch.com/in/movie/now-and-later", synopsis:"Watch \"Now & Later\" · Full movie online for free · Check all streaming services such as Netflix, Prime Video & Disney+ – including 4K options!"},
+  {p:"netflix", t:"365 dni", dur:"N/A", days:14, img:"https://images.justwatch.com/poster/188677401/s718/365-days.jpg", url:"https://www.justwatch.com/in/movie/365-days", synopsis:"Find out how and where to watch \"365 Days\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"netflix", t:"Idhayam Murali", dur:"N/A", days:17, img:"https://images.justwatch.com/poster/341508329/s718/idhayam-murali.jpg", url:"https://www.justwatch.com/in/movie/idhayam-murali", synopsis:"Find out how and where to watch \"Idhayam Murali\" on Netflix and Prime Video today - including free options."},
+  {p:"netflix", t:"Jumanji 3", dur:"N/A", days:20, img:"https://images.justwatch.com/poster/340668970/s718/jumanji-3.jpg", url:"https://www.justwatch.com/in/movie/jumanji-3", synopsis:"Find out how and where to watch \"Jumanji 3\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"netflix", t:"I, Nobody", dur:"N/A", days:23, img:"https://images.justwatch.com/poster/342114962/s718/i-nobody.jpg", url:"https://www.justwatch.com/in/movie/i-nobody", synopsis:"Find out how and where to watch \"I, Nobody\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Sukran", dur:"N/A", days:2, img:"https://images.justwatch.comnull", url:"https://www.justwatch.com/in/movie/sukran", synopsis:"Find out how and where to watch \"Sukran\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Charukesi", dur:"N/A", days:5, img:"https://images.justwatch.comnull", url:"https://www.justwatch.com/in/movie/charukesi", synopsis:"Find out how and where to watch \"Charukesi\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Obsession", dur:"N/A", days:8, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Sapio", dur:"N/A", days:11, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Madrid, 1987", dur:"N/A", days:14, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987", synopsis:"Find out how and where to watch \"Madrid, 1987\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Now & Later", dur:"N/A", days:17, img:"https://images.justwatch.com/poster/332415494/s718/now-and-later.jpg", url:"https://www.justwatch.com/in/movie/now-and-later", synopsis:"Watch \"Now & Later\" · Full movie online for free · Check all streaming services such as Netflix, Prime Video & Disney+ – including 4K options!"},
+  {p:"prime", t:"365 dni", dur:"N/A", days:20, img:"https://images.justwatch.com/poster/188677401/s718/365-days.jpg", url:"https://www.justwatch.com/in/movie/365-days", synopsis:"Find out how and where to watch \"365 Days\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Idhayam Murali", dur:"N/A", days:23, img:"https://images.justwatch.com/poster/341508329/s718/idhayam-murali.jpg", url:"https://www.justwatch.com/in/movie/idhayam-murali", synopsis:"Find out how and where to watch \"Idhayam Murali\" on Netflix and Prime Video today - including free options."},
+  {p:"disney", t:"Obsession", dur:"N/A", days:2, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"disney", t:"Sapio", dur:"N/A", days:5, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"disney", t:"Madrid, 1987", dur:"N/A", days:8, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987", synopsis:"Find out how and where to watch \"Madrid, 1987\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"disney", t:"Now & Later", dur:"N/A", days:11, img:"https://images.justwatch.com/poster/332415494/s718/now-and-later.jpg", url:"https://www.justwatch.com/in/movie/now-and-later", synopsis:"Watch \"Now & Later\" · Full movie online for free · Check all streaming services such as Netflix, Prime Video & Disney+ – including 4K options!"},
+  {p:"disney", t:"365 dni", dur:"N/A", days:14, img:"https://images.justwatch.com/poster/188677401/s718/365-days.jpg", url:"https://www.justwatch.com/in/movie/365-days", synopsis:"Find out how and where to watch \"365 Days\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"disney", t:"Idhayam Murali", dur:"N/A", days:17, img:"https://images.justwatch.com/poster/341508329/s718/idhayam-murali.jpg", url:"https://www.justwatch.com/in/movie/idhayam-murali", synopsis:"Find out how and where to watch \"Idhayam Murali\" on Netflix and Prime Video today - including free options."},
+  {p:"disney", t:"Jumanji 3", dur:"N/A", days:20, img:"https://images.justwatch.com/poster/340668970/s718/jumanji-3.jpg", url:"https://www.justwatch.com/in/movie/jumanji-3", synopsis:"Find out how and where to watch \"Jumanji 3\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"disney", t:"I, Nobody", dur:"N/A", days:23, img:"https://images.justwatch.com/poster/342114962/s718/i-nobody.jpg", url:"https://www.justwatch.com/in/movie/i-nobody", synopsis:"Find out how and where to watch \"I, Nobody\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"max", t:"House of the Dragon S3", dur:"৬০ মিনিট x ৮ পর্ব", cast:"Emma D'Arcy", days:5},
   {p:"max", t:"The Last of Us S3", dur:"৫৫ মিনিট x ৭ পর্ব", cast:"Pedro Pascal", days:21},
   {p:"hulu", t:"The Bear S4", dur:"৩০ মিনিট x ১০ পর্ব", cast:"Jeremy Allen White", days:14},
-  {p:"zee5", t:"Rana Naidu S2", dur:"৪৫ মিনিট x ৮ পর্ব", cast:"Venkatesh Daggubati", days:11},
+  {p:"zee5", t:"Wanted 2", dur:"N/A", days:2, img:"https://images.justwatch.comnull", url:"https://www.justwatch.com/in/movie/wanted-2", synopsis:"Find out how and where to watch \"Wanted 2\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"zee5", t:"Grandgear", dur:"N/A", days:5, img:"https://images.justwatch.comnull", url:"https://www.justwatch.com/in/movie/grandgear", synopsis:"Find out how and where to watch \"Grandgear\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"zee5", t:"Obsession", dur:"N/A", days:8, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"zee5", t:"Sapio", dur:"N/A", days:11, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"zee5", t:"Madrid, 1987", dur:"N/A", days:14, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987", synopsis:"Find out how and where to watch \"Madrid, 1987\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"zee5", t:"Now & Later", dur:"N/A", days:17, img:"https://images.justwatch.com/poster/332415494/s718/now-and-later.jpg", url:"https://www.justwatch.com/in/movie/now-and-later", synopsis:"Watch \"Now & Later\" · Full movie online for free · Check all streaming services such as Netflix, Prime Video & Disney+ – including 4K options!"},
+  {p:"zee5", t:"365 dni", dur:"N/A", days:20, img:"https://images.justwatch.com/poster/188677401/s718/365-days.jpg", url:"https://www.justwatch.com/in/movie/365-days", synopsis:"Find out how and where to watch \"365 Days\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"zee5", t:"Idhayam Murali", dur:"N/A", days:23, img:"https://images.justwatch.com/poster/341508329/s718/idhayam-murali.jpg", url:"https://www.justwatch.com/in/movie/idhayam-murali", synopsis:"Find out how and where to watch \"Idhayam Murali\" on Netflix and Prime Video today - including free options."},
   {p:"sonyliv", t:"Karakkam", dur:"N/A", days:30, img:"https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000020214/1782791820000909_karakkam_Portrait_Thumb_Dated.jpg", url:"https://www.bioscopeplus.com/movies/karakkam", synopsis:"A drunken New Year's prank goes horribly wrong when two young men remove sacred crosses from graves. Five restless ghosts emerge to haunt their every move, driving them to seek red"},
   {p:"sonyliv", t:"Kalamkaval", dur:"2h 17m", days:167, img:"https://origin-staticv2.sonyliv.com/videoasset_images/blitz_assets/1590014678/portraitThumb/1768408879587_./Kalamkaval_2_Portrait_Thumb_NewMovie.jpg", url:"https://www.bioscopeplus.com/movies/kalamkaval", synopsis:"A routine Kerala Police inquiry in the quiet village of Kottayikonam takes an unexpected turn when a trail of seemingly minor clues unravels into a string of disturbing cases. The "},
   {p:"sonyliv", t:"Marco", dur:"2h 21m", days:504, img:"https://origin-staticv2.sonyliv.com/videoasset_images/blitz_assets/1090468630/portraitThumb/1742383661968_marco_14mar_rev_hotpick_portrait_thumb.jpg", url:"https://www.bioscopeplus.com/movies/marco", synopsis:"A high-octane action thriller that delivers an unflinching look at the lengths one man will go to protect his family and honour, 'Marco' features Unni Mukundan in the titular role."},
   {p:"sonyliv", t:"Anthakshari (Hindi)", dur:"2h 1m", days:1360, img:"https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000001917/1745827543035450_Antakshari_hindi_28apr_portrait_thumb.jpg", url:"https://www.bioscopeplus.com/movies/anthakshari-hindi", synopsis:"Circle Inspector Das is so obsessed with music that he plays the game of Antakshari with anyone, anywhere; whether it be for fun with his wife or to punish the culprits he arrests."},
   {p:"sonyliv", t:"Maari", dur:"2h 5m", days:1067, img:"https://origin-staticv2.sonyliv.com/videoasset_images/maari_22july_portrait_thumb.jpg", url:"https://www.bioscopeplus.com/movies/maari-dub", synopsis:"A reformed ganster returns to reclaim his territory from a ruthless rival. Amidst action-packed clashes and unexpected alliances, he must protect his loved ones while facing his in"},
   {p:"sonyliv", t:"Bromance", dur:"2h 16m", days:428, img:"https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000001943/1745940689660351_Bromance_Portrait_Thumb.jpg", url:"https://www.bioscopeplus.com/movies/bromance", synopsis:"In this heartwarming tale of camaraderie and self-discovery, a laid-back social media enthusiast, joined by his brother's group of eclectic friends, embarks on a journey to find hi"},
+
+  {p:"sonyliv", t:"Obsession", dur:"N/A", days:2, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"sonyliv", t:"Sapio", dur:"N/A", days:5, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"sonyliv", t:"Madrid, 1987", dur:"N/A", days:8, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987", synopsis:"Find out how and where to watch \"Madrid, 1987\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"sonyliv", t:"Now & Later", dur:"N/A", days:11, img:"https://images.justwatch.com/poster/332415494/s718/now-and-later.jpg", url:"https://www.justwatch.com/in/movie/now-and-later", synopsis:"Watch \"Now & Later\" · Full movie online for free · Check all streaming services such as Netflix, Prime Video & Disney+ – including 4K options!"},
+  {p:"sonyliv", t:"365 dni", dur:"N/A", days:14, img:"https://images.justwatch.com/poster/188677401/s718/365-days.jpg", url:"https://www.justwatch.com/in/movie/365-days", synopsis:"Find out how and where to watch \"365 Days\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"sonyliv", t:"Kadaisi Thotta", dur:"N/A", days:17, img:"https://images.justwatch.com/poster/326375599/s718/kadaisi-thotta.jpg", url:"https://www.justwatch.com/in/movie/kadaisi-thotta", synopsis:"Find out how and where to watch \"Kadaisi Thotta\" on Netflix and Prime Video today - including free options."},
+  {p:"sonyliv", t:"Idhayam Murali", dur:"N/A", days:20, img:"https://images.justwatch.com/poster/341508329/s718/idhayam-murali.jpg", url:"https://www.justwatch.com/in/movie/idhayam-murali", synopsis:"Find out how and where to watch \"Idhayam Murali\" on Netflix and Prime Video today - including free options."},
+  {p:"sonyliv", t:"Jumanji 3", dur:"N/A", days:23, img:"https://images.justwatch.com/poster/340668970/s718/jumanji-3.jpg", url:"https://www.justwatch.com/in/movie/jumanji-3", synopsis:"Find out how and where to watch \"Jumanji 3\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
 ];
 
 const DATA = TITLES.map((x,i)=>({
@@ -349,16 +445,93 @@ const DATA = TITLES.map((x,i)=>({
 
 let activeFilter = "all";
 let searchQuery = "";
+let show18Plus = false;
+
+// ---------- Automatic nudity detection (NSFWJS, runs fully client-side) ----------
+const NSFW_THRESHOLD = 0.55; // combined Porn + Hentai + Sexy probability that triggers a blur
+const nsfwCache = new Map(); // image URL -> boolean (flagged or not)
+let nsfwModelPromise = null;
+
+function loadNSFWModel(){
+  if(!nsfwModelPromise){
+    nsfwModelPromise = (async () => {
+      if(!window.__nsfwjs) return null;
+      try { return await window.__nsfwjs.load(); }
+      catch(err){ console.warn('NSFW model failed to load:', err); return null; }
+    })();
+  }
+  return nsfwModelPromise;
+}
+
+async function checkImageNSFW(url){
+  if(!url) return false;
+  if(nsfwCache.has(url)) return nsfwCache.get(url);
+  try{
+    const model = await loadNSFWModel();
+    if(!model) return false;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = url;
+    });
+    const predictions = await model.classify(img);
+    const score = predictions
+      .filter(p => p.className === 'Porn' || p.className === 'Hentai' || p.className === 'Sexy')
+      .reduce((sum, p) => sum + p.probability, 0);
+    const flagged = score >= NSFW_THRESHOLD;
+    nsfwCache.set(url, flagged);
+    return flagged;
+  }catch(err){
+    // Most likely a CORS-blocked image host — silently skip, don't break the page.
+    nsfwCache.set(url, false);
+    return false;
+  }
+}
+
+function applyAdultBlurToCard(card){
+  const img = card.querySelector('.poster-img');
+  const poster = card.querySelector('.poster');
+  if(img) img.classList.add('adult-blur');
+  if(poster && !poster.querySelector('.adult-shield')){
+    poster.insertAdjacentHTML('beforeend', `<div class="adult-shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>18+ কনটেন্ট<br>সুইচ অন করে দেখো</span></div>`);
+  }
+}
+
+let cardObserver = null;
+function observeCardsForNSFW(){
+  if(!window.__nsfwjs) return; // library failed to load — skip auto-detection entirely
+  if(cardObserver) cardObserver.disconnect();
+  cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const card = entry.target;
+      cardObserver.unobserve(card);
+      const id = Number(card.dataset.id);
+      const item = DATA.find(d => d.id === id);
+      if(!item || !item.img || item.adult || item.autoAdult) return;
+      checkImageNSFW(item.img).then(flagged => {
+        if(flagged){
+          item.autoAdult = true;
+          if(!show18Plus) applyAdultBlurToCard(card);
+        }
+      });
+    });
+  }, { rootMargin: '250px' });
+  document.querySelectorAll('.card[data-id]').forEach(c => cardObserver.observe(c));
+}
 
 function renderFilters(){
   const filtersEl = document.getElementById('filters');
-  let html = `<button class="chip active" data-p="all" tabindex="0">সব</button>`;
+  let html = `<button class="chip active" data-p="all" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; padding:0;"><path d="M12 2l2.2 6.8H21l-5.6 4.1 2.1 6.9L12 15.8 6.5 19.8l2.1-6.9L3 8.8h6.8z" fill="${'#d9a441'}"/></svg>ফিচার</button>`;
   CHIP_ORDER.slice(1).forEach(key=>{
     if(key === "intl"){
-      html += `<button class="chip" data-p="intl" style="--dot:#7d5fff" tabindex="0"><span class="dot"></span>আন্তর্জাতিক</button>`;
+      html += `<button class="chip" data-p="intl" style="--dot:#7d5fff" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; padding:0;"><circle cx="12" cy="12" r="9" stroke="#7d5fff" stroke-width="1.8"/><ellipse cx="12" cy="12" rx="4" ry="9" stroke="#7d5fff" stroke-width="1.8"/><path d="M3 12h18M4.5 7.5h15M4.5 16.5h15" stroke="#7d5fff" stroke-width="1.8"/></svg>আন্তর্জাতিক</button>`;
     } else {
       const plat = PLATFORMS[key];
-      html += `<button class="chip" data-p="${key}" style="--dot:${plat.color}" tabindex="0"><span class="dot"></span>${plat.name}</button>`;
+      const icon = plat.domain ? `<img class="chip-icon" src="https://www.google.com/s2/favicons?domain=${plat.domain}&sz=64" alt="" loading="lazy">` : '';
+      html += `<button class="chip" data-p="${key}" style="--dot:${plat.color}" tabindex="0">${icon}${plat.name}</button>`;
     }
   });
   filtersEl.innerHTML = html;
@@ -377,7 +550,9 @@ function cardHTML(item){
   const btn = plat.manual
     ? `<div class="overlay-btn manual">নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজুন</div>`
     : `<div class="overlay-btn">${plat.name}-এ দেখুন ↗</div>`;
-  const posterImg = item.img ? `<img class="poster-img" src="${item.img}" loading="lazy" alt="${item.t}">` : '';
+  const blurred = (item.adult || item.autoAdult) && !show18Plus;
+  const posterImg = item.img ? `<img class="poster-img${blurred ? ' adult-blur' : ''}" src="${item.img}" loading="lazy" alt="${item.t}">` : '';
+  const shield = blurred ? `<div class="adult-shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>18+ কনটেন্ট<br>সুইচ অন করে দেখো</span></div>` : '';
   const castLine = item.cast
     ? `অভিনয়ে: ${item.cast}`
     : (item.synopsis ? `গল্প: ${item.synopsis}` : '');
@@ -385,6 +560,7 @@ function cardHTML(item){
   <div class="card" tabindex="0" data-id="${item.id}" style="--grad:${item.grad}; --dot:${plat.color}" data-url="${item.url}" data-manual="${plat.manual}">
     <div class="poster">
       ${posterImg}
+      ${shield}
       <span class="platform-tag">${plat.name}</span>
       ${item.days <= 7 ? '<span class="new-tag">NEW</span>' : ''}
       <div class="poster-title">${item.t}</div>
@@ -431,7 +607,10 @@ function renderHero(list){
   if(!list.length){ heroEl.innerHTML = ''; return; }
 
   // হোম/সব ট্যাবে র‍্যান্ডম কয়েকটা কন্টেন্ট দিয়ে সোয়াইপযোগ্য ক্যারোসেল, নাহলে শুধু সবচেয়ে সাম্প্রতিকটা
-  const slides = activeFilter === 'all' ? shuffledSample(list, Math.min(6, list.length)) : [list[0]];
+  // ডিফল্ট "সব" ট্যাবে শুধু দেশি প্ল্যাটফর্মের কন্টেন্ট দেখানো হবে, আন্তর্জাতিক বাদ
+  const heroPool = activeFilter === 'all' ? list.filter(d => PLATFORMS[d.p].group !== 'intl') : list;
+  if(!heroPool.length){ heroEl.innerHTML = ''; return; }
+  const slides = activeFilter === 'all' ? shuffledSample(heroPool, Math.min(6, heroPool.length)) : [heroPool[0]];
 
   heroEl.innerHTML = `
     <div class="hero-carousel">
@@ -497,7 +676,7 @@ function render(){
   if(searchQuery) pool = pool.filter(d => d.t.toLowerCase().includes(searchQuery.toLowerCase()) || (d.cast||'').toLowerCase().includes(searchQuery.toLowerCase()) || (d.synopsis||'').toLowerCase().includes(searchQuery.toLowerCase()));
   pool.sort((a,b)=> a.days - b.days);
 
-  renderHero(pool);
+  renderHero(show18Plus ? pool : pool.filter(d => !d.adult && !d.autoAdult));
 
   const within30 = pool.filter(d => d.days <= 30);
   let html = '';
@@ -524,9 +703,19 @@ function render(){
     c.addEventListener('click', ()=> openModal(Number(c.dataset.id)));
     c.addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ c.click(); } });
   });
+
+  observeCardsForNSFW();
 }
 
 document.getElementById('searchInput').addEventListener('input', (e)=>{ searchQuery = e.target.value; render(); });
+
+const ageToggle = document.getElementById('ageToggle');
+ageToggle.addEventListener('click', ()=>{
+  show18Plus = !show18Plus;
+  ageToggle.classList.toggle('on', show18Plus);
+  ageToggle.setAttribute('aria-pressed', String(show18Plus));
+  render();
+});
 
 document.addEventListener('keydown', (e)=>{
   const focused = document.activeElement;
@@ -557,9 +746,11 @@ function openModal(id){
     ? `<button class="modal-cta manual" onclick="window.open('${plat.base !== '#' ? plat.base : item.url}','_blank')">নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজুন</button>`
     : `<button class="modal-cta" onclick="window.open('${item.url}','_blank')">${plat.name}-এ দেখো ↗</button>`;
 
+  const modalBlurred = (item.adult || item.autoAdult) && !show18Plus;
+  const modalShield = modalBlurred ? `<div class="adult-shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>18+ কনটেন্ট<br>দেখতে হেডারের সুইচ অন করো</span></div>` : '';
   card.innerHTML = `
     <button class="modal-close" id="modalClose" aria-label="বন্ধ করো">✕</button>
-    <div class="modal-image" style="background-image:${item.img ? `url('${item.img}')` : item.grad};"></div>
+    <div class="modal-image${modalBlurred ? ' adult-blur' : ''}" style="background-image:${item.img ? `url('${item.img}')` : item.grad};">${modalShield}</div>
     <div class="modal-details">
       <span class="modal-platform-badge" style="background:${plat.color}">${plat.name}</span>
       <div class="modal-title">${item.t}</div>
@@ -577,6 +768,20 @@ function openModal(id){
   document.getElementById('modalClose').addEventListener('click', closeModal);
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // Kick off (or reuse cached) nudity check; if it comes back positive and the modal is still
+  // open for this same item, blur the image in place.
+  if(item.img && !item.adult && !item.autoAdult){
+    checkImageNSFW(item.img).then(flagged=>{
+      if(flagged){
+        item.autoAdult = true;
+        if(!show18Plus && document.getElementById('modalOverlay').classList.contains('open')){
+          const stillSameItem = document.getElementById('modalCard').querySelector('.modal-title')?.textContent === item.t;
+          if(stillSameItem) openModal(id);
+        }
+      }
+    });
+  }
 }
 
 function closeModal(){
@@ -591,7 +796,18 @@ document.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape') closeModal();
 });
 
+function renderTicker(){
+  const track = document.getElementById('tickerTrack');
+  const sep = `<span class="ticker-sep">/</span>`;
+  const names = Object.values(PLATFORMS).map(p=>{
+    const icon = p.domain ? `<img class="ticker-icon" src="https://www.google.com/s2/favicons?domain=${p.domain}&sz=64" alt="">` : '';
+    return `${icon}${p.name}<span class="ticker-dot"></span>`;
+  }).join(sep);
+  track.innerHTML = `${names}${sep}সকল প্লাটফর্ম থেকে নতুন রিলিজ ট্রাক করা হচ্ছে`;
+}
+
 renderFilters();
+renderTicker();
 render();
 </script>
 </body>
