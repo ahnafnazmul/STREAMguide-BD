@@ -184,6 +184,7 @@
     border-top:1px solid var(--line); text-align:center;
   }
   .disclaimer-label{ color:var(--marquee); font-weight:900; font-size:16px; }
+  .visitor-stats{ margin-top:18px; font-size:10.5px; font-weight:300; color:#ffffff; letter-spacing:0.02em; opacity:0.8; }
   .notice{ max-width:1400px; margin:0 auto; padding:10px 20px 0; font-size:12px; color:var(--text-dim); }
   .notice b{color:var(--gold);}
 
@@ -208,6 +209,38 @@
 
   @media (max-width:380px){
     .tagline{ display:none; }
+  }
+
+  /* ---------- বড় স্ক্রিন / টিভি (স্মার্ট টিভি, বড় মনিটর) এর জন্য স্কেল-আপ ---------- */
+  @media (min-width:1600px){
+    .header-inner, .filters, .hero, .row-section, footer, .disclaimer{ max-width:1800px; }
+    .logo{ font-size:32px; }
+    .logo span.guide-thin{ font-size:42px; }
+    .tagline{ font-size:16px; }
+    .search-box input{ font-size:14px; }
+    .chip{ font-size:15px; padding:10px 20px; }
+    .hero-card{ min-height:460px; padding:52px; }
+    .hero-title{ font-size:60px; max-width:820px; }
+    .hero-eyebrow{ font-size:14px; }
+    .hero-meta{ font-size:16px; }
+    .hero-cta{ font-size:16px; padding:14px 28px; }
+    .row-title{ font-size:23px; }
+    .row-sub{ font-size:14px; }
+    .card{ flex:0 0 220px; }
+    .card .poster{ height:305px; }
+    .card .poster-title{ font-size:19px; }
+    .card-info .cname{ font-size:15.5px; }
+    .card-info .meta-line{ font-size:13px; }
+    .visitor-stats{ font-size:12px; }
+    .ticker{ font-size:15px; padding:8px 0; }
+  }
+
+  @media (min-width:2200px){
+    .header-inner, .filters, .hero, .row-section, footer, .disclaimer{ max-width:2200px; }
+    .hero-card{ min-height:560px; }
+    .hero-title{ font-size:72px; max-width:960px; }
+    .card{ flex:0 0 260px; }
+    .card .poster{ height:360px; }
   }
 </style>
 </head>
@@ -260,7 +293,10 @@
     </div>
   </div>
 
-  <div class="disclaimer"><span class="disclaimer-label">ডিসক্লেইমার:</span> STREAMguide BD-তে আমরা কোনো কনটেন্ট<br>আপলোড করি না, পাবলিকলি উপলভ্য ডেটা থেকে হোস্ট করি।</div>
+  <div class="disclaimer">
+    <span class="disclaimer-label">ডিসক্লেইমার:</span> STREAMguide BD-তে আমরা কোনো কনটেন্ট<br>আপলোড করি না, পাবলিকলি উপলভ্য ডেটা থেকে হোস্ট করি।
+    <div class="visitor-stats" id="visitorStats"></div>
+  </div>
 
   <footer>
     <div>© 2026 STREAMguide BD</div>
@@ -277,7 +313,7 @@ const PLATFORMS = {
   hoichoi:  { name:"হইচই",      color:"#f23557", base:"#", manual:false, domain:"hoichoi.tv" },
   bioscope: { name:"বায়স্কোপ",   color:"#2ea3f2", base:"#", manual:false, domain:"bioscopeplus.com" },
   utsob:    { name:"উৎসব",      color:"#ff6f91", base:"#", manual:false, domain:"utshob.live" },
-  binge:    { name:"বিঞ্জ",      color:"#00c2a8", base:"#", manual:false, domain:"binge.buzz" },
+  binge:    { name:"বিঞ্জ",      color:"#00c2a8", base:"https://binge.buzz/", manual:true, domain:"binge.buzz", icon:"https://web-api.binge.buzz/uploads/banner/landscape_images/site-image.jpg" },
   // international / indian — grouped under one filter chip, deep-link not reliable -> manual open
   netflix:  { name:"Netflix",     color:"#e50914", base:"#", manual:true, group:"intl", domain:"netflix.com" },
   prime:    { name:"Prime Video", color:"#00a8e1", base:"#", manual:true, group:"intl", domain:"primevideo.com" },
@@ -530,7 +566,10 @@ function renderFilters(){
       html += `<button class="chip" data-p="intl" style="--dot:#7d5fff" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; padding:0;"><circle cx="12" cy="12" r="9" stroke="#7d5fff" stroke-width="1.8"/><ellipse cx="12" cy="12" rx="4" ry="9" stroke="#7d5fff" stroke-width="1.8"/><path d="M3 12h18M4.5 7.5h15M4.5 16.5h15" stroke="#7d5fff" stroke-width="1.8"/></svg>আন্তর্জাতিক</button>`;
     } else {
       const plat = PLATFORMS[key];
-      const icon = plat.domain ? `<img class="chip-icon" src="https://www.google.com/s2/favicons?domain=${plat.domain}&sz=64" alt="" loading="lazy">` : '';
+      const fallbackFav = plat.domain ? `https://www.google.com/s2/favicons?domain=${plat.domain}&sz=64` : '';
+      const icon = plat.icon
+        ? `<img class="chip-icon" src="${plat.icon}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${fallbackFav}';">`
+        : (plat.domain ? `<img class="chip-icon" src="${fallbackFav}" alt="" loading="lazy">` : '');
       html += `<button class="chip" data-p="${key}" style="--dot:${plat.color}" tabindex="0">${icon}${plat.name}</button>`;
     }
   });
@@ -602,8 +641,12 @@ function heroSlideHTML(item){
     </div>`;
 }
 
+let heroAutoplayTimer = null;
+const HERO_AUTOPLAY_MS = 10000; // ফিচার ক্যারাসোল প্রতি ১০ সেকেন্ডে অটো-চেঞ্জ হবে, রিপিট মুডে
+
 function renderHero(list){
   const heroEl = document.getElementById('heroSection');
+  if(heroAutoplayTimer){ clearInterval(heroAutoplayTimer); heroAutoplayTimer = null; }
   if(!list.length){ heroEl.innerHTML = ''; return; }
 
   // হোম/সব ট্যাবে র‍্যান্ডম কয়েকটা কন্টেন্ট দিয়ে সোয়াইপযোগ্য ক্যারোসেল, নাহলে শুধু সবচেয়ে সাম্প্রতিকটা
@@ -660,6 +703,25 @@ function renderHero(list){
       if(dotsEl) dotsEl.querySelectorAll('.hero-dot').forEach((d,idx)=> d.classList.toggle('active', idx===heroIdx));
     }, 100);
   });
+
+  // ---------- ক্যারাসোল অটোপ্লে (রিপিট মুড, প্রতি ১০ সেকেন্ডে চেঞ্জ) ----------
+  if(slides.length > 1){
+    const startAutoplay = ()=>{
+      if(heroAutoplayTimer) clearInterval(heroAutoplayTimer);
+      heroAutoplayTimer = setInterval(()=>{
+        goTo((heroIdx + 1) % slides.length); // শেষ স্লাইডের পর আবার প্রথম থেকে শুরু (রিপিট)
+      }, HERO_AUTOPLAY_MS);
+    };
+    const stopAutoplay = ()=>{ if(heroAutoplayTimer){ clearInterval(heroAutoplayTimer); heroAutoplayTimer = null; } };
+    startAutoplay();
+    // ইউজার নিজে সোয়াইপ/ক্লিক করলে সাময়িক থামিয়ে আবার শুরু করা, যাতে হাত থেকে না কাড়ে
+    heroEl.addEventListener('mouseenter', stopAutoplay);
+    heroEl.addEventListener('mouseleave', startAutoplay);
+    heroEl.addEventListener('touchstart', stopAutoplay, {passive:true});
+    heroEl.addEventListener('touchend', startAutoplay, {passive:true});
+    [prevBtn, nextBtn].forEach(b=> b && b.addEventListener('click', startAutoplay));
+    if(dotsEl) dotsEl.querySelectorAll('.hero-dot').forEach(d=> d.addEventListener('click', startAutoplay));
+  }
 }
 
 const FALLBACK_MIN = 8;   // if fewer than this many items fall within 30 days, fall back
@@ -669,7 +731,12 @@ function render(){
   const rows = document.getElementById('rowsContainer');
 
   let pool = DATA.filter(d=>{
-    if(activeFilter === "all") return true;
+    if(activeFilter === "all"){
+      // ফিচার ট্যাবে ডিফল্টভাবে আন্তর্জাতিক কন্টেন্ট দেখানো হবে না (হইচই এর মতো দেশি প্ল্যাটফর্ম বাদে);
+      // 18+ সুইচ অন করলে সব কন্টেন্ট (আন্তর্জাতিক সহ) দেখানো হবে।
+      if(!show18Plus && PLATFORMS[d.p].group === "intl") return false;
+      return true;
+    }
     if(activeFilter === "intl") return PLATFORMS[d.p].group === "intl";
     return d.p === activeFilter;
   });
@@ -800,7 +867,10 @@ function renderTicker(){
   const track = document.getElementById('tickerTrack');
   const sep = `<span class="ticker-sep">/</span>`;
   const names = Object.values(PLATFORMS).map(p=>{
-    const icon = p.domain ? `<img class="ticker-icon" src="https://www.google.com/s2/favicons?domain=${p.domain}&sz=64" alt="">` : '';
+    const fallbackFav = p.domain ? `https://www.google.com/s2/favicons?domain=${p.domain}&sz=64` : '';
+    const icon = p.icon
+      ? `<img class="ticker-icon" src="${p.icon}" alt="" onerror="this.onerror=null;this.src='${fallbackFav}';">`
+      : (p.domain ? `<img class="ticker-icon" src="${fallbackFav}" alt="">` : '');
     return `${icon}${p.name}<span class="ticker-dot"></span>`;
   }).join(sep);
   track.innerHTML = `${names}${sep}সকল প্লাটফর্ম থেকে নতুন রিলিজ ট্রাক করা হচ্ছে`;
@@ -809,6 +879,61 @@ function renderTicker(){
 renderFilters();
 renderTicker();
 render();
+
+// ---------- ভিজিটর কাউন্টার (স্বয়ংক্রিয়ভাবে প্রতিদিন ~২০-২৫ জন করে বাড়ে) ----------
+// নোট: এটি সত্যিকারের সার্ভার-সাইড ট্র্যাকিং নয়। প্রতিটি ক্যালেন্ডার দিনের জন্য একটি নির্দিষ্ট
+// (সিডেড) র‍্যান্ডম বৃদ্ধি হিসাব করা হয়, যাতে একই দিনে সব ভিজিটর একই সংখ্যা দেখে এবং সংখ্যাটা
+// প্রতিদিন স্বয়ংক্রিয়ভাবে ২০-২৫ এর মধ্যে বাড়তেই থাকে।
+(function initVisitorStats(){
+  const BASE_TODAY = 312;
+  const BASE_TOTAL = 729;
+  const BASE_DATE = new Date(2026, 6, 3); // ৩ জুলাই, ২০২৬ — বেস দিন
+
+  function mulberry32(seed){
+    let a = seed >>> 0;
+    return function(){
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function dailyIncrement(daySeed){
+    // প্রতিদিন ২০ থেকে ২৫ এর মধ্যে একটি নির্দিষ্ট (কিন্তু র‍্যান্ডমের মতো দেখতে) সংখ্যা
+    return 20 + Math.floor(mulberry32(daySeed)() * 6);
+  }
+  function daysSinceBase(){
+    const now = new Date();
+    const a = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const b = new Date(BASE_DATE.getFullYear(), BASE_DATE.getMonth(), BASE_DATE.getDate());
+    return Math.max(0, Math.round((a - b) / 86400000));
+  }
+  function toBn(num){
+    const digits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    return String(num).replace(/[0-9]/g, d => digits[d]);
+  }
+
+  function computeStats(){
+    const n = daysSinceBase();
+    let today = BASE_TODAY, total = BASE_TOTAL;
+    for(let d = 1; d <= n; d++){
+      today += dailyIncrement(d * 2);     // "আজকের ভিজিটর" এর জন্য আলাদা সিড
+      total += dailyIncrement(d * 2 + 1); // "টোটাল ভিজিটর" এর জন্য আলাদা সিড
+    }
+    return { today, total };
+  }
+
+  function renderVisitorStats(){
+    const el = document.getElementById('visitorStats');
+    if(!el) return;
+    const { today, total } = computeStats();
+    el.textContent = `আজকের ভিজিটর: ${toBn(today)} জন, টোটাল ভিজিটর: ${toBn(total)} জন`;
+  }
+
+  renderVisitorStats();
+  // দিন পাল্টে গেলে সংখ্যাটাও যেন পাতা রিলোড ছাড়াই আপডেট হয়, তাই প্রতি ঘণ্টায় একবার চেক করা হয়
+  setInterval(renderVisitorStats, 60 * 60 * 1000);
+})();
 </script>
 </body>
 </html>
