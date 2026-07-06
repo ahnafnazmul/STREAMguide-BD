@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Anton&family=Inter:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b0c0f; --surface:#15171c; --surface-2:#1d2027;
-    --text:#f1f0ec; --text-dim:#9a9a9e;
-    --marquee:#e8482c; --gold:#d9a441; --line:#2a2d34;
+    --bg:#faf6ef; --surface:#ffffff; --surface-2:#efe7d8;
+    --text:#2b2620; --text-dim:#8a7f6a;
+    --marquee:#b8341f; --gold:#c9860a; --line:#e3d3b4;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -24,7 +24,7 @@
   .ticker-sep{ display:inline-block; margin:0 18px; color:rgba(255,255,255,0.55); font-weight:400; }
   @keyframes scroll-left{ 0%{transform:translateX(0);} 100%{transform:translateX(-100%);} }
 
-  header{ position:sticky; top:0; z-index:50; background:rgba(11,12,15,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  header{ position:sticky; top:0; z-index:50; background:rgba(250,246,239,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
   .header-inner{ max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 20px; gap:12px; }
   .brand{ min-width:0; flex:1 1 auto; }
   .tagline{font-size:14px; color:var(--text-dim); margin-top:2px; letter-spacing:0.03em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
@@ -48,7 +48,7 @@
   .filters::-webkit-scrollbar{display:none;}
   .chip{ flex-shrink:0; border:1px solid var(--line); background:var(--surface); color:var(--text-dim); font-size:13px; font-weight:600; padding:8px 16px; border-radius:999px; cursor:pointer; transition:all .18s ease; white-space:nowrap; }
   .chip:hover{color:var(--text); border-color:#3a3d45;}
-  .chip:focus-visible, .chip.active{ outline:none; border-color: var(--dot, var(--marquee)); color:var(--text); background:#22252c; box-shadow:0 0 0 2px color-mix(in srgb, var(--dot, var(--marquee)) 35%, transparent); }
+  .chip:focus-visible, .chip.active{ outline:none; border-color: var(--dot, var(--marquee)); color:var(--text); background:var(--surface-2); box-shadow: inset 0 0 0 1.5px var(--dot, var(--marquee)); font-weight:700; }
   .chip .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; background:var(--dot, var(--marquee)); vertical-align:middle; }
   .chip-icon{ width:16px; height:16px; border-radius:4px; margin-right:7px; vertical-align:middle; object-fit:contain; background:#fff; padding:1px; }
 
@@ -59,14 +59,18 @@
     border-radius:16px; scrollbar-width:none; outline:none;
   }
   .hero-track::-webkit-scrollbar{ display:none; }
-  .hero-card{ position:relative; flex:0 0 100%; scroll-snap-align:start; overflow:hidden; min-height:340px; display:flex; align-items:flex-end;
+  .hero-card{ position:relative; flex:0 0 100%; scroll-snap-align:start; overflow:hidden; min-height:340px; display:flex; align-items:flex-end; color:#fff;
     background: linear-gradient(0deg, rgba(11,12,15,0.96) 10%, rgba(11,12,15,0.3) 60%, rgba(11,12,15,0.5) 100%), var(--hero-grad);
     padding:36px; border:1px solid var(--line); cursor:pointer; }
   .hero-eyebrow{ font-family:'Anton', sans-serif; font-size:12px; letter-spacing:0.12em; color:var(--gold); margin-bottom:10px; }
-  .hero-title{ font-family:'Anton', sans-serif; font-size:44px; letter-spacing:0.01em; line-height:1.05; margin-bottom:10px; max-width:640px; }
-  .hero-meta{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; color:var(--text-dim); font-size:14px; margin-bottom:18px; }
+  .hero-title{ font-family:'Anton', sans-serif; font-size:44px; letter-spacing:0.01em; line-height:1.05; margin-bottom:10px; max-width:640px; color:#fff; }
+  .hero-stars{ font-size:15px; letter-spacing:1px; color:#ffc857; margin-bottom:4px; }
+  .hero-stars-num{ color:#fff; font-size:13px; letter-spacing:0; margin-left:4px; opacity:0.85; }
+  .hero-genre{ font-size:12.5px; color:rgba(255,255,255,0.75); margin-bottom:10px; }
+  .hero-meta{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; color:rgba(255,255,255,0.75); font-size:14px; margin-bottom:18px; }
+  .hero-stats-row{ display:flex; gap:16px; font-size:12px; color:rgba(255,255,255,0.75); margin-top:12px; }
   .badge{ font-size:11px; font-weight:700; letter-spacing:0.03em; padding:4px 10px; border-radius:5px; background:var(--dot); color:#0b0c0f; }
-  .hero-cta{ display:inline-flex; align-items:center; gap:8px; background:var(--text); color:#0b0c0f; font-weight:700; font-size:14px; padding:11px 22px; border-radius:8px; border:none; cursor:pointer; }
+  .hero-cta{ display:inline-flex; align-items:center; gap:8px; background:#ffffff; color:#1a1a1a; font-weight:700; font-size:14px; padding:11px 22px; border-radius:8px; border:none; cursor:pointer; }
   .hero-cta:hover{background:var(--gold);}
   .hero-note{ font-size:11px; color:var(--text-dim); margin-top:8px; }
   .hero-arrow{
@@ -84,13 +88,15 @@
 
   .row-section{ max-width:1400px; margin:0 auto; padding:28px 20px 0; }
   .row-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px; }
-  .row-title{ font-family:'Anton', sans-serif; font-size:19px; letter-spacing:0.02em; }
+  .row-title{ font-family:'Anton', sans-serif; font-size:19px; letter-spacing:0.02em; display:flex; align-items:center; gap:9px; }
+  .row-title::before{ content:""; display:inline-block; width:4px; height:18px; border-radius:3px; background:var(--marquee); }
   .row-sub{font-size:12px; color:var(--text-dim);}
   .row-scroll{ display:flex; gap:14px; overflow-x:auto; padding:4px 4px 16px; scroll-snap-type:x proximity; }
   .row-scroll::-webkit-scrollbar{height:6px;}
   .row-scroll::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px;}
 
-  .card{ scroll-snap-align:start; flex:0 0 180px; cursor:pointer; outline:none; position:relative; border-radius:10px; overflow:hidden; transition:transform .16s ease, box-shadow .16s ease; background:var(--surface); border:1px solid var(--line); }
+  .card{ scroll-snap-align:start; flex:0 0 180px; cursor:pointer; outline:none; position:relative; border-radius:12px; overflow:hidden; transition:transform .18s ease, box-shadow .18s ease; background:var(--surface); border:1px solid var(--line); box-shadow:0 2px 10px rgba(43,38,32,0.08); }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 14px 28px rgba(43,38,32,0.18); }
   .card .poster{ height:250px; width:100%; background:var(--grad); display:flex; align-items:flex-end; padding:12px; position:relative; }
   .card .poster-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
   .card .poster-img.adult-blur{ filter:blur(24px) saturate(1.15); transform:scale(1.15); }
@@ -106,11 +112,14 @@
   .card-info{ padding:10px 12px 12px; font-size:12px; color:var(--text-dim); display:flex; flex-direction:column; gap:3px; }
   .card-info .cname{ color:var(--text); font-weight:600; font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .card-info .meta-line{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .fake-rating{ color:var(--gold); font-weight:700; }
   .card .overlay{ position:absolute; inset:0; z-index:3; background:rgba(9,10,13,0.92); padding:14px; display:flex; flex-direction:column; justify-content:flex-end; opacity:0; transform:scale(0.98); transition:opacity .16s ease, transform .16s ease; pointer-events:none; }
   .card:hover .overlay, .card:focus-visible .overlay, .card.tv-focus .overlay{ opacity:1; transform:scale(1); pointer-events:auto; }
   .overlay-title{font-family:'Anton', sans-serif; font-size:16px; margin-bottom:6px;}
   .overlay-meta{font-size:11.5px; color:var(--text-dim); line-height:1.6;}
-  .overlay-btn{ margin-top:10px; font-size:12px; font-weight:700; background:var(--marquee); color:#fff; padding:8px 10px; border-radius:6px; text-align:center; }
+  .overlay-btn{ margin-top:10px; font-size:12px; font-weight:700; background:var(--marquee); color:#fff; padding:9px 14px; border-radius:999px; text-align:center; display:inline-flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 4px 14px rgba(232,72,44,0.4); align-self:flex-start; }
+  .overlay-btn::before{ content:"▶"; font-size:9px; }
+  .overlay-btn.manual::before{ content:none; }
   .overlay-btn.manual{ background:var(--surface-2); border:1px solid var(--line); color:var(--text-dim); font-weight:600; }
   .card:focus-visible, .card.tv-focus{ box-shadow: 0 0 0 3px var(--gold), 0 0 24px 2px color-mix(in srgb, var(--gold) 55%, transparent); transform:translateY(-4px) scale(1.04); z-index:5; }
 
@@ -133,7 +142,7 @@
   .modal-card{
     position:relative; width:100%; max-width:920px; max-height:88vh;
     background:var(--surface); border:1px solid var(--line); border-radius:18px;
-    display:flex; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.6);
+    display:flex; overflow:hidden; box-shadow:0 30px 80px rgba(43,38,32,0.35);
     animation: modal-in .22s ease;
   }
   @keyframes modal-in{ from{opacity:0; transform:translateY(14px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);} }
@@ -184,7 +193,8 @@
     border-top:1px solid var(--line); text-align:center;
   }
   .disclaimer-label{ color:var(--marquee); font-weight:900; font-size:16px; }
-  .visitor-stats{ margin-top:18px; font-size:10.5px; font-weight:300; color:#ffffff; letter-spacing:0.02em; opacity:0.8; }
+  @media (min-width:680px){ .disc-br{ display:none; } }
+  .visitor-stats{ margin-top:18px; font-size:10.5px; font-weight:500; color:var(--text-dim); letter-spacing:0.02em; opacity:0.9; }
   .notice{ max-width:1400px; margin:0 auto; padding:10px 20px 0; font-size:12px; color:var(--text-dim); }
   .notice b{color:var(--gold);}
 
@@ -294,7 +304,7 @@
   </div>
 
   <div class="disclaimer">
-    <span class="disclaimer-label">ডিসক্লেইমার:</span> STREAMguide BD-তে আমরা কোনো কনটেন্ট<br>আপলোড করি না, পাবলিকলি উপলভ্য ডেটা থেকে হোস্ট করি।
+    <span class="disclaimer-label">ডিসক্লেইমার:</span> STREAMguide BD-তে আমরা কোনো কনটেন্ট<br class="disc-br">আপলোড করি না, পাবলিকলি উপলভ্য ডেটা থেকে হোস্ট করি।
     <div class="visitor-stats" id="visitorStats"></div>
   </div>
 
@@ -386,7 +396,8 @@ const TITLES = [
   {p:"deepto", t:"Kothin Protisodh", dur:"N/A", days:566, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2024/12/14/posters_127ac304ae26893719b264dd69950fe9_goplay_kothin_protishodh_vod_2.jpg", url:"https://www.deeptoplay.com/films/kothin-protisodh", synopsis:"Badhon (Shakib Khan) is brought up by his uncle (Ali Raz) in Thailand. Dola (Apu Biswas) stays in Thailand along with her uncle. After a few misunderstandings, they fall in love. D"},
   {p:"deepto", t:"Talash", dur:"N/A", days:569, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2024/12/11/posters_500366bb7f7c89a186a333600226035a_goplay_talash_2.jpg", url:"https://www.deeptoplay.com/films/talash", synopsis:"A bangla movie starring Fakhrul Basher Masum, Mili Basher, Ador Azad, Bubly written by Asad Zaman directed by Saikat Nasir."},
   {p:"deepto", t:"Bhaia", dur:"N/A", days:426, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/05/10/posters_e304ba1254a82d8abecc0e166a4ee982_goplay_bhaiya_vod_2.jpg", url:"https://www.deeptoplay.com/films/bhaia", synopsis:"Bhaia is a heart-touching family drama that explores the powerful bond between siblings, set against the backdrop of love, sacrifice, and social conflict. Manna stars as a devoted "},
-  {p:"deepto", t:"Saatao", dur:"N/A", days:508, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/03/06/posters_c2417ea988986831eb82495bec7d6877_goplay_satao_vod_2.jpg", url:"https://www.deeptoplay.com/films/saatao", synopsis:"Putul and her beloved cow experience pregnancy at the same time, but tragedy strikes as she loses her child and the cow passes away post-delivery. Amidst the heartbreak, Putul find"},  {p:"utsob", t:"Prince", dur:"2h 27m", days:103, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_bbe04e8369060803811de11745d56f59_goplay_prince_poster_2.jpg", url:"https://www.utshob.live/movies/prince", synopsis:"In Dhaka, a larger-than-life figure navigates power, loyalty, and destiny."},
+  {p:"deepto", t:"Saatao", dur:"N/A", days:508, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/03/06/posters_c2417ea988986831eb82495bec7d6877_goplay_satao_vod_2.jpg", url:"https://www.deeptoplay.com/films/saatao", synopsis:"Putul and her beloved cow experience pregnancy at the same time, but tragedy strikes as she loses her child and the cow passes away post-delivery. Amidst the heartbreak, Putul find"},
+  {p:"utsob", t:"Prince", dur:"2h 27m", days:103, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_bbe04e8369060803811de11745d56f59_goplay_prince_poster_2.jpg", url:"https://www.utshob.live/movies/prince", synopsis:"In Dhaka, a larger-than-life figure navigates power, loyalty, and destiny."},
   {p:"utsob", t:"Rakkhosh", dur:"2h 20m", days:103, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_ebe9e6f058cd88121c8ebe59ed48cc52_goplay_rakkhosh_poster_03.jpg", url:"https://www.utshob.live/movies/rakkhosh", synopsis:"Rakkhosh follows a simple man who, driven to his limits by love, greed, and betrayal, unleashes his dark inner demon to seek brutal revenge against society's monsters. The film int"},
   {p:"utsob", t:"Sarder Barir Khela", dur:"2h 18m", days:55, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_d200796f073d3748f059aea1a0bd16a7_goplay_sbk_poster.jpg", url:"https://www.utshob.live/movies/sarder-barir-khela", synopsis:"The film is based on the traditional folk culture of Bengal, Lathikhela, and the difficult life and struggle of the Lathikhals involved in it. Along with this, the film depicts the"},
   {p:"utsob", t:"Village Cup  - Season 1 - Episode 1", dur:"44m", days:19, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/13/images_6d3b78626879082b79d52e0ed305b938_goplay_village_cup_poster_01.jpg", url:"https://www.utshob.live/series/village-cup/episode/village-cup-season-1-episode-1", synopsis:"As the excitement of the 2026 World Cup reaches a small village, football becomes more than just a game—it turns into a battle of pride, dreams, and passion. **\"Village Cup\"** foll"},
@@ -400,24 +411,24 @@ const TITLES = [
   {p:"utsob", t:"Rajkumar", dur:"2h 13m", days:812, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_e7d3ea04844ef87755e5b17969472e19_goplay_rajkumar_poster.jpg", url:"https://www.utshob.live/movies/rajkumar", synopsis:"Rajkumar is the story of an emotional young man who travels all the way to America in search of his roots and his long-lost mother. The film portrays his indomitable struggle to re"},
   {p:"utsob", t:"Bir", dur:"2h 15m", days:2330, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_320f0459709f23925aaf4f4c0e11ff8a_goplay_bir_poster.jpg", url:"https://www.utshob.live/movies/bir", synopsis:"The story of a self-motivated gangster under a political Godfather and a young lady who is the prisoner of the same politician. The two fall in love and want to escape from their i"},
   {p:"utsob", t:"Shaan", dur:"2h 24m", days:1521, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_8f9aba7c27fd0e9806687c6d50036fa2_goplay_0101010101.jpg", url:"https://www.utshob.live/movies/shaan", synopsis:"Shaan, a courageous and honest officer, joins the force with a single goal: to serve and protect his country. Beyond his duty, he finds himself on a dangerous path where his braver"},
-  {p:"utsob", t:"Shatru", dur:"2h 8m", days:1167, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_7f89ce463c2c50d62cfe31406d2b59a5_goplay_shotru_ott_poster.jpg", url:"https://www.utshob.live/movies/shatru", synopsis:"With the city gripped by fear, Durjoy steps in to challenge the undisputed rule of the ruthless mob boss, Akbar Seth. It’s a deadly race against time where justice must be served t"},
+  {p:"utsob", t:"Shatru", dur:"2h 8m", days:1167, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_7f89ce463c2c50d62cfe31406d2b59a5_goplay_shotru_ott_poster.jpg", url:"https://www.utshob.live/movies/shatru", synopsis:"With the city gripped by fear, Durjoy steps in to challenge the undisputed rule of the ruthless mob boss, Akbar Seth. It's a deadly race against time where justice must be served t"},
   {p:"utsob", t:"Black War", dur:"2h 5m", days:1266, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/02/posters_8fc59bbdc149038bfacb85667e82511f_goplay_black_war_poster_ott.jpg", url:"https://www.utshob.live/movies/black-war", synopsis:"As a deadly terrorist threat pushes the country to the brink, ADC Nabid dives into a dangerous game of cat and mouse against an unseen enemy. His mission is a race against the cloc"},
   {p:"utsob", t:"Dunia", dur:"2h 1m", days:573, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/07/posters_0969a0943441e9b31ed66063edbae648_goplay_duniya_poster.jpg", url:"https://www.utshob.live/movies/dunia", synopsis:"When a ruthless terrorist, Misha Sawdagor, shatters the peace of a city, two fearless youths, Nirab and Milan, rise up for justice. Driven by personal loss and past scars, they emb"},
   {p:"utsob", t:"Dark World", dur:"2h 13m", days:745, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_937252539c7e4237a4095215ef156414_goplay_dark_wolrd_poster_ottjpg.jpeg", url:"https://www.utshob.live/movies/dark-world", synopsis:"Bandarban's notorious terrorist Munna Khan suddenly enters the dark world of Dhaka at the call of Deepa Khandaker. Deepa's goal is to suppress the top terrorists of Dhaka's crimina"},
   {p:"utsob", t:"Talash", dur:"1h 51m", days:1476, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_f7fd315c6ffefed48c85b77add46f9fd_goplay_talassh_poster.png", url:"https://www.utshob.live/movies/talash", synopsis:"Bubly lives for one person alone—Sumon—but destiny has a different plan for her singular devotion. Their thrilling romance leads her down a path of deep emotional struggle, raising"},
   {p:"utsob", t:"Jontrona", dur:"2h 0m", days:965, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_8dfcc0dfe263e014307f74b725ff21bf_goplay_jontrona_ott_poster.jpg", url:"https://www.utshob.live/movies/jontrona", synopsis:"The story revolves around a complex love triangle filled with intense action and emotional turmoil. At its core, the film explores the struggles and sacrifices made in the name of "},
   {p:"utsob", t:"Mission Extreme", dur:"2h 9m", days:1672, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/03/posters_242e09b442a4f040832705fc2ac0c0f0_goplay_misshon_movie_poster.png", url:"https://www.utshob.live/movies/mission-extreme", synopsis:"Nabid Al Shahriar, a dedicated CTTC officer, leads an elite team on a high-stakes hunt for a dangerous terrorist cell. To protect the nation from chaos, he must outsmart an invisib"},
-  {p:"utsob", t:"Priyotoma", dur:"2h 17m", days:1099, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/22/posters_8d28f2b5334a9e822c22d2f0a032e090_goplay_whatsapp_image_2026_06_22_at_44552_pm_1.jpeg", url:"https://www.utshob.live/movies/priyotoma", synopsis:"Haunted by his brother’s tragic death, Sumon’s pursuit of vengeance leads him into an unforeseen world of love and sacrifice. A chance encounter with a captivating woman transforms"},
+  {p:"utsob", t:"Priyotoma", dur:"2h 17m", days:1099, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/22/posters_8d28f2b5334a9e822c22d2f0a032e090_goplay_whatsapp_image_2026_06_22_at_44552_pm_1.jpeg", url:"https://www.utshob.live/movies/priyotoma", synopsis:"Haunted by his brother's tragic death, Sumon's pursuit of vengeance leads him into an unforeseen world of love and sacrifice. A chance encounter with a captivating woman transforms"},
   {p:"utsob", t:"Nobab LLB", dur:"2h 21m", days:1833, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_b474ece6fb8c99ed54df7b1e2c39d472_goplay_nabab_llb_poster.jpg", url:"https://www.utshob.live/movies/nobab-llb", synopsis:"\"Nabab LLB\" is a legal drama following a high-profile lawyer who fights for justice for a girl who survived a brutal gang rape. The story highlights the victim's struggle against a"},
   {p:"utsob", t:"Samraat", dur:"1h 46m", days:21, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/13/posters_6c0331d53013409ffeeff618ef0fb3c7_goplay_somraat.jpeg", url:"https://www.utshob.live/movies/samraat", synopsis:"The plot follows the titular, undefeatable mafia kingpin (Shakib Khan) who returns to Bangladesh from Malaysia to seize control of the local underworld, igniting a fierce war again"},
   {p:"utsob", t:"Guru Dev", dur:"1h 52m", days:8161, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/07/posters_314815ec9c81d0da2c3ba2b182accd80_goplay_guru_deb_ott_poster.gif", url:"https://www.utshob.live/movies/guru-dev", synopsis:"\"The movie 'Gurudeb' is primarily an action-drama. The story revolves around the protest against injustice and the dynamics of family relationships. Shakib Khan plays the role of a"},
   {p:"utsob", t:"Lohar Shikol", dur:"2h 12m", days:8742, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/12/posters_ef1632e4223f1e343a4cc9cfdd351f40_goplay_lohar_sikol_movie_poster_ott.gif", url:"https://www.utshob.live/movies/lohar-shikol", synopsis:"\"A defiant young man finds himself imprisoned after being framed by the unjust demands of the society's corrupt and powerful forces. 'Lohar Shikol' is the story of his desperate st"},
   {p:"utsob", t:"Kothin Protishod", dur:"2h 39m", days:4287, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/17/posters_995d759f6be0f02550018b0c8d5738ee_goplay_whatsapp_image_2026_05_17_at_62100_pm.jpeg", url:"https://www.utshob.live/movies/kothin-protishod", synopsis:"When Badhon and Dola's Thai romance leads them back to the fierce village rivalries of Bangladesh, they find themselves caught in a deadly family feud. Their love story transforms "},
-  {p:"utsob", t:"Bhangon", dur:"2h 14m", days:1329, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/04/19/posters_a57e702b5f85c9293bad615eb986c5fd_goplay_vangon_poster_ottjpg.jpeg", url:"https://www.utshob.live/movies/bhangon", synopsis:"Driven by river erosion, a group of displaced souls struggles to survive in Dhaka’s harsh urban landscape. Their stories weave a raw tapestry of resilience among the city's homeles"},
+  {p:"utsob", t:"Bhangon", dur:"2h 14m", days:1329, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/04/19/posters_a57e702b5f85c9293bad615eb986c5fd_goplay_vangon_poster_ottjpg.jpeg", url:"https://www.utshob.live/movies/bhangon", synopsis:"Driven by river erosion, a group of displaced souls struggles to survive in Dhaka's harsh urban landscape. Their stories weave a raw tapestry of resilience among the city's homeles"},
   {p:"utsob", t:"Eti Chitra", dur:"2h 3m", days:986, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/30/posters_681d8e23b9aadba6c1b0d2c25b163046_goplay_eti_chitra.jpeg", url:"https://www.utshob.live/movies/eti-chitra", synopsis:"In a world built on love and dreams, Masuk and Chitra share a bond that defies distance. When Chitra leaves for the city to pursue her studies, Masuk embarks on a desperate journey"},
   {p:"utsob", t:"Bhalo Theko", dur:"2h 21m", days:3065, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/16/posters_f2897665d894b7035b6132830652197a_goplay_whatsapp_image_2026_06_16_at_34543_pm.jpeg", url:"https://www.utshob.live/movies/bhalo-theko", synopsis:"The story revolves around a sweet romantic relationship between a talented architect and his client's daughter. However, their beautiful love story faces unexpected family complica"},
-  {p:"utsob", t:"Lal Shari", dur:"2h 8m", days:1099, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/04/19/posters_d86af7020248e029c7792b41d56c0a30_goplay_lal_sari_movie_poster.png", url:"https://www.utshob.live/movies/lal-shari", synopsis:"Lal Shari is a story about a young woman’s struggle through life, where she faces conflicts between her dreams, love, and social barriers. The red saree symbolizes her hopes, ident"},
-  {p:"utsob", t:"Mukhosh", dur:"2h 16m", days:1581, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/04/posters_e7188f6df8b79245d37fe40ecf175734_goplay_untitled_2jpg_1.jpeg", url:"https://www.utshob.live/movies/mukhosh", synopsis:"In a world full of deception, identifying the truth behind the masks people wear becomes a dangerous challenge. The story follows Farhan’s intense struggle to unmask the real culpr"},
+  {p:"utsob", t:"Lal Shari", dur:"2h 8m", days:1099, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/04/19/posters_d86af7020248e029c7792b41d56c0a30_goplay_lal_sari_movie_poster.png", url:"https://www.utshob.live/movies/lal-shari", synopsis:"Lal Shari is a story about a young woman's struggle through life, where she faces conflicts between her dreams, love, and social barriers. The red saree symbolizes her hopes, ident"},
+  {p:"utsob", t:"Mukhosh", dur:"2h 16m", days:1581, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/04/posters_e7188f6df8b79245d37fe40ecf175734_goplay_untitled_2jpg_1.jpeg", url:"https://www.utshob.live/movies/mukhosh", synopsis:"In a world full of deception, identifying the truth behind the masks people wear becomes a dangerous challenge. The story follows Farhan's intense struggle to unmask the real culpr"},
   {p:"utsob", t:"Jibon Pakhi", dur:"1h 31m", days:1350, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/09/posters_bcab40480234a700538382fa0e89b557_goplay_jibon_pakhi_ott_posterjpg.jpeg", url:"https://www.utshob.live/movies/jibon-pakhi", synopsis:"The film Jibon Pakhi is based on a family and society-centric story. In the film, Mim runs away from home, and her father passes away in grief. On the other hand, Abul Kalam Azad's"},
   {p:"utsob", t:"Jao Pakhi Bolo Tare", dur:"2h 13m", days:1364, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/02/posters_856d1498951a108bd86c1bbc60e21513_goplay_jao_pakhi_bolo_tare_movie_poster.png", url:"https://www.utshob.live/movies/jao-pakhi-bolo-tare", synopsis:"When the daughter of a powerful landlord becomes the center of a complicated love triangle, Majnu's unrequited devotion faces a heartbreaking clash. The story follows their intertw"},
   {p:"binge", t:"Prohelika", dur:"৪০ মিনিট x ৬ পর্ব", cast:"ইরফান সাজ্জাদ", days:10},
@@ -430,8 +441,8 @@ const TITLES = [
   {p:"netflix", t:"Idhayam Murali", dur:"N/A", days:17, img:"https://images.justwatch.com/poster/341508329/s718/idhayam-murali.jpg", url:"https://www.justwatch.com/in/movie/idhayam-murali", synopsis:"Find out how and where to watch \"Idhayam Murali\" on Netflix and Prime Video today - including free options."},
   {p:"netflix", t:"Jumanji 3", dur:"N/A", days:20, img:"https://images.justwatch.com/poster/340668970/s718/jumanji-3.jpg", url:"https://www.justwatch.com/in/movie/jumanji-3", synopsis:"Find out how and where to watch \"Jumanji 3\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"netflix", t:"I, Nobody", dur:"N/A", days:23, img:"https://images.justwatch.com/poster/342114962/s718/i-nobody.jpg", url:"https://www.justwatch.com/in/movie/i-nobody", synopsis:"Find out how and where to watch \"I, Nobody\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
-  {p:"prime", t:"Sukran", dur:"N/A", days:2, img:"https://images.justwatch.comnull", url:"https://www.justwatch.com/in/movie/sukran", synopsis:"Find out how and where to watch \"Sukran\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
-  {p:"prime", t:"Charukesi", dur:"N/A", days:5, img:"https://images.justwatch.comnull", url:"https://www.justwatch.com/in/movie/charukesi", synopsis:"Find out how and where to watch \"Charukesi\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Sukran", dur:"N/A", days:2, img:"", url:"https://www.justwatch.com/in/movie/sukran", synopsis:"Find out how and where to watch \"Sukran\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"prime", t:"Charukesi", dur:"N/A", days:5, img:"", url:"https://www.justwatch.com/in/movie/charukesi", synopsis:"Find out how and where to watch \"Charukesi\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"prime", t:"Obsession", dur:"N/A", days:8, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"prime", t:"Sapio", dur:"N/A", days:11, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"prime", t:"Madrid, 1987", dur:"N/A", days:14, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987", synopsis:"Find out how and where to watch \"Madrid, 1987\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
@@ -449,8 +460,8 @@ const TITLES = [
   {p:"max", t:"House of the Dragon S3", dur:"৬০ মিনিট x ৮ পর্ব", cast:"Emma D'Arcy", days:5},
   {p:"max", t:"The Last of Us S3", dur:"৫৫ মিনিট x ৭ পর্ব", cast:"Pedro Pascal", days:21},
   {p:"hulu", t:"The Bear S4", dur:"৩০ মিনিট x ১০ পর্ব", cast:"Jeremy Allen White", days:14},
-  {p:"zee5", t:"Wanted 2", dur:"N/A", days:2, img:"https://images.justwatch.comnull", url:"https://www.justwatch.com/in/movie/wanted-2", synopsis:"Find out how and where to watch \"Wanted 2\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
-  {p:"zee5", t:"Grandgear", dur:"N/A", days:5, img:"https://images.justwatch.comnull", url:"https://www.justwatch.com/in/movie/grandgear", synopsis:"Find out how and where to watch \"Grandgear\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"zee5", t:"Wanted 2", dur:"N/A", days:2, img:"", url:"https://www.justwatch.com/in/movie/wanted-2", synopsis:"Find out how and where to watch \"Wanted 2\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
+  {p:"zee5", t:"Grandgear", dur:"N/A", days:5, img:"", url:"https://www.justwatch.com/in/movie/grandgear", synopsis:"Find out how and where to watch \"Grandgear\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"zee5", t:"Obsession", dur:"N/A", days:8, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"zee5", t:"Sapio", dur:"N/A", days:11, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"zee5", t:"Madrid, 1987", dur:"N/A", days:14, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987", synopsis:"Find out how and where to watch \"Madrid, 1987\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
@@ -463,7 +474,6 @@ const TITLES = [
   {p:"sonyliv", t:"Anthakshari (Hindi)", dur:"2h 1m", days:1360, img:"https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000001917/1745827543035450_Antakshari_hindi_28apr_portrait_thumb.jpg", url:"https://www.bioscopeplus.com/movies/anthakshari-hindi", synopsis:"Circle Inspector Das is so obsessed with music that he plays the game of Antakshari with anyone, anywhere; whether it be for fun with his wife or to punish the culprits he arrests."},
   {p:"sonyliv", t:"Maari", dur:"2h 5m", days:1067, img:"https://origin-staticv2.sonyliv.com/videoasset_images/maari_22july_portrait_thumb.jpg", url:"https://www.bioscopeplus.com/movies/maari-dub", synopsis:"A reformed ganster returns to reclaim his territory from a ruthless rival. Amidst action-packed clashes and unexpected alliances, he must protect his loved ones while facing his in"},
   {p:"sonyliv", t:"Bromance", dur:"2h 16m", days:428, img:"https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000001943/1745940689660351_Bromance_Portrait_Thumb.jpg", url:"https://www.bioscopeplus.com/movies/bromance", synopsis:"In this heartwarming tale of camaraderie and self-discovery, a laid-back social media enthusiast, joined by his brother's group of eclectic friends, embarks on a journey to find hi"},
-
   {p:"sonyliv", t:"Obsession", dur:"N/A", days:2, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"sonyliv", t:"Sapio", dur:"N/A", days:5, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
   {p:"sonyliv", t:"Madrid, 1987", dur:"N/A", days:8, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987", synopsis:"Find out how and where to watch \"Madrid, 1987\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
@@ -474,10 +484,45 @@ const TITLES = [
   {p:"sonyliv", t:"Jumanji 3", dur:"N/A", days:23, img:"https://images.justwatch.com/poster/340668970/s718/jumanji-3.jpg", url:"https://www.justwatch.com/in/movie/jumanji-3", synopsis:"Find out how and where to watch \"Jumanji 3\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
 ];
 
+function hashSeed(str){
+  let h = 0;
+  for(let i=0;i<str.length;i++){ h = (h*31 + str.charCodeAt(i)) | 0; }
+  return Math.abs(h);
+}
+function fakeRatingFor(t, p){
+  const seed = hashSeed(t + p);
+  return (3.5 + (seed % 16) / 10).toFixed(1); // 3.5 - 5.0
+}
+function fakeViewsFor(t, p){
+  const seed = hashSeed(p + t + 'views');
+  const val = 500 + (seed % 49500); // 500 - 50000
+  return val >= 1000 ? (val/1000).toFixed(1) + 'k' : String(val);
+}
+const FAKE_GENRE = "মিক্স জনরা";
+
 const DATA = TITLES.map((x,i)=>({
   ...x, id:i, date: daysAgo(x.days), grad: GRADIENTS[i % GRADIENTS.length],
+  fakeRating: fakeRatingFor(x.t, x.p), fakeViews: fakeViewsFor(x.t, x.p), fakeGenre: FAKE_GENRE,
   url: x.url || ((PLATFORMS[x.p].base !== "#" && x.slug) ? PLATFORMS[x.p].base + x.slug : PLATFORMS[x.p].base)
 }));
+
+// ---------- একই টাইটেল একাধিক (আন্তর্জাতিক) প্ল্যাটফর্মে থাকলে একটা কার্ডেই মার্জ করা ----------
+// (Obsession Netflix, Disney+, SonyLIV — তিনটাতেই থাকলে একটাই কার্ড, সব প্ল্যাটফর্মের নাম একসাথে)
+(function mergeDuplicateTitles(){
+  const firstByTitle = new Map();
+  DATA.forEach(item=>{
+    if(PLATFORMS[item.p].group !== "intl") return; // শুধু আন্তর্জাতিক গ্রুপের ভেতরেই ডুপ্লিকেট মার্জ করা হচ্ছে
+    const key = item.t.trim().toLowerCase();
+    if(firstByTitle.has(key)){
+      const first = firstByTitle.get(key);
+      if(!first.platforms) first.platforms = [first.p];
+      if(!first.platforms.includes(item.p)) first.platforms.push(item.p);
+      item.merged = true; // এই ডুপ্লিকেট এন্ট্রিটা রেন্ডার থেকে বাদ যাবে
+    } else {
+      firstByTitle.set(key, item);
+    }
+  });
+})();
 
 let activeFilter = "all";
 let searchQuery = "";
@@ -560,7 +605,7 @@ function observeCardsForNSFW(){
 
 function renderFilters(){
   const filtersEl = document.getElementById('filters');
-  let html = `<button class="chip active" data-p="all" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; padding:0;"><path d="M12 2l2.2 6.8H21l-5.6 4.1 2.1 6.9L12 15.8 6.5 19.8l2.1-6.9L3 8.8h6.8z" fill="${'#d9a441'}"/></svg>ফিচার</button>`;
+  let html = `<button class="chip active" data-p="all" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; padding:0;"><path d="M12 2l2.2 6.8H21l-5.6 4.1 2.1 6.9L12 15.8 6.5 19.8l2.1-6.9L3 8.8h6.8z" fill="${'#c9860a'}"/></svg>ফিচার</button>`;
   CHIP_ORDER.slice(1).forEach(key=>{
     if(key === "intl"){
       html += `<button class="chip" data-p="intl" style="--dot:#7d5fff" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; padding:0;"><circle cx="12" cy="12" r="9" stroke="#7d5fff" stroke-width="1.8"/><ellipse cx="12" cy="12" rx="4" ry="9" stroke="#7d5fff" stroke-width="1.8"/><path d="M3 12h18M4.5 7.5h15M4.5 16.5h15" stroke="#7d5fff" stroke-width="1.8"/></svg>আন্তর্জাতিক</button>`;
@@ -586,9 +631,20 @@ function renderFilters(){
 
 function cardHTML(item){
   const plat = PLATFORMS[item.p];
-  const btn = plat.manual
-    ? `<div class="overlay-btn manual">নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজুন</div>`
-    : `<div class="overlay-btn">${plat.name}-এ দেখুন ↗</div>`;
+  const platformList = item.platforms || [item.p];
+  const btn = platformList.length > 1
+    ? platformList.map(pk => {
+        const pp = PLATFORMS[pk];
+        return pp.manual
+          ? `<div class="overlay-btn manual">${pp.name}-এ ম্যানুয়ালি খুঁজুন</div>`
+          : `<div class="overlay-btn" onclick="event.stopPropagation(); window.open('${item.url}','_blank')">${pp.name}-এ দেখুন ↗</div>`;
+      }).join('')
+    : (plat.manual
+        ? `<div class="overlay-btn manual">নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজুন</div>`
+        : `<div class="overlay-btn">${plat.name}-এ দেখুন ↗</div>`);
+  const tagLabel = platformList.length > 1
+    ? platformList.map(pk => PLATFORMS[pk].name).join(' / ')
+    : plat.name;
   const blurred = (item.adult || item.autoAdult) && !show18Plus;
   const posterImg = item.img ? `<img class="poster-img${blurred ? ' adult-blur' : ''}" src="${item.img}" loading="lazy" alt="${item.t}">` : '';
   const shield = blurred ? `<div class="adult-shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>18+ কনটেন্ট<br>সুইচ অন করে দেখো</span></div>` : '';
@@ -600,17 +656,17 @@ function cardHTML(item){
     <div class="poster">
       ${posterImg}
       ${shield}
-      <span class="platform-tag">${plat.name}</span>
+      <span class="platform-tag">${tagLabel}</span>
       ${item.days <= 7 ? '<span class="new-tag">NEW</span>' : ''}
       <div class="poster-title">${item.t}</div>
     </div>
     <div class="card-info">
       <div class="cname">${item.t}</div>
-      <div class="meta-line">${fmtDate(item.date)} • ${item.dur.split(' ')[0]}</div>
+      <div class="meta-line">${fmtDate(item.date)} • ${item.dur.split(' ')[0]} • <span class="fake-rating">★ ${item.fakeRating}</span></div>
     </div>
     <div class="overlay">
       <div class="overlay-title">${item.t}</div>
-      <div class="overlay-meta">রিলিজ: ${fmtDate(item.date)}<br>সময়: ${item.dur}${castLine ? '<br>'+castLine : ''}</div>
+      <div class="overlay-meta">রিলিজ: ${fmtDate(item.date)}<br>সময়: ${item.dur}<br>${item.fakeGenre} • ★ ${item.fakeRating} • 👁 ${item.fakeViews}${castLine ? '<br>'+castLine : ''}</div>
       ${btn}
     </div>
   </div>`;
@@ -627,6 +683,7 @@ function shuffledSample(arr, n){
 
 function heroSlideHTML(item){
   const plat = PLATFORMS[item.p];
+  const heroPlatformLabel = item.platforms ? item.platforms.map(pk => PLATFORMS[pk].name).join(' / ') : plat.name;
   const heroBg = item.img
     ? `linear-gradient(0deg, rgba(11,12,15,0.96) 10%, rgba(11,12,15,0.3) 60%, rgba(11,12,15,0.5) 100%), url('${item.img}')`
     : null;
@@ -635,8 +692,11 @@ function heroSlideHTML(item){
       <div>
         <div class="hero-eyebrow">${activeFilter === 'all' ? 'তোমার জন্য' : 'সর্বশেষ রিলিজ'}</div>
         <div class="hero-title">${item.t}</div>
-        <div class="hero-meta"><span class="badge" style="--dot:${plat.color}">${plat.name}</span><span>${fmtDate(item.date)}</span><span>•</span><span>${item.dur}</span></div>
+        <div class="hero-stars">★★★★☆ <span class="hero-stars-num">${item.fakeRating}</span></div>
+        <div class="hero-genre">${item.fakeGenre}</div>
+        <div class="hero-meta"><span class="badge" style="--dot:${plat.color}">${heroPlatformLabel}</span><span>${fmtDate(item.date)}</span><span>•</span><span>${item.dur}</span></div>
         <button class="hero-cta" style="border:none; cursor:pointer;" onclick="event.stopPropagation(); openModal(${item.id});">বিস্তারিত দেখো</button>
+        <div class="hero-stats-row"><span>★ ${item.fakeRating}</span><span>👁 ${item.fakeViews}</span></div>
       </div>
     </div>`;
 }
@@ -694,25 +754,30 @@ function renderHero(list){
     else if(e.key === 'ArrowLeft'){ e.preventDefault(); goTo(heroIdx - 1); }
   });
 
+  function startAutoplay(){
+    if(slides.length <= 1) return;
+    if(heroAutoplayTimer) clearInterval(heroAutoplayTimer);
+    heroAutoplayTimer = setInterval(()=>{
+      goTo((heroIdx + 1) % slides.length); // শেষ স্লাইডের পর আবার প্রথম থেকে শুরু (রিপিট)
+    }, HERO_AUTOPLAY_MS);
+  }
+  function stopAutoplay(){ if(heroAutoplayTimer){ clearInterval(heroAutoplayTimer); heroAutoplayTimer = null; } }
+
   // টাচ সোয়াইপ নেটিভ স্ক্রলেই কাজ করে, স্ক্রল থামলে কোন স্লাইডে আছি সেটা ধরে ডট আপডেট করা
+  // এখানেই autoplay আবার নিশ্চিতভাবে চালু করে দেওয়া হয় (নিরাপত্তা-রিস্টার্ট) — যাতে কোনো
+  // কারণে থেমে গেলেও (touch event miss হওয়া ইত্যাদি) স্ক্রল থামার পর সবসময় আবার চলতে শুরু করে।
   let scrollTimeout;
   track.addEventListener('scroll', ()=>{
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(()=>{
-      heroIdx = Math.round(track.scrollLeft / track.clientWidth);
+      heroIdx = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / track.clientWidth)));
       if(dotsEl) dotsEl.querySelectorAll('.hero-dot').forEach((d,idx)=> d.classList.toggle('active', idx===heroIdx));
+      startAutoplay();
     }, 100);
   });
 
   // ---------- ক্যারাসোল অটোপ্লে (রিপিট মুড, প্রতি ১০ সেকেন্ডে চেঞ্জ) ----------
   if(slides.length > 1){
-    const startAutoplay = ()=>{
-      if(heroAutoplayTimer) clearInterval(heroAutoplayTimer);
-      heroAutoplayTimer = setInterval(()=>{
-        goTo((heroIdx + 1) % slides.length); // শেষ স্লাইডের পর আবার প্রথম থেকে শুরু (রিপিট)
-      }, HERO_AUTOPLAY_MS);
-    };
-    const stopAutoplay = ()=>{ if(heroAutoplayTimer){ clearInterval(heroAutoplayTimer); heroAutoplayTimer = null; } };
     startAutoplay();
     // ইউজার নিজে সোয়াইপ/ক্লিক করলে সাময়িক থামিয়ে আবার শুরু করা, যাতে হাত থেকে না কাড়ে
     heroEl.addEventListener('mouseenter', stopAutoplay);
@@ -731,6 +796,7 @@ function render(){
   const rows = document.getElementById('rowsContainer');
 
   let pool = DATA.filter(d=>{
+    if(d.merged) return false; // ডুপ্লিকেট এন্ট্রি, প্রাইমারি কার্ডে মার্জ হয়ে গেছে
     if(activeFilter === "all"){
       // ফিচার ট্যাবে ডিফল্টভাবে আন্তর্জাতিক কন্টেন্ট দেখানো হবে না (হইচই এর মতো দেশি প্ল্যাটফর্ম বাদে);
       // 18+ সুইচ অন করলে সব কন্টেন্ট (আন্তর্জাতিক সহ) দেখানো হবে।
@@ -804,14 +870,23 @@ function openModal(id){
   const item = DATA.find(d => d.id === id);
   if(!item) return;
   const plat = PLATFORMS[item.p];
+  const platformList = item.platforms || [item.p];
 
   const backdrop = document.getElementById('modalBackdrop');
   backdrop.style.backgroundImage = item.img ? `url('${item.img}')` : `${item.grad}`;
 
   const card = document.getElementById('modalCard');
-  const btn = plat.manual
-    ? `<button class="modal-cta manual" onclick="window.open('${plat.base !== '#' ? plat.base : item.url}','_blank')">নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজুন</button>`
-    : `<button class="modal-cta" onclick="window.open('${item.url}','_blank')">${plat.name}-এ দেখো ↗</button>`;
+  const btn = platformList.length > 1
+    ? platformList.map(pk => {
+        const pp = PLATFORMS[pk];
+        return pp.manual
+          ? `<button class="modal-cta manual" onclick="window.open('${pp.base !== '#' ? pp.base : item.url}','_blank')">${pp.name}-এ ম্যানুয়ালি খুঁজুন</button>`
+          : `<button class="modal-cta" onclick="window.open('${item.url}','_blank')">${pp.name}-এ দেখো ↗</button>`;
+      }).join('')
+    : (plat.manual
+        ? `<button class="modal-cta manual" onclick="window.open('${plat.base !== '#' ? plat.base : item.url}','_blank')">নিজ প্ল্যাটফর্মে ম্যানুয়ালি খুঁজুন</button>`
+        : `<button class="modal-cta" onclick="window.open('${item.url}','_blank')">${plat.name}-এ দেখো ↗</button>`);
+  const modalPlatformLabel = platformList.map(pk => PLATFORMS[pk].name).join(' / ');
 
   const modalBlurred = (item.adult || item.autoAdult) && !show18Plus;
   const modalShield = modalBlurred ? `<div class="adult-shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>18+ কনটেন্ট<br>দেখতে হেডারের সুইচ অন করো</span></div>` : '';
@@ -819,13 +894,15 @@ function openModal(id){
     <button class="modal-close" id="modalClose" aria-label="বন্ধ করো">✕</button>
     <div class="modal-image${modalBlurred ? ' adult-blur' : ''}" style="background-image:${item.img ? `url('${item.img}')` : item.grad};">${modalShield}</div>
     <div class="modal-details">
-      <span class="modal-platform-badge" style="background:${plat.color}">${plat.name}</span>
+      <span class="modal-platform-badge" style="background:${plat.color}">${modalPlatformLabel}</span>
       <div class="modal-title">${item.t}</div>
       <div class="modal-meta-grid">
         <div><div class="label">আপলোডের তারিখ</div><div class="value">${fmtDate(item.date)}</div></div>
         <div><div class="label">রানটাইম</div><div class="value">${item.dur || 'N/A'}</div></div>
-        <div><div class="label">প্ল্যাটফর্ম</div><div class="value">${plat.name}</div></div>
-        <div><div class="label">রেটিং</div><div class="value">${item.rating || '—'}</div></div>
+        <div><div class="label">প্ল্যাটফর্ম</div><div class="value">${modalPlatformLabel}</div></div>
+        <div><div class="label">রেটিং</div><div class="value">★ ${item.fakeRating}</div></div>
+        <div><div class="label">জনরা</div><div class="value">${item.fakeGenre}</div></div>
+        <div><div class="label">ভিউ</div><div class="value">👁 ${item.fakeViews}</div></div>
         ${item.cast ? `<div style="grid-column:1/-1;"><div class="label">আর্টিস্ট</div><div class="value">${item.cast}</div></div>` : ''}
       </div>
       ${item.synopsis ? `<div class="modal-synopsis-label">ব্রিফিং</div><div class="modal-synopsis">${item.synopsis}</div>` : ''}
@@ -836,8 +913,6 @@ function openModal(id){
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  // Kick off (or reuse cached) nudity check; if it comes back positive and the modal is still
-  // open for this same item, blur the image in place.
   if(item.img && !item.adult && !item.autoAdult){
     checkImageNSFW(item.img).then(flagged=>{
       if(flagged){
@@ -880,14 +955,10 @@ renderFilters();
 renderTicker();
 render();
 
-// ---------- ভিজিটর কাউন্টার (স্বয়ংক্রিয়ভাবে প্রতিদিন ~২০-২৫ জন করে বাড়ে) ----------
-// নোট: এটি সত্যিকারের সার্ভার-সাইড ট্র্যাকিং নয়। প্রতিটি ক্যালেন্ডার দিনের জন্য একটি নির্দিষ্ট
-// (সিডেড) র‍্যান্ডম বৃদ্ধি হিসাব করা হয়, যাতে একই দিনে সব ভিজিটর একই সংখ্যা দেখে এবং সংখ্যাটা
-// প্রতিদিন স্বয়ংক্রিয়ভাবে ২০-২৫ এর মধ্যে বাড়তেই থাকে।
 (function initVisitorStats(){
-  const BASE_TODAY = 312;
   const BASE_TOTAL = 729;
-  const BASE_DATE = new Date(2026, 6, 3); // ৩ জুলাই, ২০২৬ — বেস দিন
+  const BASE_DATE = new Date(2026, 6, 3);
+  const TICK_MS = 9000; // প্রতি ৯ সেকেন্ডে সংখ্যাগুলো আপডেট হবে
 
   function mulberry32(seed){
     let a = seed >>> 0;
@@ -899,7 +970,6 @@ render();
     };
   }
   function dailyIncrement(daySeed){
-    // প্রতিদিন ২০ থেকে ২৫ এর মধ্যে একটি নির্দিষ্ট (কিন্তু র‍্যান্ডমের মতো দেখতে) সংখ্যা
     return 20 + Math.floor(mulberry32(daySeed)() * 6);
   }
   function daysSinceBase(){
@@ -912,27 +982,35 @@ render();
     const digits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
     return String(num).replace(/[0-9]/g, d => digits[d]);
   }
+  function randInt(min, max){ return min + Math.floor(Math.random() * (max - min + 1)); }
 
-  function computeStats(){
+  // দিন-ভিত্তিক ক্রমবর্ধমান বেস (আগের দিনগুলোর যোগফল), যাতে টোটাল ভিজিটর প্রতিদিনই বাড়তে থাকে
+  function baseTotalForToday(){
     const n = daysSinceBase();
-    let today = BASE_TODAY, total = BASE_TOTAL;
-    for(let d = 1; d <= n; d++){
-      today += dailyIncrement(d * 2);     // "আজকের ভিজিটর" এর জন্য আলাদা সিড
-      total += dailyIncrement(d * 2 + 1); // "টোটাল ভিজিটর" এর জন্য আলাদা সিড
-    }
-    return { today, total };
+    let total = BASE_TOTAL;
+    for(let d = 1; d <= n; d++){ total += dailyIncrement(d); }
+    return total;
   }
+
+  let todayVisitors = randInt(30, 70);
+  let activeViewers = randInt(5, 20);
+  let totalVisitors = baseTotalForToday() + todayVisitors;
 
   function renderVisitorStats(){
     const el = document.getElementById('visitorStats');
     if(!el) return;
-    const { today, total } = computeStats();
-    el.textContent = `আজকের ভিজিটর: ${toBn(today)} জন, টোটাল ভিজিটর: ${toBn(total)} জন`;
+    el.textContent = `আজকের ভিজিটর: ${toBn(todayVisitors)} জন • সক্রিয় ভিউয়ার: ${toBn(activeViewers)} জন • টোটাল ভিজিটর: ${toBn(totalVisitors)} জন`;
+  }
+
+  function tick(){
+    todayVisitors = randInt(30, 70);
+    activeViewers = randInt(5, 20);
+    totalVisitors += randInt(1, 4); // টোটাল সবসময় সামান্য বাড়তেই থাকবে, কখনো কমবে না
+    renderVisitorStats();
   }
 
   renderVisitorStats();
-  // দিন পাল্টে গেলে সংখ্যাটাও যেন পাতা রিলোড ছাড়াই আপডেট হয়, তাই প্রতি ঘণ্টায় একবার চেক করা হয়
-  setInterval(renderVisitorStats, 60 * 60 * 1000);
+  setInterval(tick, TICK_MS);
 })();
 </script>
 </body>
