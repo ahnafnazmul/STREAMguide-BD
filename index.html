@@ -74,7 +74,7 @@
   .hero-title { font-family: 'Anton', sans-serif; font-size: 52px; letter-spacing: 0.01em; line-height: 1.1; margin-bottom: 12px; color: #fff; }
   .hero-stars { font-size: 16px; color: #ffc857; margin-bottom: 6px; }
   .hero-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; color: var(--text-dim); font-size: 14px; margin-bottom: 24px; }
-  .badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; background: var(--dot); color: #000; }
+  .badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; background: var(--dot); color: #000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
   .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--marquee); color: #fff; font-weight: 700; font-size: 15px; padding: 12px 26px; border-radius: 8px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(232,72,44,0.3); transition: 0.2s; }
   .hero-cta:hover, .hero-cta:focus-visible { background: #fff; color: #000; outline: none; transform: scale(1.05); }
   
@@ -109,11 +109,15 @@
   
   .card .poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(9,10,12,0.95) 100%); z-index: 1; }
   .card .poster-title { position: relative; z-index: 2; font-family: 'Anton', sans-serif; font-size: 18px; line-height: 1.2; color: #fff; }
-  .card .platform-tag { position: absolute; top: 10px; left: 10px; z-index: 2; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: var(--dot); color: #000; }
+  
+  /* Update: Make OTT platform tag clearer */
+  .card .platform-tag { position: absolute; top: 10px; left: 10px; z-index: 2; font-size: 12px; font-weight: 800; padding: 5px 12px; border-radius: 6px; background: var(--dot); color: #000; box-shadow: 0 3px 8px rgba(0,0,0,0.7); text-transform: uppercase; letter-spacing: 0.02em; }
   .card .new-tag { position: absolute; top: 10px; right: 10px; z-index: 2; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 6px; background: #fff; color: #000; }
   
-  .card-info { padding: 12px; font-size: 13px; color: var(--text-dim); display: flex; flex-direction: column; gap: 4px; background: var(--surface); position: relative; z-index: 2; }
+  /* Update: Make card info flex appropriately to hold date */
+  .card-info { padding: 12px; font-size: 13px; color: var(--text-dim); display: flex; flex-direction: column; gap: 5px; background: var(--surface); position: relative; z-index: 2; }
   .card-info .cname { color: var(--text); font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card-info .meta-line { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-dim); }
   .fake-rating { color: var(--gold); font-weight: 700; }
 
   .empty-state { max-width: 1600px; margin: 0 auto; padding: 80px 24px; text-align: center; color: var(--text-dim); font-size: 18px; }
@@ -123,12 +127,14 @@
   .modal-overlay.open { display: flex; }
   .modal-card { position: relative; width: 100%; max-width: 960px; max-height: 85vh; background: var(--surface); border: 2px solid var(--line); border-radius: 20px; display: flex; overflow: hidden; box-shadow: 0 30px 100px rgba(0,0,0,0.8); animation: modal-in .25s cubic-bezier(0.075, 0.82, 0.165, 1); }
   @keyframes modal-in { from{opacity:0; transform:scale(.95);} to{opacity:1; transform:scale(1);} }
-  .modal-close { position: absolute; top: 16px; right: 16px; z-index: 5; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; background: rgba(9,10,13,0.8); color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+  .modal-close { position: absolute; top: 16px; right: 16px; z-index: 10; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; background: rgba(9,10,13,0.8); color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
   .modal-close:hover, .modal-close:focus-visible { background: var(--marquee); outline: none; }
+  
   .modal-image { flex: 0 0 45%; background-size: cover; background-position: center; position: relative; }
   .modal-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 50%, var(--surface) 100%); }
-  .modal-details { flex: 1; padding: 36px; overflow-y: auto; }
-  .modal-platform-badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 6px; background: var(--dot); color: #000; margin-bottom: 16px; }
+  
+  .modal-details { flex: 1; padding: 36px; overflow-y: auto; display: flex; flex-direction: column; }
+  .modal-platform-badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 6px; background: var(--dot); color: #000; margin-bottom: 16px; align-self: flex-start; text-transform: uppercase; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
   .modal-title { font-family: 'Anton', sans-serif; font-size: 36px; line-height: 1.1; margin-bottom: 16px; color: #fff; }
   
   .modal-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; font-size: 14px; color: var(--text-dim); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
@@ -166,7 +172,7 @@
     <div class="header-inner">
       <div class="brand">
         <div class="logo"><span class="stream">STREAM</span><span class="guide-thin">guide</span><span class="bd">BD</span></div>
-        <div class="tagline">TV Theater Dashboard — Unified OTT Streaming Guide</div>
+        <div class="tagline">Unified OTT Streaming Guide</div>
       </div>
       <div class="header-right">
         <div class="search-box">
@@ -195,7 +201,7 @@
   </div>
 
   <footer>
-    <div>© 2026 STREAMguide BD • Powered by TV Mode</div>
+    <div>© 2026 STREAMguide BD</div>
     <div class="dev-credit">Developed by @nazmulsblog</div>
   </footer>
 
@@ -323,7 +329,7 @@ let show18Plus = false;
 function renderFilters(){
   const filtersEl = document.getElementById('filters');
   if(!filtersEl) return;
-  let html = `<button class="chip active" data-p="all" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; width:16px; height:16px; margin-right:6px;"><path d="M12 2l2.2 6.8H21l-5.6 4.1 2.1 6.9L12 15.8 6.5 19.8l2.1-6.9L3 8.8h6.8z" fill="#ffc857"/></svg>Home Featured</button>`;
+  let html = `<button class="chip active" data-p="all" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; width:16px; height:16px; margin-right:6px;"><path d="M12 2l2.2 6.8H21l-5.6 4.1 2.1 6.9L12 15.8 6.5 19.8l2.1-6.9L3 8.8h6.8z" fill="#ffc857"/></svg>Featured</button>`;
   
   CHIP_ORDER.slice(1).forEach(key => {
     if(key === "intl") {
@@ -364,6 +370,7 @@ function cardHTML(item){
     </div>
     <div class="card-info">
       <div class="cname">${item.t}</div>
+      <div class="meta-line">${fmtDate(item.date)}</div>
       <div class="meta-line">★ ${item.fakeRating} • 👁 ${item.fakeViews}</div>
     </div>
   </div>`;
@@ -475,7 +482,8 @@ function openModal(id){
   const isInternational = (plat.group === "intl") || (item.platforms && item.platforms.some(p => PLATFORMS[p] && PLATFORMS[p].group === "intl"));
   
   const overlay = document.getElementById('modalOverlay');
-  if(!overlay) return;
+  const modalCard = document.getElementById('modalCard');
+  if(!overlay || !modalCard) return;
   
   const encodedTitle = encodeURIComponent(item.t);
   const movieboxAppUrl = `https://moviebox.ph/web/searchResult?keyword=${encodedTitle}`;
@@ -488,8 +496,7 @@ function openModal(id){
     actionButtons += `<button class="modal-cta" onclick="window.open('${item.url}','_blank')" tabindex="0">▶ Watch on ${plat.name} Network</button>`;
   }
 
-  const modalDetailsContainer = document.createElement('div');
-  modalDetailsContainer.innerHTML = `
+  modalCard.innerHTML = `
     <button class="modal-close" id="modalClose">✕</button>
     <div class="modal-image" style="background-image:url('${item.img || ''}'); background-color:var(--surface-2);"></div>
     <div class="modal-details">
@@ -504,13 +511,9 @@ function openModal(id){
       <div class="modal-synopsis-label">Synopsis / Briefing</div>
       <div class="modal-synopsis">${item.synopsis || 'Detailed storyline information for this title will be available soon. Stay tuned with STREAMguide BD.'}</div>
       ${actionButtons}
+      
+      <div style="margin-top: 30px; font-size: 12px; color: var(--text-dim); text-align: center; opacity: 0.6; font-weight: 500;">Developed by @nazmulsblog</div>
     </div>`;
-
-  const modalCard = document.getElementById('modalCard');
-  if(modalCard) {
-    modalCard.innerHTML = '';
-    modalCard.appendChild(modalDetailsContainer);
-  }
 
   const closeBtn = document.getElementById('modalClose');
   if(closeBtn) closeBtn.addEventListener('click', closeModal);
