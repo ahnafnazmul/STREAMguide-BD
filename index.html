@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STREAMguide BD — Premium TV OTT & Streaming Guide</title>
 
-<!-- Favicon & Home Screen Web App Icons -->
 <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/television.png">
 <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/192/television.png">
 <meta name="apple-mobile-web-app-title" content="STREAMguide BD">
@@ -15,166 +14,144 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Anton&family=Inter:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg: #090a0c; 
-    --surface: #12141c; 
-    --surface-2: #1c1f2b;
-    --text: #ffffff; 
-    --text-dim: #9ca3af;
-    --marquee: #e8482c; 
-    --gold: #ffc857; 
-    --line: #262933;
-    --focus-color: #00ffcc;
+  :root {
+    --bg: #090a0c; --surface: #12141c; --surface-2: #1c1f2b;
+    --text: #ffffff; --text-dim: #9ca3af;
+    --marquee: #e8482c; --gold: #ffc857; 
+    --line: #262933; --focus-color: #00ffcc;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{ background:var(--bg); color:var(--text); font-family:'Inter','Hind Siliguri',sans-serif; -webkit-font-smoothing:antialiased; padding-bottom:60px; overflow-x:hidden; }
-  a{color:inherit; text-decoration:none;}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', 'Hind Siliguri', sans-serif; -webkit-font-smoothing: antialiased; padding-bottom: 60px; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
 
-  .ticker{ background: linear-gradient(90deg, #12141c, #220805); color:#fff; font-family:'Anton', sans-serif; letter-spacing:0.04em; font-size:14px; padding:8px 0; overflow:hidden; white-space:nowrap; border-bottom: 1px solid var(--line); }
-  .ticker-track{ display:inline-block; padding-left:100%; animation: scroll-left 95s linear infinite; }
-  .ticker-icon{ width:16px; height:16px; border-radius:4px; margin:0 6px 0 0; vertical-align:-3px; object-fit:contain; background:#fff; padding:1px; }
-  .ticker-dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:#22c55e; margin-left:6px; vertical-align:middle; box-shadow:0 0 5px 1px rgba(34,197,94,0.85); }
-  .ticker-sep{ display:inline-block; margin:0 18px; color:rgba(255,255,255,0.25); }
-  @keyframes scroll-left{ 0%{transform:translateX(0);} 100%{transform:translateX(-100%);} }
+  .ticker { background: linear-gradient(90deg, #12141c, #220805); color: #fff; font-family: 'Anton', sans-serif; letter-spacing: 0.04em; font-size: 14px; padding: 8px 0; overflow: hidden; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  .ticker-track { display: inline-block; padding-left: 100%; animation: scroll-left 95s linear infinite; }
+  .ticker-icon { width: 16px; height: 16px; border-radius: 4px; margin: 0 6px 0 0; vertical-align: -3px; object-fit: contain; background: #fff; padding: 1px; }
+  .ticker-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-left: 6px; vertical-align: middle; box-shadow: 0 0 5px 1px rgba(34,197,94,0.85); }
+  .ticker-sep { display: inline-block; margin: 0 18px; color: rgba(255,255,255,0.25); }
+  @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-  header{ position:sticky; top:0; z-index:50; background:rgba(9,10,12,0.95); backdrop-filter:blur(15px); border-bottom:1px solid var(--line); }
-  .header-inner{ max-width:1600px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:16px 24px; gap:20px; }
-  .brand{ min-width:0; flex:1 1 auto; }
-  .tagline{font-size:14px; color:var(--text-dim); margin-top:2px; letter-spacing:0.03em;}
-  .logo{ font-family:'Anton', sans-serif; font-size:30px; letter-spacing:-0.015em; display:flex; align-items:baseline; }
-  .logo span.stream{color:var(--text); font-weight:900;}
-  .logo span.guide-thin{color:var(--marquee); font-family:'Sacramento',cursive; font-weight:400; font-size:38px; margin-left:-4px;}
-  .logo span.bd{color:var(--marquee); font-weight:900; margin-left:8px; -webkit-text-stroke:1.1px #fff;}
+  header { position: sticky; top: 0; z-index: 50; background: rgba(9,10,12,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--line); }
+  .header-inner { max-width: 1600px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; gap: 20px; }
+  .brand { min-width: 0; flex: 1 1 auto; }
+  .tagline { font-size: 14px; color: var(--text-dim); margin-top: 2px; letter-spacing: 0.03em; }
+  .logo { font-family: 'Anton', sans-serif; font-size: 30px; letter-spacing: -0.015em; display: flex; align-items: baseline; }
+  .logo span.stream { color: var(--text); font-weight: 900; }
+  .logo span.guide-thin { color: var(--marquee); font-family: 'Sacramento',cursive; font-weight: 400; font-size: 38px; margin-left: -4px; }
+  .logo span.bd { color: var(--marquee); font-weight: 900; margin-left: 8px; -webkit-text-stroke: 1.1px #fff; }
   
-  .header-right{ flex:0 0 auto; display:flex; align-items:center; gap:12px; }
-  .search-box{ display:flex; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:8px 12px; width:240px; transition: all 0.2s; }
+  .header-right { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; }
+  .search-box { display: flex; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; width: 240px; transition: all 0.2s; }
   .search-box:focus-within { border-color: var(--focus-color); box-shadow: 0 0 10px rgba(0,255,204,0.3); }
-  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-family:inherit; font-size:14px; width:100%; }
-  .search-box svg{flex-shrink:0; opacity:0.6; width:16px; height:16px; color: var(--text); margin-right:6px;}
+  .search-box input { background: transparent; border: none; outline: none; color: var(--text); font-family: inherit; font-size: 14px; width: 100%; }
+  .search-box svg { flex-shrink: 0; opacity: 0.6; width: 16px; height: 16px; color: var(--text); margin-right: 6px; }
   
-  .age-toggle{ display:flex; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:8px 12px; cursor:pointer; color:var(--text-dim); font-family:inherit; font-size:13px; font-weight:600; transition:all .18s ease; }
-  .age-toggle:hover, .age-toggle:focus-visible{ color:var(--text); border-color: var(--focus-color); outline: none; }
-  .age-toggle-track{ width:26px; height:15px; border-radius:999px; background:#3a3d45; position:relative; margin-left:8px; }
-  .age-toggle-thumb{ position:absolute; top:2.5px; left:2px; width:10px; height:10px; border-radius:50%; background:#fff; transition:left .2s ease; }
+  .age-toggle { display: flex; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; cursor: pointer; color: var(--text-dim); font-family: inherit; font-size: 13px; font-weight: 600; transition: all .18s ease; }
+  .age-toggle:hover, .age-toggle:focus-visible { color: var(--text); border-color: var(--focus-color); outline: none; }
+  .age-toggle-track { width: 26px; height: 15px; border-radius: 999px; background: #3a3d45; position: relative; margin-left: 8px; }
+  .age-toggle-thumb { position: absolute; top: 2.5px; left: 2px; width: 10px; height: 10px; border-radius: 50%; background: #fff; transition: left .2s ease; }
   .age-toggle.on { color: var(--text); }
-  .age-toggle.on .age-toggle-track{ background:var(--marquee); }
-  .age-toggle.on .age-toggle-thumb{ left:14px; }
+  .age-toggle.on .age-toggle-track { background: var(--marquee); }
+  .age-toggle.on .age-toggle-thumb { left: 14px; }
 
-  .filters{ max-width:1600px; margin:0 auto; display:flex; gap:10px; padding:10px 24px 16px; overflow-x:auto; scrollbar-width:none; }
-  .filters::-webkit-scrollbar{display:none;}
-  .chip{ flex-shrink:0; border:1px solid var(--line); background:var(--surface); color:var(--text-dim); font-size:14px; font-weight:600; padding:8px 18px; border-radius:999px; cursor:pointer; transition:all .18s ease; display:flex; align-items:center; }
-  .chip:hover, .chip:focus-visible{ color:var(--text); border-color: var(--focus-color); transform: scale(1.05); outline: none;}
-  .chip.active{ border-color: var(--focus-color); color:var(--text); background:var(--surface-2); font-weight:700; box-shadow: 0 0 12px rgba(0,255,204,0.2); }
-  .chip-icon{ width:18px; height:18px; border-radius:4px; margin-right:8px; object-fit:contain; }
+  .filters { max-width: 1600px; margin: 0 auto; display: flex; gap: 10px; padding: 10px 24px 16px; overflow-x: auto; scrollbar-width: none; }
+  .filters::-webkit-scrollbar { display: none; }
+  .chip { flex-shrink: 0; border: 1px solid var(--line); background: var(--surface); color: var(--text-dim); font-size: 14px; font-weight: 600; padding: 8px 18px; border-radius: 999px; cursor: pointer; transition: all .18s ease; display: flex; align-items: center; }
+  .chip:hover, .chip:focus-visible { color: var(--text); border-color: var(--focus-color); transform: scale(1.05); outline: none; }
+  .chip.active { border-color: var(--focus-color); color: var(--text); background: var(--surface-2); font-weight: 700; box-shadow: 0 0 12px rgba(0,255,204,0.2); }
+  .chip-icon { width: 18px; height: 18px; border-radius: 4px; margin-right: 8px; object-fit: contain; }
 
-  .hero{ max-width:1600px; margin:10px auto 10px; padding:0 24px; }
-  .hero-carousel{ position:relative; }
-  .hero-track{ display:flex; overflow-x:hidden; border-radius:18px; outline:none; border: 1px solid var(--line); position: relative; width: 100%; min-height: 420px; }
-  .hero-card{ position:absolute; inset:0; width:100%; height:100%; opacity:0; visibility:hidden; transition: opacity 0.6s ease, visibility 0.6s ease; display:flex; align-items:center; padding:50px; 
-    background: linear-gradient(90deg, rgba(9,10,12,1) 35%, rgba(9,10,12,0.6) 70%, rgba(9,10,12,0) 100%), var(--hero-grad); cursor:pointer; z-index: 1; }
-  .hero-card.active { opacity:1; visibility:visible; z-index: 2; }
-  .hero-card:focus-visible { transform: scale(1.01); box-shadow: 0 0 0 3px var(--focus-color); outline: none; }
+  .hero { max-width: 1600px; margin: 10px auto 10px; padding: 0 24px; }
+  .hero-carousel { position: relative; width: 100%; min-height: 420px; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); }
+  .hero-track { position: relative; width: 100%; height: 100%; min-height: 420px; }
+  .hero-card { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 0.6s ease, visibility 0.6s ease; display: flex; align-items: center; padding: 50px; 
+    background: linear-gradient(90deg, rgba(9,10,12,1) 35%, rgba(9,10,12,0.6) 70%, rgba(9,10,12,0) 100%), var(--hero-grad); cursor: pointer; z-index: 1; }
+  .hero-card.active { opacity: 1; visibility: visible; z-index: 2; }
+  .hero-card:focus-visible { transform: scale(1.01); box-shadow: inset 0 0 0 3px var(--focus-color); outline: none; }
   .hero-content { max-width: 650px; z-index: 3; }
-  .hero-eyebrow{ font-family:'Anton', sans-serif; font-size:13px; letter-spacing:0.12em; color:var(--gold); margin-bottom:12px; text-transform: uppercase; }
-  .hero-title{ font-family:'Anton', sans-serif; font-size:52px; letter-spacing:0.01em; line-height:1.1; margin-bottom:12px; color:#fff; }
-  .hero-stars{ font-size:16px; color:#ffc857; margin-bottom:6px; }
-  .hero-genre{ font-size:14px; color:var(--text-dim); margin-bottom:14px; }
-  .hero-meta{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; color:var(--text-dim); font-size:14px; margin-bottom:24px; }
-  .badge{ font-size:12px; font-weight:700; padding:4px 12px; border-radius:6px; background:var(--dot); color:#000; }
-  .hero-cta{ display:inline-flex; align-items:center; gap:8px; background:var(--marquee); color:#fff; font-weight:700; font-size:15px; padding:12px 26px; border-radius:8px; border:none; cursor:pointer; box-shadow: 0 4px 15px rgba(232,72,44,0.3); transition: 0.2s; }
+  .hero-eyebrow { font-family: 'Anton', sans-serif; font-size: 13px; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; }
+  .hero-title { font-family: 'Anton', sans-serif; font-size: 52px; letter-spacing: 0.01em; line-height: 1.1; margin-bottom: 12px; color: #fff; }
+  .hero-stars { font-size: 16px; color: #ffc857; margin-bottom: 6px; }
+  .hero-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; color: var(--text-dim); font-size: 14px; margin-bottom: 24px; }
+  .badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; background: var(--dot); color: #000; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--marquee); color: #fff; font-weight: 700; font-size: 15px; padding: 12px 26px; border-radius: 8px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(232,72,44,0.3); transition: 0.2s; }
   .hero-cta:hover, .hero-cta:focus-visible { background: #fff; color: #000; outline: none; transform: scale(1.05); }
   
-  .hero-arrow{ position:absolute; top:50%; transform:translateY(-50%); z-index:10; width:46px; height:46px; border-radius:50%; border:none; cursor:pointer; background:rgba(18,20,28,0.7); color:#fff; font-size:22px; display:flex; align-items:center; justify-content:center; border: 1px solid var(--line); transition: 0.2s; }
-  .hero-arrow:hover, .hero-arrow:focus-visible{ background:var(--focus-color); color:#000; outline: none; }
-  .hero-arrow.prev{ left:16px; }
-  .hero-arrow.next{ right:16px; }
-  .hero-dots{ display:flex; gap:8px; justify-content:center; margin-top:12px; }
-  .hero-dot{ width:8px; height:8px; border-radius:50%; background:var(--line); cursor:pointer; transition:all .15s ease; border:none; }
-  .hero-dot.active{ background:var(--focus-color); width:24px; border-radius:4px; }
+  .hero-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer; background: rgba(18,20,28,0.7); color: #fff; font-size: 22px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); transition: 0.2s; }
+  .hero-arrow:hover, .hero-arrow:focus-visible { background: var(--focus-color); color: #000; outline: none; }
+  .hero-arrow.prev { left: 16px; }
+  .hero-arrow.next { right: 16px; }
+  .hero-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+  .hero-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); cursor: pointer; transition: all .15s ease; border: none; }
+  .hero-dot.active { background: var(--focus-color); width: 24px; border-radius: 4px; }
 
-  .row-section{ max-width:1600px; margin:0 auto; padding:28px 24px 0; }
-  .row-head{ display:flex; align-items:baseline; justify-content:between; margin-bottom:14px; }
-  .row-title{ font-family:'Anton', sans-serif; font-size:22px; letter-spacing:0.02em; display:flex; align-items:center; gap:10px; }
-  .row-title::before{ content:""; display:inline-block; width:5px; height:22px; border-radius:4px; background:var(--marquee); }
-  .row-sub{font-size:14px; color:var(--text-dim); margin-left:10px;}
-  .row-scroll{ display:flex; gap:18px; overflow-x:auto; padding:10px 4px 20px; scroll-snap-type:x proximity; }
-  .row-scroll::-webkit-scrollbar{height:6px;}
-  .row-scroll::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px;}
+  .row-section { max-width: 1600px; margin: 0 auto; padding: 28px 24px 0; }
+  .row-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+  .row-title { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 10px; }
+  .row-title::before { content: ""; display: inline-block; width: 5px; height: 22px; border-radius: 4px; background: var(--marquee); }
+  .row-sub { font-size: 14px; color: var(--text-dim); margin-left: 10px; }
+  .row-scroll { display: flex; gap: 18px; overflow-x: auto; padding: 10px 4px 20px; scroll-snap-type: x proximity; }
+  .row-scroll::-webkit-scrollbar { height: 6px; }
+  .row-scroll::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
 
-  .card{ scroll-snap-align:start; flex:0 0 210px; cursor:pointer; outline:none; position:relative; border-radius:14px; overflow:hidden; transition:transform .2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow .2s ease, border-color .2s ease; background:var(--surface); border:1px solid var(--line); }
-  .card:hover, .card:focus-visible, .card.tv-focus{ 
-    transform: scale(1.08) translateY(-5px); 
-    box-shadow: 0 10px 25px rgba(0, 255, 204, 0.25), 0 0 15px 2px var(--focus-color);
-    border-color: var(--focus-color);
-    z-index: 10;
-  }
+  .card { scroll-snap-align: start; flex: 0 0 210px; cursor: pointer; outline: none; position: relative; border-radius: 14px; overflow: hidden; transition: transform .2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow .2s ease, border-color .2s ease; background: var(--surface); border: 1px solid var(--line); }
+  .card:hover, .card:focus-visible, .card.tv-focus { transform: scale(1.08) translateY(-5px); box-shadow: 0 10px 25px rgba(0, 255, 204, 0.25), 0 0 15px 2px var(--focus-color); border-color: var(--focus-color); z-index: 10; }
   
-  .card .poster{ height:290px; width:100%; background:var(--grad); display:flex; align-items:flex-end; padding:14px; position:relative; }
-  .card .poster-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; transition: transform 0.3s; }
+  .card .poster { height: 290px; width: 100%; background: var(--grad); display: flex; align-items: flex-end; padding: 14px; position: relative; }
+  .card .poster-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: transform 0.3s; }
   .card:hover .poster-img, .card:focus-visible .poster-img { transform: scale(1.05); }
-  .card .poster-img.adult-blur{ filter:blur(28px) saturate(1.2); transform:scale(1.15); }
+  .card .poster-img.adult-blur { filter: blur(28px) saturate(1.2); transform: scale(1.15); }
   
-  .adult-shield{ position:absolute; inset:0; z-index:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:rgba(9,10,12,0.7); color:#fff; text-align:center; padding:12px; }
-  .adult-shield svg{ width:26px; height:26px; color: var(--marquee); }
-  .adult-shield span{ font-size:12px; font-weight:700; }
+  .adult-shield { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: rgba(9,10,12,0.7); color: #fff; text-align: center; padding: 12px; }
+  .adult-shield svg { width: 26px; height: 26px; color: var(--marquee); }
+  .adult-shield span { font-size: 12px; font-weight: 700; }
   
-  .card .poster::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(9,10,12,0.95) 100%); z-index: 1; }
-  .card .poster-title{ position:relative; z-index:2; font-family:'Anton', sans-serif; font-size:18px; line-height:1.2; color:#fff; }
-  .card .platform-tag{ position:absolute; top:10px; left:10px; z-index:2; font-size:11px; font-weight:700; padding:4px 10px; border-radius:6px; background:var(--dot); color:#000; }
-  .card .new-tag{ position:absolute; top:10px; right:10px; z-index:2; font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px; background:#fff; color:#000; }
+  .card .poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(9,10,12,0.95) 100%); z-index: 1; }
+  .card .poster-title { position: relative; z-index: 2; font-family: 'Anton', sans-serif; font-size: 18px; line-height: 1.2; color: #fff; }
+  .card .platform-tag { position: absolute; top: 10px; left: 10px; z-index: 2; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: var(--dot); color: #000; }
+  .card .new-tag { position: absolute; top: 10px; right: 10px; z-index: 2; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 6px; background: #fff; color: #000; }
   
-  .card-info{ padding:12px; font-size:13px; color:var(--text-dim); display:flex; flex-direction:column; gap:4px; background: var(--surface); position: relative; z-index: 2; }
-  .card-info .cname{ color:var(--text); font-weight:600; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .fake-rating{ color:var(--gold); font-weight:700; }
-  .card .overlay{ position:absolute; inset:0; z-index:3; background:rgba(9,10,12,0.95); padding:16px; display:flex; flex-direction:column; justify-content:flex-end; opacity:0; transition:opacity .2s ease; pointer-events:none; }
+  .card-info { padding: 12px; font-size: 13px; color: var(--text-dim); display: flex; flex-direction: column; gap: 4px; background: var(--surface); position: relative; z-index: 2; }
+  .card-info .cname { color: var(--text); font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fake-rating { color: var(--gold); font-weight: 700; }
 
-  .empty-state{ max-width:1600px; margin:0 auto; padding:80px 24px; text-align:center; color:var(--text-dim); font-size:18px; }
+  .empty-state { max-width: 1600px; margin: 0 auto; padding: 80px 24px; text-align: center; color: var(--text-dim); font-size: 18px; }
 
-  /* 🍿 Premium Theater Style Detail Popup Modal */
-  .modal-overlay{ position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:24px; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-  .modal-overlay.open{ display:flex; }
-  .modal-card{ position:relative; width:100%; max-width:960px; max-height:85vh; background:var(--surface); border:2px solid var(--line); border-radius:20px; display:flex; overflow:hidden; box-shadow:0 30px 100px rgba(0,0,0,0.8); animation: modal-in .25s cubic-bezier(0.075, 0.82, 0.165, 1); }
-  @keyframes modal-in{ from{opacity:0; transform:scale(.95);} to{opacity:1; transform:scale(1);} }
-  .modal-close{ position:absolute; top:16px; right:16px; z-index:5; width:38px; height:38px; border-radius:50%; border:none; cursor:pointer; background:rgba(9,10,13,0.8); color:#fff; font-size:18px; display:flex; align-items:center; justify-content:center; transition: 0.2s; }
+  /* 🍿 Modal Popup */
+  .modal-overlay { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+  .modal-overlay.open { display: flex; }
+  .modal-card { position: relative; width: 100%; max-width: 960px; max-height: 85vh; background: var(--surface); border: 2px solid var(--line); border-radius: 20px; display: flex; overflow: hidden; box-shadow: 0 30px 100px rgba(0,0,0,0.8); animation: modal-in .25s cubic-bezier(0.075, 0.82, 0.165, 1); }
+  @keyframes modal-in { from{opacity:0; transform:scale(.95);} to{opacity:1; transform:scale(1);} }
+  .modal-close { position: absolute; top: 16px; right: 16px; z-index: 5; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; background: rgba(9,10,13,0.8); color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
   .modal-close:hover, .modal-close:focus-visible { background: var(--marquee); outline: none; }
-  .modal-image{ flex:0 0 45%; background-size:cover; background-position:center; position:relative; }
-  .modal-image::after{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, transparent 50%, var(--surface) 100%); }
-  .modal-details{ flex:1; padding:36px; overflow-y:auto; }
-  .modal-platform-badge{ display:inline-block; font-size:12px; font-weight:700; padding:5px 14px; border-radius:6px; background:var(--dot); color:#000; margin-bottom:16px; }
-  .modal-title{ font-family:'Anton', sans-serif; font-size:36px; line-height:1.1; margin-bottom:16px; color: #fff; }
+  .modal-image { flex: 0 0 45%; background-size: cover; background-position: center; position: relative; }
+  .modal-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 50%, var(--surface) 100%); }
+  .modal-details { flex: 1; padding: 36px; overflow-y: auto; }
+  .modal-platform-badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 6px; background: var(--dot); color: #000; margin-bottom: 16px; }
+  .modal-title { font-family: 'Anton', sans-serif; font-size: 36px; line-height: 1.1; margin-bottom: 16px; color: #fff; }
   
-  .modal-meta-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px 24px; font-size:14px; color:var(--text-dim); margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--line); }
-  .modal-meta-grid .label{ color:var(--text-dim); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:2px; }
-  .modal-meta-grid .value{ color:var(--text); font-size:15px; font-weight:600; }
-  .modal-synopsis-label{ font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-dim); margin-bottom:6px; }
-  .modal-synopsis{ font-size:15px; line-height:1.6; color:#e5e7eb; margin-bottom:26px; }
+  .modal-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; font-size: 14px; color: var(--text-dim); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .modal-meta-grid .label { color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+  .modal-meta-grid .value { color: var(--text); font-size: 15px; font-weight: 600; }
+  .modal-synopsis-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 6px; }
+  .modal-synopsis { font-size: 15px; line-height: 1.6; color: #e5e7eb; margin-bottom: 26px; }
   
-  .modal-cta{ display:inline-flex; align-items:center; gap:10px; background:var(--marquee); color:#fff; font-weight:700; font-size:16px; padding:14px 28px; border-radius:10px; border:none; cursor:pointer; width:100%; justify-content:center; box-shadow: 0 4px 15px rgba(232,72,44,0.3); transition: 0.2s; }
-  .modal-cta:hover, .modal-cta:focus-visible{ background:#fff; color:#000; outline: none; transform: scale(1.02); }
-  .modal-cta.manual{ background:var(--surface-2); border:1px solid var(--line); color:var(--text); }
+  .modal-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--marquee); color: #fff; font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer; width: 100%; justify-content: center; box-shadow: 0 4px 15px rgba(232,72,44,0.3); transition: 0.2s; }
+  .modal-cta:hover, .modal-cta:focus-visible { background: #fff; color: #000; outline: none; transform: scale(1.02); }
+  .modal-cta.manual { background: var(--surface-2); border: 1px solid var(--line); color: var(--text); }
   
-  .modal-cta.moviebox-btn {
-    background: linear-gradient(135deg, #ffc857, #c9860a);
-    color: #000;
-    font-weight: 800;
-    border: none;
-    margin-top: 8px;
-  }
-  .modal-cta.moviebox-btn:hover, .modal-cta.moviebox-btn:focus-visible {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 0 15px var(--gold);
-  }
+  .modal-cta.moviebox-btn { background: linear-gradient(135deg, #ffc857, #c9860a); color: #000; font-weight: 800; border: none; margin-top: 8px; }
+  .modal-cta.moviebox-btn:hover, .modal-cta.moviebox-btn:focus-visible { background: #fff; color: #000; box-shadow: 0 0 15px var(--gold); }
 
-  footer{ max-width:1600px; margin:50px auto 0; padding:24px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:14px; color:var(--text-dim); }
-  footer .dev-credit{color:var(--gold); font-weight:600;}
-  .disclaimer{ max-width:1600px; margin:40px auto 0; padding:16px 24px; font-size:13px; color:var(--text-dim); text-align:center; border-top:1px solid var(--line); }
-  .disclaimer-label{ color:var(--marquee); font-weight:900; font-size:16px; }
+  footer { max-width: 1600px; margin: 50px auto 0; padding: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 14px; color: var(--text-dim); }
+  footer .dev-credit { color: var(--gold); font-weight: 600; }
+  .disclaimer { max-width: 1600px; margin: 40px auto 0; padding: 16px 24px; font-size: 13px; color: var(--text-dim); text-align: center; border-top: 1px solid var(--line); }
+  .disclaimer-label { color: var(--marquee); font-weight: 900; font-size: 16px; }
 
-  @media (min-width:1600px){
-    .header-inner, .filters, .hero, .row-section, footer, .disclaimer{ max-width:1800px; }
-    .hero-card { min-height: 500px; }
+  @media (min-width: 1600px) {
+    .header-inner, .filters, .hero, .row-section, footer, .disclaimer { max-width: 1800px; }
+    .hero-carousel, .hero-track { min-height: 480px; }
     .hero-title { font-size: 64px; }
     .card { flex: 0 0 240px; }
     .card .poster { height: 330px; }
@@ -209,7 +186,6 @@
   <main id="rowsContainer"></main>
 
   <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-card" id="modalCard"></div>
   </div>
 
@@ -224,6 +200,7 @@
   </footer>
 
 <script>
+try {
 const PLATFORMS = {
   chorki:   { name:"Chorki",      color:"#e8482c", base:"https://www.chorki.com/en/movie/", manual:false, domain:"chorki.com" },
   bongo:    { name:"Bongo BD",    color:"#f2c14e", base:"#", manual:false, domain:"bongobd.com" },
@@ -247,24 +224,23 @@ const CHIP_ORDER = ["all","chorki","bongo","deepto","iscreen","hoichoi","bioscop
 const GRADIENTS = ["linear-gradient(160deg,#231111,#090a0c)", "linear-gradient(160deg,#111a24,#090a0c)", "linear-gradient(160deg,#1a1026,#090a0c)"];
 
 function daysAgo(n){ const d = new Date(); d.setDate(d.getDate()-n); return d; }
-function fmtDate(d){ return d.toLocaleDateString('en-US', {day:'numeric', month:'long', year:'numeric'}); }
+function fmtDate(d){ return d.toLocaleDateString('en-US', {day:'numeric', month:'short', year:'numeric'}); }
 
-// 🎬 আপনার ১১৪টি অরিজিনাল মুভির সম্পূর্ণ সুরক্ষিত ডেটাবেজ[cite: 1]
 const TITLES = [
-  {p:"chorki", t:"Lifeline", dur:"1h 40m", days:12, img:"https://image.chorkicdn.com/uploads/images/2026/06/20/thumbnails_75c45f3483c9c9ac3cacb7fc1d26baf8_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/lifeline", synopsis:"How far would you go, and what would you risk for the one you love? What drives Ananya, a city girl, to this distant village."[cite: 1]},
-  {p:"chorki", t:"Domm", dur:"2h 7m", days:43, img:"https://image.chorkicdn.com/uploads/images/2026/05/20/thumbnails_9a17986cf1a558e41096ed09c653767d_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/domm", synopsis:"Noor, a man from a small town, gets the chance to go abroad through his job. But in an unfamiliar country, Noor faces danger."[cite: 1]},
-  {p:"chorki", t:"Cha Gorom", dur:"1h 42m", days:80, img:"https://image.chorkicdn.com/uploads/images/2026/04/13/thumbnails_19641cb69a27d1a77cd9e5aa7bb5b2ba_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/cha-gorom", synopsis:"After completing her MBBS, Jerin unexpectedly arrives at a remote, network-less tea estate in Sylhet."[cite: 1]},
-  {p:"chorki", t:"Meu", dur:"1h 7m", days:120, img:"https://image.chorkicdn.com/uploads/images/2026/03/04/thumbnails_50c0741b2399441a9837abd4a6bf1890_goplay_1200x675jpg.jpeg?w=1080&q=75", url:"https://www.chorki.com/movie/meu", synopsis:"One morning, Raha's beloved cat, Meu, suddenly goes missing. Unable to find Meu, Raha becomes deeply distressed."[cite: 1]},
-  {p:"chorki", t:"Dimlight", dur:"1h 59m", days:204, img:"https://image.chorkicdn.com/uploads/images/2025/12/10/thumbnails_dcb4f23445d9a6c77f59f3c2d268f454_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/dimlight", synopsis:"Tears hidden behind laughter, a quiet love tucked between family quarrels, and the struggle of a comedian."[cite: 1]},
-  {p:"chorki", t:"Tomar Jonno Mon", dur:"1h 21m", days:163, img:"https://image.chorkicdn.com/uploads/images/2026/01/20/thumbnails_7602c855e3d86c458cebd63dc7aa0535_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/tomar-jonno-mon", synopsis:"During a trip to Cox's Bazar, Piu meets Raownak, a boy from her own town. Amid the waves and sunsets."[cite: 1]},
-  {p:"chorki", t:"Little Miss Chaos", dur:"1h 14m", days:267, img:"https://image.chorkicdn.com/uploads/images/2025/10/08/thumbnails_3690da149158e806bd472fb368479b5f_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/little-miss-chaos", synopsis:"Ira grows up in the hollow of absence. A mother too distant, a father who never arrives."[cite: 1]},
-  {p:"chorki", t:"Insaaf", dur:"2h 29m", days:302, img:"https://image.chorkicdn.com/uploads/images/2025/09/03/thumbnails_88e61279954d67b179d05e04fd3b516a_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/insaaf", synopsis:"Yusuf, a brutal underworld kingpin, clashes with a relentless cop as a mysterious vigilante wages war on crime."[cite: 1]},
-  {p:"chorki", t:"Jaya Aar Sharmin", dur:"1h 26m", days:281, img:"https://image.chorkicdn.com/uploads/images/2025/09/24/thumbnails_7b3ca51bf2018bc6290c34ee404c06d0_goplay_1200x675.jpeg?w=1080&q=75", url:"https://www.chorki.com/movie/jaya-aar-sharmin", synopsis:"During the COVID-19 lockdown, an actress and her househelp find themselves together."[cite: 1]},
-  {p:"chorki", t:"Taandob", dur:"2h 8m", days:330, img:"https://image.chorkicdn.com/uploads/images/2025/08/06/thumbnails_8644fc475624c0a8787a0d2553516f2d_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/taandob", synopsis:"A group of masked assailants storms the office of the country's top television channel, taking the staff hostage."[cite: 1]},
-  {p:"chorki", t:"Utshob", dur:"1h 51m", days:330, img:"https://image.chorkicdn.com/uploads/images/2025/08/06/thumbnails_1196ea080b8e4339930b947e3243b8ec_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/utshob", synopsis:"Amidst Eid celebrations, miserly businessman Jahangir is visited by the spirits of his late cousin."[cite: 1]},
-  {p:"chorki", t:"Deyaler Desh", dur:"1h 59m", days:351, img:"https://image.chorkicdn.com/uploads/images/2025/07/16/thumbnails_04fd0112e51356819b6b06b843c4df33_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/deyaler-desh", synopsis:"At the hospital morgue, Baishakh discovers the dead body of his former lover Nohor."[cite: 1]},
-  {p:"chorki", t:"Daagi", dur:"2h 20m", days:392, img:"https://image.chorkicdn.com/uploads/images/2025/06/05/thumbnails_817748a5cc7b4de444f6ebc4e7b2fe55_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/daagi", synopsis:"Nishan spent more than twelve years behind bars. The story begins as he steps out of prison."[cite: 1]},
-  {p:"chorki", t:"Borbaad", dur:"2h 17m", days:392, img:"https://image.chorkicdn.com/uploads/images/2025/06/05/thumbnails_17dae7674f112cf37015270e3b202eff_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/borbaad", synopsis:"Ariyan Mirza seeks vengeance."},
+  {p:"chorki", t:"Lifeline", dur:"1h 40m", days:12, img:"https://image.chorkicdn.com/uploads/images/2026/06/20/thumbnails_75c45f3483c9c9ac3cacb7fc1d26baf8_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/lifeline", synopsis:"How far would you go, and what would you risk for the one you love? What drives Ananya, a city girl, to this distant village."},
+  {p:"chorki", t:"Domm", dur:"2h 7m", days:43, img:"https://image.chorkicdn.com/uploads/images/2026/05/20/thumbnails_9a17986cf1a558e41096ed09c653767d_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/domm", synopsis:"Noor, a man from a small town, gets the chance to go abroad through his job. But in an unfamiliar country, Noor faces danger."},
+  {p:"chorki", t:"Cha Gorom", dur:"1h 42m", days:80, img:"https://image.chorkicdn.com/uploads/images/2026/04/13/thumbnails_19641cb69a27d1a77cd9e5aa7bb5b2ba_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/cha-gorom", synopsis:"After completing her MBBS, Jerin unexpectedly arrives at a remote, network-less tea estate in Sylhet."},
+  {p:"chorki", t:"Meu", dur:"1h 7m", days:120, img:"https://image.chorkicdn.com/uploads/images/2026/03/04/thumbnails_50c0741b2399441a9837abd4a6bf1890_goplay_1200x675jpg.jpeg?w=1080&q=75", url:"https://www.chorki.com/movie/meu", synopsis:"One morning, Raha's beloved cat, Meu, suddenly goes missing. Unable to find Meu, Raha becomes deeply distressed."},
+  {p:"chorki", t:"Dimlight", dur:"1h 59m", days:204, img:"https://image.chorkicdn.com/uploads/images/2025/12/10/thumbnails_dcb4f23445d9a6c77f59f3c2d268f454_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/dimlight", synopsis:"Tears hidden behind laughter, a quiet love tucked between family quarrels, and the struggle of a comedian."},
+  {p:"chorki", t:"Tomar Jonno Mon", dur:"1h 21m", days:163, img:"https://image.chorkicdn.com/uploads/images/2026/01/20/thumbnails_7602c855e3d86c458cebd63dc7aa0535_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/tomar-jonno-mon", synopsis:"During a trip to Cox's Bazar, Piu meets Raownak, a boy from her own town. Amid the waves and sunsets."},
+  {p:"chorki", t:"Little Miss Chaos", dur:"1h 14m", days:267, img:"https://image.chorkicdn.com/uploads/images/2025/10/08/thumbnails_3690da149158e806bd472fb368479b5f_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/little-miss-chaos", synopsis:"Ira grows up in the hollow of absence. A mother too distant, a father who never arrives."},
+  {p:"chorki", t:"Insaaf", dur:"2h 29m", days:302, img:"https://image.chorkicdn.com/uploads/images/2025/09/03/thumbnails_88e61279954d67b179d05e04fd3b516a_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/insaaf", synopsis:"Yusuf, a brutal underworld kingpin, clashes with a relentless cop as a mysterious vigilante wages war on crime."},
+  {p:"chorki", t:"Jaya Aar Sharmin", dur:"1h 26m", days:281, img:"https://image.chorkicdn.com/uploads/images/2025/09/24/thumbnails_7b3ca51bf2018bc6290c34ee404c06d0_goplay_1200x675.jpeg?w=1080&q=75", url:"https://www.chorki.com/movie/jaya-aar-sharmin", synopsis:"During the COVID-19 lockdown, an actress and her househelp find themselves together."},
+  {p:"chorki", t:"Taandob", dur:"2h 8m", days:330, img:"https://image.chorkicdn.com/uploads/images/2025/08/06/thumbnails_8644fc475624c0a8787a0d2553516f2d_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/taandob", synopsis:"A group of masked assailants storms the office of the country's top television channel, taking the staff hostage."},
+  {p:"chorki", t:"Utshob", dur:"1h 51m", days:330, img:"https://image.chorkicdn.com/uploads/images/2025/08/06/thumbnails_1196ea080b8e4339930b947e3243b8ec_goplay_1200x675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/utshob", synopsis:"Amidst Eid celebrations, miserly businessman Jahangir is visited by the spirits of his late cousin."},
+  {p:"chorki", t:"Deyaler Desh", dur:"1h 59m", days:351, img:"https://image.chorkicdn.com/uploads/images/2025/07/16/thumbnails_04fd0112e51356819b6b06b843c4df33_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/deyaler-desh", synopsis:"At the hospital morgue, Baishakh discovers the dead body of his former lover Nohor."},
+  {p:"chorki", t:"Daagi", dur:"2h 20m", days:392, img:"https://image.chorkicdn.com/uploads/images/2025/06/05/thumbnails_817748a5cc7b4de444f6ebc4e7b2fe55_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/daagi", synopsis:"Nishan spent more than twelve years behind bars. The story begins as he steps out of prison."},
+  {p:"chorki", t:"Borbaad", dur:"2h 17m", days:392, img:"https://image.chorkicdn.com/uploads/images/2025/06/05/thumbnails_17dae7674f112cf37015270e3b202eff_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/borbaad", synopsis:"Haunted by lost love and fueled by his father's unwavering affection, Ariyan Mirza seeks vengeance."},
   {p:"chorki", t:"Jongli", dur:"2h 31m", days:392, img:"https://image.chorkicdn.com/uploads/images/2025/06/05/thumbnails_53b7c90a83310ef9c42325677a1a8c25_goplay_1200_675.jpg?w=1080&q=75", url:"https://www.chorki.com/movie/jongli", synopsis:"Liza made a difficult decision at the moment of the birth of her illegitimate child."},
   {p:"hoichoi", t:"The Eken: Kerala-e Kurukshetra (Film)", dur:"2h 5m", days:2, img:"https://image.hoichoicdn.com/unsafe/a9a09daad25d-446f-ae1f-b645d925ef8e-3x4.jpg", url:"https://www.bioscopeplus.com/movies/the-eken-kerala-e-kurukshetra-film", synopsis:"A few mysterious men from Kochi arrive out of nowhere and whisk away Eken Babu to Kerala."},
   {p:"hoichoi", t:"Ekshathe Alada", dur:"57m", days:182, img:"https://image.hoichoicdn.com/unsafe/f414c619c507-4c12-a315-83f4262a3091-EA_3x4_2.jpg", url:"https://www.bioscopeplus.com/movies/ekshathe-alada", synopsis:"When a couple realise their marriage is dead and mutually choose divorce."},
@@ -282,23 +258,25 @@ const TITLES = [
   {p:"bongo", t:"Tajmahal", dur:"2h 15m", days:20, img:"https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/d9ce7348-069f-464d-8ea3-c9af14e5b15d/423c4d9e-9f29-4d9b-9b43-e24ee82585ae.jpg?width=300", url:"https://bongobd.com/watch/CiKEC94M7q6?contentUuid=74771024-94a6-456e-8c0d-ec622dc511b9"},
   {p:"bongo", t:"Iccheta Je Here Geche", dur:"45m", days:22, img:"https://cdn.bongo-solutions.com/abfea462-f64d-491e-9cd9-75ee001f45b0/content/d698d931-0078-44a8-8e02-dcf3ea0964e3/bc4ee665-d06a-445c-a3cc-d0496c5a6bef.jpg?width=300", url:"https://bongobd.com/watch/BgDyXhtVAgw?contentUuid=d698d931-0078-44a8-8e02-dcf3ea0964e3"},
   {p:"bongo", t:"Mukhosh Mukho", dur:"1h 40m", days:24, img:"https://cdn.bongo-solutions.com/abfea462-f64d-491e-9cd9-75ee001f45b0/content/7732a7b8-f4a0-48a9-9e84-e6271a34e1fb/46b600bb-e368-4d31-8a6a-443ddde3389f.jpg?width=300", url:"https://bongobd.com/watch/Ic1SLuJrCiJ?contentUuid=7732a7b8-f4a0-48a9-9e84-e6271a34e1fb"},
-  {p:"bongo", t:"Confession of a Murder - Ekti Khuner Biboron", dur:"1h 25m", days:26, img:"https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/f096531d-ce1d-4b4a-bd4c-cd06b4daea8c/0b6e8e99-ad8b-4887-8c2b-dd13f2144910.jpg?width=300", url:"https://bongobd.com/watch/rMEJr36R4oM?contentUuid=b685dbad-4d7b-4fdf-b837-2495f040023a"},
+  {p:"bongo", t:"Confession of a Murder", dur:"1h 25m", days:26, img:"https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/f096531d-ce1d-4b4a-bd4c-cd06b4daea8c/0b6e8e99-ad8b-4887-8c2b-dd13f2144910.jpg?width=300", url:"https://bongobd.com/watch/rMEJr36R4oM?contentUuid=b685dbad-4d7b-4fdf-b837-2495f040023a"},
   {p:"bongo", t:"Shortcut", dur:"1h 55m", days:28, img:"https://cdn.bongo-solutions.com/abfea462-f64d-491e-9cd9-75ee001f45b0/content/1621ee78-f4dd-4386-ae52-2b8ff470a389/b20e5d75-4afc-423a-973a-652533b127f8.jpg?width=300", url:"https://bongobd.com/watch/1ZjUyo88b2t?contentUuid=1621ee78-f4dd-4386-ae52-2b8ff470a389"},
   {p:"bongo", t:"Nextdoor Neighbor", dur:"1h 35m", days:30, img:"https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/28a8a4a8-bd46-4a71-9984-4f8bd19bf913/a46b15d3-d3c1-44c9-94da-de2b2e2a7997.jpg?width=300", url:"https://bongobd.com/watch/zfRs28yKU7r?contentUuid=1d9f6048-a612-4946-9d56-22f73c503109"},
-  {p:"bioscope", t:"Atom: 150 Years of Lies", dur:"56m", days:12, img:"https://dbcmsassets.docubay.com/featured-images/1776839663-atom150-years-of-lies-1080x1543-540x772.jpg", url:"https://www.bioscopeplus.com/documentaries/atom-150-years-of-lies-4832", synopsis:"From Chernobyl to Fukushima, this gripping investigation exposes the human cost of nuclear power. Through the testimonies of irradiated soldiers, workers and children, the document"},
-  {p:"bioscope", t:"Noor", dur:"1h 30m", days:15, img:"https://asset.bioscopelive.com/uploads/images/2025/12/21/posters_692dcbee096884d42aa509214ebb741d_goplay_noor_new_poster.jpg", url:"https://www.bioscopeplus.com/movies/noor", synopsis:"Noor (Arefin Shuvo) is a man whose love burns brighter than reason. From the moment he meets Shiuli, she becomes the center of his world — his first thought every morning, his last"},
-  {p:"iscreen", t:"Patok", dur:"1h 15m", days:14, img:"https://img.rockstreamer.com/220xauto/images/ClLdzFCEFpVgT6ruwzHz.jpg", url:"https://www.bioscopeplus.com/videos/patok", synopsis:"Students from various universities participated in the July Student Movement. The play is based on the July Movement."},
-  {p:"iscreen", t:"Dui Duari", dur:"1h 27m", days:25, img:"https://img.rockstreamer.com/220xauto/images/OqoCQsJRGyJvkjz1a76R.jpg", url:"https://www.bioscopeplus.com/videos/dui-duari", synopsis:"Suddenly a Stranger appeared in a family. He himself does not know where he came from and where he will go. He blends in with every character in that family & Everyone started beli"},
-  {p:"deepto", t:"Taandob", dur:"2h 8m", days:3, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/08/13/posters_5357101352723e0a50514035c40dd4e8_goplay_tandon_main_thumbnail_2.png", url:"https://www.deeptoplay.com/films/taandob", synopsis:"When a common man protests against a corrupt system and holds two ministers of a country hostage—ministers who once framed him in a false case and destroyed his life—he can be dang"},
-  {p:"deepto", t:"Amor Prem", dur:"1h 50m", days:19, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2026/03/01/posters_63e06223cb94c1428cc5fa7e964dc137_goplay_omor_prem_vod_2.jpg", url:"https://www.deeptoplay.com/films/amor-prem", synopsis:"Can and Zeynep come from two completely different worlds. Their love faces barriers of class, prejudice, and past secrets — but true love knows no limits."},
+  {p:"bioscope", t:"Atom: 150 Years of Lies", dur:"56m", days:12, img:"https://dbcmsassets.docubay.com/featured-images/1776839663-atom150-years-of-lies-1080x1543-540x772.jpg", url:"https://www.bioscopeplus.com/documentaries/atom-150-years-of-lies-4832", synopsis:"From Chernobyl to Fukushima, this gripping investigation exposes the human cost of nuclear power."},
+  {p:"bioscope", t:"Noor", dur:"1h 30m", days:15, img:"https://asset.bioscopelive.com/uploads/images/2025/12/21/posters_692dcbee096884d42aa509214ebb741d_goplay_noor_new_poster.jpg", url:"https://www.bioscopeplus.com/movies/noor", synopsis:"Noor (Arefin Shuvo) is a man whose love burns brighter than reason."},
+  {p:"iscreen", t:"Patok", dur:"1h 15m", days:14, img:"https://img.rockstreamer.com/220xauto/images/ClLdzFCEFpVgT6ruwzHz.jpg", url:"https://www.bioscopeplus.com/videos/patok", synopsis:"Students from various universities participated in the July Student Movement."},
+  {p:"iscreen", t:"Dui Duari", dur:"1h 27m", days:25, img:"https://img.rockstreamer.com/220xauto/images/OqoCQsJRGyJvkjz1a76R.jpg", url:"https://www.bioscopeplus.com/videos/dui-duari", synopsis:"Suddenly a Stranger appeared in a family."},
+  {p:"deepto", t:"Taandob", dur:"2h 8m", days:3, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2025/08/13/posters_5357101352723e0a50514035c40dd4e8_goplay_tandon_main_thumbnail_2.png", url:"https://www.deeptoplay.com/films/taandob", synopsis:"When a common man protests against a corrupt system and holds two ministers hostage."},
+  {p:"deepto", t:"Amor Prem", dur:"1h 50m", days:19, img:"https://jcwsw2vt33.gpcdn.net/uploads/images/2026/03/01/posters_63e06223cb94c1428cc5fa7e964dc137_goplay_omor_prem_vod_2.jpg", url:"https://www.deeptoplay.com/films/amor-prem", synopsis:"Can and Zeynep come from two completely different worlds."},
   {p:"utsob", t:"Prince", dur:"2h 27m", days:2, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_bbe04e8369060803811de11745d56f59_goplay_prince_poster_2.jpg", url:"https://www.utshob.live/movies/prince", synopsis:"In Dhaka, a larger-than-life figure navigates power, loyalty, and destiny."},
   {p:"utsob", t:"Agontuk ", dur:"2h 2m", days:25, img:"https://ywexkeadfv.gpcdn.net/uploads/images/2026/06/22/posters_bd991ea5ee6992eafc0e719c9702368a_goplay_whatsapp_image_2026_06_22_at_61656_pm.jpeg", url:"https://www.utshob.live/movies/agontuk", synopsis:"Agontuk is a 2024 Bangladeshi Bengali language psychological thriller film."},
   {p:"toffee", t:"Vivarium", dur:"1h 32m", days:2, img:"https://assets-prod.services.toffeelive.com/w_320,q_75,f_webp/uc1mSZYBtpl-Sbt7NNRw/posters/72353580-7f4e-4caa-9b77-5fc9317162de.png", url:"https://toffeelive.com/en/movies/uc1mSZYBtpl-Sbt7NNRw"},
   {p:"toffee", t:"Dirilis Ertugrul", dur:"45m", days:5, img:"https://assets-prod.services.toffeelive.com/w_320,q_75,f_webp/LC7jMJUBv9knK3AHb4Jc/posters/c30da2ee-fa83-4ce2-88f6-8d0f09472ba4.png", url:"https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc"},
   {p:"binge", t:"Prohelika", dur:"40m x 6 Eps", cast:"Irfan Sajjad", days:10},
   {p:"binge", t:"Shohor Bangla", dur:"35m x 8 Eps", cast:"Manoj Pramanik", days:26},
-  {p:"netflix", t:"Obsession", dur:"1h 50m", days:2, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix, Prime Video, and Hotstar today – including 4K and free options."},
-  {p:"netflix", t:"Sapio", dur:"1h 45m", days:5, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix, Prime Video, and Hotstar today."},
+  
+  /* International Tabs */
+  {p:"netflix", t:"Obsession", dur:"1h 50m", days:2, img:"https://images.justwatch.com/poster/343088830/s718/obsession-2026.jpg", url:"https://www.justwatch.com/in/movie/obsession-2026", synopsis:"Find out how and where to watch \"Obsession\" online on Netflix."},
+  {p:"netflix", t:"Sapio", dur:"1h 45m", days:5, img:"https://images.justwatch.com/poster/314225969/s718/sapio.jpg", url:"https://www.justwatch.com/in/movie/sapio", synopsis:"Find out how and where to watch \"Sapio\" online on Netflix."},
   {p:"netflix", t:"Madrid, 1987", dur:"1h 42m", days:8, img:"https://images.justwatch.com/poster/319900379/s718/madrid-1987.jpg", url:"https://www.justwatch.com/in/movie/madrid-1987"},
   {p:"netflix", t:"Now & Later", dur:"1h 36m", days:11, img:"https://images.justwatch.com/poster/332415494/s718/now-and-later.jpg", url:"https://www.justwatch.com/in/movie/now-and-later"},
   {p:"netflix", t:"365 Days", dur:"1h 54m", days:14, img:"https://images.justwatch.com/poster/188677401/s718/365-days.jpg", url:"https://www.justwatch.com/in/movie/365-days"},
@@ -313,18 +291,44 @@ const TITLES = [
   {p:"sonyliv", t:"Kalamkaval", dur:"2h 17m", days:27, img:"https://origin-staticv2.sonyliv.com/videoasset_images/blitz_assets/1590014678/portraitThumb/1768408879587_./Kalamkaval_2_Portrait_Thumb_NewMovie.jpg", url:"https://www.bioscopeplus.com/movies/kalamkaval"}
 ];
 
-const contentFlags = {};
+function hashSeed(str){ let h = 0; for(let i=0; i<str.length; i++){ h = (h*31 + str.charCodeAt(i)) | 0; } return Math.abs(h); }
+function fakeRatingFor(t, p){ return (3.5 + (hashSeed(t + p) % 16) / 10).toFixed(1); }
+function fakeViewsFor(t, p){ const val = 500 + (hashSeed(p + t + 'views') % 49500); return val >= 1000 ? (val/1000).toFixed(1) + 'k' : String(val); }
+
+const DATA = TITLES.map((x,i) => ({
+  ...x, id:i, date: daysAgo(x.days), grad: GRADIENTS[i % GRADIENTS.length],
+  fakeRating: fakeRatingFor(x.t, x.p), fakeViews: fakeViewsFor(x.t, x.p), fakeGenre: "Cinematic Mix", url: x.url || "#"
+}));
+
+(function mergeDuplicateTitles(){
+  const firstByTitle = new Map();
+  DATA.forEach(item => {
+    if(PLATFORMS[item.p] && PLATFORMS[item.p].group !== "intl") return;
+    const key = item.t.trim().toLowerCase();
+    if(firstByTitle.has(key)){
+      const first = firstByTitle.get(key);
+      if(!first.platforms) first.platforms = [first.p];
+      if(!first.platforms.includes(item.p)) first.platforms.push(item.p);
+      item.merged = true;
+    } else {
+      firstByTitle.set(key, item);
+    }
+  });
+})();
+
 let activeFilter = "all";
 let searchQuery = "";
 let show18Plus = false;
 
 function renderFilters(){
   const filtersEl = document.getElementById('filters');
+  if(!filtersEl) return;
   let html = `<button class="chip active" data-p="all" tabindex="0"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" style="background:transparent; width:16px; height:16px; margin-right:6px;"><path d="M12 2l2.2 6.8H21l-5.6 4.1 2.1 6.9L12 15.8 6.5 19.8l2.1-6.9L3 8.8h6.8z" fill="#ffc857"/></svg>Home Featured</button>`;
-  CHIP_ORDER.slice(1).forEach(key=>{
+  
+  CHIP_ORDER.slice(1).forEach(key => {
     if(key === "intl") {
       html += `<button class="chip" data-p="intl" style="--dot:#7d5fff" tabindex="0">🌐 International</button>`;
-    } else {
+    } else if(PLATFORMS[key]) {
       const plat = PLATFORMS[key];
       const fallbackFav = `https://www.google.com/s2/favicons?domain=${plat.domain}&sz=64`;
       const logoIcon = plat.icon ? plat.icon : fallbackFav;
@@ -332,9 +336,10 @@ function renderFilters(){
     }
   });
   filtersEl.innerHTML = html;
-  filtersEl.querySelectorAll('.chip').forEach(chip=>{
-    chip.addEventListener('click', ()=>{
-      filtersEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  
+  filtersEl.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      filtersEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       activeFilter = chip.dataset.p;
       render();
@@ -343,9 +348,9 @@ function renderFilters(){
 }
 
 function cardHTML(item){
-  const plat = PLATFORMS[item.p];
+  const plat = PLATFORMS[item.p] || { name: item.p, color: "#fff" };
   const platformList = item.platforms || [item.p];
-  const tagLabel = platformList.map(pk => PLATFORMS[pk].name).join(' / ');
+  const tagLabel = platformList.map(pk => PLATFORMS[pk]?.name || pk).join(' / ');
   const blurred = !show18Plus && (item.adult || item.autoAdult);
   
   return `
@@ -365,7 +370,7 @@ function cardHTML(item){
 }
 
 function heroSlideHTML(item, index){
-  const plat = PLATFORMS[item.p];
+  const plat = PLATFORMS[item.p] || { name: item.p, color: "#fff" };
   const heroBg = item.img ? `linear-gradient(90deg, rgba(9,10,12,1) 40%, rgba(9,10,12,0.4) 70%, rgba(9,10,12,0) 100%), url('${item.img}')` : null;
   return `
     <div class="hero-card ${index === 0 ? 'active' : ''}" data-id="${item.id}" style="--hero-grad:${item.grad}; ${heroBg ? `background-image:${heroBg}; background-size:cover; background-position:right center;` : ''}">
@@ -384,10 +389,10 @@ const HERO_AUTOPLAY_MS = 6000;
 
 function renderHero(list){
   const heroEl = document.getElementById('heroSection');
+  if(!heroEl) return;
   if(heroAutoplayTimer){ clearInterval(heroAutoplayTimer); heroAutoplayTimer = null; }
-  if(!list.length){ heroEl.innerHTML = ''; return; }
   
-  const pool = list.filter(d => PLATFORMS[d.p].group !== 'intl');
+  const pool = list.filter(d => PLATFORMS[d.p] && PLATFORMS[d.p].group !== 'intl');
   if(!pool.length){ heroEl.innerHTML = ''; return; }
   
   const displaySlides = pool.slice(0, 6); 
@@ -411,7 +416,6 @@ function renderHero(list){
   const showSlide = (newIdx) => {
     if (newIdx >= displaySlides.length) newIdx = 0;
     if (newIdx < 0) newIdx = displaySlides.length - 1;
-    
     cards.forEach((c, i) => c.classList.toggle('active', i === newIdx));
     dots.forEach((d, i) => d.classList.toggle('active', i === newIdx));
     currentIdx = newIdx;
@@ -419,30 +423,28 @@ function renderHero(list){
 
   heroEl.querySelector('.hero-arrow.prev').addEventListener('click', () => showSlide(currentIdx - 1));
   heroEl.querySelector('.hero-arrow.next').addEventListener('click', () => showSlide(currentIdx + 1));
-  
-  dots.forEach(d => {
-    d.addEventListener('click', () => showSlide(Number(d.dataset.i)));
-  });
+  dots.forEach(d => { d.addEventListener('click', () => showSlide(Number(d.dataset.i))); });
 
-  heroAutoplayTimer = setInterval(() => {
-    showSlide(currentIdx + 1);
-  }, HERO_AUTOPLAY_MS);
+  heroAutoplayTimer = setInterval(() => { showSlide(currentIdx + 1); }, HERO_AUTOPLAY_MS);
 }
 
 function render(){
   const rows = document.getElementById('rowsContainer');
-  let pool = DATA.filter(d=>{
+  if(!rows) return;
+  
+  let pool = DATA.filter(d => {
     if(d.merged) return false;
-    if(activeFilter === "all"){
-      if(!show18Plus && PLATFORMS[d.p].group === "intl") return false;
-      return true;
-    }
-    if(activeFilter === "intl") return PLATFORMS[d.p].group === "intl";
+    const isIntl = PLATFORMS[d.p] && PLATFORMS[d.p].group === "intl";
+    if(activeFilter === "all") return show18Plus ? true : !isIntl;
+    if(activeFilter === "intl") return isIntl;
     return d.p === activeFilter;
   });
 
-  if(searchQuery) pool = pool.filter(d => d.t.toLowerCase().includes(searchQuery.toLowerCase()));
-  pool.sort((a,b)=> a.days - b.days);
+  if(searchQuery) {
+    const q = searchQuery.toLowerCase();
+    pool = pool.filter(d => d.t.toLowerCase().includes(q));
+  }
+  pool.sort((a,b) => a.days - b.days);
 
   renderHero(pool);
 
@@ -461,18 +463,20 @@ function render(){
   }
   rows.innerHTML = html;
 
-  rows.querySelectorAll('.card').forEach(c=>{
-    c.addEventListener('click', ()=> openModal(Number(c.dataset.id)));
+  rows.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('click', () => openModal(Number(c.dataset.id)));
   });
 }
 
 function openModal(id){
   const item = DATA.find(d => d.id === id);
   if(!item) return;
-  const plat = PLATFORMS[item.p];
-  const isInternational = plat.group === "intl" || item.platforms?.some(p => PLATFORMS[p].group === "intl");
+  const plat = PLATFORMS[item.p] || { name: item.p, color: "#fff" };
+  const isInternational = (plat.group === "intl") || (item.platforms && item.platforms.some(p => PLATFORMS[p] && PLATFORMS[p].group === "intl"));
   
   const overlay = document.getElementById('modalOverlay');
+  if(!overlay) return;
+  
   const encodedTitle = encodeURIComponent(item.t);
   const movieboxAppUrl = `https://moviebox.ph/web/searchResult?keyword=${encodedTitle}`;
 
@@ -484,80 +488,99 @@ function openModal(id){
     actionButtons += `<button class="modal-cta" onclick="window.open('${item.url}','_blank')" tabindex="0">▶ Watch on ${plat.name} Network</button>`;
   }
 
-  overlay.innerHTML = `
-    <div class="modal-card">
-      <button class="modal-close" id="modalClose">✕</button>
-      <div class="modal-image" style="background-image:url('${item.img || ''}'); background-color:var(--surface-2);"></div>
-      <div class="modal-details">
-        <span class="modal-platform-badge" style="background:${plat.color}">${plat.name}</span>
-        <div class="modal-title">${item.t}</div>
-        <div class="modal-meta-grid">
-          <div><div class="label">Runtime</div><div class="value">${item.dur || 'N/A'}</div></div>
-          <div><div class="label">IMDb Score</div><div class="value">★ ${item.fakeRating}</div></div>
-          <div><div class="label">Genre</div><div class="value">Cinematic Mix</div></div>
-          <div><div class="label">Total Views</div><div class="value">👁 ${item.fakeViews}</div></div>
-        </div>
-        <div class="modal-synopsis-label">Synopsis / Briefing</div>
-        <div class="modal-synopsis">${item.synopsis || 'Detailed storyline information for this title will be available soon. Stay tuned with STREAMguide BD.'}</div>
-        ${actionButtons}
+  const modalDetailsContainer = document.createElement('div');
+  modalDetailsContainer.innerHTML = `
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-image" style="background-image:url('${item.img || ''}'); background-color:var(--surface-2);"></div>
+    <div class="modal-details">
+      <span class="modal-platform-badge" style="background:${plat.color}">${plat.name}</span>
+      <div class="modal-title">${item.t}</div>
+      <div class="modal-meta-grid">
+        <div><div class="label">Runtime</div><div class="value">${item.dur || 'N/A'}</div></div>
+        <div><div class="label">IMDb Score</div><div class="value">★ ${item.fakeRating}</div></div>
+        <div><div class="label">Genre</div><div class="value">Cinematic Mix</div></div>
+        <div><div class="label">Total Views</div><div class="value">👁 ${item.fakeViews}</div></div>
       </div>
+      <div class="modal-synopsis-label">Synopsis / Briefing</div>
+      <div class="modal-synopsis">${item.synopsis || 'Detailed storyline information for this title will be available soon. Stay tuned with STREAMguide BD.'}</div>
+      ${actionButtons}
     </div>`;
 
-  document.getElementById('modalClose').addEventListener('click', closeModal);
+  const modalCard = document.getElementById('modalCard');
+  if(modalCard) {
+    modalCard.innerHTML = '';
+    modalCard.appendChild(modalDetailsContainer);
+  }
+
+  const closeBtn = document.getElementById('modalClose');
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('open');
+  const overlay = document.getElementById('modalOverlay');
+  if(overlay) overlay.classList.remove('open');
   document.body.style.overflow = '';
 }
 
 document.addEventListener('keydown', (e)=>{
   const focused = document.activeElement;
-  if (!focused) return;
+  if (!focused || !focused.classList.contains('card')) return;
   
-  if (focused.classList.contains('card')) {
-    const currentRow = focused.closest('.row-scroll');
-    if (!currentRow) return;
-    const cards = Array.from(currentRow.querySelectorAll('.card'));
-    const idx = cards.indexOf(focused);
-    const allRows = Array.from(document.querySelectorAll('.row-scroll'));
-    const rowIdx = allRows.indexOf(currentRow);
+  const currentRow = focused.closest('.row-scroll');
+  if (!currentRow) return;
+  const cards = Array.from(currentRow.querySelectorAll('.card'));
+  const idx = cards.indexOf(focused);
+  const allRows = Array.from(document.querySelectorAll('.row-scroll'));
+  const rowIdx = allRows.indexOf(currentRow);
 
-    if (e.key === 'ArrowRight' && idx < cards.length - 1) {
-      e.preventDefault(); cards[idx+1].focus();
-    } else if (e.key === 'ArrowLeft' && idx > 0) {
-      e.preventDefault(); cards[idx-1].focus();
-    } else if (e.key === 'ArrowDown' && rowIdx < allRows.length - 1) {
-      e.preventDefault();
-      const nextCards = Array.from(allRows[rowIdx+1].querySelectorAll('.card'));
-      (nextCards[Math.min(idx, nextCards.length-1)] || nextCards[0]).focus();
-    } else if (e.key === 'ArrowUp' && rowIdx > 0) {
-      e.preventDefault();
-      const prevCards = Array.from(allRows[rowIdx-1].querySelectorAll('.card'));
-      (prevCards[Math.min(idx, prevCards.length-1)] || prevCards[0]).focus();
-    } else if (e.key === 'Enter') {
-      focused.click();
-    }
+  if (e.key === 'ArrowRight' && idx < cards.length - 1) {
+    e.preventDefault(); cards[idx+1].focus();
+  } else if (e.key === 'ArrowLeft' && idx > 0) {
+    e.preventDefault(); cards[idx-1].focus();
+  } else if (e.key === 'ArrowDown' && rowIdx < allRows.length - 1) {
+    e.preventDefault();
+    const nextCards = Array.from(allRows[rowIdx+1].querySelectorAll('.card'));
+    (nextCards[Math.min(idx, nextCards.length-1)] || nextCards[0]).focus();
+  } else if (e.key === 'ArrowUp' && rowIdx > 0) {
+    e.preventDefault();
+    const prevCards = Array.from(allRows[rowIdx-1].querySelectorAll('.card'));
+    (prevCards[Math.min(idx, prevCards.length-1)] || prevCards[0]).focus();
+  } else if (e.key === 'Enter') {
+    focused.click();
   }
 });
 
-document.getElementById('searchInput').addEventListener('input', (e)=>{ searchQuery = e.target.value; render(); });
-document.getElementById('ageToggle').addEventListener('click', ()=>{
-  show18Plus = !show18Plus;
-  document.getElementById('ageToggle').classList.toggle('on', show18Plus);
-  render();
-});
+const searchInput = document.getElementById('searchInput');
+if(searchInput) {
+  searchInput.addEventListener('input', (e) => { searchQuery = e.target.value; render(); });
+}
+
+const toggleBtn = document.getElementById('ageToggle');
+if(toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    show18Plus = !show18Plus;
+    toggleBtn.classList.toggle('on', show18Plus);
+    render();
+  });
+}
 
 (function initVisitorStats(){
   const el = document.getElementById('visitorStats');
-  if(!el) return;
-  el.textContent = "Today Visitors: 142 • Active Viewers: 27 • Total Visitors: 4,923";
+  if(el) el.textContent = "Today Visitors: 142 • Active Viewers: 27 • Total Visitors: 4,923";
 })();
 
-renderFilters();
-render();
+try {
+  renderFilters();
+  render();
+} catch (e) {
+  console.error("STREAMguide BD Render Error:", e);
+}
+} catch(e) {
+  console.error("STREAMguide BD Initialization Error:", e);
+}
 </script>
 </body>
 </html>
