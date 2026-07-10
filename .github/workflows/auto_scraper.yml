@@ -2,22 +2,25 @@ name: STREAMguide Auto Data Scraper
 
 on:
   schedule:
-    # প্রতিদিন বাংলাদেশ সময় সকাল ১১টা (UTC 05:00) এবং রাত ৯টায় (UTC 15:00) রান করবে
     - cron: '0 5,15 * * *'
-  
-  # ম্যানুয়ালি রান করার জন্য
   workflow_dispatch:
+
+# 🌟 ম্যাজিক ফিক্স: বটকে রিপোজিটরিতে ফাইল সেভ করার পারমিশন দেওয়া হলো 🌟
+permissions:
+  contents: write
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
 
     steps:
+      # Warning দূর করতে v4 ব্যবহার করা হলো
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
+      # Warning দূর করতে v5 ব্যবহার করা হলো
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -29,7 +32,6 @@ jobs:
 
       - name: Run Scraper Script
         run: |
-          # আপনার পাইথন ফাইলের নাম রান করা হচ্ছে
           python All_Site_Scraper.py
 
       - name: Commit and Push Changes
@@ -37,5 +39,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "STREAMguide Bot"
           git add data.json
-          # যদি নতুন কোনো ডেটা থাকে, তবেই সে কমিট ও পুশ করবে
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update data.json with new releases" && git push)
