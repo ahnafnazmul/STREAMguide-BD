@@ -1,0 +1,42 @@
+name: STREAMguide Auto Data Scraper
+
+on:
+  schedule:
+    # বাংলাদেশ সময় প্রতিদিন সকাল ১১টা (UTC 05:00) এবং রাত ৯টায় (UTC 15:00) রান করবে
+    - cron: '0 5,15 * * *'
+  
+  # এই অপশনটির ফলে আপনি চাইলে গিটহাব থেকে ম্যানুয়ালিও একটি ক্লিকে বট রান করাতে পারবেন
+  workflow_dispatch:
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # 🌟 এখানে পাইথন সেটআপ করা হচ্ছে (যদি আপনার স্ক্রিপ্ট JS এর হয়, তবে আমরা এটা বদলাব)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          # আপনার স্ক্রিপ্ট রান করতে যেসব মডিউল লাগবে (যেমন requests) তা ইনস্টল করা হচ্ছে
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Run Scraper Script
+        run: |
+          # এখানে আপনার স্ক্র্যাপিং ফাইলের নাম বসবে
+          python scraper.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "STREAMguide Bot"
+          git add data.json
+          # যদি নতুন কোনো ডেটা থাকে, তবেই সে কমিট ও পুশ করবে
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update data.json with new releases" && git push)
