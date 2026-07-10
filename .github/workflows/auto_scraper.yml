@@ -2,10 +2,10 @@ name: STREAMguide Auto Data Scraper
 
 on:
   schedule:
-    # বাংলাদেশ সময় প্রতিদিন সকাল ১১টা (UTC 05:00) এবং রাত ৯টায় (UTC 15:00) রান করবে
+    # প্রতিদিন বাংলাদেশ সময় সকাল ১১টা (UTC 05:00) এবং রাত ৯টায় (UTC 15:00) রান করবে
     - cron: '0 5,15 * * *'
   
-  # এই অপশনটির ফলে আপনি চাইলে গিটহাব থেকে ম্যানুয়ালিও একটি ক্লিকে বট রান করাতে পারবেন
+  # ম্যানুয়ালি রান করার জন্য
   workflow_dispatch:
 
 jobs:
@@ -16,22 +16,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # 🌟 এখানে পাইথন সেটআপ করা হচ্ছে (যদি আপনার স্ক্রিপ্ট JS এর হয়, তবে আমরা এটা বদলাব)
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.10'
 
       - name: Install Dependencies
         run: |
-          # আপনার স্ক্রিপ্ট রান করতে যেসব মডিউল লাগবে (যেমন requests) তা ইনস্টল করা হচ্ছে
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4
+          pip install -r requirements.txt
+          playwright install chromium
 
       - name: Run Scraper Script
         run: |
-          # এখানে আপনার স্ক্র্যাপিং ফাইলের নাম বসবে
-          python scraper.py
+          # আপনার পাইথন ফাইলের নাম রান করা হচ্ছে
+          python All_Site_Scraper.py
 
       - name: Commit and Push Changes
         run: |
