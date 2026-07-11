@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "movie_name": "তুফান",
+    "image_url": "https://i.ibb.co/example/tufan.jpg",
+    "rating": "৮.৫/১০",
+    "review_text": "শাকিব খানের অভিনয় এবং রায়হান রাফীর ডিরেকশন মিলিয়ে অসাধারণ একটা সিনেমা। দেশি ওটিটি প্ল্যাটফর্মে এমন প্রোডাকশন সত্যিই আমাদের জন্য গর্বের। স্টোরিটেলিং একদম শেষ পর্যন্ত ধরে রাখে, চোখের পলক ফেলার সুযোগ নেই!",
+    "youtube_embed_link": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  {
+    "id": 2,
+    "movie_name": "মাইশেলফ অ্যালেন স্বপন",
+    "image_url": "https://i.ibb.co/example/allen.jpg",
+    "rating": "৯/১০",
+    "review_text": "নাসির উদ্দিন খানের 'অ্যালেন স্বপন' চরিত্রটি রীতিমতো আইকনিক হয়ে গেছে। শিহাব শাহীনের পরিচালনায় এই স্পিন-অফ সিরিজটি থ্রিল আর ডার্ক কমেডির এক অদ্ভুত সুন্দর মিশ্রণ।",
+    "youtube_embed_link": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  }
+]
