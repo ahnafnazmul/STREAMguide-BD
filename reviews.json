@@ -1,18 +1,62 @@
 [
   {
-    "id": 1,
-    "movie_name": "তুফান",
-    "image_url": "https://i.ibb.co/example/tufan.jpg",
+    "movie_name": "Agontuk",
     "rating": "৮.৫/১০",
-    "review_text": "শাকিব খানের অভিনয় এবং রায়হান রাফীর ডিরেকশন মিলিয়ে অসাধারণ একটা সিনেমা। দেশি ওটিটি প্ল্যাটফর্মে এমন প্রোডাকশন সত্যিই আমাদের জন্য গর্বের। স্টোরিটেলিং একদম শেষ পর্যন্ত ধরে রাখে, চোখের পলক ফেলার সুযোগ নেই!",
-    "youtube_embed_link": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    "review_text": "অসাধারণ নির্মাণ, গল্পের পরতে পরতে রহস্য। শেষ দৃশ্য পর্যন্ত সাসপেন্স ধরে রাখতে পেরেছে দারুণভাবে।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
   },
   {
-    "id": 2,
-    "movie_name": "মাইশেলফ অ্যালেন স্বপন",
-    "image_url": "https://i.ibb.co/example/allen.jpg",
+    "movie_name": "Gayer Suvashini",
+    "rating": "৮/১০",
+    "review_text": "গ্রাম বাংলার চিরায়ত রূপ এবং চমৎকার অভিনয়। স্টোরিটেলিং খুব সাধারণ হলেও মনে গেঁথে থাকার মতো।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  },
+  {
+    "movie_name": "Sarder Barir Khela",
     "rating": "৯/১০",
-    "review_text": "নাসির উদ্দিন খানের 'অ্যালেন স্বপন' চরিত্রটি রীতিমতো আইকনিক হয়ে গেছে। শিহাব শাহীনের পরিচালনায় এই স্পিন-অফ সিরিজটি থ্রিল আর ডার্ক কমেডির এক অদ্ভুত সুন্দর মিশ্রণ।",
-    "youtube_embed_link": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    "review_text": "অ্যাকশন এবং সাসপেন্সের এক দারুণ মেলবন্ধন। প্রতিটি চরিত্রের বিল্ডআপ খুব স্ট্রং ছিল।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  },
+  {
+    "movie_name": "Pother Pechal",
+    "rating": "৭.৫/১০",
+    "review_text": "খুব সুন্দর একটি পারিবারিক গল্পের উপস্থাপনা। ইমোশনাল দৃশ্যগুলো সত্যি চোখে জল এনে দেয়।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  },
+  {
+    "movie_name": "Cha Gorom",
+    "rating": "৮/১০",
+    "review_text": "দুর্দান্ত কমেডি এবং সমসাময়িক গল্পের মিশেল। উইকএন্ডে হালকা মেজাজে দেখার জন্য একদম পারফেক্ট।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  },
+  {
+    "movie_name": "Prince",
+    "rating": "৮.৫/১০",
+    "review_text": "অ্যাকশন দৃশ্যগুলো সত্যিই প্রশংসার দাবি রাখে। ব্যাকগ্রাউন্ড মিউজিক পুরো সিনেমাকে অন্য লেভেলে নিয়ে গেছে।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  },
+  {
+    "movie_name": "Rakkhosh",
+    "rating": "৯.৫/১০",
+    "review_text": "ভয়ঙ্কর সুন্দর একটি সাইকোলজিক্যাল থ্রিলার, যেটা শেষ হওয়ার পরও রেশ থেকে যাবে। এক কথায় মাস্টারপিস!",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  },
+  {
+    "movie_name": "Toofan",
+    "rating": "৯/১০",
+    "review_text": "শাকিব খানের অনবদ্য অভিনয় এবং রায়হান রাফীর ডিরেকশন মিলিয়ে অসাধারণ সিনেমা। আমাদের ইন্ডাস্ট্রির জন্য গর্ব।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  },
+  {
+    "movie_name": "Myself Allen Swapan",
+    "rating": "৯/১০",
+    "review_text": "নাসির উদ্দিন খানের আইকনিক চরিত্র, থ্রিল আর ডার্ক কমেডির চমৎকার মিশ্রণ। প্রতিটি ডায়লগ মনে রাখার মতো।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  },
+  {
+    "movie_name": "Karagar",
+    "rating": "৯.৫/১০",
+    "review_text": "চঞ্চল চৌধুরীর অভিনয় এবং সৈয়দ আহমেদ শাওকীর নির্মাণ—বাংলা ওয়েব সিরিজের অন্যতম সেরা কাজ।",
+    "youtube_embed_link": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
   }
 ]
