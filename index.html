@@ -685,7 +685,7 @@ function renderTicker(){
   track.innerHTML = `${names}${sep}Tracking new releases across all platforms`;
 }
 
-// 🌟 리뷰 ডেটা ফেচ এবং রেন্ডার করার ফাংশন 🌟
+// 🌟 রিভিউ ডেটা ফেচ এবং রেন্ডার করার ফাংশন 🌟
 async function fetchReviewsAndRender() {
     try {
         const resp = await fetch('reviews.json', { cache: 'no-store' });
@@ -698,32 +698,33 @@ async function fetchReviewsAndRender() {
         container.innerHTML = ''; // আগের ডেটা মুছে ফেলা
         
         reviews.forEach(review => {
-            // ডেটাবেজ (DATA) থেকে অটোমেটিক ছবি খুঁজে বের করা
             const matchedItem = DATA.find(d => d.t && d.t.trim().toLowerCase() === review.movie_name.trim().toLowerCase());
-            
-            // ছবি পেলে বসাবে, না পেলে কালো একটা ব্যাকগ্রাউন্ড দেখাবে
             const autoImg = matchedItem && matchedItem.img ? matchedItem.img : 'https://placehold.co/300x450/1c1f2b/ffffff?text=No+Image';
             const originalContentId = matchedItem ? matchedItem.id : '';
 
-            // একদম পারফেক্ট কার্ড তৈরি
             const card = document.createElement('div');
             card.className = 'card';
-            card.tabIndex = 0; // টিভির রিমোট দিয়ে সিলেক্ট করার জন্য
+            card.tabIndex = 0; 
             
-            // ক্লিক বা এন্টার চাপলে ডিটেইলস পেজে নিয়ে যাবে
             card.onclick = () => window.location.href = `review.html?title=${encodeURIComponent(review.movie_name)}&cid=${originalContentId}`;
             card.onkeydown = (e) => { if(e.key === 'Enter') card.click(); };
             
             card.innerHTML = `
                 <div class="poster">
                     <img class="poster-img" src="${autoImg}" loading="lazy" alt="${review.movie_name}">
-                    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(9,10,12,0.95) 100%); z-index: 1;"></div>
-                    <div class="poster-title" style="position: relative; z-index: 2;">${review.movie_name}</div>
+                    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 10%, rgba(18,20,28,0.9) 50%, var(--surface) 100%); z-index: 1;"></div>
                 </div>
-                <div class="card-info">
-                    <div class="cname">${review.movie_name}</div>
-                    <div class="meta-line" style="color: #ffd700; font-weight: bold; margin-top: 4px;">⭐ রেটিং: ${review.rating}</div>
-                    <div class="meta-line" style="margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${review.review_text}</div>
+                
+                <div class="card-info" style="opacity: 0; pointer-events: none;">
+                    <div class="cname">Spacer</div><div class="meta-line">Spacer</div><div class="meta-line">Spacer</div>
+                </div>
+                
+                <div style="position: absolute; bottom: 10px; left: 0; right: 0; padding: 14px; z-index: 2;">
+                    <div style="font-family: 'Anton', sans-serif; font-size: 18px; line-height: 1.2; color: #fff; margin-bottom: 4px;">${review.movie_name}</div>
+                    <div style="color: #ffd700; font-size: 12px; font-weight: bold; margin-bottom: 8px;">⭐ রেটিং: ${review.rating}</div>
+                    <div style="color: #d1d5db; font-size: 13px; line-height: 1.5; white-space: normal; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
+                        ${review.review_text}
+                    </div>
                 </div>
             `;
             container.appendChild(card);
