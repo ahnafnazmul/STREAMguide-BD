@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Primary Meta Tags -->
-    <title>STREAMguide BD | First & #1 OTT Streaming Guide for Bangladesh</title>
+<title>STREAMguide BD | First & #1 OTT Streaming Guide for Bangladesh</title>
     <meta name="title" content="STREAMguide BD | First & #1 OTT Streaming Guide for Bangladesh">
-    <meta name="description" content="বাংলাদেশের সকল ওটিটি (OTT) প্ল্যাটফর্মের নতুন রিলিজ, মুভি, নাটক এবং ওয়েব সিরিজের একমাত্র এবং সেরা স্ট্রিমিং গাইড। চরকি, হইচই, বিঞ্জ, বায়োস্কোপ প্লাস এক ঠিকানায়!">
+    <meta name="description" content="বাংলাদেশের সকল ওটিটি (OTT) প্ল্যাটফর্মের নতুন রিলিজ, মুভি, নাটক এবং ওয়েব সিরিজের একমাত্র এবং সেরা স্ট্রিমিং গাইড। চরকি, হইচই, বিঞ্জ, বায়োস্কোপ প্লাস এক ঠিকানায়!">
     <meta name="keywords" content="OTT BD, Chorki new release, Hoichoi Bangladesh, Binge, Bioscope Plus, Bangladeshi web series, OTT streaming guide, STREAMguide BD">
     <meta name="author" content="STREAMguide BD">
 
-    <!-- Open Graph / Facebook / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://streamguidebd.xyz/">
     <meta property="og:title" content="STREAMguide BD | First & #1 OTT Streaming Guide for Bangladesh">
     <meta property="og:description" content="বাংলাদেশের সকল ওটিটি প্ল্যাটফর্মের লেটেস্ট রিলিজগুলো একসাথে খুঁজুন এক ক্লিকেই।">
-    <!-- নিচের লিংকে আপনার ওই নতুন জেনারেট করা মাস্টারপিস লোগো বা ব্যানারের লিংকটা বসিয়ে দেবেন -->
     <meta property="og:image" content="https://streamguidebd.xyz/images/banner.jpg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -223,6 +220,13 @@
     <div class="modal-card" id="modalCard" tabindex="-1"></div>
   </div>
 
+  <div class="row-section" id="reviewSection">
+      <div class="row-head">
+          <div class="row-title">📝 লেটেস্ট কন্টেন্ট রিভিউ</div>
+      </div>
+      <div class="row-scroll" id="reviews-container" style="padding-bottom: 20px;">
+          </div>
+  </div>
   <div class="disclaimer">
     <span class="disclaimer-label">Disclaimer:</span> STREAMguide BD does not upload or host any content. All data is aggregated from publicly available sources.
     <div class="visitor-stats" id="visitorStats"></div>
@@ -726,6 +730,35 @@ async function initApp(){
 })();
 
 initApp();
+</script>
+<script>
+    // JSON ফাইল থেকে রিভিউ ডেটা টেনে আনার ম্যাজিক
+    fetch('reviews.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('reviews-container');
+            
+            data.forEach(review => {
+                // ছোট কার্ড তৈরি করা হচ্ছে, যাতে ক্লিক করলে নতুন পেজে যায়
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style = "flex: 0 0 210px; cursor: pointer; text-decoration: none;";
+                card.onclick = () => window.location.href = `review.html?id=${review.id}`;
+                
+                card.innerHTML = `
+                    <div class="poster" style="height: 140px; background: url('${review.image_url}') center/cover; position: relative;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(9,10,12,0.95) 100%);"></div>
+                    </div>
+                    <div class="card-info" style="padding: 12px; background: var(--surface);">
+                        <div class="cname" style="color: #fff; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${review.movie_name}</div>
+                        <div class="meta-line" style="color: #ffd700; font-weight: bold; margin-top: 4px;">⭐ রেটিং: ${review.rating}</div>
+                        <div class="meta-line" style="color: var(--text-dim); font-size: 12px; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${review.review_text}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(error => console.error('রিভিউ ডেটা লোড হতে সমস্যা হচ্ছে:', error));
 </script>
 </body>
 </html>
