@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Primary Meta Tags -->
-    <title>STREAMguide BD | First & #1 OTT Streaming Guide for Bangladesh</title>
+<title>STREAMguide BD | First & #1 OTT Streaming Guide for Bangladesh</title>
     <meta name="title" content="STREAMguide BD | First & #1 OTT Streaming Guide for Bangladesh">
     <meta name="description" content="বাংলাদেশের সকল ওটিটি (OTT) প্ল্যাটফর্মের নতুন রিলিজ, মুভি, নাটক এবং ওয়েব সিরিজের একমাত্র এবং সেরা স্ট্রিমিং গাইড। চরকি, হইচই, বিঞ্জ, বায়োস্কোপ প্লাস এক ঠিকানায়!">
     <meta name="keywords" content="OTT BD, Chorki new release, Hoichoi Bangladesh, Binge, Bioscope Plus, Bangladeshi web series, OTT streaming guide, STREAMguide BD">
     <meta name="author" content="STREAMguide BD">
 
-    <!-- Open Graph / Facebook / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://streamguidebd.xyz/">
     <meta property="og:title" content="STREAMguide BD | First & #1 OTT Streaming Guide for Bangladesh">
@@ -222,17 +220,13 @@
     <div class="modal-card" id="modalCard" tabindex="-1"></div>
   </div>
 
-  <!-- রিভিউ সেকশন শুরু -->
   <div class="row-section" id="reviewSection" style="padding-bottom: 0;">
       <div class="row-head">
           <div class="row-title">📝 লেটেস্ট কন্টেন্ট রিভিউ</div>
       </div>
       <div class="row-scroll" id="reviews-container" style="padding-bottom: 10px;">
-          <!-- জাভাস্ক্রিপ্ট ডেটা টেনে এখানে কার্ড বসাবে -->
-      </div>
+          </div>
   </div>
-  <!-- রিভিউ সেকশন শেষ -->
-
   <div class="disclaimer">
     <span class="disclaimer-label">Disclaimer:</span> STREAMguide BD does not upload or host any content. All data is aggregated from publicly available sources.
     <div class="visitor-stats" id="visitorStats" style="margin-top: 8px;"></div>
@@ -731,6 +725,7 @@ async function fetchReviewsAndRender() {
         console.error("রিভিউ লোড হতে সমস্যা হচ্ছে:", e);
     }
 }
+
 async function initApp(){
   const rowsEl = document.getElementById('rowsContainer');
   rowsEl.innerHTML = `<div class="empty-state">Loading Premium Content...</div>`;
@@ -745,12 +740,24 @@ async function initApp(){
     renderTicker();
     render();
     
-    // মেইন ডেটা লোড হওয়ার পরেই আমরা রিভিউগুলো ফেচ করব, যাতে ছবি মিলাতে কোনো সমস্যা না হয়!
+    // মেইন ডেটা লোড হওয়ার পরেই আমরা রিভিউগুলো ফেচ করব
     await fetchReviewsAndRender();
+    
+    // 🌟 নতুন জাদুকরী লজিক: রিভিউ পেজ থেকে আসলে অটোমেটিক মডেল পপআপ ওপেন করা 🌟
+    const urlParams = new URLSearchParams(window.location.search);
+    const modalId = urlParams.get('modal');
+    if (modalId) {
+        setTimeout(() => {
+            openModal(Number(modalId));
+            // পেজ রিলোড দিলে যেন বারবার ওপেন না হয়, তাই ইউআরএলটা ক্লিন করে দেওয়া
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }, 600);
+    }
+    // 🌟 ম্যাজিক শেষ 🌟
     
     setTimeout(() => {
       const firstFocusable = document.querySelector('.hero-card.active');
-      if(firstFocusable) firstFocusable.focus();
+      if(firstFocusable && !modalId) firstFocusable.focus(); // মডেল ওপেন না হলেই শুধু ফোকাস হবে
     }, 500);
 
   }catch(err){
