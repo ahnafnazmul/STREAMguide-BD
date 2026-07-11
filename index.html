@@ -709,21 +709,19 @@ async function fetchReviewsAndRender() {
             card.onclick = () => window.location.href = `review.html?title=${encodeURIComponent(review.movie_name)}&cid=${originalContentId}`;
             card.onkeydown = (e) => { if(e.key === 'Enter') card.click(); };
             
+            // নতুন জাদুকরী ডিজাইন: পুরো কার্ডটাই হবে ছবি এবং লেখাগুলো ছবির উপরে থাকবে
             card.innerHTML = `
-                <div class="poster">
+                <div class="poster" style="height: 100%; min-height: 360px; padding: 0; position: relative;">
                     <img class="poster-img" src="${autoImg}" loading="lazy" alt="${review.movie_name}">
-                    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 10%, rgba(18,20,28,0.9) 50%, var(--surface) 100%); z-index: 1;"></div>
-                </div>
-                
-                <div class="card-info" style="opacity: 0; pointer-events: none;">
-                    <div class="cname">Spacer</div><div class="meta-line">Spacer</div><div class="meta-line">Spacer</div>
-                </div>
-                
-                <div style="position: absolute; bottom: 10px; left: 0; right: 0; padding: 14px; z-index: 2;">
-                    <div style="font-family: 'Anton', sans-serif; font-size: 18px; line-height: 1.2; color: #fff; margin-bottom: 4px;">${review.movie_name}</div>
-                    <div style="color: #ffd700; font-size: 12px; font-weight: bold; margin-bottom: 8px;">⭐ রেটিং: ${review.rating}</div>
-                    <div style="color: #d1d5db; font-size: 13px; line-height: 1.5; white-space: normal; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
-                        ${review.review_text}
+                    
+                    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, rgba(18,20,28,0.7) 40%, var(--surface) 95%); z-index: 1;"></div>
+                    
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 18px; z-index: 2;">
+                        <div style="font-family: 'Anton', sans-serif; font-size: 22px; line-height: 1.2; margin-bottom: 6px; color: #fff;">${review.movie_name}</div>
+                        <div style="color: #ffd700; font-size: 13px; font-weight: bold; margin-bottom: 10px;">⭐ রেটিং: ${review.rating}</div>
+                        <div style="color: #e5e7eb; font-size: 13px; line-height: 1.6; white-space: normal; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 1px 3px #000;">
+                            ${review.review_text}
+                        </div>
                     </div>
                 </div>
             `;
@@ -733,7 +731,6 @@ async function fetchReviewsAndRender() {
         console.error("রিভিউ লোড হতে সমস্যা হচ্ছে:", e);
     }
 }
-
 async function initApp(){
   const rowsEl = document.getElementById('rowsContainer');
   rowsEl.innerHTML = `<div class="empty-state">Loading Premium Content...</div>`;
