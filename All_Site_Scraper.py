@@ -4,8 +4,6 @@ import json
 import time
 import requests
 from datetime import datetime, timezone
-
-# Playwright এখন ডায়নামিক সাইটগুলোর (Chorki, Hoichoi, Bongo, Toffee) জন্য ব্যবহার করা হবে
 from playwright.sync_api import sync_playwright
 
 # ---------------------------------------------------------
@@ -22,7 +20,6 @@ ALL_DATA = []
 # Helper Functions
 # ---------------------------------------------------------
 def generate_fake_release_date(seed_string, max_days_ago=30):
-    """যেসব প্ল্যাটফর্ম রিলিজ ডেট দেয় না, তাদের জন্য একটি ফেইক ডেট তৈরি করা"""
     h = sum(ord(c) for c in seed_string)
     days_ago = h % max_days_ago
     return datetime.fromtimestamp(time.time() - (days_ago * 86400)).strftime('%Y-%m-%d')
@@ -52,17 +49,12 @@ def scrape_gotipath(site_key, base_url, fetch_url=None):
             while i < len(text):
                 ch = text[i]
                 if in_str:
-                    if escape:
-                        escape = False
-                    elif ch == '\\':
-                        escape = True
-                    elif ch == '"':
-                        in_str = False
+                    if escape: escape = False
+                    elif ch == '\\': escape = True
+                    elif ch == '"': in_str = False
                 else:
-                    if ch == '"':
-                        in_str = True
-                    elif ch == '{':
-                        depth += 1
+                    if ch == '"': in_str = True
+                    elif ch == '{': depth += 1
                     elif ch == '}':
                         depth -= 1
                         if depth == 0:
@@ -77,8 +69,7 @@ def scrape_gotipath(site_key, base_url, fetch_url=None):
                                     dur_str = f"{int(dur_sec)//3600}h {(int(dur_sec)%3600)//60}m" if dur_sec else "N/A"
                                     
                                     p_name = site_key
-                                    if "iscreen" in route.lower():
-                                        p_name = "iscreen"
+                                    if "iscreen" in route.lower(): p_name = "iscreen"
                                     
                                     ALL_DATA.append({
                                         "p": p_name,
@@ -88,8 +79,7 @@ def scrape_gotipath(site_key, base_url, fetch_url=None):
                                         "img": obj.get("poster") or obj.get("thumbnail"),
                                         "url": base_url + route
                                     })
-                            except Exception:
-                                pass
+                            except Exception: pass
                             break
                 i += 1
     except Exception as e:
@@ -111,21 +101,15 @@ def scrape_justwatch():
             seen = set()
             count = 0
             for href, inner in pattern.findall(resp.text):
-                if count >= 6:
-                    break
+                if count >= 6: break
                 slug = href.split('/')[-1]
                 title = re.sub(r'<[^>]+>', '', inner).strip()
-                if not title or slug in seen:
-                    continue
+                if not title or slug in seen: continue
                 seen.add(slug)
                 count += 1
-                
                 ALL_DATA.append({
-                    "p": p_key,
-                    "t": title,
-                    "url": f"https://www.justwatch.com/in/movie/{slug}",
-                    "releaseDate": generate_fake_release_date(slug, 5),
-                    "dur": "N/A"
+                    "p": p_key, "t": title, "url": f"https://www.justwatch.com/in/movie/{slug}",
+                    "releaseDate": generate_fake_release_date(slug, 5), "dur": "N/A"
                 })
         except Exception as e:
             print(f"  [!] JustWatch {p_key} Error: {e}")
@@ -140,9 +124,7 @@ def scrape_binge():
         if resp.status_code == 200:
             for item in resp.json().get('data', {}).get('data', [])[:10]:
                 ALL_DATA.append({
-                    "p": "binge",
-                    "t": item.get('title'),
-                    "img": item.get('image_landscape'),
+                    "p": "binge", "t": item.get('title'), "img": item.get('image_landscape'),
                     "url": "https://binge.buzz/details/" + str(item.get('id')),
                     "releaseDate": (item.get('release_date') or generate_fake_release_date(item.get('title')))[:10],
                     "dur": "N/A"
@@ -151,27 +133,26 @@ def scrape_binge():
         print(f"  [!] Binge Error: {e}")
 
 # ---------------------------------------------------------
-# 4. Playwright Scraper (The Ultimate Human Emulator)
+# 4. Playwright Scraper (Isolated Tabs Design)
 # ---------------------------------------------------------
 def scrape_dynamic_sites():
-    print("[*] Starting Playwright for Dynamic Sites (Chorki, Hoichoi, Bongo, Toffee)...")
+    print("[*] Starting Playwright for Dynamic Sites...")
     try:
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
-            # সিকিউরিটি বাইপাস করার জন্য শক্তিশালী কনটেক্সট
             context = browser.new_context(
                 viewport={"width": 1280, "height": 900},
                 user_agent=HEADERS["User-Agent"],
                 extra_http_headers={"Accept-Language": "en-US,en;q=0.9"}
             )
-            page = context.new_page()
 
             # --- Chorki ---
             print("  -> Chorki")
+            page_chorki = context.new_page() # নতুন ফ্রেশ ট্যাব
             try:
-                page.goto("https://www.chorki.com/", wait_until="domcontentloaded", timeout=60000)
-                page.wait_for_timeout(3000) # ইমেজ লোড হওয়ার জন্য ৩ সেকেন্ড অপেক্ষা
-                cards = page.locator('a[href*="/movie/"], a[href*="/series/"]').all()
+                page_chorki.goto("https://www.chorki.com/", wait_until="domcontentloaded", timeout=45000)
+                page_chorki.wait_for_timeout(2000)
+                cards = page_chorki.locator('a[href*="/movie/"], a[href*="/series/"]').all()
                 seen_c = set()
                 for card in cards[:20]:
                     href = card.get_attribute('href')
@@ -183,14 +164,19 @@ def scrape_dynamic_sites():
                     if img:
                         full_url = href if href.startswith('http') else "https://www.chorki.com" + href
                         ALL_DATA.append({"p": "chorki", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 14), "dur": "N/A"})
-            except Exception as e: print(f"  [!] Chorki Error: {e}")
+            except Exception as e: 
+                print(f"  [!] Chorki Error: {e}")
+            finally:
+                page_chorki.close() # ট্যাব বন্ধ করে দেওয়া হলো
 
             # --- Hoichoi ---
             print("  -> Hoichoi")
+            page_hoichoi = context.new_page() # নতুন ফ্রেশ ট্যাব
             try:
-                page.goto("https://www.hoichoi.tv/bn", wait_until="domcontentloaded", timeout=60000)
-                page.wait_for_timeout(3000)
-                cards = page.locator('a[href*="/movies/"], a[href*="/shows/"]').all()
+                page_hoichoi.goto("https://www.hoichoi.tv/bn", wait_until="domcontentloaded", timeout=45000)
+                page_hoichoi.mouse.wheel(0, 1000) # ইমেজ লোড হওয়ার জন্য একটু স্ক্রল
+                page_hoichoi.wait_for_timeout(3000)
+                cards = page_hoichoi.locator('a[href*="/movies/"], a[href*="/shows/"]').all()
                 seen_h = set()
                 for card in cards[:20]:
                     href = card.get_attribute('href')
@@ -202,14 +188,20 @@ def scrape_dynamic_sites():
                     if img:
                         full_url = href if href.startswith('http') else "https://www.hoichoi.tv" + href
                         ALL_DATA.append({"p": "hoichoi", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 20), "dur": "N/A"})
-            except Exception as e: print(f"  [!] Hoichoi Error: {e}")
+            except Exception as e: 
+                print(f"  [!] Hoichoi Error: {e}")
+            finally:
+                page_hoichoi.close()
 
             # --- Bongo BD ---
             print("  -> Bongo BD")
+            page_bongo = context.new_page()
             try:
-                page.goto("https://bongobd.com/", wait_until="domcontentloaded", timeout=60000)
-                page.wait_for_timeout(3000)
-                cards = page.locator('a[href^="/watch/"]').all()
+                page_bongo.goto("https://bongobd.com/", wait_until="domcontentloaded", timeout=45000)
+                for _ in range(3):
+                    page_bongo.mouse.wheel(0, 1000)
+                    page_bongo.wait_for_timeout(1000)
+                cards = page_bongo.locator('a[href^="/watch/"]').all()
                 seen_b = set()
                 for card in cards[:20]:
                     href = card.get_attribute('href')
@@ -221,14 +213,20 @@ def scrape_dynamic_sites():
                     if img:
                         full_url = href if href.startswith('http') else "https://bongobd.com" + href
                         ALL_DATA.append({"p": "bongo", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 10), "dur": "N/A"})
-            except Exception as e: print(f"  [!] Bongo Error: {e}")
+            except Exception as e: 
+                print(f"  [!] Bongo Error: {e}")
+            finally:
+                page_bongo.close()
 
             # --- Toffee ---
             print("  -> Toffee")
+            page_toffee = context.new_page()
             try:
-                page.goto("https://toffeelive.com/", wait_until="domcontentloaded", timeout=60000)
-                page.wait_for_timeout(3000)
-                cards = page.locator('a[href*="/movies/"], a[href*="/series/"], a[href*="/drama/"]').all()
+                page_toffee.goto("https://toffeelive.com/", wait_until="domcontentloaded", timeout=45000)
+                for _ in range(3):
+                    page_toffee.mouse.wheel(0, 1000)
+                    page_toffee.wait_for_timeout(1000)
+                cards = page_toffee.locator('a[href*="/movies/"], a[href*="/series/"], a[href*="/drama/"]').all()
                 seen_t = set()
                 for card in cards[:20]:
                     href = card.get_attribute('href')
@@ -240,7 +238,10 @@ def scrape_dynamic_sites():
                     if img:
                         full_url = href if href.startswith('http') else "https://toffeelive.com" + href
                         ALL_DATA.append({"p": "toffee", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 12), "dur": "N/A"})
-            except Exception as e: print(f"  [!] Toffee Error: {e}")
+            except Exception as e: 
+                print(f"  [!] Toffee Error: {e}")
+            finally:
+                page_toffee.close()
 
             browser.close()
     except Exception as e:
@@ -252,17 +253,15 @@ def scrape_dynamic_sites():
 if __name__ == "__main__":
     print("🚀 Starting STREAMguide Master Scraper...")
     
-    # API ভিত্তিক স্ক্র্যাপার
     scrape_gotipath("utshob", "https://www.utshob.live")
     scrape_gotipath("deepto", "https://www.deeptoplay.com")
     scrape_gotipath("bioscope", "https://www.bioscopeplus.com", "https://www.bioscopeplus.com/en/new-and-upcoming")
     scrape_justwatch()
     scrape_binge()
     
-    # ব্রাউজার/ডায়নামিক স্ক্র্যাপার (The Human Emulator)
+    # ব্রাউজার স্ক্র্যাপার (Isolated Tabs)
     scrape_dynamic_sites()
     
-    # ডেটা সেভ করা
     if ALL_DATA:
         with open("data.json", "w", encoding="utf-8") as f:
             json.dump(ALL_DATA, f, ensure_ascii=False, indent=2)
