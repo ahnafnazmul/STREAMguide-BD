@@ -827,24 +827,24 @@
   },
   {
     "p": "toffee",
-    "t": "MAFIA | EXTENDED VERSION",
-    "img": "https://assets-prod.services.toffeelive.com/w_1920,q_75,f_webp/NTDa9ZwBNnOkwJLW3uyl/posters/92b5fa57-b1dc-4f5b-b392-62ef44132772.png",
+    "t": "Bpdip8Bbbdq2Memf4Yq",
+    "img": null,
     "url": "https://toffeelive.com/en/drama/-BpDIp8BBBDq2MemF4Yq",
     "releaseDate": "2026-07-07",
     "dur": "N/A"
   },
   {
     "p": "toffee",
-    "t": "SMC Electrolyte | Masthead",
-    "img": "https://assets-prod.services.toffeelive.com/w_1920,q_75,f_webp/rTXFvJ4Bb1O6C9k7e0U8/posters/0fd350a0-0316-4a4a-ae82-f95322188ebd.png",
+    "t": "Ntda9Zwbnnokwjlw3Uyl",
+    "img": null,
     "url": "https://toffeelive.com/en/movies/NTDa9ZwBNnOkwJLW3uyl",
     "releaseDate": "2026-07-11",
     "dur": "N/A"
   },
   {
     "p": "toffee",
-    "t": "FIFA WC CHANNEL 2",
-    "img": "https://assets-prod.services.toffeelive.com/w_480,q_75,f_webp/oDRWpp4Bb1O6C9k7We2Q/posters/50711ff1-bd1c-4f33-ae25-5a31052dfcc3.png",
+    "t": "Rs5Ukjubv9Knk3Ahm3Vn",
+    "img": null,
     "url": "https://toffeelive.com/en/movies/RS5UKJUBv9knK3AHm3vN",
     "releaseDate": "2026-07-03",
     "dur": "N/A"
@@ -922,1323 +922,379 @@
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "The Taj Story",
-    "img": "https://cms-cdn-bucket-prod.lionmultiverse.com/Media/THETAJSTORYY_2025_MEN_Landscape_hero_main_b482f96749.jpg",
-    "url": "https://toffeelive.com/en/movies/7T_tRZ8BI4iScXx9Duih",
-    "releaseDate": "2026-07-10",
+    "p": "hoichoi",
+    "t": "ছদ্মবেশী",
+    "url": "https://hoichoi.tv/bn/shows/choddobeshi",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-92e67837beb6-43af-b84e-fc4653146616-CB_16x9_copy.avif",
+    "releaseDate": "2026-07-11",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Chaos Walking",
-    "img": "https://cms-cdn-bucket-prod.lionmultiverse.com/Media/CHAOSWALKINGY_2021_MEN_Landscape_poster_1ef47d446f.jpg",
-    "url": "https://toffeelive.com/en/movies/BOPVRp8BwGRsZ_KA8d7c",
+    "p": "hoichoi",
+    "t": "হেডলাইন",
+    "url": "https://hoichoi.tv/bn/shows/headline",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-6a426ea2bfbd-44e9-8c6f-740f53cd3302-Headline_16x9.avif",
+    "releaseDate": "2026-06-23",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "আতঙ্ক",
+    "url": "https://hoichoi.tv/bn/shows/atonko",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-4fef7ea83d0d-4c36-9f86-3c43757f6ecc-16x9_week_3.avif",
+    "releaseDate": "2026-07-07",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "বনলতা এক্সপ্রেস (২০২৬)",
+    "url": "https://hoichoi.tv/bn/movies/bonolota-express-bd",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-64532578f56d-44cf-b91d-cacd383cc498-16x9_1_copy.avif",
+    "releaseDate": "2026-06-26",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "ক্যুইনস",
+    "url": "https://hoichoi.tv/bn/shows/queens",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-db96a1f62817-4ba3-a738-11059c32d5d7-16x9.avif",
+    "releaseDate": "2026-07-02",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "মহানগর",
+    "url": "https://hoichoi.tv/bn/shows/mohanagar",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-0160bbde9a36-4af0-94d0-8019b3929769-16x9.avif",
+    "releaseDate": "2026-06-27",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "আয়নাবাজি",
+    "url": "https://hoichoi.tv/bn/movies/watch-aynabaji-bengali-movie-on-hoichoi",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-6ef7037031af-4334-b11d-ee869ad6e636-Aynabaji__16x9.avif",
+    "releaseDate": "2026-07-07",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "কারাগার",
+    "url": "https://hoichoi.tv/bn/shows/watch-karagar-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-814dd7d8cd37-4299-a1ec-a1c752ee5b06-16x9.avif",
+    "releaseDate": "2026-06-24",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "তুফান",
+    "url": "https://hoichoi.tv/bn/movies/watch-toofan-bengali-movie-on-hoichoi",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-4bc3ed1f5507-4062-8e6a-1ed30cd52763-Toofan__16x9.avif",
+    "releaseDate": "2026-07-11",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "তাণ্ডব",
+    "url": "https://hoichoi.tv/bn/movies/watch-taandob-movie-on-hoichoi",
+    "img": "https://image.hoichoicdn.com/unsafe/1280x720-17e9e52d17c7-4680-ad78-ba6f6f28da0a-Taandob__16x9.avif",
+    "releaseDate": "2026-06-26",
+    "dur": "N/A"
+  },
+  {
+    "p": "hoichoi",
+    "t": "কাইজার",
+    "url": "https://hoichoi.tv/bn/shows/watch-kaiser-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-93106b9f4eaa-44b7-9abf-d0ad3f950b46-3x4.avif",
     "releaseDate": "2026-07-04",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Family Bizniss",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/UNR2xpUBm1RY_In7yMLx/posters/b445ab65-85d9-4c9d-9f9a-47b3abd24b87.png",
-    "url": "https://toffeelive.com/en/series/UNR2xpUBm1RY_In7yMLx",
-    "releaseDate": "2026-07-11",
+    "p": "hoichoi",
+    "t": "রুমি",
+    "url": "https://hoichoi.tv/bn/shows/watch-rumi-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-f2f4fe41bd32-4c78-ad10-ea787a901b21-3x4.avif",
+    "releaseDate": "2026-06-28",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Noy Number Bipod Shanket",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/hC6G9JQBv9knK3AH_SYV/posters/4de37293-9ad8-4ebd-a4cd-03d52555e1a9.png",
-    "url": "https://toffeelive.com/en/movies/hC6G9JQBv9knK3AH_SYV",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Molla Barir Bou",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/fb5e165c-8988-49f3-b40b-710893e5dd7d.jpeg",
-    "url": "https://toffeelive.com/en/movies/Gy6G9JQBv9knK3AH_SYV",
-    "releaseDate": "2026-07-02",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Hothat Brishti",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/ei6G9JQBv9knK3AH_SUU/posters/15b44e7c-811a-4d7c-a9ba-1372650985a5.png",
-    "url": "https://toffeelive.com/en/movies/ei6G9JQBv9knK3AH_SUU",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Kacher Manush",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/2dT4CZYBm1RY_In7QOY1/posters/184e9f77-1c7a-4b0c-914d-639ea37a68e9.png",
-    "url": "https://toffeelive.com/en/series/2dT4CZYBm1RY_In7QOY1",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Perfume: The Story of a Murderer",
-    "img": "https://cms-cdn-bucket-prod.lionmultiverse.com/Media/PERFUMETHESTORYOFAMURDERY_2006_M_Hero_main_v1_spa_5fbf8d272f.jpg",
-    "url": "https://toffeelive.com/en/movies/8OPSRp8BwGRsZ_KAsN3I",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Silent Night",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/ec5bbaa3-529b-4076-8840-f337762e7b80.jpg",
-    "url": "https://toffeelive.com/en/movies/zB-ZjZcBEef-9-uVgHfq",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Line",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/695fe42b-5d48-44dd-824d-b7e8658b8bb1.jpeg",
-    "url": "https://toffeelive.com/en/movies/GNNNKJUBm1RY_In7tUY_",
-    "releaseDate": "2026-07-01",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Roilo Baki Dosh",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/1tIg9ZQBm1RY_In7z8qy/posters/b53f5dc7-96d6-4940-8059-b08504fb5fe3.png",
-    "url": "https://toffeelive.com/en/series/1tIg9ZQBm1RY_In7z8qy",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Locked",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/Qi25GZkBNnOkwJLWWLUC/posters/94080488-b4d8-4f6e-823e-5d57ad17b634.png",
-    "url": "https://toffeelive.com/en/movies/Qi25GZkBNnOkwJLWWLUC",
+    "p": "hoichoi",
+    "t": "একেন বাবু",
+    "url": "https://hoichoi.tv/bn/shows/watch-eken-babu-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-59bb81fc4440-4747-be2f-db8656db9c00-Eken-babu-6_1098x1626.avif",
     "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Before I Wake",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/zs1tFJYBtpl-Sbt7EJMZ/posters/baed11f0-4379-4805-adcf-e059e67b138f.png",
-    "url": "https://toffeelive.com/en/movies/zs1tFJYBtpl-Sbt7EJMZ",
-    "releaseDate": "2026-07-05",
+    "p": "hoichoi",
+    "t": "দ্য একেন: বেনারসে বিভীষিকা",
+    "url": "https://hoichoi.tv/bn/movies/watch-the-eken-benaras-e-bibhishika-movie-on-hoichoi",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-001beb589eeb-410c-aa7e-d657409e1a93-3x4__0020_The_eken_Benarashe_Bibhishikha.avif",
+    "releaseDate": "2026-06-24",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "840",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/g9OxQ5UBm1RY_In7wWGg/posters/b30e3c21-d72a-409d-9ed3-b2dbbb4e0408.png",
-    "url": "https://toffeelive.com/en/series/g9OxQ5UBm1RY_In7wWGg",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Ordhek",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/kdQxzJUBm1RY_In718kk/posters/6080f7b1-ace2-4417-8f28-8a5e16d6bebb.png",
-    "url": "https://toffeelive.com/en/drama/kdQxzJUBm1RY_In718kk",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Nabab LLB",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/7SOaZJsBEef-9-uVWUQi/posters/5ef6ebe8-ab91-43ba-93dd-202abb09095e.png",
-    "url": "https://toffeelive.com/en/movies/7SOaZJsBEef-9-uVWUQi",
-    "releaseDate": "2026-07-02",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Nesippaya",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/7d36ae06-94fa-41ee-bc4f-29deb8609e41.jpg",
-    "url": "https://toffeelive.com/en/movies/oR7m6JYBEef-9-uV4KTO",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Bou Khuje Berai",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/Li7P9JQBv9knK3AHqSu8/posters/329eb9fc-6be3-4f49-83f5-fc6fdd1ef66b.png",
-    "url": "https://toffeelive.com/en/drama/Li7P9JQBv9knK3AHqSu8",
-    "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "First Love",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/g9NVKJUBm1RY_In7EEma/posters/9da635a3-d361-4742-ac38-30ea3e05eb37.png",
-    "url": "https://toffeelive.com/en/movies/g9NVKJUBm1RY_In7EEma",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Love Trip",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/JC7P9JQBv9knK3AHqSy8/posters/c1a6982e-bdb5-4f44-9fa4-ca150d2db1c6.png",
-    "url": "https://toffeelive.com/en/drama/JC7P9JQBv9knK3AHqSy8",
-    "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Playing For Keeps",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/A69mSZYBrjBfS2_RYTww/posters/ed054f8e-f645-4735-bb84-d34cc3c7cb6c.png",
-    "url": "https://toffeelive.com/en/movies/A69mSZYBrjBfS2_RYTww",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Rani Kuthir Baki Itihash",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/ff9348b7-86f4-4b1f-9f43-d5c6a6467080.jpeg",
-    "url": "https://toffeelive.com/en/movies/By6G9JQBv9knK3AH_SYV",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Maine Pyar Kiya",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/62ab8b75-ffda-42dd-b9ae-9b672fee8c05.jpg",
-    "url": "https://toffeelive.com/en/movies/fi7fqZkBNnOkwJLWBIfg",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Kacher Jibon",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/UM05HpYBtpl-Sbt7B593/posters/0485ee82-b510-4ba2-a3cb-166d2502c261.png",
-    "url": "https://toffeelive.com/en/series/UM05HpYBtpl-Sbt7B593",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dumb and Dumber To",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/51b23b1e-72c5-434d-ac14-cd3b34c0a48c.jpeg",
-    "url": "https://toffeelive.com/en/movies/H9NUKJUBm1RY_In7MUnT",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Tumi Ami Ar Disturb",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/ei7P9JQBv9knK3AHqSu8/posters/efc1a9cd-792b-4246-bbf4-36e5417766da.png",
-    "url": "https://toffeelive.com/en/drama/ei7P9JQBv9knK3AHqSu8",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Spider-Man",
-    "img": "https://cms-cdn-bucket-prod.lionmultiverse.com/Media/SPIDERMANY_2002_MEN_Landscape_hero_main_7a559064da.jpg",
-    "url": "https://toffeelive.com/en/movies/suPsRZ8BwGRsZ_KAldHF",
-    "releaseDate": "2026-07-02",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Spider-Man 2",
-    "img": "https://cms-cdn-bucket-prod.lionmultiverse.com/Media/SPIDERMAN_2_Y2004_MEN_Landscape_hero_main_33f291641c.jpg",
-    "url": "https://toffeelive.com/en/movies/vePsRZ8BwGRsZ_KAptHZ",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Second Case of Seetharam",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/iOMORp8BwGRsZ_KAddOp/posters/fecc7577-3b36-4300-918d-60344dbc49be.png",
-    "url": "https://toffeelive.com/en/movies/iOMORp8BwGRsZ_KAddOp",
-    "releaseDate": "2026-07-02",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Prosecutor",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/21t2aZcBDJulSuluxZeP/posters/19513b70-2bd1-44e1-ad91-0e0bac87a73c.png",
-    "url": "https://toffeelive.com/en/movies/21t2aZcBDJulSuluxZeP",
-    "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Wrecker",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/18018810-ebdc-466f-ba7c-e7441cef1ddc.jpeg",
-    "url": "https://toffeelive.com/en/movies/HK2fspUBrjBfS2_R1PTU",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "White Elephant",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/fbface9a-cdde-4436-ad6d-b6db59f0e9ea.jpeg",
-    "url": "https://toffeelive.com/en/movies/eS5QKJUBv9knK3AHI3kj",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Hero The Superstar",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/Uy6G9JQBv9knK3AH_SUU/posters/84c71291-3211-45d2-a2cf-63042875447e.png",
-    "url": "https://toffeelive.com/en/movies/Uy6G9JQBv9knK3AH_SUU",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "1920 London",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/b159e4ac-1ed5-4e1e-8755-8c31fabf83a6.jpg",
-    "url": "https://toffeelive.com/en/movies/bdRsFJYBm1RY_In7mPJl",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Murderer",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/2x7n6JYBEef-9-uVM6TB/posters/aed1ba2a-20a8-4dba-ad47-2d2238938ee6.png",
-    "url": "https://toffeelive.com/en/movies/2x7n6JYBEef-9-uVM6TB",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Local",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/t67gs5UBrjBfS2_RHjjC/posters/3b3d6bbb-3222-447e-92e7-4326969cee9f.png",
-    "url": "https://toffeelive.com/en/movies/t67gs5UBrjBfS2_RHjjC",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Death of Me",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/toffee/posters/9b376314-6804-400e-822b-50c37ffc4d09.jpeg",
-    "url": "https://toffeelive.com/en/movies/1NNKKJUBm1RY_In7_ESW",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "12 Rounds 3: Lockdown",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/toffee/posters/a4f6ae93-bc72-496f-bb04-e27edb2b3302.jpg",
-    "url": "https://toffeelive.com/en/movies/Rs1sFJYBtpl-Sbt7J5Jb",
-    "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Next Three Days",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/toffee/posters/1494af25-83b6-4805-a609-dcde8d5087d4.jpeg",
-    "url": "https://toffeelive.com/en/movies/7NNTKJUBm1RY_In7xUgX",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Apex",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/f5c1abd1-3a34-40fe-ad91-4dd4c5a972e2.jpeg",
-    "url": "https://toffeelive.com/en/movies/ZC5PKJUBv9knK3AH9nlK",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "American Siege",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/458434a2-9b66-467f-8d0c-1c607cf956a0.jpeg",
-    "url": "https://toffeelive.com/en/movies/wNNPKJUBm1RY_In7E0bg",
+    "p": "hoichoi",
+    "t": "ফেলুদার গোয়েন্দাগিরি",
+    "url": "https://hoichoi.tv/bn/shows/feludar-goyendagiri-web-series",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-d6a151eab3c6-4575-9789-bfa82d9310dd-Feluda-3_3x4.avif",
     "releaseDate": "2026-07-06",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "John Wick: Chapter 3 Parabellum",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/-dNPKJUBm1RY_In7kUZR/posters/854b0e7f-60e2-4765-aeba-f51e38ef92af.png",
-    "url": "https://toffeelive.com/en/movies/-dNPKJUBm1RY_In7kUZR",
-    "releaseDate": "2026-07-12",
+    "p": "hoichoi",
+    "t": "ব্যোমকেশ",
+    "url": "https://hoichoi.tv/bn/shows/watch-byomkesh-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-595dea23cc8f-4be7-96f7-8cdfd61109d4-Byomkesh-5_1098x1626.avif",
+    "releaseDate": "2026-06-27",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Haywire",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/af334033-a603-4359-8dcb-c8792de26ede.jpeg",
-    "url": "https://toffeelive.com/en/movies/rC5OKJUBv9knK3AHHngE",
-    "releaseDate": "2026-07-07",
+    "p": "hoichoi",
+    "t": "গোরা",
+    "url": "https://hoichoi.tv/bn/shows/watch-gora-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-7c24b4985c0b-44e7-8a3c-9d0e8435492c-3x4.avif",
+    "releaseDate": "2026-06-28",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "The Expendables 4",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/9y5OKJUBv9knK3AH_3jl/posters/8b44c2f4-1497-487d-adf6-c5485d6b92de.png",
-    "url": "https://toffeelive.com/en/movies/9y5OKJUBv9knK3AH_3jl",
-    "releaseDate": "2026-07-04",
+    "p": "hoichoi",
+    "t": "দুর্গ রহস্য",
+    "url": "https://hoichoi.tv/bn/shows/durgo-rawhosyo",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-5c58c43eb37e-40e0-bf90-14486a831622-3x4.avif",
+    "releaseDate": "2026-06-27",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Maggie",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/f05aa395-8ef0-45bd-9676-98cac5563d59.jpeg",
-    "url": "https://toffeelive.com/en/movies/wdNRKJUBm1RY_In7B0f9",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "League of Gods",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/e2d7f67f-3b8a-4d96-b5b8-dc53f601fa5a.jpg",
-    "url": "https://toffeelive.com/en/movies/Flt2aZcBDJulSulu3pil",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Hot Blooded",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/p81mSZYBtpl-Sbt7LdRM/posters/f362c0db-b237-4844-b87c-72b21fc702b2.png",
-    "url": "https://toffeelive.com/en/movies/p81mSZYBtpl-Sbt7LdRM",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Descendants of the Sun",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/Tq8RgJYBrjBfS2_RVIKz/posters/273262da-e87a-4ab3-95cf-f467710fe7e6.png",
-    "url": "https://toffeelive.com/en/series/Tq8RgJYBrjBfS2_RVIKz",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Hit Man",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/zq6PCJYBrjBfS2_RmeTd/posters/7628084e-a8e3-42df-9d5e-3ad1250ad5f9.png",
-    "url": "https://toffeelive.com/en/movies/zq6PCJYBrjBfS2_RmeTd",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Plot",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/TXeYQJgBcqxnFHJBJBIx/posters/33e80851-4ae5-4d42-a509-807d4dfedef6.png",
-    "url": "https://toffeelive.com/en/movies/TXeYQJgBcqxnFHJBJBIx",
-    "releaseDate": "2026-07-06",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Bully Bad Guys",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/YM1sFJYBtpl-Sbt72pNO/posters/9a79039e-e010-4235-b016-7ea2c54ee2cd.png",
-    "url": "https://toffeelive.com/en/movies/YM1sFJYBtpl-Sbt72pNO",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Dominator",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/vNNKKJUBm1RY_In730RQ/posters/b892b117-556e-40d6-9a9c-26dc5404d753.png",
-    "url": "https://toffeelive.com/en/movies/vNNKKJUBm1RY_In730RQ",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Dominator 3: Junior Bullies",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/73f1c6ff-0ed3-42eb-b018-d9ddc6217767.jpeg",
-    "url": "https://toffeelive.com/en/movies/FK2fspUBrjBfS2_RxvS4",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Asurado",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/8C5RKJUBv9knK3AHOHmb/posters/6f0af778-d418-4f21-bd99-cb159fa163bd.png",
-    "url": "https://toffeelive.com/en/movies/8C5RKJUBv9knK3AHOHmb",
+    "p": "hoichoi",
+    "t": "নকল হীরে",
+    "url": "https://hoichoi.tv/bn/shows/watch-nokol-heere-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-90ed0fb3ce8f-4d8a-b2d9-d5641a51bb41-NH_34.avif",
     "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Deep Trap",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/BXTUqpYBcqxnFHJBjM5W/posters/da74aee8-a156-4865-80d4-3a9eb6a40d83.png",
-    "url": "https://toffeelive.com/en/movies/BXTUqpYBcqxnFHJBjM5W",
+    "p": "hoichoi",
+    "t": "দময়ন্তী",
+    "url": "https://hoichoi.tv/bn/shows/watch-damayanti-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-388ab10286af-4982-b746-06c73e746f26-Dmayanti_1098x1626.avif",
     "releaseDate": "2026-07-11",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "The Dominator 2",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/87c9f6a4-d91b-438e-a165-cd8524f2e4cd.jpeg",
-    "url": "https://toffeelive.com/en/movies/Iq2fspUBrjBfS2_R6vS3",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Midnight",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/46f78ecb-eae3-4822-9bf8-89409fa80bf4.jpeg",
-    "url": "https://toffeelive.com/en/movies/mS5NKJUBv9knK3AH9XiF",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Agamikal",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/JOdwXJ0BIxFjn23xwsb0/posters/325b0f7b-78f3-4a67-b5fc-92f9345cfe58.png",
-    "url": "https://toffeelive.com/en/movies/JOdwXJ0BIxFjn23xwsb0",
+    "p": "hoichoi",
+    "t": "বৌমা ডিটেক্টিভ",
+    "url": "https://hoichoi.tv/bn/shows/watch-bouma-detective-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-dd5a6fe3769f-4e5d-b5fb-eb6c6e56e06b-Bouma-Detective1098x1626.avif",
     "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Raajkumar",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/4SOQZJsBEef-9-uVTUTs/posters/86a72e11-4e7d-4f8f-a0d1-ac5c90041bd9.png",
-    "url": "https://toffeelive.com/en/movies/4SOQZJsBEef-9-uVTUTs",
-    "releaseDate": "2026-07-11",
+    "p": "hoichoi",
+    "t": "হোমস্টে মার্ডার্স",
+    "url": "https://hoichoi.tv/bn/shows/watch-homestay-murders-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-f6d1b5b225c7-4cc8-8ac7-f0f72fe48683-Homestay-Murders_1098x1626.avif",
+    "releaseDate": "2026-06-24",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Dark World",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/F3WSKZcBcqxnFHJBgcD3/posters/01df43e5-921a-4818-9e1d-cbbbdf1278b4.png",
-    "url": "https://toffeelive.com/en/movies/F3WSKZcBcqxnFHJBgcD3",
-    "releaseDate": "2026-07-11",
+    "p": "hoichoi",
+    "t": "কুমুদিনী ভবন",
+    "url": "https://hoichoi.tv/bn/shows/kumudini-bhavan",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-2544dc41d429-44e5-b619-7b470cfaa15b-Kumudini-Bhabwan_1098x1626_.avif",
+    "releaseDate": "2026-06-30",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Priyotoma",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/2yONZJsBEef-9-uVNUT5/posters/a9336e17-9dc8-4ad6-8d65-56e6125b21a4.png",
-    "url": "https://toffeelive.com/en/movies/2yONZJsBEef-9-uVNUT5",
-    "releaseDate": "2026-07-10",
+    "p": "hoichoi",
+    "t": "ঠাকুমার ঝুলি",
+    "url": "https://hoichoi.tv/bn/shows/thakumar-jhuli",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-ce6d9ab341d4-49cc-8613-536dfcdce023-TJ-3x4_4.avif",
+    "releaseDate": "2026-06-23",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Lipstick",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/My7PjpkBNnOkwJLWlGBS/posters/dbf7b306-f245-4029-bc90-04835513c0ea.png",
-    "url": "https://toffeelive.com/en/movies/My7PjpkBNnOkwJLWlGBS",
-    "releaseDate": "2026-07-03",
+    "p": "hoichoi",
+    "t": "বিবি পায়রা",
+    "url": "https://hoichoi.tv/bn/movies/bibi-payra",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-7684ec2ba392-4925-951f-af4752cd02c3-3x4.avif",
+    "releaseDate": "2026-07-12",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Kill Him",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/lnpC2JoBcqxnFHJBPPzY/posters/58794c91-68b6-4ccb-a2f7-f5a5a7b59297.png",
-    "url": "https://toffeelive.com/en/movies/lnpC2JoBcqxnFHJBPPzY",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Sardar Barir Khela",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/1ECtaJ4BuUSiBsg_XfOB/posters/7336f864-0755-43f5-a7d3-0eaa8c723c4c.png",
-    "url": "https://toffeelive.com/en/movies/1ECtaJ4BuUSiBsg_XfOB",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Omar",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/_D_m75wBuUSiBsg_glB5/posters/791e3bfe-08f5-431e-bd4b-6108b39d5951.png",
-    "url": "https://toffeelive.com/en/movies/_D_m75wBuUSiBsg_glB5",
+    "p": "hoichoi",
+    "t": "চিনি",
+    "url": "https://hoichoi.tv/bn/movies/cheeni-2021",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-87f077a24378-4ee7-847a-47703131037b-1098x1626_5.avif",
     "releaseDate": "2026-07-02",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Gayer Shuvashini",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/pUCjaJ4BuUSiBsg_OPN3/posters/6fa4f993-5e2f-4396-9ab2-4eb9fb02488e.png",
-    "url": "https://toffeelive.com/en/movies/pUCjaJ4BuUSiBsg_OPN3",
-    "releaseDate": "2026-07-09",
+    "p": "hoichoi",
+    "t": "কাবুলিওয়ালা",
+    "url": "https://hoichoi.tv/bn/movies/watch-kabuliwala-bengali-movie-on-hoichoi",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-5e9b35561eab-4d16-a810-06e053ff96b1-3x4__0016_Kabuliwala.avif",
+    "releaseDate": "2026-07-05",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Bikkhob",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/by6G9JQBv9knK3AH_SYV/posters/08a65e64-786e-4ffa-895d-9a14b6d8fcdf.png",
-    "url": "https://toffeelive.com/en/movies/by6G9JQBv9knK3AH_SYV",
-    "releaseDate": "2026-07-11",
+    "p": "hoichoi",
+    "t": "গুমনামী",
+    "url": "https://hoichoi.tv/bn/movies/gumnaami-2019",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-53bf72434281-452e-9a8c-429c9b438a6c-1098x1626_5.avif",
+    "releaseDate": "2026-07-08",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Cleaner",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/3h_IsZcBEef-9-uV_JWl/posters/489e0215-bdd9-4ca5-a1b8-e7fc18e5d6c4.png",
-    "url": "https://toffeelive.com/en/movies/3h_IsZcBEef-9-uV_JWl",
-    "releaseDate": "2026-07-10",
+    "p": "hoichoi",
+    "t": "আবার বিবাহ অভিযান",
+    "url": "https://hoichoi.tv/bn/movies/watch-abar-bibaho-obhijaan-bengali-movie-on-hoichoi",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-277b9d715fa9-4741-8392-6899171ea747-1098x1626_2.avif",
+    "releaseDate": "2026-07-01",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "In the Land of Saints and Sinners",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/0y5QKJUBv9knK3AH-nn_/posters/c30ecd44-2b8f-4501-9327-1a30a7cdf0de.png",
-    "url": "https://toffeelive.com/en/movies/0y5QKJUBv9knK3AH-nn_",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "John Wick: Chapter 2",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/9de2410b-9726-4af4-a181-fd0d3668243b.jpeg",
-    "url": "https://toffeelive.com/en/movies/9tNPKJUBm1RY_In7i0Zu",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Charlie Chaplin - The Kid",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/de3c3bd9-2a43-4fa5-b0a3-f4b3919f64ac.jpg",
-    "url": "https://toffeelive.com/en/movies/lzHyyJ0BNnOkwJLWuZMe",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Devotion",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/60850eaf-4302-4647-88e5-41033895e91f.jpeg",
-    "url": "https://toffeelive.com/en/movies/bC5VKJUBv9knK3AHGHtd",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dirty Angels",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/BK2fspUBrjBfS2_Rm_Tf/posters/54ccecf4-58e8-475c-9777-7a36744f39e0.png",
-    "url": "https://toffeelive.com/en/movies/BK2fspUBrjBfS2_Rm_Tf",
+    "p": "hoichoi",
+    "t": "দ্বিতীয় পুরুষ",
+    "url": "https://hoichoi.tv/bn/movies/dwitiyo-purush-2020",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-9c826b3f6229-4913-acc3-2aa9fa881f4f-1098x1626_5.avif",
     "releaseDate": "2026-07-02",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Endangered Species",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/e62f2b04-d231-42f9-acf2-42dece9e37ed.jpeg",
-    "url": "https://toffeelive.com/en/movies/YC5PKJUBv9knK3AH8Hkh",
-    "releaseDate": "2026-07-10",
+    "p": "hoichoi",
+    "t": "বেলাশুরু",
+    "url": "https://hoichoi.tv/bn/movies/watch-belashuru-bengali-movie-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-106dea7c58e1-4934-93cd-d1e5a6fc5e18-1098x1626_3.avif",
+    "releaseDate": "2026-07-07",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Chaloo Movie",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/oh5d_ZYBEef-9-uVg9Nl/posters/b4ad5bfd-0364-424a-8c5c-6873d82b2e5f.png",
-    "url": "https://toffeelive.com/en/movies/oh5d_ZYBEef-9-uVg9Nl",
-    "releaseDate": "2026-07-01",
+    "p": "hoichoi",
+    "t": "কর্ণসুবর্ণের গুপ্তধন",
+    "url": "https://hoichoi.tv/bn/movies/watch-karnasubarner-guptodhon-bengali-movie-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-db6b38fa900f-4392-b06f-df32915d2387-1098x1626_3.avif",
+    "releaseDate": "2026-06-28",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Fight or Flight",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/Oq9mSZYBrjBfS2_RiTxe/posters/b31c7ce8-c12f-4812-8637-ff778d1e812c.png",
-    "url": "https://toffeelive.com/en/movies/Oq9mSZYBrjBfS2_RiTxe",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Johnny English",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/znbbIJgBcqxnFHJBcu10/posters/12c280c5-2b8a-4caa-8ac4-776cb66c8d82.png",
-    "url": "https://toffeelive.com/en/movies/znbbIJgBcqxnFHJBcu10",
+    "p": "hoichoi",
+    "t": "বগলা মামা",
+    "url": "https://hoichoi.tv/bn/movies/watch-bogla-mama-bengali-movie-on-hoichoi",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-b0c65636cfef-4aeb-aa71-6a16e1ff3fa8-1098x1626_2.avif",
     "releaseDate": "2026-07-04",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Daddy Cool: Join the Fun",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/mB5d_ZYBEef-9-uVf9NH/posters/b8e3f3c6-3554-4e2b-ae6b-e1e1efa436cc.png",
-    "url": "https://toffeelive.com/en/movies/mB5d_ZYBEef-9-uVf9NH",
-    "releaseDate": "2026-07-06",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Demolition",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/56f37c7b-a991-4891-b78e-4947a5d7dcff.jpeg",
-    "url": "https://toffeelive.com/en/movies/XdNUKJUBm1RY_In7ukmz",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Darwaza Bandh Rakho",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/9R51xJYBEef-9-uV_Ftm/posters/16977707-36ae-41f1-8849-a4a9c474c027.png",
-    "url": "https://toffeelive.com/en/movies/9R51xJYBEef-9-uV_Ftm",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Henry's Crime",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/6530aab8-cb00-48cc-bd4c-bf6a038999f3.jpeg",
-    "url": "https://toffeelive.com/en/movies/zi5QKJUBv9knK3AH6HlG",
+    "p": "hoichoi",
+    "t": "উত্তরণ",
+    "url": "https://hoichoi.tv/bn/shows/watch-uttoron-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-0b72c07d9f7d-4f8b-a0d6-503008e0f3eb-3x4.avif",
     "releaseDate": "2026-07-08",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Episode 1",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/fc38848c-fd73-4ec3-b0aa-7d5a4769507a.jpg",
-    "url": "https://toffeelive.com/en/movies/8T9nPZ0BuUSiBsg_0YU1",
+    "p": "hoichoi",
+    "t": "নষ্টনীড়",
+    "url": "https://hoichoi.tv/bn/shows/watch-noshtoneer-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-bd78fe9574db-4b6d-a9bb-5e9f260a4452-3x4.avif",
     "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Nantu Ghotok",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/e0664bc7-3687-4628-b337-d62ad5f2b624.jpeg",
-    "url": "https://toffeelive.com/en/movies/gi6G9JQBv9knK3AH_SYV",
-    "releaseDate": "2026-07-10",
+    "p": "hoichoi",
+    "t": "কাবেরী",
+    "url": "https://hoichoi.tv/bn/shows/kaberi",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-0580839e222c-4d7a-8faf-c5edb709398f-3x4.avif",
+    "releaseDate": "2026-06-27",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Common Gender The Film",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/d1e026e5-9ce1-42fa-8cf5-d9512c6bf96f.jpeg",
-    "url": "https://toffeelive.com/en/movies/gy6G9JQBv9knK3AH_SYV",
-    "releaseDate": "2026-07-06",
+    "p": "hoichoi",
+    "t": "সুন্দরবনের বিদ্যাসাগর",
+    "url": "https://hoichoi.tv/bn/shows/watch-sundarbaner-vidyasagar-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-4f4f2267341b-41da-bb03-3864dd18df2e-Sundarbaner-Vidyasagar_1098x1626.avif",
+    "releaseDate": "2026-06-28",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Fad O Bogar Golpo",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/77135161-5681-4a9b-bd85-b300260b5d6e.jpeg",
-    "url": "https://toffeelive.com/en/movies/Xi6G9JQBv9knK3AH_SYV",
-    "releaseDate": "2026-07-01",
+    "p": "hoichoi",
+    "t": "লজ্জা",
+    "url": "https://hoichoi.tv/bn/shows/lojja",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-4402903fdd01-419d-8806-20befa2759de-lojja2_3x4.avif",
+    "releaseDate": "2026-07-11",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Fad O Bogar Golpo",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/6e4983a6-f9a6-461d-b0c4-b3e395b63787.jpeg",
-    "url": "https://toffeelive.com/en/movies/PS6G9JQBv9knK3AH_SUU",
-    "releaseDate": "2026-07-12",
+    "p": "hoichoi",
+    "t": "আদালত ও একটি মেয়ে",
+    "url": "https://hoichoi.tv/bn/shows/adalat-o-ekti-meye",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-f94c76b5de62-4b12-807d-ff2836a403dc-AOEM_3x4_2.avif",
+    "releaseDate": "2026-06-27",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Gram Gonjer Piriti",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/61c938df-6036-456b-aac4-3c788b138c4d.jpeg",
-    "url": "https://toffeelive.com/en/movies/_S6G9JQBv9knK3AH_SUV",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Shark Zone",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/2b07761f-072d-4f31-8b1d-b4b9a0f15ba6.jpg",
-    "url": "https://toffeelive.com/en/movies/OXTUqpYBcqxnFHJBy86Y",
-    "releaseDate": "2026-07-01",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Escape Room",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/3cf68fff-bda7-425a-80b8-1140cad29214.jpg",
-    "url": "https://toffeelive.com/en/movies/_x_JsZcBEef-9-uVIpWu",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Arcadian",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/EC5PKJUBv9knK3AHLXnu/posters/a91fad20-d595-4832-bfc8-7e73acd1dd77.png",
-    "url": "https://toffeelive.com/en/movies/EC5PKJUBv9knK3AHLXnu",
-    "releaseDate": "2026-07-02",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Black Water Abyss",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/5dNTKJUBm1RY_In7tkgG/posters/e5ad092d-9fa0-447c-bacd-748757a3eabf.png",
-    "url": "https://toffeelive.com/en/movies/5dNTKJUBm1RY_In7tkgG",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Cabin Fever: Reboot",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/c3f31548-62d4-418f-a657-ba0f8978a214.jpeg",
-    "url": "https://toffeelive.com/en/movies/ttNKKJUBm1RY_In72ETS",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Cold Skin",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/b531e887-5b87-474b-b814-f8234312ef33.jpg",
-    "url": "https://toffeelive.com/en/movies/3x51xJYBEef-9-uV8lte",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Jurassic Attack",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/49813d9a-4d9f-496d-ac6a-48fe67cba9af.jpg",
-    "url": "https://toffeelive.com/en/movies/wM1mSZYBtpl-Sbt7OtRN",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Till Death",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/d0eae019-d7a5-4211-aa17-75242ce4f8ef.jpeg",
-    "url": "https://toffeelive.com/en/movies/Ay5PKJUBv9knK3AHGnnC",
+    "p": "hoichoi",
+    "t": "বোধন",
+    "url": "https://hoichoi.tv/bn/shows/watch-bodhon-bengali-web-series-online",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-64c6debb4ef5-42fb-bc14-a975a8b1679d-3x4.avif",
     "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Dangerous",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/b0221a3c-278f-4218-8f48-f22c940b1a32.jpg",
-    "url": "https://toffeelive.com/en/movies/13TWqpYBcqxnFHJBLM8P",
+    "p": "hoichoi",
+    "t": "রক্তবীজ",
+    "url": "https://hoichoi.tv/bn/movies/watch-raktabeej-bengali-movie-on-hoichoi",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-6b172c8dba70-4dcf-92c9-4eb7b75ae277-1098x1626_2.avif",
     "releaseDate": "2026-07-01",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Fury",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/Ti5ZKJUBv9knK3AHun1c/posters/25e53300-6172-4af8-8cdd-cbf5ab7f26c8.png",
-    "url": "https://toffeelive.com/en/movies/Ti5ZKJUBv9knK3AHun1c",
-    "releaseDate": "2026-07-03",
+    "p": "hoichoi",
+    "t": "বিজয়া",
+    "url": "https://hoichoi.tv/bn/shows/bijoya",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-f46a5645978d-4244-bb08-e6bd6cfe2362-3x4.avif",
+    "releaseDate": "2026-07-01",
     "dur": "N/A"
   },
   {
-    "p": "toffee",
-    "t": "Greenland",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/bC5QKJUBv9knK3AHCXls/posters/802be213-f22e-45bd-a359-eb51ff347b24.png",
-    "url": "https://toffeelive.com/en/movies/bC5QKJUBv9knK3AHCXls",
+    "p": "hoichoi",
+    "t": "কেমিস্ট্রি মাসি..",
+    "url": "https://hoichoi.tv/bn/shows/chemistry-mashi",
+    "img": "https://image.hoichoicdn.com/unsafe/1098x1626-9e48e4d152a9-4d3d-ae0c-ee58a17e6486-Chemistry-Masi_1098x1626.avif",
+    "releaseDate": "2026-06-30",
+    "dur": "N/A"
+  },
+  {
+    "p": "bongo",
+    "t": "Football Hottogoal",
+    "img": "https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/9b7f415e-04b4-4b17-9dec-bb37eec85539/32872d67-bafe-4d50-9611-b483878b5d8d.jpg?width=1920",
+    "url": "https://bongobd.com/watch/B4ZXKCNHz0j?contentUuid=528d27b8-8234-4d98-9fae-17c353415ae2",
+    "releaseDate": "2026-07-06",
+    "dur": "N/A"
+  },
+  {
+    "p": "bongo",
+    "t": "Bachelor Point - S5 E97",
+    "img": "https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/10f91eb5-feef-49a0-9167-77345aefca86/ced9810f-fcf3-4d14-942f-2983a8f2b800.jpg?width=1920",
+    "url": "https://bongobd.com/watch/FeghmY7Vc15?contentUuid=8bd65136-5621-46b6-82f4-9ede67154619",
+    "releaseDate": "2026-07-10",
+    "dur": "N/A"
+  },
+  {
+    "p": "bongo",
+    "t": "Family Feud - S2 E23",
+    "img": "https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/c80fdc2b-58f4-4a78-8cf3-749f6ff12b9c/0e4f0a01-a367-4f3a-91e7-25f39a758b32.jpg?width=1920",
+    "url": "https://bongobd.com/watch/koRhx36dFbo?contentUuid=28d64331-b327-48e6-a4dd-2d9afce9d75c",
+    "releaseDate": "2026-07-12",
+    "dur": "N/A"
+  },
+  {
+    "p": "bongo",
+    "t": "Master",
+    "img": "https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/4bb2c0ec-9a32-4096-bc37-e86e1792484c/16cdbe91-6aad-4cec-a782-bb6df42d4ec0.jpg?width=1920",
+    "url": "https://bongobd.com/watch/Yz0CXXKe2IT?contentUuid=cf2758b4-fc7b-4e32-9c08-992c9ff0afd3",
     "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Galveston",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/64b878e6-a24e-41ee-987a-7982b2fcce19.jpeg",
-    "url": "https://toffeelive.com/en/movies/RNNUKJUBm1RY_In7hEmd",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Den of Thieves",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/ri5TKJUBv9knK3AHCXru/posters/814375b0-f01d-4bb6-ab62-41a748f5426d.png",
-    "url": "https://toffeelive.com/en/movies/ri5TKJUBv9knK3AHCXru",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Hellboy",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/86b955cf-e81f-4769-a3ac-efd8ca835ca5.jpg",
-    "url": "https://toffeelive.com/en/movies/rlt2aZcBDJulSuluspfy",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Ip Man: Kung Fu Master",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/52413bf1-e20b-4147-a200-a56c977fc708.jpg",
-    "url": "https://toffeelive.com/en/movies/6ytH6ZcBNnOkwJLW_pzK",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Maneater",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/23098f9d-1afb-4256-abdc-0d09b2e3977a.jpeg",
-    "url": "https://toffeelive.com/en/movies/TNNOKJUBm1RY_In7LEYD",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Master Z: Ip Man Legacy",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/2cc80e01-f2db-4754-a01f-9869515ac026.jpg",
-    "url": "https://toffeelive.com/en/movies/Sh5d_ZYBEef-9-uV0dSW",
-    "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Paradox Effect",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/JS5UKJUBv9knK3AHOXtp/posters/d45761b7-56e6-40b6-9de4-a65c23c7d73a.png",
-    "url": "https://toffeelive.com/en/movies/JS5UKJUBv9knK3AHOXtp",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Raid: Redemption",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/ce5096c1-fdab-4860-96ee-3b82eb7d1b89.jpg",
-    "url": "https://toffeelive.com/en/movies/U3ZI6ZcBcqxnFHJBCKKg",
-    "releaseDate": "2026-07-01",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Wrath of Man",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/US5SKJUBv9knK3AHNXpt/posters/47c4f7d4-71d3-4b59-98b3-10032ba870c8.png",
-    "url": "https://toffeelive.com/en/movies/US5SKJUBv9knK3AHNXpt",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Primal",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/8675b837-6f68-4cb7-9aad-8c88fd7a2be6.jpeg",
-    "url": "https://toffeelive.com/en/movies/BtNPKJUBm1RY_In7qkeU",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Project Silence",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/TSDKZZgBEef-9-uVhy3y/posters/6cbc70c6-67c2-46eb-bda8-b1b1f38a98eb.png",
-    "url": "https://toffeelive.com/en/movies/TSDKZZgBEef-9-uVhy3y",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Rambo",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/i3Vd_ZYBcqxnFHJBYXgg/posters/18dbe7f8-fe02-4728-a62d-7714920abc26.png",
-    "url": "https://toffeelive.com/en/movies/i3Vd_ZYBcqxnFHJBYXgg",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Redline",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/c71dc840-d78a-45cb-92f5-8ca0787998cb.jpg",
-    "url": "https://toffeelive.com/en/movies/uNRtFJYBm1RY_In7CPJ3",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Rules of the Game: Manhunt",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/45b531a1-bcb9-4e81-ae5b-b2dc38f399d0.jpg",
-    "url": "https://toffeelive.com/en/movies/D81mSZYBtpl-Sbt7d9W4",
-    "releaseDate": "2026-07-02",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Balkan Line",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/55f6b1c0-270b-47cc-9d7a-52485d445793.jpeg",
-    "url": "https://toffeelive.com/en/movies/JNOfspUBm1RY_In725rL",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Bricklayer",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/idNQKJUBm1RY_In7mkeh/posters/4768bcbf-9170-4505-b3c6-5e3c431b3cf5.png",
-    "url": "https://toffeelive.com/en/movies/idNQKJUBm1RY_In7mkeh",
-    "releaseDate": "2026-07-02",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Expendables",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/86f28d58-a8fe-4f9b-85cb-aebdacce3c3f.jpeg",
-    "url": "https://toffeelive.com/en/movies/7C5TKJUBv9knK3AHrnpa",
-    "releaseDate": "2026-07-06",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Deadlock",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/c285cc19-2417-434d-8111-a3960a863421.jpeg",
-    "url": "https://toffeelive.com/en/movies/OtNQKJUBm1RY_In7AkfS",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Lovelace",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/ENOfspUBm1RY_In7uJor/posters/b3049f83-7ec1-4ad2-9a9f-45a7e741b0f6.png",
-    "url": "https://toffeelive.com/en/movies/ENOfspUBm1RY_In7uJor",
-    "releaseDate": "2026-07-01",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Mr. Rani",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/405c0c46-2b4f-4eb9-bc8a-16bfde71f4ed.jpg",
-    "url": "https://toffeelive.com/en/movies/R3YL-ZcBcqxnFHJBLLHU",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Finally Dawn",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/a177961d-c6ab-488b-b5ad-69545eb168ff.jpeg",
-    "url": "https://toffeelive.com/en/movies/LtNNKJUBm1RY_In74UaQ",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Destroyer",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/4a2d6963-c779-406c-b0c2-f91f1b53d9ff.jpeg",
-    "url": "https://toffeelive.com/en/movies/xNNRKJUBm1RY_In7DkcN",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Bad Ass",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/9tI19pQBm1RY_In7GMy3/posters/7f5a629e-6eeb-4684-b438-05a9dbb9c4dd.png",
-    "url": "https://toffeelive.com/en/series/9tI19pQBm1RY_In7GMy3",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Mohanogor",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/INJv9JQBm1RY_In7k8i2/posters/f2660ac8-76e3-436f-8ba4-114fe0bcb3fa.png",
-    "url": "https://toffeelive.com/en/series/INJv9JQBm1RY_In7k8i2",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Kokhono Ajante",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/DiT99JwBEef-9-uVMUSz/posters/b064d23e-873a-4154-ac6d-cbe391166898.png",
-    "url": "https://toffeelive.com/en/series/DiT99JwBEef-9-uVMUSz",
-    "releaseDate": "2026-07-06",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Kurulus Osman",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/eiuFApgBNnOkwJLWn7Ww/posters/01e7d27e-7d6a-41d9-81a6-71ca0d7afd1b.png",
-    "url": "https://toffeelive.com/en/series/eiuFApgBNnOkwJLWn7Ww",
-    "releaseDate": "2026-07-01",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Lotakambal",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/KtJv9JQBm1RY_In7k8i2/posters/ecdfc44d-a15d-4616-a782-d8a2d1383a7e.png",
-    "url": "https://toffeelive.com/en/series/KtJv9JQBm1RY_In7k8i2",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "BOLIGIRI",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/8eiSpp0BIxFjn23x_RBp/posters/bbf1f5a8-6632-4807-8dd7-6539571c7ab4.png",
-    "url": "https://toffeelive.com/en/series/8eiSpp0BIxFjn23x_RBp",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Gulshan Avenue",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/G9Jv9JQBm1RY_In7k8i2/posters/ab671132-de52-4df4-826e-c810e8a10bff.png",
-    "url": "https://toffeelive.com/en/series/G9Jv9JQBm1RY_In7k8i2",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Code 8",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/c85a5062-3250-4e69-bc6d-96def2913162.jpg",
-    "url": "https://toffeelive.com/en/movies/DVsQTpcBDJulSuluU4wV",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Bad Lieutenant: Port of Call New Orleans",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/6e7c0495-b458-448c-8cc6-826859f69e13.jpeg",
-    "url": "https://toffeelive.com/en/movies/KdOfspUBm1RY_In745qo",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Blue Iguana",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/b21386a8-17ea-4759-98b2-b72c9560e6aa.jpeg",
-    "url": "https://toffeelive.com/en/movies/My5UKJUBv9knK3AHZ3tz",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Miss Butcher",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/6B-nNZcBEef-9-uVJD-c/posters/0e5fea3f-b305-41f6-9c36-c76f55f5d0ea.png",
-    "url": "https://toffeelive.com/en/movies/6B-nNZcBEef-9-uVJD-c",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Cash",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/_R52xJYBEef-9-uVAFvs/posters/44215a05-be6c-4742-b467-5a51ecf4fdef.png",
-    "url": "https://toffeelive.com/en/movies/_R52xJYBEef-9-uVAFvs",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Logan Lucky",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/a5227cd0-8473-422e-8ea0-a9ecd8eb1dcc.jpeg",
-    "url": "https://toffeelive.com/en/movies/yS5QKJUBv9knK3AH23kv",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Black Dahlia",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/0c1mSZYBtpl-Sbt7SNTs/posters/623d0d58-95ae-439a-9075-0a995876017a.png",
-    "url": "https://toffeelive.com/en/movies/0c1mSZYBtpl-Sbt7SNTs",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Black Mafia Family",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/CtNlRpUBm1RY_In79WjS/posters/5f041878-c785-4df7-9068-891961abf62e.png",
-    "url": "https://toffeelive.com/en/series/CtNlRpUBm1RY_In79WjS",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Pagol Tor Jonno",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/-CTl9JwBEef-9-uVEEP6/posters/a4284719-4efe-4dbb-8155-30eaeb4fd86a.png",
-    "url": "https://toffeelive.com/en/drama/-CTl9JwBEef-9-uVEEP6",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Amar Sesh Kotha",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/1iQX8JwBEef-9-uVA0BC/posters/a02dbe6c-e017-4ffb-872b-9b6834eb4f1c.png",
-    "url": "https://toffeelive.com/en/movies/1iQX8JwBEef-9-uVA0BC",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Foria",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/KHtS45oBcqxnFHJB2Q_z/posters/d82c9a97-4517-4501-9ebc-c90562ef9441.png",
-    "url": "https://toffeelive.com/en/drama/KHtS45oBcqxnFHJB2Q_z",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Tumi Amar Chile",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/YCvjv5cBNnOkwJLWpmvz/posters/2953568d-9981-478a-a744-6e24125958d9.png",
-    "url": "https://toffeelive.com/en/drama/YCvjv5cBNnOkwJLWpmvz",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Mister Nurse",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/60566c0d-92c5-4db8-b11c-1437219366ac.jpeg",
-    "url": "https://toffeelive.com/en/drama/Hy7P9JQBv9knK3AHqSy8",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Megh Na Chaite Bristy",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/I3usv5sBcqxnFHJBa7Pm/posters/ee331007-6d8b-4c82-9a99-0a362fbc492d.png",
-    "url": "https://toffeelive.com/en/drama/I3usv5sBcqxnFHJBa7Pm",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Protidan",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/s3ZPwpcBcqxnFHJBOXSi/posters/722aab89-f372-4281-b0e6-a08666f7da44.png",
-    "url": "https://toffeelive.com/en/drama/s3ZPwpcBcqxnFHJBOXSi",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Chawa Pawa",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/zz8iTp0BuUSiBsg_A5Rz/posters/f33c4115-f6ac-421d-8934-318c2b95217f.png",
-    "url": "https://toffeelive.com/en/drama/zz8iTp0BuUSiBsg_A5Rz",
-    "releaseDate": "2026-07-01",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Police Jokhon Bou",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/UTDM9JwBNnOkwJLWw-Z8/posters/08344708-d616-4f47-b29d-fce564b37788.png",
-    "url": "https://toffeelive.com/en/drama/UTDM9JwBNnOkwJLWw-Z8",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Ei Rod Ei Brishti",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/b9686442-e41f-425b-9de0-760615c2462a.jpeg",
-    "url": "https://toffeelive.com/en/drama/oy7P9JQBv9knK3AHqSu8",
-    "releaseDate": "2026-07-06",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Total Siyapaa",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/B81sFJYBtpl-Sbt7qZPQ/posters/3b15293b-25f4-445f-ad4d-879b0b1fa675.png",
-    "url": "https://toffeelive.com/en/movies/B81sFJYBtpl-Sbt7qZPQ",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Krishna Aur Kans",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/AR-nNZcBEef-9-uVRkCA/posters/286c0adb-ea97-4e19-973a-d42f0f20f49a.png",
-    "url": "https://toffeelive.com/en/movies/AR-nNZcBEef-9-uVRkCA",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Murmur",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/4a37b90d-becb-4bb4-a191-251bdc25f615.jpg",
-    "url": "https://toffeelive.com/en/movies/_a9lSZYBrjBfS2_RsToI",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Paarijatha Parvam",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/c9e2b46c-c3bd-4b46-acd1-79fdad5029f3.jpg",
-    "url": "https://toffeelive.com/en/movies/2neXQJgBcqxnFHJB-xE6",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dhakshina",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/yNNKKJUBm1RY_In77URV/posters/5d2ef316-1320-435d-af6f-1fb90ef0dec9.png",
-    "url": "https://toffeelive.com/en/movies/yNNKKJUBm1RY_In77URV",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Shiva",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/0ef72d27-9314-49c7-abbe-a844488d710b.jpg",
-    "url": "https://toffeelive.com/en/movies/h9RsFJYBm1RY_In7uPJr",
-    "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Soothravakyam - Malayalam",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/c0008d5b-64ea-41e3-9648-b49baf053349.jpg",
-    "url": "https://toffeelive.com/en/movies/XS2P0ZgBNnOkwJLWTFmN",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Shabri",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/0c99081d-9380-4570-a0a6-5cef56f08f98.jpg",
-    "url": "https://toffeelive.com/en/movies/l1rWqpYBDJulSulubKVA",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Summer 2007",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/988befaa-1751-499f-8fee-9a7430dce3d0.jpg",
-    "url": "https://toffeelive.com/en/movies/PnTVqpYBcqxnFHJBis8p",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "The Raid 2",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/66af74c2-8eb2-47f2-a505-895aaa574501.jpg",
-    "url": "https://toffeelive.com/en/movies/BCtI6ZcBNnOkwJLWDZ2g",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Big Game",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/9i5TKJUBv9knK3AH1How/posters/5bd66afb-7e7a-4398-a5f0-206683c0a81e.png",
-    "url": "https://toffeelive.com/en/movies/9i5TKJUBv9knK3AH1How",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Law Abiding Citizen",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/46c25d37-8fed-4fc2-bca8-cea172f5988e.jpeg",
-    "url": "https://toffeelive.com/en/movies/29NRKJUBm1RY_In7RUcv",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Corrective Measures",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/5c0442e0-6c3d-4041-86f8-39fdea52050b.jpeg",
-    "url": "https://toffeelive.com/en/movies/R9NQKJUBm1RY_In7HEdz",
-    "releaseDate": "2026-07-06",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Bleeding Steel",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/zC5OKJUBv9knK3AHiniS/posters/c6cb843a-f861-40b0-b516-9ac36034d29d.png",
-    "url": "https://toffeelive.com/en/movies/zC5OKJUBv9knK3AHiniS",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Coma",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/1fadfb9d-3dde-4e8f-940d-a71d2fb2e6ad.jpg",
-    "url": "https://toffeelive.com/en/movies/-FrUqpYBDJulSulumaPT",
-    "releaseDate": "2026-07-01",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Revolt",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/b3b83cc2-708c-4c63-a2ca-d8089861087b.jpeg",
-    "url": "https://toffeelive.com/en/movies/L9NLKJUBm1RY_In7zkW9",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Subservience",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/oS5OKJUBv9knK3AHAnjs/posters/8e1334e2-a1d9-480b-9867-b2b37df5a19f.png",
-    "url": "https://toffeelive.com/en/movies/oS5OKJUBv9knK3AHAnjs",
-    "releaseDate": "2026-07-12",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Universal Soldier 3: Regeneration",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/01ace15c-dfc5-4081-93b5-9ff3df767baa.jpg",
-    "url": "https://toffeelive.com/en/movies/o3Vd_ZYBcqxnFHJBc3hs",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Valerian and the City of a Thousand Planets",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/1y5RKJUBv9knK3AHAXm0/posters/8b90e626-3272-4854-aa4b-580b152f67d3.png",
-    "url": "https://toffeelive.com/en/movies/1y5RKJUBv9knK3AHAXm0",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Voyagers",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/toffee/posters/9eaa03bc-83d7-49d0-aeb1-b7a7472493dc.jpeg",
-    "url": "https://toffeelive.com/en/movies/Vy5UKJUBv9knK3AHynsQ",
-    "releaseDate": "2026-07-10",
     "dur": "N/A"
   }
 ]
