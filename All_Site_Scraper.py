@@ -133,7 +133,7 @@ def scrape_binge():
         print(f"  [!] Binge Error: {e}")
 
 # ---------------------------------------------------------
-# 4. Playwright Scraper (Isolated Tabs Design)
+# 4. Playwright Scraper (Isolated Tabs & Anti-Crash)
 # ---------------------------------------------------------
 def scrape_dynamic_sites():
     print("[*] Starting Playwright for Dynamic Sites...")
@@ -148,7 +148,7 @@ def scrape_dynamic_sites():
 
             # --- Chorki ---
             print("  -> Chorki")
-            page_chorki = context.new_page() # নতুন ফ্রেশ ট্যাব
+            page_chorki = context.new_page() 
             try:
                 page_chorki.goto("https://www.chorki.com/", wait_until="domcontentloaded", timeout=45000)
                 page_chorki.wait_for_timeout(2000)
@@ -159,22 +159,25 @@ def scrape_dynamic_sites():
                     if not href or href in seen_c: continue
                     seen_c.add(href)
                     title = href.split('/')[-1].replace('-', ' ').title()
-                    img_tag = card.locator('img').first
-                    img = img_tag.get_attribute('src') if img_tag else None
-                    if img:
-                        full_url = href if href.startswith('http') else "https://www.chorki.com" + href
-                        ALL_DATA.append({"p": "chorki", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 14), "dur": "N/A"})
+                    
+                    try:
+                        img = card.locator('img').first.get_attribute('src', timeout=2000)
+                    except:
+                        img = None
+                        
+                    full_url = href if href.startswith('http') else "https://www.chorki.com" + href
+                    ALL_DATA.append({"p": "chorki", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 14), "dur": "N/A"})
             except Exception as e: 
                 print(f"  [!] Chorki Error: {e}")
             finally:
-                page_chorki.close() # ট্যাব বন্ধ করে দেওয়া হলো
+                page_chorki.close()
 
             # --- Hoichoi ---
             print("  -> Hoichoi")
-            page_hoichoi = context.new_page() # নতুন ফ্রেশ ট্যাব
+            page_hoichoi = context.new_page()
             try:
                 page_hoichoi.goto("https://www.hoichoi.tv/bn", wait_until="domcontentloaded", timeout=45000)
-                page_hoichoi.mouse.wheel(0, 1000) # ইমেজ লোড হওয়ার জন্য একটু স্ক্রল
+                page_hoichoi.mouse.wheel(0, 1000) 
                 page_hoichoi.wait_for_timeout(3000)
                 cards = page_hoichoi.locator('a[href*="/movies/"], a[href*="/shows/"]').all()
                 seen_h = set()
@@ -183,11 +186,14 @@ def scrape_dynamic_sites():
                     if not href or href in seen_h: continue
                     seen_h.add(href)
                     title = href.split('/')[-1].replace('-', ' ').title()
-                    img_tag = card.locator('img').first
-                    img = img_tag.get_attribute('src') if img_tag else None
-                    if img:
-                        full_url = href if href.startswith('http') else "https://www.hoichoi.tv" + href
-                        ALL_DATA.append({"p": "hoichoi", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 20), "dur": "N/A"})
+                    
+                    try:
+                        img = card.locator('img').first.get_attribute('src', timeout=2000)
+                    except:
+                        img = None
+                        
+                    full_url = href if href.startswith('http') else "https://www.hoichoi.tv" + href
+                    ALL_DATA.append({"p": "hoichoi", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 20), "dur": "N/A"})
             except Exception as e: 
                 print(f"  [!] Hoichoi Error: {e}")
             finally:
@@ -208,11 +214,14 @@ def scrape_dynamic_sites():
                     if not href or href in seen_b: continue
                     seen_b.add(href)
                     title = card.get_attribute('aria-label') or href.split('?')[0].split('/')[-1].replace('-', ' ').title()
-                    img_tag = card.locator('img').first
-                    img = img_tag.get_attribute('src') if img_tag else None
-                    if img:
-                        full_url = href if href.startswith('http') else "https://bongobd.com" + href
-                        ALL_DATA.append({"p": "bongo", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 10), "dur": "N/A"})
+                    
+                    try:
+                        img = card.locator('img').first.get_attribute('src', timeout=2000)
+                    except:
+                        img = None
+                        
+                    full_url = href if href.startswith('http') else "https://bongobd.com" + href
+                    ALL_DATA.append({"p": "bongo", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 10), "dur": "N/A"})
             except Exception as e: 
                 print(f"  [!] Bongo Error: {e}")
             finally:
@@ -233,11 +242,14 @@ def scrape_dynamic_sites():
                     if not href or href in seen_t: continue
                     seen_t.add(href)
                     title = href.split('/')[-1].replace('-', ' ').title()
-                    img_tag = card.locator('img').first
-                    img = img_tag.get_attribute('src') if img_tag else None
-                    if img:
-                        full_url = href if href.startswith('http') else "https://toffeelive.com" + href
-                        ALL_DATA.append({"p": "toffee", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 12), "dur": "N/A"})
+                    
+                    try:
+                        img = card.locator('img').first.get_attribute('src', timeout=2000)
+                    except:
+                        img = None
+                        
+                    full_url = href if href.startswith('http') else "https://toffeelive.com" + href
+                    ALL_DATA.append({"p": "toffee", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 12), "dur": "N/A"})
             except Exception as e: 
                 print(f"  [!] Toffee Error: {e}")
             finally:
@@ -259,7 +271,7 @@ if __name__ == "__main__":
     scrape_justwatch()
     scrape_binge()
     
-    # ব্রাউজার স্ক্র্যাপার (Isolated Tabs)
+    # ব্রাউজার স্ক্র্যাপার (Isolated Tabs & Safe Extract)
     scrape_dynamic_sites()
     
     if ALL_DATA:
