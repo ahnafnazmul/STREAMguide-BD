@@ -133,7 +133,7 @@ def scrape_binge():
         print(f"  [!] Binge Error: {e}")
 
 # ---------------------------------------------------------
-# 4. Playwright Scraper (Isolated Tabs & Anti-Crash)
+# 4. Playwright Scraper (Fix for Alien Encrypted Titles)
 # ---------------------------------------------------------
 def scrape_dynamic_sites():
     print("[*] Starting Playwright for Dynamic Sites...")
@@ -158,12 +158,16 @@ def scrape_dynamic_sites():
                     href = card.get_attribute('href')
                     if not href or href in seen_c: continue
                     seen_c.add(href)
-                    title = href.split('/')[-1].replace('-', ' ').title()
                     
                     try:
-                        img = card.locator('img').first.get_attribute('src', timeout=2000)
+                        img_tag = card.locator('img').first
+                        img = img_tag.get_attribute('src', timeout=2000)
+                        title = img_tag.get_attribute('alt', timeout=2000)
                     except:
-                        img = None
+                        img, title = None, None
+                        
+                    if not title or title.strip() == "":
+                        title = href.split('/')[-1].replace('-', ' ').title()
                         
                     full_url = href if href.startswith('http') else "https://www.chorki.com" + href
                     ALL_DATA.append({"p": "chorki", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 14), "dur": "N/A"})
@@ -185,12 +189,16 @@ def scrape_dynamic_sites():
                     href = card.get_attribute('href')
                     if not href or href in seen_h: continue
                     seen_h.add(href)
-                    title = href.split('/')[-1].replace('-', ' ').title()
                     
                     try:
-                        img = card.locator('img').first.get_attribute('src', timeout=2000)
+                        img_tag = card.locator('img').first
+                        img = img_tag.get_attribute('src', timeout=2000)
+                        title = img_tag.get_attribute('alt', timeout=2000)
                     except:
-                        img = None
+                        img, title = None, None
+                        
+                    if not title or title.strip() == "":
+                        title = href.split('/')[-1].replace('-', ' ').title()
                         
                     full_url = href if href.startswith('http') else "https://www.hoichoi.tv" + href
                     ALL_DATA.append({"p": "hoichoi", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 20), "dur": "N/A"})
@@ -213,12 +221,20 @@ def scrape_dynamic_sites():
                     href = card.get_attribute('href')
                     if not href or href in seen_b: continue
                     seen_b.add(href)
-                    title = card.get_attribute('aria-label') or href.split('?')[0].split('/')[-1].replace('-', ' ').title()
+                    
+                    # Bongo uses aria-label on the anchor for titles often
+                    aria_title = card.get_attribute('aria-label')
                     
                     try:
-                        img = card.locator('img').first.get_attribute('src', timeout=2000)
+                        img_tag = card.locator('img').first
+                        img = img_tag.get_attribute('src', timeout=2000)
+                        img_alt = img_tag.get_attribute('alt', timeout=2000)
                     except:
-                        img = None
+                        img, img_alt = None, None
+                        
+                    title = aria_title or img_alt
+                    if not title or title.strip() == "":
+                        title = href.split('?')[0].split('/')[-1].replace('-', ' ').title()
                         
                     full_url = href if href.startswith('http') else "https://bongobd.com" + href
                     ALL_DATA.append({"p": "bongo", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 10), "dur": "N/A"})
@@ -241,12 +257,17 @@ def scrape_dynamic_sites():
                     href = card.get_attribute('href')
                     if not href or href in seen_t: continue
                     seen_t.add(href)
-                    title = href.split('/')[-1].replace('-', ' ').title()
                     
                     try:
-                        img = card.locator('img').first.get_attribute('src', timeout=2000)
+                        img_tag = card.locator('img').first
+                        img = img_tag.get_attribute('src', timeout=2000)
+                        title = img_tag.get_attribute('alt', timeout=2000)
                     except:
-                        img = None
+                        img, title = None, None
+                        
+                    # If it's still missing, fallback (but we prefer alt text to avoid the gibberish)
+                    if not title or title.strip() == "":
+                        title = href.split('/')[-1].replace('-', ' ').title()
                         
                     full_url = href if href.startswith('http') else "https://toffeelive.com" + href
                     ALL_DATA.append({"p": "toffee", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 12), "dur": "N/A"})
@@ -271,7 +292,7 @@ if __name__ == "__main__":
     scrape_justwatch()
     scrape_binge()
     
-    # ব্রাউজার স্ক্র্যাপার (Isolated Tabs & Safe Extract)
+    # ব্রাউজার স্ক্র্যাপার (Alien Language Fix)
     scrape_dynamic_sites()
     
     if ALL_DATA:
