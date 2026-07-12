@@ -133,7 +133,7 @@ def scrape_binge():
         print(f"  [!] Binge Error: {e}")
 
 # ---------------------------------------------------------
-# 4. Playwright Scraper (Original Regex + Isolated Tabs)
+# 4. Playwright Scraper (Isolated Tabs)
 # ---------------------------------------------------------
 def scrape_dynamic_sites():
     print("[*] Starting Playwright for Dynamic Sites...")
@@ -151,17 +151,22 @@ def scrape_dynamic_sites():
             page_chorki = context.new_page() 
             try:
                 page_chorki.goto("https://www.chorki.com/", wait_until="domcontentloaded", timeout=45000)
-                for _ in range(3):
-                    page_chorki.mouse.wheel(0, 1000)
-                    page_chorki.wait_for_timeout(1000)
-                chorki_html = page_chorki.content()
-                
-                chorki_ptn = re.compile(r'href="(/en/(?:movie|series)/[a-zA-Z0-9_-]+)"[^>]*>.*?<img alt="([^"]+)"[^>]*src="([^"]+)"', re.DOTALL)
+                page_chorki.wait_for_timeout(2000)
+                cards = page_chorki.locator('a[href*="/movie/"], a[href*="/series/"]').all()
                 seen_c = set()
-                for href, title, img in chorki_ptn.findall(chorki_html):
-                    if href in seen_c: continue
+                for card in cards[:20]:
+                    href = card.get_attribute('href')
+                    if not href or href in seen_c: continue
                     seen_c.add(href)
-                    full_url = "https://www.chorki.com" + href if href.startswith('/') else href
+                    try:
+                        img_tag = card.locator('img').first
+                        img = img_tag.get_attribute('src', timeout=2000)
+                        title = img_tag.get_attribute('alt', timeout=2000)
+                    except:
+                        img, title = None, None
+                    if not title or title.strip() == "":
+                        title = href.split('/')[-1].replace('-', ' ').title()
+                    full_url = href if href.startswith('http') else "https://www.chorki.com" + href
                     ALL_DATA.append({"p": "chorki", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 14), "dur": "N/A"})
             except Exception as e: 
                 print(f"  [!] Chorki Error: {e}")
@@ -173,67 +178,83 @@ def scrape_dynamic_sites():
             page_hoichoi = context.new_page()
             try:
                 page_hoichoi.goto("https://www.hoichoi.tv/bn", wait_until="domcontentloaded", timeout=45000)
-                for _ in range(4):
-                    page_hoichoi.mouse.wheel(0, 1000)
-                    page_hoichoi.wait_for_timeout(1000)
-                hoichoi_html = page_hoichoi.content()
-                
-                hoichoi_ptn = re.compile(r'href="(/bn/(?:movies|shows)/[a-zA-Z0-9_-]+)"[^>]*>.*?<img alt="([^"]+)"[^>]*src="([^"]+)"', re.DOTALL)
+                page_hoichoi.mouse.wheel(0, 1000) 
+                page_hoichoi.wait_for_timeout(3000)
+                cards = page_hoichoi.locator('a[href*="/movies/"], a[href*="/shows/"]').all()
                 seen_h = set()
-                for href, title, img in hoichoi_ptn.findall(hoichoi_html):
-                    if href in seen_h: continue
+                for card in cards[:20]:
+                    href = card.get_attribute('href')
+                    if not href or href in seen_h: continue
                     seen_h.add(href)
-                    full_url = "https://www.hoichoi.tv" + href if href.startswith('/') else href
+                    try:
+                        img_tag = card.locator('img').first
+                        img = img_tag.get_attribute('src', timeout=2000)
+                        title = img_tag.get_attribute('alt', timeout=2000)
+                    except:
+                        img, title = None, None
+                    if not title or title.strip() == "":
+                        title = href.split('/')[-1].replace('-', ' ').title()
+                    full_url = href if href.startswith('http') else "https://www.hoichoi.tv" + href
                     ALL_DATA.append({"p": "hoichoi", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 20), "dur": "N/A"})
             except Exception as e: 
                 print(f"  [!] Hoichoi Error: {e}")
             finally:
                 page_hoichoi.close()
 
-            # --- Bongo BD (The original perfect code) ---
+            # --- Bongo BD ---
             print("  -> Bongo BD")
             page_bongo = context.new_page()
             try:
-                page_bongo.goto("https://bongobd.com/", wait_until="networkidle", timeout=45000)
-                for _ in range(5):
-                    page_bongo.mouse.wheel(0, 1400)
-                    page_bongo.wait_for_timeout(800)
-                bongo_html = page_bongo.content()
-                
-                bongo_ptn = re.compile(r'href="(/watch/[a-zA-Z0-9]+\?contentUuid=[a-f0-9-]+)"[^>]*aria-label="([^"]+)"')
-                img_ptn = re.compile(r'<img alt="[^"]*" src="([^"]+)"')
+                page_bongo.goto("https://bongobd.com/", wait_until="domcontentloaded", timeout=45000)
+                for _ in range(3):
+                    page_bongo.mouse.wheel(0, 1000)
+                    page_bongo.wait_for_timeout(1000)
+                cards = page_bongo.locator('a[href^="/watch/"]').all()
                 seen_b = set()
-                for m in bongo_ptn.finditer(bongo_html):
-                    href, title = m.group(1), m.group(2)
-                    if href in seen_b: continue
+                for card in cards[:20]:
+                    href = card.get_attribute('href')
+                    if not href or href in seen_b: continue
                     seen_b.add(href)
-                    
-                    img_m = img_ptn.search(bongo_html[m.end():m.end()+600])
-                    img = img_m.group(1) if img_m else None
-                    if img:
-                        full_url = "https://bongobd.com" + href if href.startswith('/') else href
-                        ALL_DATA.append({"p": "bongo", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 10), "dur": "N/A"})
+                    aria_title = card.get_attribute('aria-label')
+                    try:
+                        img_tag = card.locator('img').first
+                        img = img_tag.get_attribute('src', timeout=2000)
+                        img_alt = img_tag.get_attribute('alt', timeout=2000)
+                    except:
+                        img, img_alt = None, None
+                    title = aria_title or img_alt
+                    if not title or title.strip() == "":
+                        title = href.split('?')[0].split('/')[-1].replace('-', ' ').title()
+                    full_url = href if href.startswith('http') else "https://bongobd.com" + href
+                    ALL_DATA.append({"p": "bongo", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 10), "dur": "N/A"})
             except Exception as e: 
                 print(f"  [!] Bongo Error: {e}")
             finally:
                 page_bongo.close()
 
-            # --- Toffee (The original perfect code) ---
+            # --- Toffee ---
             print("  -> Toffee")
             page_toffee = context.new_page()
             try:
-                page_toffee.goto("https://toffeelive.com/", wait_until="networkidle", timeout=45000)
-                for _ in range(5):
-                    page_toffee.mouse.wheel(0, 1400)
-                    page_toffee.wait_for_timeout(800)
-                toffee_html = page_toffee.content()
-                
-                toffee_ptn = re.compile(r'href="(/en/(?:movies|series|drama)/[a-zA-Z0-9_-]+)"[^>]*>.*?<img alt="([^"]+)"[^>]*src(?:set)?="([^"\s]+)', re.DOTALL)
+                page_toffee.goto("https://toffeelive.com/", wait_until="domcontentloaded", timeout=45000)
+                for _ in range(3):
+                    page_toffee.mouse.wheel(0, 1000)
+                    page_toffee.wait_for_timeout(1000)
+                cards = page_toffee.locator('a[href*="/movies/"], a[href*="/series/"], a[href*="/drama/"]').all()
                 seen_t = set()
-                for href, title, img in toffee_ptn.findall(toffee_html):
-                    if href in seen_t: continue
+                for card in cards[:20]:
+                    href = card.get_attribute('href')
+                    if not href or href in seen_t: continue
                     seen_t.add(href)
-                    full_url = "https://toffeelive.com" + href if href.startswith('/') else href
+                    try:
+                        img_tag = card.locator('img').first
+                        img = img_tag.get_attribute('src', timeout=2000)
+                        title = img_tag.get_attribute('alt', timeout=2000)
+                    except:
+                        img, title = None, None
+                    if not title or title.strip() == "":
+                        title = href.split('/')[-1].replace('-', ' ').title()
+                    full_url = href if href.startswith('http') else "https://toffeelive.com" + href
                     ALL_DATA.append({"p": "toffee", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 12), "dur": "N/A"})
             except Exception as e: 
                 print(f"  [!] Toffee Error: {e}")
@@ -250,15 +271,69 @@ def scrape_dynamic_sites():
 if __name__ == "__main__":
     print("🚀 Starting STREAMguide Master Scraper...")
     
+    # 🌟 LEVEL 1: Live Scraping 🌟
     scrape_gotipath("utshob", "https://www.utshob.live")
     scrape_gotipath("deepto", "https://www.deeptoplay.com")
     scrape_gotipath("bioscope", "https://www.bioscopeplus.com", "https://www.bioscopeplus.com/en/new-and-upcoming")
     scrape_justwatch()
     scrape_binge()
-    
-    # ব্রাউজার স্ক্র্যাপার (Original Formula + Isolated Tabs)
     scrape_dynamic_sites()
     
+    # বর্তমান লাইভ স্ক্র্যাপ করা প্লাটফর্মের তালিকা
+    scraped_platforms = set(item.get("p") for item in ALL_DATA if item.get("p"))
+
+    # 🌟 LEVEL 2: Manual Data Rescue (Only for missing platforms) 🌟
+    try:
+        if os.path.exists("manual_data.json"):
+            with open("manual_data.json", "r", encoding="utf-8") as f:
+                manual_data = json.load(f)
+                if isinstance(manual_data, list):
+                    added_from_manual = 0
+                    manual_platforms_added = set()
+                    
+                    for item in manual_data:
+                        p = item.get("p")
+                        # শুধুমাত্র সেই প্লাটফর্মের ডেটা নিবে যেটা Level 1 এ মিসিং
+                        if p and p not in scraped_platforms:
+                            ALL_DATA.append(item)
+                            added_from_manual += 1
+                            manual_platforms_added.add(p)
+                            
+                    if added_from_manual > 0:
+                        print(f"\n✅ LEVEL 2: Merged {added_from_manual} items from manual_data.json for missing platforms: {', '.join(manual_platforms_added)}")
+                    else:
+                        print("\n✅ LEVEL 2: manual_data.json checked. No missing platforms needed rescue from here.")
+    except Exception as e:
+        print(f"\n[-] Could not process manual_data.json: {e}")
+
+    # Level 1 ও Level 2 মিলে বর্তমান মোট প্লাটফর্মের তালিকা
+    current_platforms = set(item.get("p") for item in ALL_DATA if item.get("p"))
+
+    # 🌟 LEVEL 3: Universal Cache Recovery (Only for still missing platforms) 🌟
+    try:
+        if os.path.exists("data.json"):
+            with open("data.json", "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+            
+            rescued_items = 0
+            rescued_platforms = set()
+
+            for item in old_data:
+                p = item.get("p")
+                # শুধুমাত্র সেই প্লাটফর্মের ডেটা নিবে যেটা Level 1 এবং Level 2 দুটোতেই মিসিং
+                if p and p not in current_platforms:
+                    ALL_DATA.append(item)
+                    rescued_items += 1
+                    rescued_platforms.add(p)
+
+            if rescued_items > 0:
+                print(f"\n✅ LEVEL 3: Rescued {rescued_items} items from cache for missing platforms: {', '.join(rescued_platforms)}")
+            else:
+                print("\n✅ LEVEL 3: Cache checked. No remaining missing platforms needed rescue.")
+    except Exception as e:
+        print(f"\n[-] Could not rescue old data from cache: {e}")
+
+    # 🌟 FINAL SAVE 🌟
     if ALL_DATA:
         with open("data.json", "w", encoding="utf-8") as f:
             json.dump(ALL_DATA, f, ensure_ascii=False, indent=2)
