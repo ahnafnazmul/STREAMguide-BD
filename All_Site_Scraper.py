@@ -5,7 +5,7 @@ import time
 import requests
 from datetime import datetime, timezone
 
-# Playwright Bongo ও Toffee এর জন্য ব্যবহার করা হবে
+# Playwright এখন ডায়নামিক সাইটগুলোর (Chorki, Hoichoi, Bongo, Toffee) জন্য ব্যবহার করা হবে
 from playwright.sync_api import sync_playwright
 
 # ---------------------------------------------------------
@@ -16,7 +16,6 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9,bn;q=0.8",
 }
 
-# গ্লোবাল ডেটা লিস্ট, যা সবশেষে data.json এ সেভ হবে
 ALL_DATA = []
 
 # ---------------------------------------------------------
@@ -28,84 +27,8 @@ def generate_fake_release_date(seed_string, max_days_ago=30):
     days_ago = h % max_days_ago
     return datetime.fromtimestamp(time.time() - (days_ago * 86400)).strftime('%Y-%m-%d')
 
-def rescue_decode(s):
-    """Hoichoi এর বাংলা ফন্ট ফিক্স করার লজিক"""
-    try:
-        return s.encode('latin1').decode('utf-8')
-    except Exception:
-        return s
-
 # ---------------------------------------------------------
-# 1. Chorki Scraper
-# ---------------------------------------------------------
-def scrape_chorki():
-    print("[*] Scraping Chorki...")
-    try:
-        resp = requests.get("https://www.chorki.com/lists/new-release-movie", headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-        
-        pattern = re.compile(r'href="/en/movie/([a-zA-Z0-9_-]+)"><article[^>]*>.*?<img alt="([^"]*)"[^>]*src="([^"]+)"', re.DOTALL)
-        seen = set()
-        for match in pattern.finditer(resp.text):
-            slug, title, poster = match.groups()
-            if slug in seen:
-                continue
-            seen.add(slug)
-            
-            ALL_DATA.append({
-                "p": "chorki",
-                "t": title.strip(),
-                "img": poster.replace("&amp;", "&"),
-                "url": f"https://www.chorki.com/movie/{slug}",
-                "releaseDate": generate_fake_release_date(slug, 14),
-                "dur": "1h 45m"
-            })
-    except Exception as e:
-        print(f"  [!] Chorki Error: {e}")
-
-# ---------------------------------------------------------
-# 2. Hoichoi Scraper
-# ---------------------------------------------------------
-def scrape_hoichoi():
-    print("[*] Scraping Hoichoi...")
-    try:
-        resp = requests.get("https://hoichoi.tv/", headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-        
-        permalink_ptn = re.compile(r'permalink:"(/bn/(?:shows|movies)/[a-zA-Z0-9_-]+)"')
-        title_ptn = re.compile(r'title:"([^"]*)"')
-        img_ptn = re.compile(r'"(https://image\.hoichoicdn\.com/[^"]+)"')
-        
-        seen = set()
-        for m in permalink_ptn.finditer(resp.text):
-            href = m.group(1)
-            if href in seen:
-                continue
-            seen.add(href)
-            
-            before = resp.text[max(0, m.start() - 300):m.start()]
-            title_matches = title_ptn.findall(before)
-            if not title_matches:
-                continue
-            
-            title = rescue_decode(title_matches[-1])
-            
-            img_m = img_ptn.search(before + resp.text[m.end():m.end() + 500])
-            img = img_m.group(1) if img_m else None
-            
-            ALL_DATA.append({
-                "p": "hoichoi",
-                "t": title,
-                "url": "https://hoichoi.tv" + href,
-                "img": img,
-                "releaseDate": generate_fake_release_date(href, 20),
-                "dur": "N/A"
-            })
-    except Exception as e:
-        print(f"  [!] Hoichoi Error: {e}")
-
-# ---------------------------------------------------------
-# 3. Gotipath (Utshob, Deepto, Bioscope) Scraper
+# 1. Gotipath (Utshob, Deepto, Bioscope) Scraper
 # ---------------------------------------------------------
 def scrape_gotipath(site_key, base_url, fetch_url=None):
     print(f"[*] Scraping Gotipath ({site_key})...")
@@ -173,79 +96,7 @@ def scrape_gotipath(site_key, base_url, fetch_url=None):
         print(f"  [!] {site_key} Error: {e}")
 
 # ---------------------------------------------------------
-# 4. Playwright (Bongo, Toffee) Scraper
-# ---------------------------------------------------------
-def scrape_playwright_sites():
-    print("[*] Starting Playwright for Bongo & Toffee...")
-    try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page(viewport={"width": 1280, "height": 900}, user_agent=HEADERS['User-Agent'])
-            
-            # Scrape Bongo
-            print("  -> Bongo BD")
-            try:
-                page.goto("https://bongobd.com/", wait_until="networkidle", timeout=40000)
-                for _ in range(5):
-                    page.mouse.wheel(0, 1400)
-                    page.wait_for_timeout(800)
-                bongo_html = page.content()
-                
-                bongo_ptn = re.compile(r'href="(/watch/[a-zA-Z0-9]+\?contentUuid=[a-f0-9-]+)"[^>]*aria-label="([^"]+)"')
-                img_ptn = re.compile(r'<img alt="[^"]*" src="([^"]+)"')
-                seen_b = set()
-                for m in bongo_ptn.finditer(bongo_html):
-                    href, title = m.group(1), m.group(2)
-                    if href in seen_b:
-                        continue
-                    seen_b.add(href)
-                    
-                    img_m = img_ptn.search(bongo_html[m.end():m.end()+600])
-                    if img_m:
-                        ALL_DATA.append({
-                            "p": "bongo",
-                            "t": title,
-                            "img": img_m.group(1),
-                            "url": "https://bongobd.com" + href,
-                            "releaseDate": generate_fake_release_date(href, 10),
-                            "dur": "N/A"
-                        })
-            except Exception as e:
-                print(f"  [!] Bongo Error: {e}")
-
-            # Scrape Toffee
-            print("  -> Toffee")
-            try:
-                page.goto("https://toffeelive.com/", wait_until="networkidle", timeout=40000)
-                for _ in range(5):
-                    page.mouse.wheel(0, 1400)
-                    page.wait_for_timeout(800)
-                toffee_html = page.content()
-                
-                toffee_ptn = re.compile(r'href="(/en/(?:movies|series|drama)/[a-zA-Z0-9_-]+)"[^>]*>.*?<img alt="([^"]+)"[^>]*srcset="([^"\s]+)', re.DOTALL)
-                seen_t = set()
-                for href, title, img in toffee_ptn.findall(toffee_html):
-                    if href in seen_t:
-                        continue
-                    seen_t.add(href)
-                    ALL_DATA.append({
-                        "p": "toffee",
-                        "t": title,
-                        "img": img,
-                        "url": "https://toffeelive.com" + href,
-                        "releaseDate": generate_fake_release_date(href, 12),
-                        "dur": "N/A"
-                    })
-            except Exception as e:
-                print(f"  [!] Toffee Error: {e}")
-            
-            browser.close()
-    except Exception as e:
-        print(f"  [!] Playwright initialization failed: {e}")
-        print("      Make sure you installed it via: pip install playwright && playwright install chromium")
-
-# ---------------------------------------------------------
-# 5. JustWatch (International) Scraper
+# 2. JustWatch (International) Scraper
 # ---------------------------------------------------------
 def scrape_justwatch():
     providers = {
@@ -280,7 +131,7 @@ def scrape_justwatch():
             print(f"  [!] JustWatch {p_key} Error: {e}")
 
 # ---------------------------------------------------------
-# 6. Binge Scraper
+# 3. Binge Scraper
 # ---------------------------------------------------------
 def scrape_binge():
     print("[*] Scraping Binge...")
@@ -300,22 +151,116 @@ def scrape_binge():
         print(f"  [!] Binge Error: {e}")
 
 # ---------------------------------------------------------
+# 4. Playwright Scraper (The Ultimate Human Emulator)
+# ---------------------------------------------------------
+def scrape_dynamic_sites():
+    print("[*] Starting Playwright for Dynamic Sites (Chorki, Hoichoi, Bongo, Toffee)...")
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            # সিকিউরিটি বাইপাস করার জন্য শক্তিশালী কনটেক্সট
+            context = browser.new_context(
+                viewport={"width": 1280, "height": 900},
+                user_agent=HEADERS["User-Agent"],
+                extra_http_headers={"Accept-Language": "en-US,en;q=0.9"}
+            )
+            page = context.new_page()
+
+            # --- Chorki ---
+            print("  -> Chorki")
+            try:
+                page.goto("https://www.chorki.com/", wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(3000) # ইমেজ লোড হওয়ার জন্য ৩ সেকেন্ড অপেক্ষা
+                cards = page.locator('a[href*="/movie/"], a[href*="/series/"]').all()
+                seen_c = set()
+                for card in cards[:20]:
+                    href = card.get_attribute('href')
+                    if not href or href in seen_c: continue
+                    seen_c.add(href)
+                    title = href.split('/')[-1].replace('-', ' ').title()
+                    img_tag = card.locator('img').first
+                    img = img_tag.get_attribute('src') if img_tag else None
+                    if img:
+                        full_url = href if href.startswith('http') else "https://www.chorki.com" + href
+                        ALL_DATA.append({"p": "chorki", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 14), "dur": "N/A"})
+            except Exception as e: print(f"  [!] Chorki Error: {e}")
+
+            # --- Hoichoi ---
+            print("  -> Hoichoi")
+            try:
+                page.goto("https://www.hoichoi.tv/bn", wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(3000)
+                cards = page.locator('a[href*="/movies/"], a[href*="/shows/"]').all()
+                seen_h = set()
+                for card in cards[:20]:
+                    href = card.get_attribute('href')
+                    if not href or href in seen_h: continue
+                    seen_h.add(href)
+                    title = href.split('/')[-1].replace('-', ' ').title()
+                    img_tag = card.locator('img').first
+                    img = img_tag.get_attribute('src') if img_tag else None
+                    if img:
+                        full_url = href if href.startswith('http') else "https://www.hoichoi.tv" + href
+                        ALL_DATA.append({"p": "hoichoi", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 20), "dur": "N/A"})
+            except Exception as e: print(f"  [!] Hoichoi Error: {e}")
+
+            # --- Bongo BD ---
+            print("  -> Bongo BD")
+            try:
+                page.goto("https://bongobd.com/", wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(3000)
+                cards = page.locator('a[href^="/watch/"]').all()
+                seen_b = set()
+                for card in cards[:20]:
+                    href = card.get_attribute('href')
+                    if not href or href in seen_b: continue
+                    seen_b.add(href)
+                    title = card.get_attribute('aria-label') or href.split('?')[0].split('/')[-1].replace('-', ' ').title()
+                    img_tag = card.locator('img').first
+                    img = img_tag.get_attribute('src') if img_tag else None
+                    if img:
+                        full_url = href if href.startswith('http') else "https://bongobd.com" + href
+                        ALL_DATA.append({"p": "bongo", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 10), "dur": "N/A"})
+            except Exception as e: print(f"  [!] Bongo Error: {e}")
+
+            # --- Toffee ---
+            print("  -> Toffee")
+            try:
+                page.goto("https://toffeelive.com/", wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(3000)
+                cards = page.locator('a[href*="/movies/"], a[href*="/series/"], a[href*="/drama/"]').all()
+                seen_t = set()
+                for card in cards[:20]:
+                    href = card.get_attribute('href')
+                    if not href or href in seen_t: continue
+                    seen_t.add(href)
+                    title = href.split('/')[-1].replace('-', ' ').title()
+                    img_tag = card.locator('img').first
+                    img = img_tag.get_attribute('src') if img_tag else None
+                    if img:
+                        full_url = href if href.startswith('http') else "https://toffeelive.com" + href
+                        ALL_DATA.append({"p": "toffee", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 12), "dur": "N/A"})
+            except Exception as e: print(f"  [!] Toffee Error: {e}")
+
+            browser.close()
+    except Exception as e:
+        print(f"  [!] Playwright initialization failed: {e}")
+
+# ---------------------------------------------------------
 # Main Execution
 # ---------------------------------------------------------
 if __name__ == "__main__":
     print("🚀 Starting STREAMguide Master Scraper...")
     
-    # API ভিত্তিক স্ক্র্যাপারগুলো
-    scrape_chorki()
-    scrape_hoichoi()
+    # API ভিত্তিক স্ক্র্যাপার
     scrape_gotipath("utshob", "https://www.utshob.live")
     scrape_gotipath("deepto", "https://www.deeptoplay.com")
     scrape_gotipath("bioscope", "https://www.bioscopeplus.com", "https://www.bioscopeplus.com/en/new-and-upcoming")
     scrape_justwatch()
     scrape_binge()
     
-    # Browser ভিত্তিক স্ক্র্যাপারগুলো (Bongo, Toffee)
-    scrape_playwright_sites()
+    # ব্রাউজার/ডায়নামিক স্ক্র্যাপার (The Human Emulator)
+    scrape_dynamic_sites()
     
     # ডেটা সেভ করা
     if ALL_DATA:
