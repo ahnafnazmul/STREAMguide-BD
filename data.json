@@ -393,19 +393,43 @@
   },
   {
     "p": "bioscope",
-    "t": "Pother Pechal",
-    "dur": "0h 37m",
-    "releaseDate": "2026-05-05",
-    "img": "https://image.chorkicdn.com/uploads/images/2026/05/20/posters_e47db484dd96abde5fd34daed49ea611_goplay_800x1200wn.jpg",
-    "url": "https://www.bioscopeplus.com/videos/pother-pechal"
+    "t": "Balti",
+    "dur": "2h 31m",
+    "releaseDate": "2026-07-09",
+    "img": "https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000020328/1783090229819817_Balti_Portrait_Thumb_NewSeason.jpg",
+    "url": "https://www.bioscopeplus.com/movies/balti"
   },
   {
     "p": "bioscope",
-    "t": "Cha Gorom",
-    "dur": "1h 42m",
-    "releaseDate": "2026-04-13",
-    "img": "https://image.chorkicdn.com/uploads/images/2026/04/13/posters_5383702cd1c0acdf5bcc554032d265be_goplay_800x1200_wn.jpg",
-    "url": "https://www.bioscopeplus.com/movies/cha-gorom"
+    "t": "Aliya Basu Gayab Hai",
+    "dur": "1h 41m",
+    "releaseDate": "2024-01-01",
+    "img": "https://cms-cdn-bucket-prod.lionmultiverse.com/Media/ALIYABASUGAYABHAIY_2024_MHI_Portrait_poster_88c483b174.jpg",
+    "url": "https://www.bioscopeplus.com/movies/aliya-basu-gayab-hai"
+  },
+  {
+    "p": "bioscope",
+    "t": "Lifeline",
+    "dur": "1h 40m",
+    "releaseDate": "2026-06-20",
+    "img": "https://image.chorkicdn.com/uploads/images/2026/06/20/posters_b9779a31bc2de03175100604883100af_goplay_wn.jpg",
+    "url": "https://www.bioscopeplus.com/movies/lifeline"
+  },
+  {
+    "p": "bioscope",
+    "t": "Moyurakkhi",
+    "dur": "0h 1m",
+    "releaseDate": "2026-07-08",
+    "img": "https://img.rockstreamer.com/220xauto/images/K6aTjz0UlLtVjuHhZDdg.jpg",
+    "url": "https://www.bioscopeplus.com/videos/moyurakkhi"
+  },
+  {
+    "p": "bioscope",
+    "t": "Ulto Rajar Desh",
+    "dur": "0h 26m",
+    "releaseDate": "2026-01-01",
+    "img": "https://klikk.co.in/api/uploads/mv/IMG1782393272.jpg",
+    "url": "https://www.bioscopeplus.com/videos/ulto-rajar-desh"
   },
   {
     "p": "bioscope",
@@ -414,6 +438,14 @@
     "releaseDate": "2026-06-30",
     "img": "https://image.hoichoicdn.com/unsafe/a9a09daad25d-446f-ae1f-b645d925ef8e-3x4.jpg",
     "url": "https://www.bioscopeplus.com/movies/the-eken-kerala-e-kurukshetra-film"
+  },
+  {
+    "p": "bioscope",
+    "t": "Jaago",
+    "dur": "0h 1m",
+    "releaseDate": "2026-07-08",
+    "img": "https://img.rockstreamer.com/220xauto/images/LRp4HfGk37AV3FY7vOKj.jpg",
+    "url": "https://www.bioscopeplus.com/videos/jaago"
   },
   {
     "p": "bioscope",
@@ -441,27 +473,43 @@
   },
   {
     "p": "bioscope",
-    "t": "Kalamkaval",
-    "dur": "2h 17m",
-    "releaseDate": "2026-01-16",
-    "img": "https://origin-staticv2.sonyliv.com/videoasset_images/blitz_assets/1590014678/portraitThumb/1768408879587_./Kalamkaval_2_Portrait_Thumb_NewMovie.jpg",
-    "url": "https://www.bioscopeplus.com/movies/kalamkaval"
+    "t": "Bonolota Express",
+    "dur": "2h 33m",
+    "releaseDate": "2026-01-01",
+    "img": "https://image.hoichoicdn.com/unsafe/2e72ccb5fcc9-4c3e-80f6-aa4b593b448f-3x4_1.jpg",
+    "url": "https://www.bioscopeplus.com/movies/bonolota-express-2026"
   },
   {
     "p": "bioscope",
-    "t": "Djinner Bachcha ",
-    "dur": "0h 55m",
-    "releaseDate": "2026-02-18",
-    "img": "https://image.chorkicdn.com/uploads/images/2026/02/18/posters_db43cbcd07052ebea61a591f34635ce1_goplay_800x1200_wn.jpg",
-    "url": "https://www.bioscopeplus.com/videos/djinner-bachcha"
+    "t": "Prince",
+    "dur": "2h 28m",
+    "releaseDate": "2026-05-20",
+    "img": "https://asset.bioscopelive.com/uploads/images/2026/05/20/posters_d8f532fd487136a30032f4efd6e296f0_goplay_prince_2_3.jpg",
+    "url": "https://www.bioscopeplus.com/movies/prince-movie"
   },
   {
     "p": "bioscope",
-    "t": "Chameli",
-    "dur": "1h 42m",
-    "releaseDate": "2004-01-09",
-    "img": "https://daex9l847wg3n.cloudfront.net/shemoutputimages/Chameli/6932745d17c73119efdcf482/xl_image_2_3_1766726435.jpg?1766726423",
-    "url": "https://www.bioscopeplus.com/movies/chameli"
+    "t": "Athiradi",
+    "dur": "2h 34m",
+    "releaseDate": "2026-06-18",
+    "img": "https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000019671/178168814002147_Athiradi_Portrait_Thumb_NewSeason.jpg",
+    "url": "https://www.bioscopeplus.com/movies/athiradi-movie"
+  },
+  {
+    "p": "bioscope",
+    "t": "M4M: Motive for Murder",
+    "dur": "1h 40m",
+    "releaseDate": "2026-01-01",
+    "img": "https://cms-cdn-bucket-prod.lionmultiverse.com/Media/M4_MMOTIVEFORMURDERY_2026_MEN_Portrait_poster_0dc1d36f77.jpg",
+    "url": "https://www.bioscopeplus.com/movies/m4m-motive-for-murder"
+  },
+  {
+    "p": "bioscope",
+    "t": "Piku",
+    "dur": "1h 58m",
+    "releaseDate": "2015-05-07",
+    "img": "https://origin-staticv2.sonyliv.com/portrait_thumb/4671998507001.jpg",
+    "url": "https://www.bioscopeplus.com/movies/piku"
   },
   {
     "p": "bioscope",
@@ -505,35 +553,27 @@
   },
   {
     "p": "bioscope",
-    "t": "Patok",
-    "dur": "0h 1m",
-    "releaseDate": "2025-08-19",
-    "img": "https://img.rockstreamer.com/220xauto/images/ClLdzFCEFpVgT6ruwzHz.jpg",
-    "url": "https://www.bioscopeplus.com/videos/patok"
+    "t": "Karakkam",
+    "dur": "1h 41m",
+    "releaseDate": "2026-07-02",
+    "img": "https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000020264/1782984160552323_Karakkam_new_movie_2jul_portrait_thumb.jpg",
+    "url": "https://www.bioscopeplus.com/movies/karakkamm"
   },
   {
     "p": "bioscope",
-    "t": "Gadera: The Stream",
-    "dur": "1h 43m",
-    "releaseDate": "2024-05-10",
-    "img": "https://daex9l847wg3n.cloudfront.net/shemoutputimages/Gadera:-The-Stream/68e2fe92f4add590a1bd801c/xl_image_2_3_1759493263.jpg?1759738259",
-    "url": "https://www.bioscopeplus.com/movies/gadera-the-stream"
+    "t": "Cha Gorom",
+    "dur": "1h 42m",
+    "releaseDate": "2026-04-13",
+    "img": "https://image.chorkicdn.com/uploads/images/2026/04/13/posters_5383702cd1c0acdf5bcc554032d265be_goplay_800x1200_wn.jpg",
+    "url": "https://www.bioscopeplus.com/movies/cha-gorom"
   },
   {
     "p": "bioscope",
-    "t": "Dui Duari",
-    "dur": "1h 27m",
-    "releaseDate": "2025-10-16",
-    "img": "https://img.rockstreamer.com/220xauto/images/OqoCQsJRGyJvkjz1a76R.jpg",
-    "url": "https://www.bioscopeplus.com/videos/dui-duari"
-  },
-  {
-    "p": "bioscope",
-    "t": "Jaya Aar Sharmin",
-    "dur": "1h 26m",
-    "releaseDate": "2025-09-24",
-    "img": "https://image.chorkicdn.com/uploads/images/2025/09/24/posters_8cdc85f8fcd44f521e59b25097fae702_goplay_800x1200_wn.jpeg",
-    "url": "https://www.bioscopeplus.com/movies/jaya-aar-sharmin"
+    "t": "Power Rangers",
+    "dur": "2h 4m",
+    "releaseDate": "2017-01-01",
+    "img": "https://cms-cdn-bucket-prod.lionmultiverse.com/Media/SABANSPOWERRANGERSY_2017_M_LGI_Portrait_Poster_271d546514.jpg",
+    "url": "https://www.bioscopeplus.com/movies/power-rangers"
   },
   {
     "p": "bioscope",
@@ -592,333 +632,229 @@
     "url": "https://www.bioscopeplus.com/videos/paying-ghost"
   },
   {
-    "p": "bioscope",
-    "t": "Bromance",
-    "dur": "2h 16m",
-    "releaseDate": "2025-04-30",
-    "img": "https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000001943/1745940689660351_Bromance_Portrait_Thumb.jpg",
-    "url": "https://www.bioscopeplus.com/movies/bromance"
-  },
-  {
-    "p": "bioscope",
-    "t": "Utshob",
-    "dur": "1h 51m",
-    "releaseDate": "2025-08-06",
-    "img": "https://image.chorkicdn.com/uploads/images/2025/08/06/posters_597d9936fa3a7063c5fb1b0420b85696_goplay_800x1200.jpg",
-    "url": "https://www.bioscopeplus.com/movies/utshob"
-  },
-  {
-    "p": "bioscope",
-    "t": "Kajarya",
-    "dur": "1h 43m",
-    "releaseDate": "2025-09-18",
-    "img": "https://epcms.epicon.in/featured-images/1627390297-kajarya-verticals-xoriginal.jpg",
-    "url": "https://www.bioscopeplus.com/movies/kajarya"
-  },
-  {
     "p": "netflix",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "netflix",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "netflix",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
-    "releaseDate": "2026-07-08",
+    "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
     "p": "netflix",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
-    "releaseDate": "2026-07-11",
+    "releaseDate": "2026-07-12",
     "dur": "N/A"
   },
   {
     "p": "netflix",
     "t": "Mahjong Nights",
     "url": "https://www.justwatch.com/in/movie/mahjong-nights",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "netflix",
     "t": "The Breadwinner",
     "url": "https://www.justwatch.com/in/movie/the-breadwinner-2026",
-    "releaseDate": "2026-07-10",
+    "releaseDate": "2026-07-11",
     "dur": "N/A"
   },
   {
     "p": "prime",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "prime",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "prime",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
-    "releaseDate": "2026-07-08",
+    "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
     "p": "prime",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
-    "releaseDate": "2026-07-11",
+    "releaseDate": "2026-07-12",
     "dur": "N/A"
   },
   {
     "p": "prime",
     "t": "Mahjong Nights",
     "url": "https://www.justwatch.com/in/movie/mahjong-nights",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "prime",
     "t": "The Breadwinner",
     "url": "https://www.justwatch.com/in/movie/the-breadwinner-2026",
-    "releaseDate": "2026-07-10",
+    "releaseDate": "2026-07-11",
     "dur": "N/A"
   },
   {
     "p": "disney",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "disney",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "disney",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
-    "releaseDate": "2026-07-08",
+    "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
     "p": "disney",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
-    "releaseDate": "2026-07-11",
+    "releaseDate": "2026-07-12",
     "dur": "N/A"
   },
   {
     "p": "disney",
     "t": "Mahjong Nights",
     "url": "https://www.justwatch.com/in/movie/mahjong-nights",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "disney",
     "t": "The Breadwinner",
     "url": "https://www.justwatch.com/in/movie/the-breadwinner-2026",
-    "releaseDate": "2026-07-10",
+    "releaseDate": "2026-07-11",
     "dur": "N/A"
   },
   {
     "p": "zee5",
     "t": "Wanted 2",
     "url": "https://www.justwatch.com/in/movie/wanted-2",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "zee5",
     "t": "Grandgear",
     "url": "https://www.justwatch.com/in/movie/grandgear",
-    "releaseDate": "2026-07-08",
+    "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
     "p": "zee5",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "zee5",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "zee5",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
-    "releaseDate": "2026-07-08",
+    "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
     "p": "zee5",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
-    "releaseDate": "2026-07-11",
+    "releaseDate": "2026-07-12",
     "dur": "N/A"
   },
   {
     "p": "sonyliv",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "sonyliv",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "sonyliv",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
-    "releaseDate": "2026-07-08",
+    "releaseDate": "2026-07-09",
     "dur": "N/A"
   },
   {
     "p": "sonyliv",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
-    "releaseDate": "2026-07-11",
+    "releaseDate": "2026-07-12",
     "dur": "N/A"
   },
   {
     "p": "sonyliv",
     "t": "Mahjong Nights",
     "url": "https://www.justwatch.com/in/movie/mahjong-nights",
-    "releaseDate": "2026-07-09",
+    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
     "p": "sonyliv",
     "t": "The Breadwinner",
     "url": "https://www.justwatch.com/in/movie/the-breadwinner-2026",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Bpdip8Bbbdq2Memf4Yq",
-    "img": null,
-    "url": "https://toffeelive.com/en/drama/-BpDIp8BBBDq2MemF4Yq",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Ntda9Zwbnnokwjlw3Uyl",
-    "img": null,
-    "url": "https://toffeelive.com/en/movies/NTDa9ZwBNnOkwJLW3uyl",
     "releaseDate": "2026-07-11",
     "dur": "N/A"
   },
   {
     "p": "toffee",
-    "t": "Rs5Ukjubv9Knk3Ahm3Vn",
+    "t": "Uwahep8Bnxrkiphydbwm",
     "img": null,
-    "url": "https://toffeelive.com/en/movies/RS5UKJUBv9knK3AHm3vN",
-    "releaseDate": "2026-07-03",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "John Wick",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/ENNPKJUBm1RY_In7vUck/posters/3a982c03-b6e2-4b3d-9dde-f02bdb1cd364.png",
-    "url": "https://toffeelive.com/en/movies/ENNPKJUBm1RY_In7vUck",
-    "releaseDate": "2026-07-01",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Conan the Barbarian",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/qnVd_ZYBcqxnFHJBeHjT/posters/4e7af9ec-0dcf-40da-9555-a3451d3eeb0d.png",
-    "url": "https://toffeelive.com/en/movies/qnVd_ZYBcqxnFHJBeHjT",
-    "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Double Pressure",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/UWaHEp8BnxRKiPhYdbWM/posters/a8429576-9350-4e32-a3b9-263b44ccf0b3.png",
     "url": "https://toffeelive.com/en/drama/UWaHEp8BnxRKiPhYdbWM",
-    "releaseDate": "2026-07-12",
+    "releaseDate": "2026-07-13",
     "dur": "N/A"
   },
   {
     "p": "toffee",
-    "t": "Godzilla",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/_S_yd5sBNnOkwJLWBPGF/posters/b878ff42-4c71-4548-947e-5a81096aff5a.png",
-    "url": "https://toffeelive.com/en/movies/_S_yd5sBNnOkwJLWBPGF",
-    "releaseDate": "2026-07-04",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dirilis Ertugrul",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/LC7jMJUBv9knK3AHb4Jc/posters/c30da2ee-fa83-4ce2-88f6-8d0f09472ba4.png",
-    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Legend",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/toffee/posters/af52f9b3-b12c-4e2e-9da3-8a19099c41f3.jpeg",
-    "url": "https://toffeelive.com/en/movies/M9NNKJUBm1RY_In76EYz",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Inheritance",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/e3Vd_ZYBcqxnFHJBVXi-/posters/fa1291e5-9414-4f56-a9a3-4753b7213238.png",
-    "url": "https://toffeelive.com/en/movies/e3Vd_ZYBcqxnFHJBVXi-",
+    "t": "2Yonzjsbeef 9 Uvnut5",
+    "img": null,
+    "url": "https://toffeelive.com/en/movies/2yONZJsBEef-9-uVNUT5",
     "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Mister Mobarok",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/pS-ptJoBNnOkwJLWSk4v/posters/4f6c0795-4aa4-4f42-8b76-858b6eb62132.png",
-    "url": "https://toffeelive.com/en/drama/pS-ptJoBNnOkwJLWSk4v",
-    "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Golda",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/toffee/posters/e130f15c-be2c-47b9-bc9f-368c967952ea.jpg",
-    "url": "https://toffeelive.com/en/movies/_C25GZkBNnOkwJLWJbS_",
-    "releaseDate": "2026-07-10",
     "dur": "N/A"
   },
   {
