@@ -859,10 +859,18 @@
   },
   {
     "p": "toffee",
-    "t": "John Wick",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/ENNPKJUBm1RY_In7vUck/posters/3a982c03-b6e2-4b3d-9dde-f02bdb1cd364.png",
-    "url": "https://toffeelive.com/en/movies/ENNPKJUBm1RY_In7vUck",
-    "releaseDate": "2026-07-03",
+    "t": "Perfume: The Story of a Murderer",
+    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/8OPSRp8BwGRsZ_KAsN3I/posters/899c307c-9b2a-49d3-b78c-e6924aa34298.png",
+    "url": "https://toffeelive.com/en/movies/8OPSRp8BwGRsZ_KAsN3I",
+    "releaseDate": "2026-07-12",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "John Wick: Chapter 3 Parabellum",
+    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/-dNPKJUBm1RY_In7kUZR/posters/75b2b06d-59b1-4296-b17d-e91c371621fd.png",
+    "url": "https://toffeelive.com/en/movies/-dNPKJUBm1RY_In7kUZR",
+    "releaseDate": "2026-07-14",
     "dur": "N/A"
   },
   {
@@ -871,14 +879,6 @@
     "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/qnVd_ZYBcqxnFHJBeHjT/posters/4e7af9ec-0dcf-40da-9555-a3451d3eeb0d.png",
     "url": "https://toffeelive.com/en/movies/qnVd_ZYBcqxnFHJBeHjT",
     "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Double Pressure",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/UWaHEp8BnxRKiPhYdbWM/posters/a8429576-9350-4e32-a3b9-263b44ccf0b3.png",
-    "url": "https://toffeelive.com/en/drama/UWaHEp8BnxRKiPhYdbWM",
-    "releaseDate": "2026-07-14",
     "dur": "N/A"
   },
   {
@@ -907,18 +907,26 @@
   },
   {
     "p": "toffee",
-    "t": "Bibaho Somachar",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/-BpDIp8BBBDq2MemF4Yq/posters/07710ead-ee58-43bf-af51-b30ef44251e8.png",
-    "url": "https://toffeelive.com/en/drama/-BpDIp8BBBDq2MemF4Yq",
-    "releaseDate": "2026-07-09",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
     "t": "Inheritance",
     "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/e3Vd_ZYBcqxnFHJBVXi-/posters/fa1291e5-9414-4f56-a9a3-4753b7213238.png",
     "url": "https://toffeelive.com/en/movies/e3Vd_ZYBcqxnFHJBVXi-",
     "releaseDate": "2026-07-13",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Barir Choto Chele",
+    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/pYogX58B0ChbBSbTxV7K/posters/58640437-98ca-4bae-9745-2168d235a215.png",
+    "url": "https://toffeelive.com/en/drama/pYogX58B0ChbBSbTxV7K",
+    "releaseDate": "2026-07-03",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Golda",
+    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/toffee/posters/e130f15c-be2c-47b9-bc9f-368c967952ea.jpg",
+    "url": "https://toffeelive.com/en/movies/_C25GZkBNnOkwJLWJbS_",
+    "releaseDate": "2026-07-12",
     "dur": "N/A"
   },
   {
@@ -931,10 +939,50 @@
   },
   {
     "p": "toffee",
-    "t": "Golda",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/toffee/posters/e130f15c-be2c-47b9-bc9f-368c967952ea.jpg",
-    "url": "https://toffeelive.com/en/movies/_C25GZkBNnOkwJLWJbS_",
-    "releaseDate": "2026-07-12",
+    "t": "Kurulus Osman | Season 4",
+    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/SSADy5gBEef-9-uV3MUk/posters/ac5f45b8-3b44-43c1-a01e-43b94eefe2ca.png",
+    "url": "https://toffeelive.com/en/series/eiuFApgBNnOkwJLWn7Ww?season=SSADy5gBEef-9-uV3MUk",
+    "releaseDate": "2026-07-10",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Dirilis Ertugrul | Season 5",
+    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/NXVdzZYBcqxnFHJBSBor/posters/43ff4537-e041-4af2-9e6d-a394d2c09e03.png",
+    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=NXVdzZYBcqxnFHJBSBor",
+    "releaseDate": "2026-07-09",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Dirilis Ertugrul | Season 4",
+    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/I62upZUBrjBfS2_RNOkr/posters/0f4f251e-6876-41e4-91b3-1c723d7b8cde.png",
+    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=I62upZUBrjBfS2_RNOkr",
+    "releaseDate": "2026-07-07",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Dirilis Ertugrul | Season 3",
+    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/gNPuMJUBm1RY_In7z1KK/posters/dbae820a-8f04-47f3-90be-88cbc1594bf7.png",
+    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=gNPuMJUBm1RY_In7z1KK",
+    "releaseDate": "2026-07-07",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Dirilis Ertugrul | Season 2",
+    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/f9PuMJUBm1RY_In7z1KK/posters/5e8d1954-38b3-47fa-8ace-a3cfdbd26e67.png",
+    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=f9PuMJUBm1RY_In7z1KK",
+    "releaseDate": "2026-07-05",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Dirilis Ertugrul | Season 1",
+    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/ftPuMJUBm1RY_In7z1KK/posters/9002f5e2-334e-4536-925b-cab4f4695655.png",
+    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=ftPuMJUBm1RY_In7z1KK",
+    "releaseDate": "2026-07-06",
     "dur": "N/A"
   },
   {
