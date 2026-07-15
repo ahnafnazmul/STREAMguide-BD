@@ -883,14 +883,6 @@
   },
   {
     "p": "toffee",
-    "t": "Godzilla",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/_S_yd5sBNnOkwJLWBPGF/posters/b878ff42-4c71-4548-947e-5a81096aff5a.png",
-    "url": "https://toffeelive.com/en/movies/_S_yd5sBNnOkwJLWBPGF",
-    "releaseDate": "2026-07-07",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
     "t": "Dirilis Ertugrul",
     "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/LC7jMJUBv9knK3AHb4Jc/posters/c30da2ee-fa83-4ce2-88f6-8d0f09472ba4.png",
     "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc",
@@ -915,58 +907,18 @@
   },
   {
     "p": "toffee",
-    "t": "Golda",
-    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/toffee/posters/e130f15c-be2c-47b9-bc9f-368c967952ea.jpg",
-    "url": "https://toffeelive.com/en/movies/_C25GZkBNnOkwJLWJbS_",
-    "releaseDate": "2026-07-13",
+    "t": "Fear Factor",
+    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/C-U6AZ8Bz8aXWM5ihZMQ/posters/3979c12f-8e3c-44ef-878c-a5c500f14bab.webp",
+    "url": "https://toffeelive.com/en/series/C-U6AZ8Bz8aXWM5ihZMQ",
+    "releaseDate": "2026-07-15",
     "dur": "N/A"
   },
   {
     "p": "toffee",
-    "t": "Kurulus Osman | Season 4",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/SSADy5gBEef-9-uV3MUk/posters/ac5f45b8-3b44-43c1-a01e-43b94eefe2ca.png",
-    "url": "https://toffeelive.com/en/series/eiuFApgBNnOkwJLWn7Ww?season=SSADy5gBEef-9-uV3MUk",
-    "releaseDate": "2026-07-11",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dirilis Ertugrul | Season 5",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/NXVdzZYBcqxnFHJBSBor/posters/43ff4537-e041-4af2-9e6d-a394d2c09e03.png",
-    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=NXVdzZYBcqxnFHJBSBor",
+    "t": "The Hack",
+    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/77667-S1/posters/a8e4b222-a1a1-4ca0-911e-bf37c36abf24.jpg",
+    "url": "https://toffeelive.com/en/series/VFg8AZ8B__R-EhRPHvis",
     "releaseDate": "2026-07-10",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dirilis Ertugrul | Season 4",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/I62upZUBrjBfS2_RNOkr/posters/0f4f251e-6876-41e4-91b3-1c723d7b8cde.png",
-    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=I62upZUBrjBfS2_RNOkr",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dirilis Ertugrul | Season 3",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/gNPuMJUBm1RY_In7z1KK/posters/dbae820a-8f04-47f3-90be-88cbc1594bf7.png",
-    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=gNPuMJUBm1RY_In7z1KK",
-    "releaseDate": "2026-07-08",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dirilis Ertugrul | Season 2",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/f9PuMJUBm1RY_In7z1KK/posters/5e8d1954-38b3-47fa-8ace-a3cfdbd26e67.png",
-    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=f9PuMJUBm1RY_In7z1KK",
-    "releaseDate": "2026-07-06",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Dirilis Ertugrul | Season 1",
-    "img": "https://assets-prod.services.toffeelive.com/w_960,q_75,f_webp/ftPuMJUBm1RY_In7z1KK/posters/9002f5e2-334e-4536-925b-cab4f4695655.png",
-    "url": "https://toffeelive.com/en/series/LC7jMJUBv9knK3AHb4Jc?season=ftPuMJUBm1RY_In7z1KK",
-    "releaseDate": "2026-07-07",
     "dur": "N/A"
   },
   {
