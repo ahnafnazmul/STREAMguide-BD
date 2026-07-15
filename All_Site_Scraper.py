@@ -150,7 +150,7 @@ def scrape_dynamic_sites():
             print("  -> Chorki")
             page_chorki = context.new_page() 
             try:
-                page_chorki.goto("https://www.chorki.com/", wait_until="domcontentloaded", timeout=45000)
+                page_chorki.goto("https://www.chorki.net/", wait_until="domcontentloaded", timeout=45000)
                 page_chorki.wait_for_timeout(2000)
                 cards = page_chorki.locator('a[href*="/movie/"], a[href*="/series/"]').all()
                 seen_c = set()
