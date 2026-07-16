@@ -1,19 +1,19 @@
 [
   {
     "p": "utshob",
-    "t": "Prince",
-    "dur": "2h 27m",
-    "releaseDate": "2026-03-21",
-    "img": "https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_bbe04e8369060803811de11745d56f59_goplay_prince_poster_2.jpg",
-    "url": "https://www.utshob.live/movies/prince"
-  },
-  {
-    "p": "utshob",
     "t": "Rakkhosh",
     "dur": "2h 20m",
     "releaseDate": "2026-03-21",
     "img": "https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_ebe9e6f058cd88121c8ebe59ed48cc52_goplay_rakkhosh_poster_03.jpg",
     "url": "https://www.utshob.live/movies/rakkhosh"
+  },
+  {
+    "p": "utshob",
+    "t": "Prince",
+    "dur": "2h 27m",
+    "releaseDate": "2026-03-21",
+    "img": "https://ywexkeadfv.gpcdn.net/uploads/images/2026/05/21/posters_bbe04e8369060803811de11745d56f59_goplay_prince_poster_2.jpg",
+    "url": "https://www.utshob.live/movies/prince"
   },
   {
     "p": "utshob",
@@ -668,8 +668,8 @@
   },
   {
     "p": "netflix",
-    "t": "Friday &amp; Friday",
-    "url": "https://www.justwatch.com/in/movie/friday-and-friday",
+    "t": "Parecido a un asesinato",
+    "url": "https://www.justwatch.com/in/movie/parecido-a-un-asesinato",
     "releaseDate": "2026-07-16",
     "dur": "N/A"
   },
@@ -710,9 +710,9 @@
   },
   {
     "p": "prime",
-    "t": "13 Days, 13 Nights",
-    "url": "https://www.justwatch.com/in/movie/13-days-13-nights",
-    "releaseDate": "2026-07-15",
+    "t": "Desert Warrior",
+    "url": "https://www.justwatch.com/in/movie/desert-warrior-2026",
+    "releaseDate": "2026-07-13",
     "dur": "N/A"
   },
   {
@@ -752,9 +752,9 @@
   },
   {
     "p": "disney",
-    "t": "13 Days, 13 Nights",
-    "url": "https://www.justwatch.com/in/movie/13-days-13-nights",
-    "releaseDate": "2026-07-15",
+    "t": "Desert Warrior",
+    "url": "https://www.justwatch.com/in/movie/desert-warrior-2026",
+    "releaseDate": "2026-07-13",
     "dur": "N/A"
   },
   {
@@ -836,25 +836,25 @@
   },
   {
     "p": "sonyliv",
-    "t": "The Breadwinner",
-    "url": "https://www.justwatch.com/in/movie/the-breadwinner-2026",
-    "releaseDate": "2026-07-14",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "Pyogx58B0Chbbsbtxv7K",
-    "img": null,
-    "url": "https://toffeelive.com/en/drama/pYogX58B0ChbBSbTxV7K",
-    "releaseDate": "2026-07-05",
-    "dur": "N/A"
-  },
-  {
-    "p": "toffee",
-    "t": "1Tig9Zqbm1Ry_In7Z8Qy",
-    "img": null,
-    "url": "https://toffeelive.com/en/series/1tIg9ZQBm1RY_In7z8qy",
+    "t": "Parecido a un asesinato",
+    "url": "https://www.justwatch.com/in/movie/parecido-a-un-asesinato",
     "releaseDate": "2026-07-16",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Bpdip8Bbbdq2Memf4Yq",
+    "img": null,
+    "url": "https://toffeelive.com/en/drama/-BpDIp8BBBDq2MemF4Yq",
+    "releaseDate": "2026-07-11",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Ua7Gs5Ubrjbfs2_Rhjjc",
+    "img": null,
+    "url": "https://toffeelive.com/en/movies/ua7gs5UBrjBfS2_RHjjC",
+    "releaseDate": "2026-07-13",
     "dur": "N/A"
   },
   {
@@ -903,6 +903,14 @@
     "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/e3Vd_ZYBcqxnFHJBVXi-/posters/fa1291e5-9414-4f56-a9a3-4753b7213238.png",
     "url": "https://toffeelive.com/en/movies/e3Vd_ZYBcqxnFHJBVXi-",
     "releaseDate": "2026-07-15",
+    "dur": "N/A"
+  },
+  {
+    "p": "toffee",
+    "t": "Barir Choto Chele",
+    "img": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/pYogX58B0ChbBSbTxV7K/posters/58640437-98ca-4bae-9745-2168d235a215.png",
+    "url": "https://toffeelive.com/en/drama/pYogX58B0ChbBSbTxV7K",
+    "releaseDate": "2026-07-05",
     "dur": "N/A"
   },
   {
