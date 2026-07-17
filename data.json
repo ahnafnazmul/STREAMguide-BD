@@ -1,1 +1,98 @@
-
+[
+  {
+    "p": "chorki",
+    "t": "Chorki Content",
+    "dur": "N/A",
+    "releaseDate": "2026-07-17",
+    "img": "N/A",
+    "url": "https://www.chorki.com/en/movie",
+    "tmdb_id": null,
+    "rating": 0.0,
+    "overview": "N/A",
+    "scraped_at": "2026-07-17"
+  },
+  {
+    "p": "chorki",
+    "t": "Chorki Content",
+    "dur": "N/A",
+    "releaseDate": "2026-07-17",
+    "img": "N/A",
+    "url": "https://www.chorki.com/en/movie",
+    "tmdb_id": null,
+    "rating": 0.0,
+    "overview": "N/A",
+    "scraped_at": "2026-07-17"
+  },
+  {
+    "p": "ze5",
+    "t": "Zee5 Content",
+    "dur": "N/A",
+    "releaseDate": "2026-07-17",
+    "img": "N/A",
+    "url": "https://www.justwatch.com/in/movie/wanted-2",
+    "tmdb_id": null,
+    "rating": 0.0,
+    "overview": "N/A",
+    "scraped_at": "2026-07-17"
+  },
+  {
+    "p": "ze5",
+    "t": "Mad Max: The Wasteland",
+    "dur": "N/A",
+    "releaseDate": "2026-07-17",
+    "img": "https://image.tmdb.org/t/p/w500/zviMeR3CqbX3x3loO8xoSHCkiSs.jpg",
+    "url": "https://www.justwatch.com/in/movie/mad-max-the-wasteland",
+    "tmdb_id": 340023,
+    "rating": 0.0,
+    "overview": "N/A",
+    "scraped_at": "2026-07-17"
+  },
+  {
+    "p": "ze5",
+    "t": "Zee5 Content",
+    "dur": "N/A",
+    "releaseDate": "2026-07-17",
+    "img": "N/A",
+    "url": "https://www.justwatch.com/in/movie/grandgear",
+    "tmdb_id": null,
+    "rating": 0.0,
+    "overview": "N/A",
+    "scraped_at": "2026-07-17"
+  },
+  {
+    "p": "ze5",
+    "t": "The Nightingale",
+    "dur": "N/A",
+    "releaseDate": "2018-09-23",
+    "img": "https://image.tmdb.org/t/p/w500/wEzqFiatOJSbGBu6pb8z5sQuZt1.jpg",
+    "url": "https://www.justwatch.com/in/movie/the-nightingale-2022",
+    "tmdb_id": 400090,
+    "rating": 7.1,
+    "overview": "N/A",
+    "scraped_at": "2026-07-17"
+  },
+  {
+    "p": "ze5",
+    "t": "Scooby-Doo: Origins",
+    "dur": "N/A",
+    "releaseDate": "2026-07-17",
+    "img": "https://image.tmdb.org/t/p/w500/pm2dMqADFQBQnjFBZS7ez6Tw3IP.jpg",
+    "url": "https://www.justwatch.com/in/tv-show/scooby-doo-the-live-action-series",
+    "tmdb_id": 253124,
+    "rating": 0.0,
+    "overview": "N/A",
+    "scraped_at": "2026-07-17"
+  },
+  {
+    "p": "ze5",
+    "t": "Zee5 Content",
+    "dur": "N/A",
+    "releaseDate": "2026-07-17",
+    "img": "N/A",
+    "url": "https://www.justwatch.com/in/tv-show/bloodaxe",
+    "tmdb_id": null,
+    "rating": 0.0,
+    "overview": "N/A",
+    "scraped_at": "2026-07-17"
+  }
+]
