@@ -54,7 +54,6 @@ def get_image_with_backup(element):
     if not element:
         return "N/A"
     try:
-        # সরাসরি এলিমেন্ট যদি ইমেজ হয় অথবা তার ভেতরের ইমেজ খোঁজা
         img_el = element if element.name == "img" else element.query_selector("img")
         if img_el:
             for attr in ["src", "data-src", "data-srcset", "srcset"]:
@@ -147,25 +146,26 @@ def scrape_platforms(target="all"):
         if (target == "all" or target == "chorki") and URLS["chorki"]:
             try:
                 page.goto(URLS["chorki"], wait_until="domcontentloaded")
-                page.evaluate("window.scrollTo(0, document.body.scrollHeight/3)")
-                page.wait_for_timeout(2000)
+                page.wait_for_timeout(3000)
                 
-                # কার্ডের আসল টাইটেল টেক্সট খোঁজা
                 cards = page.query_selector_all("a[href*='/show'], a[href*='/movie']")
+                ignored_titles = ["movies", "originals", "series", "shows", "bytes", "buy ticket", "chorki content"]
+                
                 for card in cards:
                     href = card.get_attribute("href")
                     if href:
-                        full_url = href if href.startswith("http") else f"https://www.chorki.com{href}"
+                        full_url = href if href.startswith("http") else f"https://www.chorki.net{href}"
+                        
                         if full_url not in existing_urls:
-                            # প্রথম ট্রাই: ইনার টেক্সট থেকে টাইটেল নেওয়া
                             title = card.inner_text().split("\n")[0].strip()
-                            # ব্যাকআপ ট্রাই: যদি টেক্সট না থাকে, তবে ইমেজের অল্ট ট্যাগ
+                            
                             if not title:
                                 img_el = card.query_selector("img")
                                 if img_el:
                                     title = img_el.get_attribute("alt") or img_el.get_attribute("title") or ""
                             
-                            if title and title != "Chorki Content":
+                            title_lower = title.lower().strip()
+                            if title and title_lower not in ignored_titles:
                                 img_src = get_image_with_backup(card)
                                 new_contents.append({"p": "chorki", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_src})
                 platform_status["chorki"] = "✅"
@@ -219,7 +219,7 @@ def scrape_platforms(target="all"):
                         full_url = href if href.startswith("http") else f"https://toffeelive.com{href}"
                         if full_url not in existing_urls:
                             title = card.inner_text().split("\n")[0].strip()
-                            if title and not title.replace("_","").isalnum(): # হিজিবিজি আইডি বাদ দেওয়া
+                            if title and not title.replace("_","").isalnum():
                                 img_src = get_image_with_backup(card)
                                 new_contents.append({"p": "toffee", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_src})
                 platform_status["toffee"] = "✅"
@@ -338,15 +338,14 @@ def scrape_platforms(target="all"):
         processed_new_items.append(enriched_item)
 
     # -------------------------------------------------------------------
-    # ৮. ডাটাবেজ মার্জিং লজিক (১০০% ক্যাশ প্রোটেকশন - ওল্ড ডাটা অক্ষুণ্ণ থাকবে)
+    # ৮. ডাটাবেজ মার্জিং লজিক (১০০% ক্যাশ প্রোটেকশন - পুরনো ডেটা নষ্ট হবে না)
     # -------------------------------------------------------------------
-    # সিঙ্গেল রান হোক আর অল রান—পুরনো কোন ডেটা কখনোই ডিলিট হবে না
     updated_data = processed_new_items + existing_data
     
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(updated_data, f, ensure_ascii=False, indent=2)
 
-    # যদি সিঙ্গেল রান করা হয়, রিপোর্টের সুবিধার জন্য বাকি সাইটগুলোকে জেসন থেকে ✅ মার্ক করা
+    # সিঙ্গেল রানের ক্ষেত্রে অন্য একটি সোর্স একটিভ দেখানোর ইন্টারনাল পলিসি
     if target != "all":
         rev_providers = {"nfx": "netflix", "amp": "prime", "ze5": "zee5", "slv": "sonyliv"}
         for old_item in existing_data:
