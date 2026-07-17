@@ -1,342 +1,258 @@
 import os
-import re
 import json
-import time
 import requests
-from datetime import datetime, timezone
+import datetime
 from playwright.sync_api import sync_playwright
 
-# ---------------------------------------------------------
-# Configuration & Headers
-# ---------------------------------------------------------
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-    "Accept-Language": "en-US,en;q=0.9,bn;q=0.8",
+# -------------------------------------------------------------------
+# ১. গিটহাব এনভায়রনমেন্ট ভ্যারিয়েবল ও সিক্রেটস লোড করা
+# -------------------------------------------------------------------
+TMDB_API_KEY = os.getenv("TMDB_API_KEY")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+# ওটিটি সাইটের ইউআরএল (ভ্যারিয়েবল থেকে)
+URLS = {
+    "chorki": os.getenv("URL_CHORKI"),
+    "hoichoi": os.getenv("URL_HOICHOI"),
+    "bongo": os.getenv("URL_BONGO"),
+    "toffee": os.getenv("URL_TOFFEE"),
+    "binge": os.getenv("URL_BINGE"),
+    "utshob": os.getenv("URL_UTSHOB"),
+    "deepto": os.getenv("URL_DEEPTO"),
+    "bioscope_base": os.getenv("URL_BIOSCOPE_BASE"),
+    "bioscope_fetch": os.getenv("URL_BIOSCOPE_FETCH")
 }
 
-ALL_DATA = []
+DATA_FILE = "data.json"
+CURRENT_DATE = datetime.datetime.now().strftime("%Y-%m-%d")
 
-# ---------------------------------------------------------
-# Helper Functions
-# ---------------------------------------------------------
-def generate_fake_release_date(seed_string, max_days_ago=30):
-    h = sum(ord(c) for c in seed_string)
-    days_ago = h % max_days_ago
-    return datetime.fromtimestamp(time.time() - (days_ago * 86400)).strftime('%Y-%m-%d')
-
-# ---------------------------------------------------------
-# 1. Gotipath (Utshob, Deepto, Bioscope) Scraper
-# ---------------------------------------------------------
-def scrape_gotipath(site_key, base_url, fetch_url=None):
-    print(f"[*] Scraping Gotipath ({site_key})...")
-    url = fetch_url or base_url
+# -------------------------------------------------------------------
+# ২. টেলিগ্রাম বট রিপোর্টিং ফাংশন
+# -------------------------------------------------------------------
+def send_telegram_message(message):
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        print("টেলিগ্রাম ক্রেডেনশিয়াল মিসিং, মেসেজ স্কিপ করা হলো।")
+        return
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
     try:
-        resp = requests.get(url, headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-        
-        rsc_ptn = re.compile(r'self\.__next_f\.push\(\[1,"((?:[^"\\]|\\.)*)"\]\)')
-        chunks = rsc_ptn.findall(resp.text)
-        text = "".join([json.loads('"' + c + '"') for c in chunks])
-        
-        marker_ptn = re.compile(r'\{"id":"[^"]+","classname":"App\\\\Models\\\\Video"')
-        seen = set()
-        
-        for m in marker_ptn.finditer(text):
-            depth = 0
-            i = m.start()
-            in_str = False
-            escape = False
-            while i < len(text):
-                ch = text[i]
-                if in_str:
-                    if escape: escape = False
-                    elif ch == '\\': escape = True
-                    elif ch == '"': in_str = False
-                else:
-                    if ch == '"': in_str = True
-                    elif ch == '{': depth += 1
-                    elif ch == '}':
-                        depth -= 1
-                        if depth == 0:
-                            obj_str = text[m.start():i+1]
-                            try:
-                                obj = json.loads(obj_str)
-                                route = obj.get("route_uri") or ""
-                                slug = obj.get("slug")
-                                if slug and route.startswith(("/movies/", "/films/", "/videos/")) and slug not in seen:
-                                    seen.add(slug)
-                                    dur_sec = obj.get("duration")
-                                    dur_str = f"{int(dur_sec)//3600}h {(int(dur_sec)%3600)//60}m" if dur_sec else "N/A"
-                                    
-                                    p_name = site_key
-                                    if "iscreen" in route.lower(): p_name = "iscreen"
-                                    
-                                    ALL_DATA.append({
-                                        "p": p_name,
-                                        "t": obj.get("title"),
-                                        "dur": dur_str,
-                                        "releaseDate": (obj.get("release_date") or obj.get("publish_date") or generate_fake_release_date(slug))[:10],
-                                        "img": obj.get("poster") or obj.get("thumbnail"),
-                                        "url": base_url + route
-                                    })
-                            except Exception: pass
-                            break
-                i += 1
+        requests.post(url, json=payload, timeout=10)
     except Exception as e:
-        print(f"  [!] {site_key} Error: {e}")
+        print(f"টেলিগ্রাম মেসেজ পাঠাতে ব্যর্থ: {e}")
 
-# ---------------------------------------------------------
-# 2. JustWatch (International) Scraper
-# ---------------------------------------------------------
-def scrape_justwatch():
-    providers = {
-        "netflix": "netflix", "prime": "amazon-prime-video", 
-        "disney": "jiohotstar", "zee5": "zee5", "sonyliv": "sony-liv"
-    }
-    for p_key, p_slug in providers.items():
-        print(f"[*] Scraping JustWatch: {p_key}...")
-        try:
-            resp = requests.get(f"https://www.justwatch.com/in/provider/{p_slug}/new/movies", headers=HEADERS, timeout=30)
-            pattern = re.compile(r'href="(/in/movie/[a-zA-Z0-9_-]+)"[^>]*>(.*?)</a>', re.DOTALL)
-            seen = set()
-            count = 0
-            for href, inner in pattern.findall(resp.text):
-                if count >= 6: break
-                slug = href.split('/')[-1]
-                title = re.sub(r'<[^>]+>', '', inner).strip()
-                if not title or slug in seen: continue
-                seen.add(slug)
-                count += 1
-                ALL_DATA.append({
-                    "p": p_key, "t": title, "url": f"https://www.justwatch.com/in/movie/{slug}",
-                    "releaseDate": generate_fake_release_date(slug, 5), "dur": "N/A"
-                })
-        except Exception as e:
-            print(f"  [!] JustWatch {p_key} Error: {e}")
-
-# ---------------------------------------------------------
-# 3. Binge Scraper
-# ---------------------------------------------------------
-def scrape_binge():
-    print("[*] Scraping Binge...")
-    try:
-        resp = requests.get("https://web-api.binge.buzz/api/v1/content/list?category_id=1&page=1", timeout=30)
-        if resp.status_code == 200:
-            for item in resp.json().get('data', {}).get('data', [])[:10]:
-                ALL_DATA.append({
-                    "p": "binge", "t": item.get('title'), "img": item.get('image_landscape'),
-                    "url": "https://binge.buzz/details/" + str(item.get('id')),
-                    "releaseDate": (item.get('release_date') or generate_fake_release_date(item.get('title')))[:10],
-                    "dur": "N/A"
-                })
-    except Exception as e:
-        print(f"  [!] Binge Error: {e}")
-
-# ---------------------------------------------------------
-# 4. Playwright Scraper (Isolated Tabs)
-# ---------------------------------------------------------
-def scrape_dynamic_sites():
-    print("[*] Starting Playwright for Dynamic Sites...")
-    try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            context = browser.new_context(
-                viewport={"width": 1280, "height": 900},
-                user_agent=HEADERS["User-Agent"],
-                extra_http_headers={"Accept-Language": "en-US,en;q=0.9"}
-            )
-
-            # --- Chorki ---
-            print("  -> Chorki")
-            page_chorki = context.new_page() 
-            try:
-                page_chorki.goto("https://www.chorki.net/", wait_until="domcontentloaded", timeout=45000)
-                page_chorki.wait_for_timeout(2000)
-                cards = page_chorki.locator('a[href*="/movie/"], a[href*="/series/"]').all()
-                seen_c = set()
-                for card in cards[:20]:
-                    href = card.get_attribute('href')
-                    if not href or href in seen_c: continue
-                    seen_c.add(href)
-                    try:
-                        img_tag = card.locator('img').first
-                        img = img_tag.get_attribute('src', timeout=2000)
-                        title = img_tag.get_attribute('alt', timeout=2000)
-                    except:
-                        img, title = None, None
-                    if not title or title.strip() == "":
-                        title = href.split('/')[-1].replace('-', ' ').title()
-                    full_url = href if href.startswith('http') else "https://www.chorki.com" + href
-                    ALL_DATA.append({"p": "chorki", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 14), "dur": "N/A"})
-            except Exception as e: 
-                print(f"  [!] Chorki Error: {e}")
-            finally:
-                page_chorki.close()
-
-            # --- Hoichoi ---
-            print("  -> Hoichoi")
-            page_hoichoi = context.new_page()
-            try:
-                page_hoichoi.goto("https://www.hoichoi.tv/bn", wait_until="domcontentloaded", timeout=45000)
-                page_hoichoi.mouse.wheel(0, 1000) 
-                page_hoichoi.wait_for_timeout(3000)
-                cards = page_hoichoi.locator('a[href*="/movies/"], a[href*="/shows/"]').all()
-                seen_h = set()
-                for card in cards[:20]:
-                    href = card.get_attribute('href')
-                    if not href or href in seen_h: continue
-                    seen_h.add(href)
-                    try:
-                        img_tag = card.locator('img').first
-                        img = img_tag.get_attribute('src', timeout=2000)
-                        title = img_tag.get_attribute('alt', timeout=2000)
-                    except:
-                        img, title = None, None
-                    if not title or title.strip() == "":
-                        title = href.split('/')[-1].replace('-', ' ').title()
-                    full_url = href if href.startswith('http') else "https://www.hoichoi.tv" + href
-                    ALL_DATA.append({"p": "hoichoi", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 20), "dur": "N/A"})
-            except Exception as e: 
-                print(f"  [!] Hoichoi Error: {e}")
-            finally:
-                page_hoichoi.close()
-
-            # --- Bongo BD ---
-            print("  -> Bongo BD")
-            page_bongo = context.new_page()
-            try:
-                page_bongo.goto("https://bongobd.com/", wait_until="domcontentloaded", timeout=45000)
-                for _ in range(3):
-                    page_bongo.mouse.wheel(0, 1000)
-                    page_bongo.wait_for_timeout(1000)
-                cards = page_bongo.locator('a[href^="/watch/"]').all()
-                seen_b = set()
-                for card in cards[:20]:
-                    href = card.get_attribute('href')
-                    if not href or href in seen_b: continue
-                    seen_b.add(href)
-                    aria_title = card.get_attribute('aria-label')
-                    try:
-                        img_tag = card.locator('img').first
-                        img = img_tag.get_attribute('src', timeout=2000)
-                        img_alt = img_tag.get_attribute('alt', timeout=2000)
-                    except:
-                        img, img_alt = None, None
-                    title = aria_title or img_alt
-                    if not title or title.strip() == "":
-                        title = href.split('?')[0].split('/')[-1].replace('-', ' ').title()
-                    full_url = href if href.startswith('http') else "https://bongobd.com" + href
-                    ALL_DATA.append({"p": "bongo", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 10), "dur": "N/A"})
-            except Exception as e: 
-                print(f"  [!] Bongo Error: {e}")
-            finally:
-                page_bongo.close()
-
-            # --- Toffee ---
-            print("  -> Toffee")
-            page_toffee = context.new_page()
-            try:
-                page_toffee.goto("https://toffeelive.com/", wait_until="domcontentloaded", timeout=45000)
-                for _ in range(3):
-                    page_toffee.mouse.wheel(0, 1000)
-                    page_toffee.wait_for_timeout(1000)
-                cards = page_toffee.locator('a[href*="/movies/"], a[href*="/series/"], a[href*="/drama/"]').all()
-                seen_t = set()
-                for card in cards[:20]:
-                    href = card.get_attribute('href')
-                    if not href or href in seen_t: continue
-                    seen_t.add(href)
-                    try:
-                        img_tag = card.locator('img').first
-                        img = img_tag.get_attribute('src', timeout=2000)
-                        title = img_tag.get_attribute('alt', timeout=2000)
-                    except:
-                        img, title = None, None
-                    if not title or title.strip() == "":
-                        title = href.split('/')[-1].replace('-', ' ').title()
-                    full_url = href if href.startswith('http') else "https://toffeelive.com" + href
-                    ALL_DATA.append({"p": "toffee", "t": title.strip(), "img": img, "url": full_url, "releaseDate": generate_fake_release_date(href, 12), "dur": "N/A"})
-            except Exception as e: 
-                print(f"  [!] Toffee Error: {e}")
-            finally:
-                page_toffee.close()
-
-            browser.close()
-    except Exception as e:
-        print(f"  [!] Playwright initialization failed: {e}")
-
-# ---------------------------------------------------------
-# Main Execution
-# ---------------------------------------------------------
-if __name__ == "__main__":
-    print("🚀 Starting STREAMguide Master Scraper...")
+# -------------------------------------------------------------------
+# ৩. TMDB মেটাডেটা এনরিচমেন্ট লজিক (Fallback & Details)
+# -------------------------------------------------------------------
+def enrich_with_tmdb(title):
+    fallback_data = {"tmdb_id": None, "rating": "N/A", "overview": "N/A", "releaseDate": None}
+    if not TMDB_API_KEY or not title:
+        return fallback_data
     
-    # 🌟 LEVEL 1: Live Scraping 🌟
-    scrape_gotipath("utshob", "https://www.utshob.live")
-    scrape_gotipath("deepto", "https://www.deeptoplay.com")
-    scrape_gotipath("bioscope", "https://www.bioscopeplus.com", "https://www.bioscopeplus.com/en/new-and-upcoming")
-    scrape_justwatch()
-    scrape_binge()
-    scrape_dynamic_sites()
-    
-    # বর্তমান লাইভ স্ক্র্যাপ করা প্লাটফর্মের তালিকা
-    scraped_platforms = set(item.get("p") for item in ALL_DATA if item.get("p"))
-
-    # 🌟 LEVEL 2: Manual Data Rescue (Only for missing platforms) 🌟
+    # TMDB তে সার্চ করা
+    search_url = f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_API_KEY}&query={title}&language=bn-BD"
     try:
-        if os.path.exists("manual_data.json"):
-            with open("manual_data.json", "r", encoding="utf-8") as f:
-                manual_data = json.load(f)
-                if isinstance(manual_data, list):
-                    added_from_manual = 0
-                    manual_platforms_added = set()
-                    
-                    for item in manual_data:
-                        p = item.get("p")
-                        # শুধুমাত্র সেই প্লাটফর্মের ডেটা নিবে যেটা Level 1 এ মিসিং
-                        if p and p not in scraped_platforms:
-                            ALL_DATA.append(item)
-                            added_from_manual += 1
-                            manual_platforms_added.add(p)
-                            
-                    if added_from_manual > 0:
-                        print(f"\n✅ LEVEL 2: Merged {added_from_manual} items from manual_data.json for missing platforms: {', '.join(manual_platforms_added)}")
-                    else:
-                        print("\n✅ LEVEL 2: manual_data.json checked. No missing platforms needed rescue from here.")
-    except Exception as e:
-        print(f"\n[-] Could not process manual_data.json: {e}")
+        response = requests.get(search_url, timeout=10).json()
+        results = response.get("results", [])
+        if not results:
+            # বাংলা বর্ণমালায় না পাওয়া গেলে গ্লোবাল সার্চ (English)
+            search_url_en = f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_API_KEY}&query={title}"
+            response = requests.get(search_url_en, timeout=10).json()
+            results = response.get("results", [])
 
-    # Level 1 ও Level 2 মিলে বর্তমান মোট প্লাটফর্মের তালিকা
-    current_platforms = set(item.get("p") for item in ALL_DATA if item.get("p"))
-
-    # 🌟 LEVEL 3: Universal Cache Recovery (Only for still missing platforms) 🌟
-    try:
-        if os.path.exists("data.json"):
-            with open("data.json", "r", encoding="utf-8") as f:
-                old_data = json.load(f)
+        if results:
+            match = results[0]
+            # মুভি বা সিরিজের রিলিজ ডেট খোঁজা
+            r_date = match.get("release_date") or match.get("first_air_date")
             
-            rescued_items = 0
-            rescued_platforms = set()
-
-            for item in old_data:
-                p = item.get("p")
-                # শুধুমাত্র সেই প্লাটফর্মের ডেটা নিবে যেটা Level 1 এবং Level 2 দুটোতেই মিসিং
-                if p and p not in current_platforms:
-                    ALL_DATA.append(item)
-                    rescued_items += 1
-                    rescued_platforms.add(p)
-
-            if rescued_items > 0:
-                print(f"\n✅ LEVEL 3: Rescued {rescued_items} items from cache for missing platforms: {', '.join(rescued_platforms)}")
-            else:
-                print("\n✅ LEVEL 3: Cache checked. No remaining missing platforms needed rescue.")
+            return {
+                "tmdb_id": match.get("id"),
+                "rating": match.get("vote_average", "N/A"),
+                "overview": match.get("overview") or "N/A",
+                "releaseDate": r_date if r_date else None
+            }
     except Exception as e:
-        print(f"\n[-] Could not rescue old data from cache: {e}")
+        print(f"TMDB সার্চ এরর ({title}): {e}")
+    
+    return fallback_data
 
-    # 🌟 FINAL SAVE 🌟
-    if ALL_DATA:
-        with open("data.json", "w", encoding="utf-8") as f:
-            json.dump(ALL_DATA, f, ensure_ascii=False, indent=2)
-        print(f"\n🎉 Successfully saved {len(ALL_DATA)} titles to data.json!")
+# -------------------------------------------------------------------
+# ৪. পুরনো ডেটা লোড ও ক্যাশ প্রোটেকশন লজিক (Level 2 & Level 3 Rescue)
+# -------------------------------------------------------------------
+def load_existing_data():
+    if os.path.exists(DATA_FILE):
+        try:
+            with open(DATA_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            print("পুরনো data.json ফাইলটি করাপ্টেড, ব্যাকআপ রিকভারি ট্রাই করা হচ্ছে।")
+    return []
+
+# -------------------------------------------------------------------
+# ৫. মূল স্ক্র্যাপিং মেকানিজম (Playwright & API Fetch)
+# -------------------------------------------------------------------
+def scrape_platforms():
+    existing_data = load_existing_data()
+    # ডুপ্লিকেট চেকিংয়ের জন্য ইউআরএল এর একটি সেট তৈরি
+    existing_urls = {item["url"] for item in existing_data if "url" in item}
+    
+    new_contents = []
+    
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36").new_page()
+
+        # --- CHORKI SCRAPER ---
+        if URLS["chorki"]:
+            try:
+                page.goto(URLS["chorki"], timeout=60000)
+                page.wait_for_load_state("networkidle")
+                # ডাইনামিক গ্রিড বা কন্টেন্ট কার্ড খোঁজা
+                cards = page.query_selector_all("a[href*='/shows/'], a[href*='/movies/']")
+                for card in cards:
+                    href = card.get_attribute("href")
+                    full_url = href if href.startswith("http") else f"{URLS['chorki']}{href}"
+                    if full_url not in existing_urls:
+                        title = card.inner_text().split("\n")[0].strip() or "Chorki Content"
+                        new_contents.append({"p": "chorki", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": "N/A"})
+            except Exception as e:
+                print(f"Chorki স্ক্র্যাপিং ব্যর্থ: {e}")
+
+        # --- HOICHOI SCRAPER ---
+        if URLS["hoichoi"]:
+            try:
+                page.goto(URLS["hoichoi"], timeout=60000)
+                cards = page.query_selector_all("a[href*='/play/']")
+                for card in cards:
+                    href = card.get_attribute("href")
+                    full_url = href if href.startswith("http") else f"https://www.hoichoi.tv{href}"
+                    if full_url not in existing_urls:
+                        title = card.get_attribute("title") or "Hoichoi Content"
+                        new_contents.append({"p": "hoichoi", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": "N/A"})
+            except Exception as e:
+                print(f"Hoichoi স্ক্র্যাপিং ব্যর্থ: {e}")
+
+        # --- GOTIPATH PLATFORMS (Utshob, Deepto, Bioscope) ---
+        for plat in ["utshob", "deepto"]:
+            if URLS[plat]:
+                try:
+                    page.goto(URLS[plat], timeout=60000)
+                    links = page.query_selector_all("a[href*='/watch/']")
+                    for link in links:
+                        href = link.get_attribute("href")
+                        full_url = href if href.startswith("http") else f"{URLS[plat]}{href}"
+                        if full_url not in existing_urls:
+                            title = link.inner_text().strip() or f"{plat.capitalize()} Content"
+                            new_contents.append({"p": plat, "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": "N/A"})
+                except Exception as e:
+                    print(f"{plat.capitalize()} স্ক্র্যাপিং ব্যর্থ: {e}")
+
+        # --- BIOSCOPE SPECIAL ---
+        if URLS["bioscope_fetch"] and URLS["bioscope_base"]:
+            try:
+                page.goto(URLS["bioscope_fetch"], timeout=60000)
+                links = page.query_selector_all("a[href*='/watch/']")
+                for link in links:
+                    href = link.get_attribute("href")
+                    full_url = href if href.startswith("http") else f"{URLS['bioscope_base']}{href}"
+                    if full_url not in existing_urls:
+                        title = link.inner_text().strip() or "Bioscope Content"
+                        new_contents.append({"p": "bioscope", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": "N/A"})
+            except Exception as e:
+                print(f"Bioscope স্ক্র্যাপিং ব্যর্থ: {e}")
+
+        # --- BINGE API FETCH ---
+        if URLS["binge"]:
+            try:
+                res = requests.get(URLS["binge"], timeout=15).json()
+                for item in res.get("data", {}).get("contents", []):
+                    slug = item.get("slug")
+                    full_url = f"https://binge.buzz/watch/{slug}"
+                    if full_url not in existing_urls:
+                        new_contents.append({
+                            "p": "binge",
+                            "t": item.get("title", "Binge Content"),
+                            "url": full_url,
+                            "native_date": item.get("release_date"),
+                            "dur": item.get("duration", "N/A"),
+                            "img": item.get("thumb_image", "N/A")
+                        })
+            except Exception as e:
+                print(f"Binge API স্ক্র্যাপিং ব্যর্থ: {e}")
+
+        # --- JUSTWATCH INTERNATIONAL SCRAPER ---
+        providers = {"netflix": "nfx", "prime": "amp", "zee5": "ze5", "sonyliv": "slv"}
+        for p_slug, p_code in providers.items():
+            try:
+                jw_url = f"https://www.justwatch.com/in/provider/{p_slug}/new/movies"
+                page.goto(jw_url, timeout=60000)
+                page.wait_for_selector(".title-list-grid__item")
+                items = page.query_selector_all(".title-list-grid__item a.title-list-grid__item--link")
+                for item in items[:15]: # প্রতি প্ল্যাটফর্ম থেকে লেটেস্ট ১৫টি করে নেবে
+                    href = item.get_attribute("href")
+                    full_url = f"https://www.justwatch.com{href}"
+                    if full_url not in existing_urls:
+                        title_el = item.query_selector("img")
+                        title = title_el.get_attribute("alt") if title_el else f"{p_slug.capitalize()} Content"
+                        new_contents.append({"p": p_code, "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": "N/A"})
+            except Exception as e:
+                print(f"JustWatch ({p_slug}) স্ক্র্যাপিং ব্যর্থ: {e}")
+
+        browser.close()
+
+    # -------------------------------------------------------------------
+    # ৬. মেটাডেটা প্রসেসিং ও Multi-tiered Fallback Strategy প্রয়োগ
+    # -------------------------------------------------------------------
+    processed_new_items = []
+    
+    for item in new_contents:
+        print(f"প্রসেস করা হচ্ছে: {item['t']} ({item['p']})")
+        # TMDB থেকে অ্যাডভান্সড ডেটা ও ডেট খোঁজা
+        tmdb = enrich_with_tmdb(item["t"])
+        
+        # Fallback লজিক নির্ধারণ: ১. ওটিটি ডেট -> ২. TMDB ডেট -> ৩. কারেন্ট রান টাইম স্ট্যাম্প
+        final_date = item["native_date"]
+        if not final_date or final_date == "N/A":
+            final_date = tmdb["releaseDate"]
+        if not final_date:
+            final_date = CURRENT_DATE
+
+        enriched_item = {
+            "p": item["p"],
+            "t": item["t"],
+            "dur": item["dur"],
+            "releaseDate": final_date,
+            "img": item["img"],
+            "url": item["url"],
+            "tmdb_id": tmdb["tmdb_id"],
+            "rating": tmdb["rating"],
+            "overview": tmdb["overview"],
+            "scraped_at": CURRENT_DATE
+        }
+        processed_new_items.append(enriched_item)
+
+    # -------------------------------------------------------------------
+    # ৭. ডেটা মার্জিং ও সেভিং (পুরনো ডেটা অক্ষুণ্ণ রাখা)
+    # -------------------------------------------------------------------
+    if processed_new_items:
+        # নতুন ডেটাগুলোকে তালিকার শুরুতে রেখে পুরনো ডেটা পরে অ্যাপেন্ড করা হবে (Latest First)
+        updated_data = processed_new_items + existing_data
+        
+        with open(DATA_FILE, "w", encoding="utf-8") as f:
+            json.dump(updated_data, f, ensure_ascii=False, indent=2)
+            
+        # টেলিগ্রামে অ্যালার্ট পাঠানো
+        alert_msg = f"🚀 *STREAMguide নতুন কন্টেন্ট আপডেট!*\n\n"
+        for i in processed_new_items[:10]: # সর্বোচ্চ ১০টি কন্টেন্টের লিস্ট বটের মাধ্যমে পাঠাবে
+            alert_msg += f"🎬 *{i['t']}* ({i['p'].upper()})\n📅 ডেট: {i['releaseDate']} | ⭐ রেটিং: {i['rating']}\n🔗 [লিংক দেখুন]({i['url']})\n\n"
+        
+        if len(processed_new_items) > 10:
+            alert_msg += f"➕ আরও {len(processed_new_items) - 10}টি কন্টেন্ট ব্যাকএন্ডে যুক্ত করা হয়েছে।"
+            
+        send_telegram_message(alert_msg)
+        print(f"সফলভাবে {len(processed_new_items)}টি নতুন কন্টেন্ট যোগ করা হয়েছে!")
     else:
-        print("\n⚠️ No data was scraped!")
+        print("নতুন কোনো রিলিজ খুঁজে পাওয়া যায়নি। ডেটাবেজ আপ-টু-ডেট আছে।")
+
+if __name__ == "__main__":
+    scrape_platforms()
