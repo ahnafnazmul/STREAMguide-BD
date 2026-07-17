@@ -1,0 +1,67 @@
+name: STREAMguide Manual Single Platform Scraper
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'কোন ওটিটি প্ল্যাটফর্ম স্ক্র্যাপ করতে চান?'
+        required: true
+        default: 'chorki'
+        type: choice
+        options:
+          - all
+          - chorki
+          - hoichoi
+          - bongo
+          - toffee
+          - binge
+          - utshob
+          - deepto
+          - bioscope
+
+permissions:
+  contents: write
+
+jobs:
+  single-scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install chromium
+
+      - name: Run Scraper for Selected Platform
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          URL_CHORKI: ${{ vars.URL_CHORKI }}
+          URL_HOICHOI: ${{ vars.URL_HOICHOI }}
+          URL_BONGO: ${{ vars.URL_BONGO }}
+          URL_TOFFEE: ${{ vars.URL_TOFFEE }}
+          URL_BINGE: ${{ vars.URL_BINGE }}
+          URL_UTSHOB: ${{ vars.URL_UTSHOB }}
+          URL_DEEPTO: ${{ vars.URL_DEEPTO }}
+          URL_BIOSCOPE_BASE: ${{ vars.URL_BIOSCOPE_BASE }}
+          URL_BIOSCOPE_FETCH: ${{ vars.URL_BIOSCOPE_FETCH }}
+        run: |
+          # এখানে আমরা স্ক্রিপ্টের সাথে প্ল্যাটফর্মের নাম আর্গুমেন্ট হিসেবে পাস করছি
+          python All_Site_Scraper.py ${{ github.event.inputs.platform }}
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "STREAMguide Manual Bot"
+          git add data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Manual update for ${{ github.event.inputs.platform }}" && git push)
