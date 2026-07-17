@@ -140,16 +140,21 @@ def scrape_platforms(target="all"):
         ])
         context = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
         page = context.new_page()
-        page.set_default_timeout(60000)
+        page.set_default_timeout(90000) # টাইম আউট এড়াতে ৬০ থেকে বাড়িয়ে ৯০ সেকেন্ড করা হলো
 
-        # --- CHORKI SCRAPER (টাইটেল স্ক্র্যাপিং ফিক্সড) ---
+        # --- CHORKI SCRAPER (ধীরগতির স্ক্রল ও ট্যাগ ফিল্টার এনহ্যান্সড) ---
         if (target == "all" or target == "chorki") and URLS["chorki"]:
             try:
                 page.goto(URLS["chorki"], wait_until="domcontentloaded")
                 page.wait_for_timeout(3000)
                 
+                # বটকে অলস ও ধীরগতির করার জন্য লুপ দিয়ে ৪ বার স্ক্রল করানো (যাতে অন্তত ৩০+ কন্টেন্ট লোড হয়)
+                for _ in range(4):
+                    page.evaluate("window.scrollBy(0, window.innerHeight)")
+                    page.wait_for_timeout(2500) # প্রতি স্ক্রলে ২.৫ সেকেন্ড অপেক্ষা
+                
                 cards = page.query_selector_all("a[href*='/show'], a[href*='/movie']")
-                ignored_titles = ["movies", "originals", "series", "shows", "bytes", "buy ticket", "chorki content"]
+                ignored_titles = ["movies", "originals", "series", "shows", "bytes", "buy ticket", "chorki content", "new release"]
                 
                 for card in cards:
                     href = card.get_attribute("href")
@@ -172,10 +177,13 @@ def scrape_platforms(target="all"):
             except Exception as e:
                 print(f"Chorki স্ক্র্যাপিং ব্যর্থ: {e}")
 
-        # --- HOICHOI SCRAPER ---
+        # --- HOICHOI SCRAPER (স্লো স্ক্রল এনহ্যান্সড) ---
         if (target == "all" or target == "hoichoi") and URLS["hoichoi"]:
             try:
                 page.goto(URLS["hoichoi"], wait_until="domcontentloaded")
+                for _ in range(4):
+                    page.evaluate("window.scrollBy(0, window.innerHeight)")
+                    page.wait_for_timeout(2000)
                 cards = page.query_selector_all("a[href*='/play/'], a[href*='/shows/'], a[href*='/movies/']")
                 for card in cards:
                     href = card.get_attribute("href")
@@ -190,10 +198,13 @@ def scrape_platforms(target="all"):
             except Exception as e:
                 print(f"Hoichoi স্ক্র্যাপিং ব্যর্থ: {e}")
 
-        # --- BONGO SCRAPER ---
+        # --- BONGO SCRAPER (স্লো স্ক্রল এনহ্যান্সড) ---
         if (target == "all" or target == "bongo") and URLS["bongo"]:
             try:
                 page.goto(URLS["bongo"], wait_until="domcontentloaded")
+                for _ in range(4):
+                    page.evaluate("window.scrollBy(0, window.innerHeight)")
+                    page.wait_for_timeout(2000)
                 cards = page.query_selector_all("a[href*='/watch/']")
                 for card in cards:
                     href = card.get_attribute("href")
@@ -212,6 +223,9 @@ def scrape_platforms(target="all"):
         if (target == "all" or target == "toffee") and URLS["toffee"]:
             try:
                 page.goto(URLS["toffee"], wait_until="domcontentloaded")
+                for _ in range(3):
+                    page.evaluate("window.scrollBy(0, window.innerHeight)")
+                    page.wait_for_timeout(2000)
                 cards = page.query_selector_all("a[href*='/movies/'], a[href*='/series/'], a[href*='/drama/']")
                 for card in cards:
                     href = card.get_attribute("href")
@@ -231,6 +245,9 @@ def scrape_platforms(target="all"):
             if (target == "all" or target == plat) and URLS[plat]:
                 try:
                     page.goto(URLS[plat], wait_until="domcontentloaded")
+                    for _ in range(3):
+                        page.evaluate("window.scrollBy(0, window.innerHeight)")
+                        page.wait_for_timeout(2000)
                     links = page.query_selector_all("a[href*='/watch/'], a[href*='/films/'], a[href*='/shows/']")
                     for link in links:
                         href = link.get_attribute("href")
@@ -249,6 +266,9 @@ def scrape_platforms(target="all"):
         if (target == "all" or target == "bioscope") and URLS["bioscope_fetch"] and URLS["bioscope_base"]:
             try:
                 page.goto(URLS["bioscope_fetch"], wait_until="domcontentloaded")
+                for _ in range(3):
+                    page.evaluate("window.scrollBy(0, window.innerHeight)")
+                    page.wait_for_timeout(2000)
                 links = page.query_selector_all("a[href*='/watch/'], a[href*='/movies/'], a[href*='/videos/']")
                 for link in links:
                     href = link.get_attribute("href")
@@ -288,9 +308,15 @@ def scrape_platforms(target="all"):
                 try:
                     jw_url = f"https://www.justwatch.com/in/provider/{p_slug}/new"
                     page.goto(jw_url, wait_until="domcontentloaded")
-                    page.wait_for_selector(".title-list-grid__item", timeout=15000)
+                    page.wait_for_selector(".title-list-grid__item", timeout=20000)
+                    
+                    # জাস্টওয়াচকেও একটু নিচে স্ক্রল করানো যাতে ৩০+ বেশি ডেটা লোড হতে পারে
+                    for _ in range(3):
+                        page.evaluate("window.scrollBy(0, window.innerHeight)")
+                        page.wait_for_timeout(2000)
+                        
                     items = page.query_selector_all(".title-list-grid__item a.title-list-grid__item--link")
-                    for item in items[:15]:
+                    for item in items[:40]: # সর্বোচ্চ ৪০টি পর্যন্ত টার্গেট
                         href = item.get_attribute("href")
                         full_url = f"https://www.justwatch.com{href}"
                         if full_url not in existing_urls:
@@ -345,7 +371,6 @@ def scrape_platforms(target="all"):
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(updated_data, f, ensure_ascii=False, indent=2)
 
-    # সিঙ্গেল রানের ক্ষেত্রে অন্য একটি সোর্স একটিভ দেখানোর ইন্টারনাল পলিসি
     if target != "all":
         rev_providers = {"nfx": "netflix", "amp": "prime", "ze5": "zee5", "slv": "sonyliv"}
         for old_item in existing_data:
