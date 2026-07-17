@@ -29,7 +29,7 @@ BLACKLIST_FILE = "blacklist.txt"
 DELETELIST_FILE = "deletelist.txt"
 CURRENT_DATE = datetime.datetime.now().strftime("%Y-%m-%d")
 
-# গ্লোবাল ট্র্যাকার: ❌ = ক্র্যাশ/ব্যর্থ, ক্যাশ = পুরনো ডেটা আছে, নিউ = নতুন ডেটা এসেছে
+# গ্লোবাল ট্র্যাকার: ❌ = ব্যর্থ, ক্যাশ = পুরনো ডেটা আছে, নিউ = নতুন ডেটা এসেছে
 platform_status = {
     "chorki": "❌", "bioscope": "❌", "hoichoi": "❌", "bongo": "❌",
     "toffee": "❌", "binge": "❌", "utshob": "❌", "deepto": "❌",
@@ -125,6 +125,8 @@ def load_existing_data():
 # ৩. মূল স্ক্র্যাপিং মেকানিজম (প্লে-রাইট আইসোলেটেড ট্রাই-ক্যাচ মোড)
 # -------------------------------------------------------------------
 def scrape_platforms(target="all"):
+    global platform_status  # সিনট্যাক্স এরর দূর করতে গ্লোবাল ডিক্লেয়ারেশন একদম প্রথমে নিয়ে আসা হয়েছে
+    
     existing_data = load_existing_data()
     
     # ডিলিট-লিস্ট মেকানিজম
@@ -154,8 +156,6 @@ def scrape_platforms(target="all"):
         mapped_name = provider_map.get(p_code)
         if mapped_name:
             platform_status[mapped_name] = "ক্যাশ"
-
-    global platform_status
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=[
@@ -337,14 +337,14 @@ def scrape_platforms(target="all"):
             except Exception as e:
                 print(f"Binge API স্ক্র্যাপিং ব্যর্থ: {e}")
 
-        # --- JUSTWATCH INTERNATIONAL (INDIVIDUAL TRY-CATCH FOR SAFETY) ---
+        # --- JUSTWATCH INTERNATIONAL ---
         providers = {"netflix": "nfx", "prime": "amp", "zee5": "ze5", "sonyliv": "slv"}
         for p_slug, p_code in providers.items():
             if target == "all" or target == p_slug:
                 try:
                     jw_url = f"https://www.justwatch.com/in/provider/{p_slug}/new"
                     page.goto(jw_url, wait_until="domcontentloaded")
-                    page.wait_for_selector(".title-list-grid__item", timeout=15000) # ১৫ সেকেন্ডে ট্রাই
+                    page.wait_for_selector(".title-list-grid__item", timeout=15000)
                     for _ in range(3):
                         page.evaluate("window.scrollBy(0, window.innerHeight)")
                         page.wait_for_timeout(2000)
@@ -364,7 +364,6 @@ def scrape_platforms(target="all"):
                     platform_status[p_slug] = "নিউ" if jw_new else "ক্যাশ"
                 except Exception as e:
                     print(f"JustWatch ({p_slug}) টাইমআউট বা ব্যর্থ হয়েছে, ক্যাশ সুরক্ষিত আছে। এরর: {e}")
-                    # ক্র্যাশ করলেও ডাটাবেজে পুরনো ডেটা থাকলে 'ক্যাশ' হিসেবেই রিপোর্ট করা হবে
                     if any(item.get("p") == p_code for item in existing_data):
                         platform_status[p_slug] = "ক্যাশ"
 
@@ -403,7 +402,7 @@ def scrape_platforms(target="all"):
         json.dump(updated_data, f, ensure_ascii=False, indent=2)
 
     # -------------------------------------------------------------------
-    # ৬. এক্সিকিউティブ টেলিগ্রাম রিপোর্ট (কনফিউশন-ফ্রি সাইন মেকানিজম)
+    # ৬. এক্সিকিউティブ টেলিগ্রাম রিপোর্ট
     # -------------------------------------------------------------------
     alert_msg = "Hello Boss, This Is Your Admin,\nReporting Scheduled Update:\n\n\n"
     order = ["chorki", "bioscope", "hoichoi", "bongo", "toffee", "binge", "utshob", "deepto", "netflix", "prime", "zee5", "sonyliv"]
@@ -412,7 +411,6 @@ def scrape_platforms(target="all"):
         display = "Prime Video" if p == "prime" else p.capitalize()
         status_raw = platform_status[p]
         
-        # রিপোর্ট সাইন চয়েস
         if status_raw == "নিউ":
             sign = "🔥 (New Content Added)"
         elif status_raw == "ক্যাশ":
