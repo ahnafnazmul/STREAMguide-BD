@@ -1,0 +1,39 @@
+name: STREAMguide Database Repair & Cleaner
+
+on:
+  workflow_dispatch: # এর মাধ্যমে আপনি যখন খুশি গিটহাব থেকে ম্যানুয়ালি রান করতে পারবেন
+
+permissions:
+  contents: write
+
+jobs:
+  repair-database:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          # এখানে প্লেরাইট লাগবে না কারণ এটা শুধু ডাটা ফিল্টার ও TMDB রিকভারি করবে
+
+      - name: Run Database Cleaner
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: |
+          python clean_data.py
+
+      - name: Commit and Push Repaired Data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "STREAMguide Cleaner Bot"
+          git add data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Fixed missing images and removed future dated content" && git push)
