@@ -13,110 +13,14 @@
   },
   {
     "p": "ze5",
-    "t": "Avatar 5",
-    "dur": "N/A",
-    "releaseDate": "2031-12-17",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/avatar-5",
-    "tmdb_id": 393209,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
     "t": "Mad Max: The Wasteland",
     "dur": "N/A",
     "releaseDate": "2026-07-17",
-    "img": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/zviMeR3CqbX3x3loO8xoSHCkiSs.jpg",
     "url": "https://www.justwatch.com/in/movie/mad-max-the-wasteland",
     "tmdb_id": 340023,
     "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "Avatar 4",
-    "dur": "N/A",
-    "releaseDate": "2029-12-19",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/avatar-4",
-    "tmdb_id": 216527,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "Fast Forever",
-    "dur": "N/A",
-    "releaseDate": "2028-03-16",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/fast-x-part-2",
-    "tmdb_id": 755679,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "Dynamic Duo",
-    "dur": "N/A",
-    "releaseDate": "2028-06-29",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/dynamic-duo",
-    "tmdb_id": 1364797,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "Incredibles 3",
-    "dur": "N/A",
-    "releaseDate": "2028-06-15",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/untitled-disney",
-    "tmdb_id": 1327821,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "Andheron Ka Sayya 2",
-    "dur": "N/A",
-    "releaseDate": "2027-05-06",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/andheron-ka-sayya-2",
-    "tmdb_id": 1725731,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "Frozen III",
-    "dur": "N/A",
-    "releaseDate": "2027-11-24",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/frozen-3",
-    "tmdb_id": 1024604,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "The Resurrection of the Christ: Part One",
-    "dur": "N/A",
-    "releaseDate": "2027-05-06",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/the-passion-of-the-christ-resurrection",
-    "tmdb_id": 532652,
-    "rating": 0.0,
-    "overview": "N/A",
+    "overview": "Follow Max Rockatansky in the year before the events of \"Mad Max: Fury Road.\"",
     "scraped_at": "2026-07-17"
   },
   {
@@ -124,47 +28,11 @@
     "t": "The Nightingale",
     "dur": "N/A",
     "releaseDate": "2018-09-23",
-    "img": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/wEzqFiatOJSbGBu6pb8z5sQuZt1.jpg",
     "url": "https://www.justwatch.com/in/movie/the-nightingale-2022",
     "tmdb_id": 400090,
     "rating": 7.057,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "Shrek 5",
-    "dur": "N/A",
-    "releaseDate": "2027-06-30",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/shrek-5",
-    "tmdb_id": 421892,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "The Legend of Zelda",
-    "dur": "N/A",
-    "releaseDate": "2027-04-30",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/the-legend-of-zelda",
-    "tmdb_id": 1177369,
-    "rating": 0.0,
-    "overview": "N/A",
-    "scraped_at": "2026-07-17"
-  },
-  {
-    "p": "ze5",
-    "t": "Wolf Creek: Legacy",
-    "dur": "N/A",
-    "releaseDate": "2027-03-19",
-    "img": "N/A",
-    "url": "https://www.justwatch.com/in/movie/wolf-creek-3",
-    "tmdb_id": 347196,
-    "rating": 0.0,
-    "overview": "N/A",
+    "overview": "In 1825, Clare, a 21-year-old Irish convict, chases a British soldier through the rugged Tasmanian wilderness, bent on revenge for a terrible act of violence he committed against her family. She enlists the services of an Aboriginal tracker who is also marked by trauma from his own violence-filled past.",
     "scraped_at": "2026-07-17"
   },
   {
@@ -804,210 +672,298 @@
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
+    "rating": 8.252,
+    "overview": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price."
   },
   {
     "p": "netflix",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+    "rating": 8.267,
+    "overview": "At the height of the Vietnam war, Captain Benjamin Willard is sent on a dangerous mission that, officially, \"does not exist, nor will it ever exist.\" His goal is to locate - and eliminate - a mysterious Green Beret Colonel named Walter Kurtz, who has been leading his personal army on illegal guerrilla missions into enemy territory."
   },
   {
     "p": "netflix",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/x6RRZRv1RKE83fgswIJ4fkuVbCE.jpg",
+    "rating": 4.9,
+    "overview": "Dado and Estrella want to to start a family and forget their old work as sex workers. But when they meet Baby, their relationship turns shaky as Estrella finds out about Dado and Baby's affair."
   },
   {
     "p": "netflix",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
     "releaseDate": "2026-07-16",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/6KwrHucIE3CvNT7kTm2MAlZ4fYF.jpg",
+    "rating": 6.992,
+    "overview": "A woman falls victim to a dominant mafia boss, who imprisons her and gives her one year to fall in love with him."
   },
   {
     "p": "netflix",
     "t": "Mahjong Nights",
     "url": "https://www.justwatch.com/in/movie/mahjong-nights",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gDFaFRLg3tGE85xd3oBHIC2bwyR.jpg",
+    "rating": 5.3,
+    "overview": "Alexa witnesses a simple mahjong night turned bloody when all the player's dark secrets are discovered - including Alexa's illicit affair with her stepfather."
   },
   {
     "p": "netflix",
     "t": "Heartstopper Forever",
     "url": "https://www.justwatch.com/in/movie/heartstopper-forever",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/r4lVJVO1BeBb11cBcXBdbHc9e9k.jpg",
+    "rating": 4.0,
+    "overview": "It's a new school year for the Truham-Higgs gang. As Nick and Charlie's relationship deepens, their thoughts turn to life after the last bell rings."
   },
   {
     "p": "prime",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
+    "rating": 8.252,
+    "overview": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price."
   },
   {
     "p": "prime",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+    "rating": 8.267,
+    "overview": "At the height of the Vietnam war, Captain Benjamin Willard is sent on a dangerous mission that, officially, \"does not exist, nor will it ever exist.\" His goal is to locate - and eliminate - a mysterious Green Beret Colonel named Walter Kurtz, who has been leading his personal army on illegal guerrilla missions into enemy territory."
   },
   {
     "p": "prime",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/x6RRZRv1RKE83fgswIJ4fkuVbCE.jpg",
+    "rating": 4.9,
+    "overview": "Dado and Estrella want to to start a family and forget their old work as sex workers. But when they meet Baby, their relationship turns shaky as Estrella finds out about Dado and Baby's affair."
   },
   {
     "p": "prime",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
     "releaseDate": "2026-07-16",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/6KwrHucIE3CvNT7kTm2MAlZ4fYF.jpg",
+    "rating": 6.992,
+    "overview": "A woman falls victim to a dominant mafia boss, who imprisons her and gives her one year to fall in love with him."
   },
   {
     "p": "prime",
     "t": "Mahjong Nights",
     "url": "https://www.justwatch.com/in/movie/mahjong-nights",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gDFaFRLg3tGE85xd3oBHIC2bwyR.jpg",
+    "rating": 5.3,
+    "overview": "Alexa witnesses a simple mahjong night turned bloody when all the player's dark secrets are discovered - including Alexa's illicit affair with her stepfather."
   },
   {
     "p": "prime",
     "t": "Heartstopper Forever",
     "url": "https://www.justwatch.com/in/movie/heartstopper-forever",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/r4lVJVO1BeBb11cBcXBdbHc9e9k.jpg",
+    "rating": 4.0,
+    "overview": "It's a new school year for the Truham-Higgs gang. As Nick and Charlie's relationship deepens, their thoughts turn to life after the last bell rings."
   },
   {
     "p": "disney",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
+    "rating": 8.252,
+    "overview": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price."
   },
   {
     "p": "disney",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+    "rating": 8.267,
+    "overview": "At the height of the Vietnam war, Captain Benjamin Willard is sent on a dangerous mission that, officially, \"does not exist, nor will it ever exist.\" His goal is to locate - and eliminate - a mysterious Green Beret Colonel named Walter Kurtz, who has been leading his personal army on illegal guerrilla missions into enemy territory."
   },
   {
     "p": "disney",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/x6RRZRv1RKE83fgswIJ4fkuVbCE.jpg",
+    "rating": 4.9,
+    "overview": "Dado and Estrella want to to start a family and forget their old work as sex workers. But when they meet Baby, their relationship turns shaky as Estrella finds out about Dado and Baby's affair."
   },
   {
     "p": "disney",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
     "releaseDate": "2026-07-16",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/6KwrHucIE3CvNT7kTm2MAlZ4fYF.jpg",
+    "rating": 6.992,
+    "overview": "A woman falls victim to a dominant mafia boss, who imprisons her and gives her one year to fall in love with him."
   },
   {
     "p": "disney",
     "t": "Mahjong Nights",
     "url": "https://www.justwatch.com/in/movie/mahjong-nights",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gDFaFRLg3tGE85xd3oBHIC2bwyR.jpg",
+    "rating": 5.3,
+    "overview": "Alexa witnesses a simple mahjong night turned bloody when all the player's dark secrets are discovered - including Alexa's illicit affair with her stepfather."
   },
   {
     "p": "disney",
     "t": "Heartstopper Forever",
     "url": "https://www.justwatch.com/in/movie/heartstopper-forever",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/r4lVJVO1BeBb11cBcXBdbHc9e9k.jpg",
+    "rating": 4.0,
+    "overview": "It's a new school year for the Truham-Higgs gang. As Nick and Charlie's relationship deepens, their thoughts turn to life after the last bell rings."
   },
   {
     "p": "zee5",
     "t": "Wanted 2",
     "url": "https://www.justwatch.com/in/movie/wanted-2",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "rating": 0.0,
+    "overview": "Wanted 2 is a sequel to Salman Khan's hit movie wanted, directed by Prabhu Deva."
   },
   {
     "p": "zee5",
     "t": "Grandgear",
     "url": "https://www.justwatch.com/in/movie/grandgear",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "rating": 0.0,
+    "overview": "Yamazaki’s first English language film. Plot TBA."
   },
   {
     "p": "zee5",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
+    "rating": 8.252,
+    "overview": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price."
   },
   {
     "p": "zee5",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+    "rating": 8.267,
+    "overview": "At the height of the Vietnam war, Captain Benjamin Willard is sent on a dangerous mission that, officially, \"does not exist, nor will it ever exist.\" His goal is to locate - and eliminate - a mysterious Green Beret Colonel named Walter Kurtz, who has been leading his personal army on illegal guerrilla missions into enemy territory."
   },
   {
     "p": "zee5",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/x6RRZRv1RKE83fgswIJ4fkuVbCE.jpg",
+    "rating": 4.9,
+    "overview": "Dado and Estrella want to to start a family and forget their old work as sex workers. But when they meet Baby, their relationship turns shaky as Estrella finds out about Dado and Baby's affair."
   },
   {
     "p": "zee5",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
     "releaseDate": "2026-07-16",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/6KwrHucIE3CvNT7kTm2MAlZ4fYF.jpg",
+    "rating": 6.992,
+    "overview": "A woman falls victim to a dominant mafia boss, who imprisons her and gives her one year to fall in love with him."
   },
   {
     "p": "sonyliv",
     "t": "Obsession",
     "url": "https://www.justwatch.com/in/movie/obsession-2026",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
+    "rating": 8.252,
+    "overview": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price."
   },
   {
     "p": "sonyliv",
     "t": "Now &amp; Later",
     "url": "https://www.justwatch.com/in/movie/now-and-later",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+    "rating": 8.267,
+    "overview": "At the height of the Vietnam war, Captain Benjamin Willard is sent on a dangerous mission that, officially, \"does not exist, nor will it ever exist.\" His goal is to locate - and eliminate - a mysterious Green Beret Colonel named Walter Kurtz, who has been leading his personal army on illegal guerrilla missions into enemy territory."
   },
   {
     "p": "sonyliv",
     "t": "Bugso",
     "url": "https://www.justwatch.com/in/movie/bugso",
     "releaseDate": "2026-07-13",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/x6RRZRv1RKE83fgswIJ4fkuVbCE.jpg",
+    "rating": 4.9,
+    "overview": "Dado and Estrella want to to start a family and forget their old work as sex workers. But when they meet Baby, their relationship turns shaky as Estrella finds out about Dado and Baby's affair."
   },
   {
     "p": "sonyliv",
     "t": "365 dni",
     "url": "https://www.justwatch.com/in/movie/365-days",
     "releaseDate": "2026-07-16",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/6KwrHucIE3CvNT7kTm2MAlZ4fYF.jpg",
+    "rating": 6.992,
+    "overview": "A woman falls victim to a dominant mafia boss, who imprisons her and gives her one year to fall in love with him."
   },
   {
     "p": "sonyliv",
     "t": "Mahjong Nights",
     "url": "https://www.justwatch.com/in/movie/mahjong-nights",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/gDFaFRLg3tGE85xd3oBHIC2bwyR.jpg",
+    "rating": 5.3,
+    "overview": "Alexa witnesses a simple mahjong night turned bloody when all the player's dark secrets are discovered - including Alexa's illicit affair with her stepfather."
   },
   {
     "p": "sonyliv",
     "t": "Desert Warrior",
     "url": "https://www.justwatch.com/in/movie/desert-warrior-2026",
     "releaseDate": "2026-07-14",
-    "dur": "N/A"
+    "dur": "N/A",
+    "img": "https://image.tmdb.org/t/p/w500/waxnw1NpzTPY5JkqWvu0muSopRJ.jpg",
+    "rating": 5.7,
+    "overview": "In 7th-century Arabia, Princess Hind becomes a warrior to defy the ruthless Emperor Kisra. Forged into a warrior and aided by legendary bandit Hanzala, Hind unites warring tribes for a last stand—the historic Battle of Dhi Qar—that will change history."
   },
   {
     "p": "toffee",
