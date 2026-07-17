@@ -2,10 +2,10 @@ name: STREAMguide Auto Data Scraper
 
 on:
   schedule:
-    - cron: '0 5,15 * * *'
+    # বাংলাদেশ সময় সকাল ৯টা, দুপুর ১২টা, দুপুর ৩টা, সন্ধ্যা ৬টা, রাত ৯টা এবং রাত ১২টায় রান হবে
+    - cron: '0 3,6,9,12,15,18 * * *'
   workflow_dispatch:
 
-# 🌟 ম্যাজিক ফিক্স: বটকে রিপোজিটরিতে ফাইল সেভ করার পারমিশন দেওয়া হলো 🌟
 permissions:
   contents: write
 
@@ -14,11 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Warning দূর করতে v4 ব্যবহার করা হলো
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Warning দূর করতে v5 ব্যবহার করা হলো
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -31,6 +29,20 @@ jobs:
           playwright install chromium
 
       - name: Run Scraper Script
+        # এখানে আমরা গিটহাবের Secrets এবং Variables গুলোকে পাইথনের জন্য এনভায়রনমেন্ট ভ্যারিয়েবল হিসেবে পাস করে দিচ্ছি
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          URL_CHORKI: ${{ vars.URL_CHORKI }}
+          URL_HOICHOI: ${{ vars.URL_HOICHOI }}
+          URL_BONGO: ${{ vars.URL_BONGO }}
+          URL_TOFFEE: ${{ vars.URL_TOFFEE }}
+          URL_BINGE: ${{ vars.URL_BINGE }}
+          URL_UTSHOB: ${{ vars.URL_UTSHOB }}
+          URL_DEEPTO: ${{ vars.URL_DEEPTO }}
+          URL_BIOSCOPE_BASE: ${{ vars.URL_BIOSCOPE_BASE }}
+          URL_BIOSCOPE_FETCH: ${{ vars.URL_BIOSCOPE_FETCH }}
         run: |
           python All_Site_Scraper.py
 
