@@ -2,10 +2,11 @@ import os
 import json
 import requests
 import datetime
+import sys
 from playwright.sync_api import sync_playwright
 
 # -------------------------------------------------------------------
-# ১. গিটহাব এনভায়রনমেন্ট ভ্যারিয়েবল ও সিক্রেটস লোড করা
+# ১. গিটহাব এনভায়রনমেন্ট ভ্যারিয়েবল ও সিক্রেটস লোড করা
 # -------------------------------------------------------------------
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -24,12 +25,57 @@ URLS = {
 }
 
 DATA_FILE = "data.json"
-# ২০২৬ সালের কারেন্ট ডেট অবজেক্ট (ভবিষ্যতের কন্টেন্ট ফিল্টার করার জন্য)
-TODAY = datetime.datetime.now()
-CURRENT_DATE_STR = TODAY.strftime("%Y-%m-%d")
+CURRENT_DATE = datetime.datetime.now().strftime("%Y-%m-%d")
 
+# প্ল্যাটফর্ম ট্র্যাকিং ডিকশনারি (টেলিগ্রাম রিপোর্টের সিরিয়াল বজায় রাখার জন্য)
+platform_status = {
+    "chorki": "❌", "bioscope": "❌", "hoichoi": "❌", "bongo": "❌",
+    "toffee": "❌", "binge": "❌", "utshob": "❌", "deepto": "❌",
+    "netflix": "❌", "prime": "❌", "zee5": "❌", "sonyliv": "❌"
+}
+
+platform_display_names = {
+    "chorki": "Chorki", "bioscope": "Bioscope", "hoichoi": "Hoichoi", "bongo": "Bongo",
+    "toffee": "Toffee", "binge": "Binge", "utshob": "Utshob", "deepto": "Deepto",
+    "nfx": "Netflix", "amp": "Prime Video", "ze5": "Zee5", "slv": "SonyLIV"
+}
+
+# -------------------------------------------------------------------
+# ২. ডেট ভ্যালিডেশন ফাংশন (ভবিষ্যতের কন্টেন্ট ব্লকার)
+# -------------------------------------------------------------------
+def is_future_date(date_str):
+    if not date_str or date_str == "N/A":
+        return False
+    try:
+        input_date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+        today = datetime.datetime.now().date()
+        return input_date > today
+    except Exception:
+        return False
+
+# -------------------------------------------------------------------
+# ৩. ইমেজ স্ক্র্যাপিং ব্যাকআপ মেকানিজম (Lazy Loading Rescue)
+# -------------------------------------------------------------------
+def get_image_with_backup(element):
+    if not element:
+        return "N/A"
+    try:
+        img_el = element.query_selector("img")
+        if img_el:
+            for attr in ["src", "data-src", "data-srcset", "srcset"]:
+                val = img_el.get_attribute(attr)
+                if val and val.startswith("http"):
+                    return val.split(" ")[0]
+    except Exception:
+        pass
+    return "N/A"
+
+# -------------------------------------------------------------------
+# ৪. টেলিগ্রাম বট রিপোর্টিং ফাংশন
+# -------------------------------------------------------------------
 def send_telegram_message(message):
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        print("টেলিগ্রাম ক্রেডেনশিয়াল মিসিং, মেসেজ স্কিপ করা হলো।")
         return
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
@@ -38,25 +84,11 @@ def send_telegram_message(message):
     except Exception as e:
         print(f"টেলিগ্রাম মেসেজ পাঠাতে ব্যর্থ: {e}")
 
-def parse_and_validate_date(date_str):
-    """৪-স্তরের ডেট লজিক ও ভবিষ্যৎ রিলিজ (যেমন ২০৩১) ফিল্টার করার ব্যাকআপ"""
-    if not date_str or date_str == "N/A":
-        return None
-    
-    formats = ["%Y-%m-%d", "%d-%m-%Y", "%Y/%m/%d", "%b %d, %Y", "%d %b %Y"]
-    for fmt in formats:
-        try:
-            parsed_date = datetime.datetime.strptime(date_str.strip(), fmt)
-            # যদি ডেটটি আজকের চেয়ে ভবিষ্যৎ হয় (যেমন ২০২৯ বা ২০৩১), তবে একে রিজেক্ট করতে None রিটার্ন করবে
-            if parsed_date > TODAY:
-                return None
-            return parsed_date.strftime("%Y-%m-%d")
-        except ValueError:
-            continue
-    return None
-
+# -------------------------------------------------------------------
+# ৫. TMDB মেটাডেটা এনরিচমেন্ট লজিক
+# -------------------------------------------------------------------
 def enrich_with_tmdb(title):
-    fallback_data = {"tmdb_id": None, "rating": "N/A", "overview": "N/A", "releaseDate": None}
+    fallback_data = {"tmdb_id": None, "rating": 0.0, "overview": "N/A", "releaseDate": None, "img": "N/A"}
     if not TMDB_API_KEY or not title:
         return fallback_data
     
@@ -72,34 +104,20 @@ def enrich_with_tmdb(title):
         if results:
             match = results[0]
             r_date = match.get("release_date") or match.get("first_air_date")
-            valid_tmdb_date = parse_and_validate_date(r_date)
+            poster_path = match.get("poster_path")
+            img_url = f"https://image.tmdb.org/t/p/w500{poster_path}" if poster_path else "N/A"
             
             return {
                 "tmdb_id": match.get("id"),
-                "rating": match.get("vote_average", "N/A"),
+                "rating": round(match.get("vote_average", 0.0), 1),
                 "overview": match.get("overview") or "N/A",
-                "releaseDate": valid_tmdb_date # ভ্যালিডেটেড ডেট (ভবিষ্যতের হলে None থাকবে)
+                "releaseDate": r_date if r_date else None,
+                "img": img_url
             }
     except Exception as e:
         print(f"TMDB সার্চ এরর ({title}): {e}")
     
     return fallback_data
-
-def get_image_with_backup(element):
-    """অলস লোডিং (Lazy Load) কাটাতে মাল্টিপল ইমেজ অ্যাট্রিবিউট ব্যাকআপ"""
-    if not element:
-        return "N/A"
-    try:
-        img_el = element.query_selector("img")
-        if img_el:
-            # সোর্সের যত রকম ভ্যারিয়েশন হতে পারে সব ব্যাকআপ চেক
-            for attr in ["src", "data-src", "data-srcset", "srcset"]:
-                val = img_el.get_attribute(attr)
-                if val and not val.startswith("data:image"):
-                    return val.split(" ")[0] # জাস্ট মূল ইমেজ ইউআরএল নিবে
-    except Exception:
-        pass
-    return "N/A"
 
 def load_existing_data():
     if os.path.exists(DATA_FILE):
@@ -107,20 +125,19 @@ def load_existing_data():
             with open(DATA_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception:
-            print("পুরনো data.json ফাইলটি করাপ্টেড বা খালি।")
+            print("পুরনো data.json ফাইলটি করাপ্টেড বা ফাঁকা।")
     return []
 
-def scrape_platforms():
+# -------------------------------------------------------------------
+# ৬. মূল স্ক্র্যাপিং মেকানিজম (ডাইনামিক ও টার্গেটেড ফিল্টারসহ)
+# -------------------------------------------------------------------
+def scrape_platforms(target="all"):
     existing_data = load_existing_data()
     existing_urls = {item["url"] for item in existing_data if "url" in item}
     new_contents = []
     
-    # আপনার স্পেসিফিক সিরিয়াল অনুযায়ী স্ট্যাটাস ট্র্যাকার ডিকশনারি
-    status = {
-        "Chorki": "❌", "Bioscope": "❌", "Hoichoi": "❌", "Bongo": "❌", 
-        "Toffee": "❌", "Binge": "❌", "Utshob": "❌", "Deepto": "❌",
-        "Netflix": "❌", "Prime Video": "❌", "Zee5": "❌", "SonyLIV": "❌"
-    }
+    # যদি আমরা কোনো সিঙ্গেল প্ল্যাটফর্ম রান করি, তবে ওই সাইটের স্ট্যাটাস আগে থেকেই রিসেট হবে
+    global platform_status
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=[
@@ -128,241 +145,259 @@ def scrape_platforms():
             '--no-sandbox',
             '--disable-setuid-sandbox'
         ])
-        
-        context = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            viewport={"width": 1280, "height": 1080} # ইমেজ রেন্ডার করার জন্য হাইট বাড়ানো হলো
-        )
+        context = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
         page = context.new_page()
         page.set_default_timeout(60000)
 
-        # --- CHORKI SCRAPER ---
-        if URLS["chorki"]:
+        # --- CHORKI SCRAPER (লেটেস্ট ইউআরএল ফিক্সড সিলেক্টর) ---
+        if (target == "all" or target == "chorki") and URLS["chorki"]:
             try:
                 page.goto(URLS["chorki"], wait_until="domcontentloaded")
-                page.evaluate("window.scrollTo(0, document.body.scrollHeight/4)") # স্ক্রোল ডাউন ব্যাকআপ
-                page.wait_for_timeout(5000)
-                cards = page.query_selector_all("a[href*='/shows/'], a[href*='/movies/']")
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
+                page.wait_for_timeout(2000)
+                
+                # চরকির নতুন ডাইনামিক /show এবং /movie কার্ড টার্গেট করা
+                cards = page.query_selector_all("a[href*='/show'], a[href*='/movie']")
                 for card in cards:
                     href = card.get_attribute("href")
-                    full_url = href if href.startswith("http") else f"{URLS['chorki']}{href}"
-                    if full_url not in existing_urls:
-                        title = card.inner_text().split("\n")[0].strip() or "Chorki Content"
-                        img_url = get_image_with_backup(card)
-                        new_contents.append({"p": "chorki", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_url})
-                status["Chorki"] = "✅"
+                    if href:
+                        full_url = href if href.startswith("http") else f"https://www.chorki.com{href}"
+                        if full_url not in existing_urls:
+                            img_el = card.query_selector("img")
+                            title = "Chorki Content"
+                            if img_el:
+                                title = img_el.get_attribute("alt") or img_el.get_attribute("title") or title
+                            
+                            img_src = get_image_with_backup(card)
+                            new_contents.append({"p": "chorki", "t": title.strip(), "url": full_url, "native_date": None, "dur": "N/A", "img": img_src})
+                platform_status["chorki"] = "✅"
             except Exception as e:
                 print(f"Chorki স্ক্র্যাপিং ব্যর্থ: {e}")
 
         # --- HOICHOI SCRAPER ---
-        if URLS["hoichoi"]:
+        if (target == "all" or target == "hoichoi") and URLS["hoichoi"]:
             try:
                 page.goto(URLS["hoichoi"], wait_until="domcontentloaded")
-                page.wait_for_timeout(4000)
-                cards = page.query_selector_all("a[href*='/play/']")
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
+                cards = page.query_selector_all("a[href*='/play/'], a[href*='/shows/'], a[href*='/movies/']")
                 for card in cards:
                     href = card.get_attribute("href")
-                    full_url = href if href.startswith("http") else f"https://www.hoichoi.tv{href}"
-                    if full_url not in existing_urls:
-                        title = card.get_attribute("title") or "Hoichoi Content"
-                        img_url = get_image_with_backup(card)
-                        new_contents.append({"p": "hoichoi", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_url})
-                status["Hoichoi"] = "✅"
+                    if href:
+                        full_url = href if href.startswith("http") else f"https://www.hoichoi.tv{href}"
+                        if full_url not in existing_urls:
+                            title = card.get_attribute("title") or card.inner_text().split("\n")[0].strip() or "Hoichoi Content"
+                            img_src = get_image_with_backup(card)
+                            new_contents.append({"p": "hoichoi", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_src})
+                platform_status["hoichoi"] = "✅"
             except Exception as e:
                 print(f"Hoichoi স্ক্র্যাপিং ব্যর্থ: {e}")
 
         # --- BONGO SCRAPER ---
-        if URLS["bongo"]:
+        if (target == "all" or target == "bongo") and URLS["bongo"]:
             try:
                 page.goto(URLS["bongo"], wait_until="domcontentloaded")
-                page.evaluate("window.scrollTo(0, 300)")
-                page.wait_for_timeout(4000)
-                cards = page.query_selector_all("a[href*='/watch/'], a[href*='/channel/']")
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
+                cards = page.query_selector_all("a[href*='/watch/']")
                 for card in cards:
                     href = card.get_attribute("href")
-                    full_url = href if href.startswith("http") else f"{URLS['bongo']}{href}"
-                    if full_url not in existing_urls:
-                        title = card.inner_text().split("\n")[0].strip() or "Bongo Content"
-                        img_url = get_image_with_backup(card)
-                        new_contents.append({"p": "bongo", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_url})
-                status["Bongo"] = "✅"
+                    if href:
+                        full_url = href if href.startswith("http") else f"https://bongobd.com{href}"
+                        if full_url not in existing_urls:
+                            title = card.inner_text().split("\n")[0].strip() or "Bongo Content"
+                            img_src = get_image_with_backup(card)
+                            new_contents.append({"p": "bongo", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_src})
+                platform_status["bongo"] = "✅"
             except Exception as e:
                 print(f"Bongo স্ক্র্যাপিং ব্যর্থ: {e}")
 
         # --- TOFFEE SCRAPER ---
-        if URLS["toffee"]:
+        if (target == "all" or target == "toffee") and URLS["toffee"]:
             try:
                 page.goto(URLS["toffee"], wait_until="domcontentloaded")
-                page.wait_for_timeout(4000)
-                cards = page.query_selector_all("a[href*='/vod/'], a[href*='/live/']")
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight/3)")
+                cards = page.query_selector_all("a[href*='/movies/'], a[href*='/series/'], a[href*='/drama/']")
                 for card in cards:
                     href = card.get_attribute("href")
-                    full_url = href if href.startswith("http") else f"{URLS['toffee']}{href}"
-                    if full_url not in existing_urls:
-                        title = card.inner_text().split("\n")[0].strip() or "Toffee Content"
-                        img_url = get_image_with_backup(card)
-                        new_contents.append({"p": "toffee", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_url})
-                status["Toffee"] = "✅"
+                    if href:
+                        full_url = href if href.startswith("http") else f"https://toffeelive.com{href}"
+                        if full_url not in existing_urls:
+                            title = card.inner_text().split("\n")[0].strip() or "Toffee Content"
+                            img_src = get_image_with_backup(card)
+                            new_contents.append({"p": "toffee", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_src})
+                platform_status["toffee"] = "✅"
             except Exception as e:
                 print(f"Toffee স্ক্র্যাপিং ব্যর্থ: {e}")
 
-        # --- UTSHOB SCRAPER ---
-        if URLS["utshob"]:
-            try:
-                page.goto(URLS["utshob"], wait_until="domcontentloaded")
-                page.wait_for_timeout(3000)
-                links = page.query_selector_all("a[href*='/watch/']")
-                for link in links:
-                    href = link.get_attribute("href")
-                    full_url = href if href.startswith("http") else f"{URLS['utshob']}{href}"
-                    if full_url not in existing_urls:
-                        title = link.inner_text().strip() or "Utshob Content"
-                        img_url = get_image_with_backup(link)
-                        new_contents.append({"p": "utshob", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_url})
-                status["Utshob"] = "✅"
-            except Exception as e:
-                print(f"Utshob স্ক্র্যাপিং ব্যর্থ: {e}")
-
-        # --- DEEPTO SCRAPER ---
-        if URLS["deepto"]:
-            try:
-                page.goto(URLS["deepto"], wait_until="domcontentloaded")
-                page.wait_for_timeout(3000)
-                links = page.query_selector_all("a[href*='/watch/']")
-                for link in links:
-                    href = link.get_attribute("href")
-                    full_url = href if href.startswith("http") else f"{URLS['deepto']}{href}"
-                    if full_url not in existing_urls:
-                        title = link.inner_text().strip() or "Deepto Content"
-                        img_url = get_image_with_backup(link)
-                        new_contents.append({"p": "deepto", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_url})
-                status["Deepto"] = "✅"
-            except Exception as e:
-                print(f"Deepto স্ক্র্যাপিং ব্যর্থ: {e}")
+        # --- UTSHOB & DEEPTO (GOTIPATH PLATFORMS) ---
+        for plat in ["utshob", "deepto"]:
+            if (target == "all" or target == plat) and URLS[plat]:
+                try:
+                    page.goto(URLS[plat], wait_until="domcontentloaded")
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
+                    links = page.query_selector_all("a[href*='/watch/'], a[href*='/films/'], a[href*='/shows/']")
+                    for link in links:
+                        href = link.get_attribute("href")
+                        if href:
+                            full_url = href if href.startswith("http") else f"{URLS[plat]}{href}"
+                            if full_url not in existing_urls:
+                                title = link.inner_text().split("\n")[0].strip() or f"{plat.capitalize()} Content"
+                                img_src = get_image_with_backup(link)
+                                new_contents.append({"p": plat, "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_src})
+                    platform_status[plat] = "✅"
+                except Exception as e:
+                    print(f"{plat.capitalize()} স্ক্র্যাপিং ব্যর্থ: {e}")
 
         # --- BIOSCOPE SPECIAL ---
-        if URLS["bioscope_fetch"] and URLS["bioscope_base"]:
+        if (target == "all" or target == "bioscope") and URLS["bioscope_fetch"] and URLS["bioscope_base"]:
             try:
                 page.goto(URLS["bioscope_fetch"], wait_until="domcontentloaded")
-                page.wait_for_timeout(3000)
-                links = page.query_selector_all("a[href*='/watch/']")
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
+                links = page.query_selector_all("a[href*='/watch/'], a[href*='/movies/'], a[href*='/videos/']")
                 for link in links:
                     href = link.get_attribute("href")
-                    full_url = href if href.startswith("http") else f"{URLS['bioscope_base']}{href}"
-                    if full_url not in existing_urls:
-                        title = link.inner_text().strip() or "Bioscope Content"
-                        img_url = get_image_with_backup(link)
-                        new_contents.append({"p": "bioscope", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_url})
-                status["Bioscope"] = "✅"
+                    if href:
+                        full_url = href if href.startswith("http") else f"{URLS['bioscope_base']}{href}"
+                        if full_url not in existing_urls:
+                            title = link.inner_text().split("\n")[0].strip() or "Bioscope Content"
+                            img_src = get_image_with_backup(link)
+                            new_contents.append({"p": "bioscope", "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_src})
+                platform_status["bioscope"] = "✅"
             except Exception as e:
                 print(f"Bioscope স্ক্র্যাপিং ব্যর্থ: {e}")
 
         # --- BINGE API FETCH ---
-        if URLS["binge"]:
+        if (target == "all" or target == "binge") and URLS["binge"]:
             try:
-                headers = {"User-Agent": "Mozilla/5.0"}
-                res = requests.get(URLS["binge"], headers=headers, timeout=15)
+                res = requests.get(URLS["binge"], timeout=15)
                 if res.status_code == 200:
-                    res_json = res.json()
-                    for item in res_json.get("data", {}).get("contents", []):
+                    for item in res.json().get("data", {}).get("contents", []):
                         slug = item.get("slug")
                         full_url = f"https://binge.buzz/watch/{slug}"
                         if full_url not in existing_urls:
-                            valid_native_date = parse_and_validate_date(item.get("release_date"))
                             new_contents.append({
-                                "p": "binge",
-                                "t": item.get("title", "Binge Content"),
-                                "url": full_url,
-                                "native_date": valid_native_date,
-                                "dur": item.get("duration", "N/A"),
+                                "p": "binge", "t": item.get("title", "Binge Content"), "url": full_url,
+                                "native_date": item.get("release_date"), "dur": item.get("duration", "N/A"),
                                 "img": item.get("thumb_image", "N/A")
-                        })
-                    status["Binge"] = "✅"
+                            })
+                    platform_status["binge"] = "✅"
                 else:
                     print(f"Binge API রেসপন্স কোড এরর: {res.status_code}")
             except Exception as e:
                 print(f"Binge API স্ক্র্যাপিং ব্যর্থ: {e}")
 
-        # --- JUSTWATCH INTERNATIONAL SCRAPER (ভবিষ্যতের মুভি ফিল্টার সহ) ---
-        providers = {"netflix": "Netflix", "prime": "Prime Video", "zee5": "Zee5", "sonyliv": "SonyLIV"}
-        p_codes = {"netflix": "nfx", "prime": "amp", "zee5": "ze5", "sonyliv": "slv"}
-        for p_slug, p_name in providers.items():
-            try:
-                jw_url = f"https://www.justwatch.com/in/provider/{p_slug}/new/movies"
-                page.goto(jw_url, wait_until="domcontentloaded")
-                page.evaluate("window.scrollTo(0, 500)") # অলস ছবি লোড করতে স্ক্রোল
-                page.wait_for_timeout(4000)
-                items = page.query_selector_all("a.title-list-grid__item--link")
-                for item in items[:25]: # পুল ব্যাকআপ সাইজ বাড়ানো হলো ফিল্টারের স্বার্থে
-                    href = item.get_attribute("href")
-                    full_url = f"https://www.justwatch.com{href}" if href else None
-                    if full_url and full_url not in existing_urls:
-                        title_el = item.query_selector("img")
-                        title = title_el.get_attribute("alt") if title_el else f"{p_name} Content"
-                        img_url = get_image_with_backup(item)
-                        new_contents.append({"p": p_codes[p_slug], "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": img_url})
-                status[p_name] = "✅"
-            except Exception as e:
-                print(f"JustWatch ({p_name}) স্ক্র্যাপিং ব্যর্থ: {e}")
+        # --- JUSTWATCH INTERNATIONAL SCRAPER ---
+        providers = {"netflix": "nfx", "prime": "amp", "zee5": "ze5", "sonyliv": "slv"}
+        for p_slug, p_code in providers.items():
+            if target == "all" or target == p_slug:
+                try:
+                    jw_url = f"https://www.justwatch.com/in/provider/{p_slug}/new"
+                    page.goto(jw_url, wait_until="domcontentloaded")
+                    page.wait_for_selector(".title-list-grid__item", timeout=15000)
+                    items = page.query_selector_all(".title-list-grid__item a.title-list-grid__item--link")
+                    for item in items[:15]:
+                        href = item.get_attribute("href")
+                        full_url = f"https://www.justwatch.com{href}"
+                        if full_url not in existing_urls:
+                            title_el = item.query_selector("img")
+                            title = title_el.get_attribute("alt") if title_el else f"{p_slug.capitalize()} Content"
+                            new_contents.append({"p": p_code, "t": title, "url": full_url, "native_date": None, "dur": "N/A", "img": "N/A"})
+                    
+                    # জাস্টওয়াচের প্রোপ্রাইটারি কোড ম্যাপ করে স্ট্যাটাস ওয়ান করা
+                    for k in platform_status.keys():
+                        if p_slug in k or k in p_slug:
+                            platform_status[k] = "✅"
+                except Exception as e:
+                    print(f"JustWatch ({p_slug}) স্ক্র্যাপিং ব্যর্থ: {e}")
 
         browser.close()
 
     # -------------------------------------------------------------------
-    # ৩. ডেট প্রসেসিং (৪-স্তরের ফলব্যাক ও ভবিষ্যৎ ডেট প্রতিরোধ লজিক)
+    # ৭. মেটাডেটা প্রসেসিং ও Multi-tiered Fallback Strategy প্রয়োগ
     # -------------------------------------------------------------------
     processed_new_items = []
+    
     for item in new_contents:
+        print(f"প্রসেস করা হচ্ছে: {item['t']} ({item['p']})")
         tmdb = enrich_with_tmdb(item["t"])
         
-        # ৪-স্তরের লজিক ইমপ্লিমেন্টেশন
-        final_date = item["native_date"]             # ১ম স্তর: সোর্স সাইট রিলিজ ডেট
+        # ৪-স্তরের ফলব্যাক ডেট লজিক
+        final_date = item["native_date"]
+        if not final_date or final_date == "N/A":
+            final_date = tmdb["releaseDate"]
         if not final_date:
-            final_date = tmdb["releaseDate"]         # ৩য় স্তর: TMDB তে পাওয়া রিলিজ ডেট (ভ্যালিডেটেড)
-        if not final_date:
-            final_date = CURRENT_DATE_STR            # ৪থ স্তর: স্ক্র্যাপিং এর এক্সাক্ট ডেট
-            
-        # চূড়ান্ত ফিল্টার: যদি কোনো কারণে এখনো ডেট কারেন্ট টাইমের চেয়ে বড় হয়ে থাকে, তা বাতিল করা হবে
-        parsed_final = parse_and_validate_date(final_date)
-        if not parsed_final:
-            continue # ভবিষ্যতের ডেটা হলে ডেটাবেজেই ঢুকবে না (যেমন Avatar 5 স্কিপ হবে)
+            final_date = CURRENT_DATE
+
+        # কড়া ফিল্টার: যদি ডেট ভবিষ্যতের হয়, তবে স্কিপ (রিজেক্ট)
+        if is_future_date(final_date):
+            print(f"⚠️ ভবিষ্যতের কন্টেন্ট স্কিপ করা হলো: {item['t']} ({final_date})")
+            continue
+
+        # ইমেজের ব্যাকআপ লজিক
+        final_img = item["img"]
+        if not final_img or final_img == "N/A":
+            final_img = tmdb["img"]
 
         enriched_item = {
-            "p": item["p"], "t": item["t"], "dur": item["dur"], "releaseDate": parsed_final,
-            "img": item["img"], "url": item["url"], "tmdb_id": tmdb["tmdb_id"],
-            "rating": tmdb["rating"], "overview": tmdb["overview"], "scraped_at": CURRENT_DATE_STR
+            "p": item["p"],
+            "t": item["t"],
+            "dur": item["dur"],
+            "releaseDate": final_date,
+            "img": final_img,
+            "url": item["url"],
+            "tmdb_id": tmdb["tmdb_id"],
+            "rating": tmdb["rating"],
+            "overview": tmdb["overview"],
+            "scraped_at": CURRENT_DATE
         }
         processed_new_items.append(enriched_item)
 
     # -------------------------------------------------------------------
-    # ৪. ডেটা মার্জিং ও নিখুঁত টেলিগ্রাম এক্সিকিউটিভ রিপোর্ট জেনারেশন
+    # ৮. ডেটা মার্জিং ও সেভিং (পুরনো ডেটা অক্ষুণ্ণ রাখা)
     # -------------------------------------------------------------------
-    updated_data = processed_new_items + existing_data
-    if processed_new_items:
-        with open(DATA_FILE, "w", encoding="utf-8") as f:
-            json.dump(updated_data, f, ensure_ascii=False, indent=2)
+    # যদি গিটহাব ম্যানুয়াল রান নির্দিষ্ট সাইটের জন্য হয়, তবে শুধু বাকি সাইটগুলোর স্ট্যাটাস পুরনো জেসন দেখে আপডেট হবে
+    if target != "all":
+        for old_item in existing_data:
+            op = old_item.get("p")
+            for k, v in providers.items():
+                if op == v and platform_status[k] == "❌":
+                    platform_status[k] = "✅"
+            if op in platform_status and platform_status[op] == "❌":
+                platform_status[op] = "✅"
 
-    # আপনার চাওয়া হুবহু মেসেজ ফরম্যাট
-    report_msg = "Hello Boss, This Is Your Admin,\n"
-    report_msg += "Reporting Scheduled Update:\n\n\n"
+    updated_data = processed_new_items + existing_data
     
-    # প্ল্যাটফর্ম লিস্ট আপনার দেওয়া অর্ডারে
-    platforms_order = ["Chorki", "Bioscope", "Hoichoi", "Bongo", "Toffee", "Binge", "Utshob", "Deepto", "Netflix", "Prime Video", "Zee5", "SonyLIV"]
-    for platform_name in platforms_order:
-        report_msg += f"{platform_name} {status[platform_name]}\n"
+    # ডেটা ফাইল রাইট করা
+    with open(DATA_FILE, "w", encoding="utf-8") as f:
+        json.dump(updated_data, f, ensure_ascii=False, indent=2)
+
+    # -------------------------------------------------------------------
+    # ৯. এক্সিকিউটিভ টেলিগ্রাম মেসেজ ফরম্যাট
+    # -------------------------------------------------------------------
+    alert_msg = "Hello Boss, This Is Your Admin,\nReporting Scheduled Update:\n\n\n"
     
-    report_msg += f"\nContent Added: {len(processed_new_items)} Totals after Merging with old data \n\n"
-    report_msg += "Contents Name:\n"
+    # প্ল্যাটফর্মগুলোর নামের সিরিয়াল অনুযায়ী সাজানো
+    order = ["chorki", "bioscope", "hoichoi", "bongo", "toffee", "binge", "utshob", "deepto", "netflix", "prime", "zee5", "sonyliv"]
+    for p in order:
+        display = "Prime Video" if p == "prime" else p.capitalize()
+        alert_msg += f"{display} {platform_status[p]}\n"
+        
+    alert_msg += f"\nContent Added: {len(processed_new_items)} Totals after Merging with old data\n\n"
+    alert_msg += "Contents Name:\n"
     
     if processed_new_items:
-        for idx, item in enumerate(processed_new_items, 1):
-            report_msg += f"{idx}. {item['t']}\n"
+        for idx, item in enumerate(processed_new_items[:10], 1):
+            alert_msg += f"{idx}. {item['t']}\n"
+        if len(processed_new_items) > 10:
+            alert_msg += f"...এবং আরও {len(processed_new_items) - 10}টি কন্টেন্ট।\n"
     else:
-        report_msg += "No new content found.\n"
+        alert_msg += "No new content found.\n"
         
-    report_msg += f"\nTotal contents in our database now: {len(updated_data)}"
+    alert_msg += f"\nTotal contents in our database now: {len(updated_data)}"
     
-    send_telegram_message(report_msg)
-    print("টেলিগ্রাম স্টেটমেন্ট রিপোর্ট পাঠানো হয়েছে সফলভাবে!")
+    send_telegram_message(alert_msg)
+    print("টেলিগ্রাম স্টেটমেন্ট রিপোর্ট পাঠানো হয়েছে সফলভাবে!")
 
 if __name__ == "__main__":
-    scrape_platforms()
+    # কমান্ড লাইন আর্গুমেন্ট রিসিভ করার লজিক
+    target_p = sys.argv[1] if len(sys.argv) > 1 else "all"
+    scrape_platforms(target_p)
