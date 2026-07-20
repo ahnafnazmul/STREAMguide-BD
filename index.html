@@ -19,7 +19,7 @@
     .scroller::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.01); }
     .scroller::-webkit-scrollbar-thumb { background: rgba(234, 179, 8, 0.3); border-radius: 10px; }
     
-    /* 🌟 TV D-Pad Focus Styles 🌟 */
+    /* TV D-Pad Focus Styles */
     .tv-focusable { outline: none; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; border: 2px solid transparent; }
     .tv-focusable:focus { border-color: #eab308 !important; box-shadow: 0 0 20px rgba(234, 179, 8, 0.6) !important; transform: scale(1.08); z-index: 50; }
     .chip-focus:focus { transform: scale(1.05); border-color: #eab308 !important; background-color: #eab308 !important; color: #000 !important; }
@@ -70,11 +70,6 @@
 </head>
 <body class="relative min-h-screen pb-[120px] md:pb-[100px]">
 
-    <!-- Toast Notification (App Fallback) -->
-    <div id="toast-notification" class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-black px-5 py-2.5 rounded-lg text-[10px] sm:text-xs font-black uppercase shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all duration-300 opacity-0 pointer-events-none z-[300] whitespace-nowrap" style="transform: translate(-50%, 20px);">
-        App Not Found
-    </div>
-
     <!-- HEADER MENU BAR -->
     <header class="w-full bg-[#060814]/95 backdrop-blur-md border-b border-white/5 sticky top-0 z-50 px-4 md:px-12 py-3 flex items-center justify-between shadow-xl">
         <div class="brand cursor-pointer tv-focusable rounded-lg p-1" onclick="window.location.reload()" tabindex="0">
@@ -110,7 +105,7 @@
             <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0c0f1d] to-transparent pointer-events-none z-30"></div>
         </div>
 
-        <!-- DYNAMIC DATE-BASED ROWS & REVIEWS -->
+        <!-- DYNAMIC ROWS -->
         <div class="pl-4 md:pl-12 space-y-7 relative z-40 bg-[#0c0f1d] pt-6 pb-4" id="rowsContainer">
             <!-- Rendered via JS -->
         </div>
@@ -123,7 +118,7 @@
         </div>
     </div>
 
-    <!-- 🔒 FIXED HUD PANEL -->
+    <!-- FIXED HUD PANEL -->
     <div class="fixed bottom-0 left-0 w-full z-[150] bg-[#060814]/95 backdrop-blur-md border-t border-white/10 shadow-[0_-10px_25px_rgba(0,0,0,0.95)] px-4 md:px-12 py-2.5 space-y-1 select-none">
         <div class="w-full flex justify-between items-center text-[9px] md:text-[10.5px] font-bold tracking-tight text-gray-400 uppercase">
             <div class="flex items-center space-x-1.5">
@@ -149,10 +144,9 @@
     </div>
 
 <script>
-// 🌟 Core Logic & Data Engine 🌟
 const PLATFORMS = {
   chorki:   { name:"Chorki",      color:"#e8482c", group:"local", package:"com.prothomalo.chorki" },
-  bongo:    { name:"Bongo BD",    color:"#f2c14e", group:"local" },
+  bongo:    { name:"Bongo BD",    color:"#f2c14e", group:"local", package:"com.bongobd.bongo" },
   deepto:   { name:"Deepto Play", color:"#2ecc71", group:"local" },
   hoichoi:  { name:"Hoichoi",     color:"#f23557", group:"local", package:"com.viewlift.hoichoi" },
   bioscope: { name:"Bioscope",    color:"#2ea3f2", group:"local", package:"com.bengal.bioscope" },
@@ -170,61 +164,25 @@ let activeFilter = "all";
 let wheelIndex = 0;
 let wheelTimer = null;
 
-// UI Helpers
 function fmtDate(d){ return d.toLocaleDateString('en-US', {day:'numeric', month:'short', year:'numeric'}); }
 function hashSeed(str){ let h = 0; for(let i=0; i<str.length; i++){ h = (h*31 + str.charCodeAt(i)) | 0; } return Math.abs(h); }
 function fakeRatingFor(t){ return (5.5 + (hashSeed(t) % 35) / 10).toFixed(1); }
 function fakeViewsFor(t){ const val = 500 + (hashSeed(t + 'views') % 49500); return val >= 1000 ? (val/1000).toFixed(1) + 'k' : String(val); }
 
-function showToast(msg) {
-    const toast = document.getElementById('toast-notification');
-    toast.innerText = msg;
-    toast.style.opacity = '1';
-    toast.style.transform = 'translate(-50%, 0)';
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translate(-50%, 20px)';
-    }, 3500);
-}
-
-// 📲 Smart Intent Fallback Engine
-function launchAppWithFallback(platformKey, webUrl, platformName) {
-    const platInfo = PLATFORMS[platformKey.toLowerCase()];
-    const pkg = platInfo ? platInfo.package : null;
-    
-    if (!pkg) {
+// Formula 1: App Intent Launch (Hidden Iframe Push)
+function triggerAppIntent(packageStr, webUrl) {
+    if(!packageStr) {
         window.location.href = webUrl;
         return;
     }
-
     let cleanUrl = webUrl.replace(/^https?:\/\//, '');
-    let intentUrl = `intent://${cleanUrl}#Intent;scheme=https;package=${pkg};end`;
+    let intentUrl = `intent://${cleanUrl}#Intent;scheme=https;package=${packageStr};end`;
     
-    let appOpened = false;
-    
-    // If Webview minimizes/blurs, assume the Intent worked
-    function onVisibilityChange() { if (document.hidden) appOpened = true; }
-    document.addEventListener("visibilitychange", onVisibilityChange);
-    window.addEventListener("blur", () => { appOpened = true; });
-
-    // Use an invisible iframe to prevent WebView from crashing to an error page if it fails to parse intent://
     let iframe = document.createElement("iframe");
     iframe.style.display = "none";
     iframe.src = intentUrl;
     document.body.appendChild(iframe);
-
-    // Fallback Logic
-    setTimeout(() => {
-        document.body.removeChild(iframe);
-        document.removeEventListener("visibilitychange", onVisibilityChange);
-        
-        if (!appOpened) {
-            showToast(`${platformName} App Not Found. Opening on Web View...`);
-            setTimeout(() => {
-                window.location.href = webUrl;
-            }, 1500);
-        }
-    }, 1200);
+    setTimeout(() => document.body.removeChild(iframe), 1500);
 }
 
 function processData(rawItems){
@@ -271,7 +229,7 @@ function renderFilters() {
   });
 }
 
-// 🎬 3D Wheel Logic
+// 3D Wheel Logic
 function build3DWheel(pool) {
     const wrapper = document.getElementById('carousel-wheel-core');
     wrapper.innerHTML = '';
@@ -386,12 +344,9 @@ function renderLayout() {
     }
     
     rowsEl.innerHTML = html;
-    
-    // Re-fetch reviews to append at the bottom
     fetchReviewsAndRender();
 }
 
-// 📝 Reviews Logic (Row 4)
 async function fetchReviewsAndRender() {
     try {
         const resp = await fetch('reviews.json', { cache: 'no-store' });
@@ -432,7 +387,6 @@ async function fetchReviewsAndRender() {
     } catch(e) { }
 }
 
-// 🍿 Hybrid Modal Popup
 function openModalById(id) {
     const item = DATA.find(d => d.id === id);
     if(item) openModal(item);
@@ -450,14 +404,24 @@ function openModal(item) {
     const runtime = item.dur && item.dur !== 'N/A' ? item.dur : "Scanning...";
     const overview = item.overview && item.overview !== 'N/A' ? item.overview : "Synopsis parsing verified. Detailed overview will be available soon in database update.";
 
-    // Integrated Fallback Intent Watch Button
-    let buttonsHtml = `<button class="tv-focusable bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg text-xs font-black uppercase tracking-wider w-full sm:w-auto shadow-lg" tabindex="0" onclick="launchAppWithFallback('${item.p}', '${item.url}', '${plat.name}')">▶ Watch on ${plat.name}</button>`;
+    // 🌟 The 3-Button Master Setup 🌟
+    let buttonsHtml = '';
     
     if(plat.group === 'intl') {
         const appUrl = `https://moviebox.ph/web/searchResult?keyword=${encodeURIComponent(item.t)}`;
         buttonsHtml = `
-            <button class="tv-focusable bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg text-xs font-black uppercase tracking-wider w-full shadow-lg mb-2" tabindex="0" onclick="window.open('${appUrl}', '_blank')">🎬 Open in Moviebox</button>
-            <button class="tv-focusable bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 px-6 py-3 rounded-lg text-xs font-black uppercase tracking-wider w-full" tabindex="0" onclick="launchAppWithFallback('${item.p}', '${item.url}', '${plat.name}')">🌐 Official Link</button>`;
+            <div class="flex flex-col sm:flex-row gap-2 w-full">
+                <button class="tv-focusable bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-wider w-full shadow-lg" tabindex="0" onclick="window.open('${appUrl}', '_blank')">🎬 Moviebox App</button>
+                <button class="tv-focusable bg-slate-700 hover:bg-slate-600 text-white px-3 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-wider w-full shadow-lg" tabindex="0" onclick="window.open('${item.url}', '_blank')">🌐 Official Browser</button>
+            </div>`;
+    } else {
+        buttonsHtml = `
+            <div class="flex flex-col sm:flex-row gap-2 w-full mt-2">
+                <button class="tv-focusable bg-yellow-500 hover:bg-yellow-600 text-black px-2 py-2.5 rounded-lg text-[9px] font-black uppercase shadow-lg w-full" tabindex="0" onclick="triggerAppIntent('${plat.package}', '${item.url}')">📱 ${plat.name} App</button>
+                <button class="tv-focusable bg-blue-500 hover:bg-blue-600 text-white px-2 py-2.5 rounded-lg text-[9px] font-black uppercase shadow-lg w-full" tabindex="0" onclick="window.location.href='${item.url}'">🖥️ Web View</button>
+                <button class="tv-focusable bg-slate-700 hover:bg-slate-600 text-white px-2 py-2.5 rounded-lg text-[9px] font-black uppercase shadow-lg w-full" tabindex="0" onclick="window.open('${item.url}', '_blank')">🌍 Browser</button>
+            </div>
+        `;
     }
 
     modalCard.innerHTML = `
@@ -492,7 +456,7 @@ function openModal(item) {
                 <div><span class="text-[9px] text-gray-500 block uppercase font-bold">Runtime</span><span class="text-gray-200 font-bold">${runtime}</span></div>
             </div>
             
-            <div class="pt-2 flex flex-col sm:flex-row gap-3">
+            <div class="pt-2 w-full">
                 ${buttonsHtml}
             </div>
         </div>
@@ -586,7 +550,7 @@ function initTVNavigation() {
     });
 }
 
-// 🚀 Boot System
+// 🚀 Boot System & Deep Linking Engine
 async function initApp(){
   try{
     const resp = await fetch('data.json', { cache: 'no-store' });
@@ -599,10 +563,23 @@ async function initApp(){
     renderLayout();
     initTVNavigation();
     
-    setTimeout(() => {
-        const firstBtn = document.querySelector('.chip-focus.active');
-        if(firstBtn) firstBtn.focus();
-    }, 800);
+    // 🌟 হোমস্ক্রিন চ্যানেল (Deep Link) থেকে পপ-আপ অটো-ওপেন করার লজিক 🌟
+    const urlParams = new URLSearchParams(window.location.search);
+    const modalId = urlParams.get('modal') || urlParams.get('cid');
+    
+    if (modalId) {
+        setTimeout(() => {
+            openModalById(Number(modalId));
+            // ব্যাকগ্রাউন্ডে URL ক্লিন করে দেওয়া, যাতে পেজ রিলোডে বারবার পপ-আপ না আসে
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }, 600);
+    } else {
+        // যদি হোমস্ক্রিন থেকে না এসে নরমালি অ্যাপ ওপেন করে, তবে মেনুতে ফোকাস করবে
+        setTimeout(() => {
+            const firstBtn = document.querySelector('.chip-focus.active');
+            if(firstBtn) firstBtn.focus();
+        }, 800);
+    }
 
   }catch(err){
     document.getElementById('rowsContainer').innerHTML = `<div class="text-center text-red-500 py-10 font-bold">Failed to load data. Ensure JSON exists.</div>`;
