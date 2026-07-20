@@ -9,7 +9,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Anton&family=Inter:wght@300;400;600;700;800;900&family=Sacramento&display=swap" rel="stylesheet">
-<!-- Tailwind CSS (Movieplexbd Color Scheme) -->
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -30,7 +30,7 @@
     .logo span.guide-thin { color: #e8482c; font-family: 'Sacramento', cursive; font-weight: 400; font-size: 34px; margin-left: -4px; }
     .logo span.bd { color: #e8482c; font-weight: 900; margin-left: 6px; -webkit-text-stroke: 1px #fff; }
 
-    /* 3D BACKGROUND CAROUSEL ENGINE (Movieplexbd Style) */
+    /* 3D BACKGROUND CAROUSEL ENGINE */
     .carousel-container-fixed { position: relative; width: 100%; height: 320px; overflow: visible; background-color: #060814; margin-top: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
     @media (min-width: 768px) { .carousel-container-fixed { height: 440px; } }
     .carousel-viewport { position: absolute; top: 0; left: 0; width: 100%; height: 100%; perspective: 1400px; overflow: visible; z-index: 10; }
@@ -66,11 +66,14 @@
     .modal-overlay.open { display: flex; animation: fadeIn 0.2s ease-out; }
     .modal-card { width: 100%; max-width: 900px; max-height: 85vh; background: #0c0f1d; border: 1px solid rgba(234,179,8,0.2); border-radius: 20px; overflow-y: auto; box-shadow: 0 30px 100px rgba(0,0,0,0.9); outline: none; }
     @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
-
-    .adult-blur { filter: blur(28px) saturate(1.2); transform: scale(1.15); }
 </style>
 </head>
 <body class="relative min-h-screen pb-[120px] md:pb-[100px]">
+
+    <!-- Toast Notification (App Fallback) -->
+    <div id="toast-notification" class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-black px-5 py-2.5 rounded-lg text-[10px] sm:text-xs font-black uppercase shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all duration-300 opacity-0 pointer-events-none z-[300] whitespace-nowrap" style="transform: translate(-50%, 20px);">
+        App Not Found
+    </div>
 
     <!-- HEADER MENU BAR -->
     <header class="w-full bg-[#060814]/95 backdrop-blur-md border-b border-white/5 sticky top-0 z-50 px-4 md:px-12 py-3 flex items-center justify-between shadow-xl">
@@ -79,7 +82,6 @@
             <div class="text-[9px] text-gray-500 uppercase tracking-widest mt-0.5">OTT Streaming Guide</div>
         </div>
         <div class="flex gap-2">
-            <!-- Platform Filters Logic preserved from STREAMguide -->
             <div id="filters-container" class="hidden md:flex space-x-2"></div>
         </div>
     </header>
@@ -108,20 +110,20 @@
             <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0c0f1d] to-transparent pointer-events-none z-30"></div>
         </div>
 
-        <!-- DYNAMIC DATE-BASED ROWS (STREAMguide Logic + Movieplex Design) -->
+        <!-- DYNAMIC DATE-BASED ROWS & REVIEWS -->
         <div class="pl-4 md:pl-12 space-y-7 relative z-40 bg-[#0c0f1d] pt-6 pb-4" id="rowsContainer">
             <!-- Rendered via JS -->
         </div>
     </div>
 
-    <!-- MODAL DETAILS VIEW (Hybrid Concept) -->
+    <!-- MODAL DETAILS VIEW -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-card tv-focusable flex flex-col md:flex-row relative" id="modalCard" tabindex="0">
             <!-- JS Inject Modal Content Here -->
         </div>
     </div>
 
-    <!-- 🔒 FIXED HUD PANEL (Movieplexbd Style) -->
+    <!-- 🔒 FIXED HUD PANEL -->
     <div class="fixed bottom-0 left-0 w-full z-[150] bg-[#060814]/95 backdrop-blur-md border-t border-white/10 shadow-[0_-10px_25px_rgba(0,0,0,0.95)] px-4 md:px-12 py-2.5 space-y-1 select-none">
         <div class="w-full flex justify-between items-center text-[9px] md:text-[10.5px] font-bold tracking-tight text-gray-400 uppercase">
             <div class="flex items-center space-x-1.5">
@@ -147,16 +149,16 @@
     </div>
 
 <script>
-// 🌟 STREAMGUIDE LOGIC + MOVIEPLEX DESIGN ENGINE 🌟
+// 🌟 Core Logic & Data Engine 🌟
 const PLATFORMS = {
-  chorki:   { name:"Chorki",      color:"#e8482c", group:"local" },
+  chorki:   { name:"Chorki",      color:"#e8482c", group:"local", package:"com.prothomalo.chorki" },
   bongo:    { name:"Bongo BD",    color:"#f2c14e", group:"local" },
   deepto:   { name:"Deepto Play", color:"#2ecc71", group:"local" },
-  hoichoi:  { name:"Hoichoi",     color:"#f23557", group:"local" },
-  bioscope: { name:"Bioscope",    color:"#2ea3f2", group:"local" },
-  binge:    { name:"Binge",       color:"#00c2a8", group:"local" },
-  toffee:   { name:"Toffee",      color:"#e0227a", group:"local" },
-  netflix:  { name:"Netflix",     color:"#e50914", group:"intl" },
+  hoichoi:  { name:"Hoichoi",     color:"#f23557", group:"local", package:"com.viewlift.hoichoi" },
+  bioscope: { name:"Bioscope",    color:"#2ea3f2", group:"local", package:"com.bengal.bioscope" },
+  binge:    { name:"Binge",       color:"#00c2a8", group:"local", package:"com.sssl.binge" },
+  toffee:   { name:"Toffee",      color:"#e0227a", group:"local", package:"com.banglalink.toffee" },
+  netflix:  { name:"Netflix",     color:"#e50914", group:"intl", package:"com.netflix.mediaclient" },
   prime:    { name:"Prime Video", color:"#00a8e1", group:"intl" },
   zee5:     { name:"Zee5",        color:"#7b2ff7", group:"intl" },
   sonyliv:  { name:"SonyLIV",     color:"#1ba1e2", group:"intl" },
@@ -168,11 +170,62 @@ let activeFilter = "all";
 let wheelIndex = 0;
 let wheelTimer = null;
 
-// Helpers
+// UI Helpers
 function fmtDate(d){ return d.toLocaleDateString('en-US', {day:'numeric', month:'short', year:'numeric'}); }
 function hashSeed(str){ let h = 0; for(let i=0; i<str.length; i++){ h = (h*31 + str.charCodeAt(i)) | 0; } return Math.abs(h); }
 function fakeRatingFor(t){ return (5.5 + (hashSeed(t) % 35) / 10).toFixed(1); }
 function fakeViewsFor(t){ const val = 500 + (hashSeed(t + 'views') % 49500); return val >= 1000 ? (val/1000).toFixed(1) + 'k' : String(val); }
+
+function showToast(msg) {
+    const toast = document.getElementById('toast-notification');
+    toast.innerText = msg;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translate(-50%, 0)';
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translate(-50%, 20px)';
+    }, 3500);
+}
+
+// 📲 Smart Intent Fallback Engine
+function launchAppWithFallback(platformKey, webUrl, platformName) {
+    const platInfo = PLATFORMS[platformKey.toLowerCase()];
+    const pkg = platInfo ? platInfo.package : null;
+    
+    if (!pkg) {
+        window.location.href = webUrl;
+        return;
+    }
+
+    let cleanUrl = webUrl.replace(/^https?:\/\//, '');
+    let intentUrl = `intent://${cleanUrl}#Intent;scheme=https;package=${pkg};end`;
+    
+    let appOpened = false;
+    
+    // If Webview minimizes/blurs, assume the Intent worked
+    function onVisibilityChange() { if (document.hidden) appOpened = true; }
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    window.addEventListener("blur", () => { appOpened = true; });
+
+    // Use an invisible iframe to prevent WebView from crashing to an error page if it fails to parse intent://
+    let iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = intentUrl;
+    document.body.appendChild(iframe);
+
+    // Fallback Logic
+    setTimeout(() => {
+        document.body.removeChild(iframe);
+        document.removeEventListener("visibilitychange", onVisibilityChange);
+        
+        if (!appOpened) {
+            showToast(`${platformName} App Not Found. Opening on Web View...`);
+            setTimeout(() => {
+                window.location.href = webUrl;
+            }, 1500);
+        }
+    }, 1200);
+}
 
 function processData(rawItems){
   return rawItems.map((x, i) => {
@@ -208,7 +261,6 @@ function renderFilters() {
           c.classList.remove('bg-yellow-500', 'text-black', 'active');
           c.classList.add('bg-slate-900', 'text-gray-400');
       });
-      // Active state styling for all matching chips (desktop & mobile sync)
       document.querySelectorAll(`[data-p="${chip.dataset.p}"]`).forEach(c => {
           c.classList.remove('bg-slate-900', 'text-gray-400');
           c.classList.add('bg-yellow-500', 'text-black', 'active');
@@ -281,7 +333,6 @@ function rotateWheelLogic(items) {
     });
 }
 
-// 🖼️ Row Generation
 function cardHTML(item) {
     const plat = PLATFORMS[item.p] || { name: item.p, color: "#eab308" };
     const imgSrc = item.img && item.img !== 'N/A' ? item.img : `https://placehold.co/300x450/1c1f2b/ffffff?text=${encodeURIComponent(item.t)}`;
@@ -305,12 +356,12 @@ function cardHTML(item) {
 function renderLayout() {
     let pool = DATA.filter(d => {
         const isIntl = PLATFORMS[d.p] && PLATFORMS[d.p].group === "intl";
-        if(activeFilter === "all") return !isIntl; // Hide intl from 'all' by default
+        if(activeFilter === "all") return !isIntl;
         if(activeFilter === "intl") return isIntl;
         return d.p === activeFilter;
     });
 
-    pool.sort((a,b) => a.days - b.days); // Sort by newest
+    pool.sort((a,b) => a.days - b.days);
     build3DWheel(pool);
 
     const last7 = pool.filter(d => d.days <= 7);
@@ -335,9 +386,53 @@ function renderLayout() {
     }
     
     rowsEl.innerHTML = html;
+    
+    // Re-fetch reviews to append at the bottom
+    fetchReviewsAndRender();
 }
 
-// 🍿 Hybrid Modal Popup (Movieplexbd Details Style)
+// 📝 Reviews Logic (Row 4)
+async function fetchReviewsAndRender() {
+    try {
+        const resp = await fetch('reviews.json', { cache: 'no-store' });
+        if(!resp.ok) return;
+        const reviews = await resp.json();
+        const rowsEl = document.getElementById('rowsContainer');
+        
+        let html = `<div class="space-y-2.5 row-scroll mt-6">
+            <div class="flex justify-between items-center border-b border-white/5 pb-1 pr-4 md:pr-12">
+                <h3 class="text-xs md:text-sm font-extrabold text-gray-200 flex items-center">
+                    <span class="w-1 h-3.5 bg-purple-500 mr-2 rounded"></span>📝 লেটেস্ট কন্টেন্ট রিভিউ
+                </h3>
+                <span class="text-[10px] font-bold text-gray-400">${reviews.length} Reviews</span>
+            </div>
+            <div class="flex space-x-3 overflow-x-auto scroller py-1.5 px-0.5">`;
+        
+        reviews.forEach(review => {
+            const matchedItem = DATA.find(d => d.t && d.t.trim().toLowerCase() === review.movie_name.trim().toLowerCase());
+            const autoImg = matchedItem && matchedItem.img && matchedItem.img !== 'N/A' ? matchedItem.img : 'https://placehold.co/300x450/1c1f2b/ffffff?text=' + encodeURIComponent(review.movie_name);
+            const cid = matchedItem ? matchedItem.id : '';
+            
+            html += `
+            <div class="movie-card tv-focusable min-w-[140px] sm:min-w-[180px] bg-slate-900/40 rounded-xl overflow-hidden cursor-pointer relative shadow-xl flex-shrink-0 group border border-white/5" tabindex="0" onclick="window.location.href='review.html?title=${encodeURIComponent(review.movie_name)}&cid=${cid}'">
+                <div class="relative w-full pt-[142%] bg-slate-950">
+                    <img src="${autoImg}" alt="${review.movie_name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0c0f1d] via-[#0c0f1d]/90 to-transparent z-10"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-3 z-20">
+                        <h4 class="text-[11px] sm:text-[12px] font-black leading-tight text-white group-hover:text-yellow-500 transition mb-1">${review.movie_name}</h4>
+                        <div class="text-yellow-500 text-[9px] font-bold mb-1.5">⭐ রেটিং: ${review.rating}</div>
+                        <p class="text-[9px] text-gray-300 line-clamp-3 leading-relaxed opacity-80">${review.review_text}</p>
+                    </div>
+                </div>
+            </div>`;
+        });
+        
+        html += `</div></div>`;
+        rowsEl.insertAdjacentHTML('beforeend', html);
+    } catch(e) { }
+}
+
+// 🍿 Hybrid Modal Popup
 function openModalById(id) {
     const item = DATA.find(d => d.id === id);
     if(item) openModal(item);
@@ -349,33 +444,30 @@ function openModal(item) {
     const plat = PLATFORMS[item.p] || { name: item.p, color: "#fff" };
     const imgSrc = item.img && item.img !== 'N/A' ? item.img : `https://placehold.co/400x600/1c1f2b/ffffff?text=${encodeURIComponent(item.t)}`;
     
-    // Future-proof variables (Waiting for TMDB Scraper to fill these)
     const status = "Released";
     const country = "Bangladesh / India";
     const audioTrack = plat.group === 'intl' ? "Multi Audio / Eng" : "Bangla";
     const runtime = item.dur && item.dur !== 'N/A' ? item.dur : "Scanning...";
     const overview = item.overview && item.overview !== 'N/A' ? item.overview : "Synopsis parsing verified. Detailed overview will be available soon in database update.";
 
-    let buttonsHtml = `<button class="tv-focusable bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg text-xs font-black uppercase tracking-wider w-full sm:w-auto shadow-lg" tabindex="0" onclick="window.open('${item.url}', '_blank')">▶ Watch on ${plat.name}</button>`;
+    // Integrated Fallback Intent Watch Button
+    let buttonsHtml = `<button class="tv-focusable bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg text-xs font-black uppercase tracking-wider w-full sm:w-auto shadow-lg" tabindex="0" onclick="launchAppWithFallback('${item.p}', '${item.url}', '${plat.name}')">▶ Watch on ${plat.name}</button>`;
     
     if(plat.group === 'intl') {
         const appUrl = `https://moviebox.ph/web/searchResult?keyword=${encodeURIComponent(item.t)}`;
         buttonsHtml = `
             <button class="tv-focusable bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg text-xs font-black uppercase tracking-wider w-full shadow-lg mb-2" tabindex="0" onclick="window.open('${appUrl}', '_blank')">🎬 Open in Moviebox</button>
-            <button class="tv-focusable bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 px-6 py-3 rounded-lg text-xs font-black uppercase tracking-wider w-full" tabindex="0" onclick="window.open('${item.url}', '_blank')">🌐 Official Link</button>`;
+            <button class="tv-focusable bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 px-6 py-3 rounded-lg text-xs font-black uppercase tracking-wider w-full" tabindex="0" onclick="launchAppWithFallback('${item.p}', '${item.url}', '${plat.name}')">🌐 Official Link</button>`;
     }
 
     modalCard.innerHTML = `
-        <!-- Close Button for Modal -->
         <button class="tv-focusable absolute top-4 right-4 z-50 bg-black/60 hover:bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold" tabindex="0" onclick="closeModal()">✕</button>
         
-        <!-- Image Half -->
         <div class="w-full md:w-2/5 h-64 md:h-auto relative">
             <img src="${imgSrc}" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0c0f1d] to-transparent"></div>
         </div>
         
-        <!-- Details Half -->
         <div class="w-full md:w-3/5 p-6 md:p-8 flex flex-col justify-center space-y-6">
             <div class="space-y-2">
                 <span class="text-[9px] font-black px-2 py-0.5 rounded uppercase" style="background:${plat.color}; color:#000;">${plat.name}</span>
@@ -393,7 +485,6 @@ function openModal(item) {
                 <p class="text-gray-300 text-xs md:text-sm leading-relaxed font-light">${overview}</p>
             </div>
             
-            <!-- Future Data Grid (Movieplex Style) -->
             <div class="bg-slate-900/40 p-4 rounded-xl border border-white/5 grid grid-cols-2 gap-3 text-[11px]">
                 <div><span class="text-[9px] text-gray-500 block uppercase font-bold">Status</span><span class="text-gray-200 font-bold">${status}</span></div>
                 <div><span class="text-[9px] text-gray-500 block uppercase font-bold">Country</span><span class="text-gray-200 font-bold">${country}</span></div>
@@ -408,9 +499,8 @@ function openModal(item) {
     `;
 
     modalOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Stop background scrolling
+    document.body.style.overflow = 'hidden';
 
-    // Auto focus first button in modal for D-pad
     setTimeout(() => {
         const firstBtn = modalCard.querySelector('button');
         if(firstBtn) firstBtn.focus();
@@ -422,7 +512,7 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
-// 🎮 TV D-PAD SPATIAL NAVIGATION CORE (THE ULTIMATE FIX)
+// 🎮 TV D-PAD SPATIAL NAVIGATION CORE
 function initTVNavigation() {
     document.addEventListener('keydown', (e) => {
         const allowedKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', 'Escape'];
@@ -435,18 +525,14 @@ function initTVNavigation() {
 
         const active = document.activeElement;
         
-        // Handle 'Enter' press on focusable items
         if(e.key === 'Enter' && active.classList.contains('tv-focusable')) {
             e.preventDefault();
             active.click();
             return;
         }
 
-        // Arrow Key Spatial Navigation
         if (e.key.startsWith('Arrow')) {
             e.preventDefault();
-            
-            // Get all visible focusable elements
             const focusables = Array.from(document.querySelectorAll('.tv-focusable:not([disabled])')).filter(el => {
                 const rect = el.getBoundingClientRect();
                 return rect.width > 0 && rect.height > 0 && window.getComputedStyle(el).visibility !== 'hidden' && window.getComputedStyle(el).opacity !== '0';
@@ -468,7 +554,6 @@ function initTVNavigation() {
                 let isDirectionalMatch = false;
                 let dist = Infinity;
 
-                // Determine if target is in the pressed direction
                 if (e.key === 'ArrowRight' && targetRect.left >= curRect.right - 10) {
                     isDirectionalMatch = true;
                     dist = Math.hypot(targetRect.left - curRect.right, targetRect.top - curRect.top + (targetRect.height - curRect.height)/2);
@@ -477,7 +562,6 @@ function initTVNavigation() {
                     dist = Math.hypot(curRect.left - targetRect.right, targetRect.top - curRect.top + (targetRect.height - curRect.height)/2);
                 } else if (e.key === 'ArrowDown' && targetRect.top >= curRect.bottom - 10) {
                     isDirectionalMatch = true;
-                    // For Up/Down, horizontal alignment matters more (giving X axis diff more weight)
                     const xDiff = (targetRect.left + targetRect.width/2) - (curRect.left + curRect.width/2);
                     const yDiff = targetRect.top - curRect.bottom;
                     dist = Math.hypot(xDiff * 2, yDiff); 
@@ -515,7 +599,6 @@ async function initApp(){
     renderLayout();
     initTVNavigation();
     
-    // Auto focus for TV on load
     setTimeout(() => {
         const firstBtn = document.querySelector('.chip-focus.active');
         if(firstBtn) firstBtn.focus();
