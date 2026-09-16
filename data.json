@@ -1,6 +1,78 @@
 [
   {
     "p": "ze5",
+    "t": "Discipline",
+    "dur": "N/A",
+    "releaseDate": "2014-11-13",
+    "img": "https://image.tmdb.org/t/p/w500/f7lzr34UWUoOIfHZh4rKJw7Vl7j.jpg",
+    "url": "https://www.justwatch.com/in/movie/discipline-2026",
+    "tmdb_id": 342399,
+    "rating": 6.8,
+    "overview": "N/A",
+    "scraped_at": "2026-09-16"
+  },
+  {
+    "p": "ze5",
+    "t": "Tranquility: Aeterna",
+    "dur": "N/A",
+    "releaseDate": "2026-02-04",
+    "img": "https://image.tmdb.org/t/p/w500/nSFPRmzSSa0i5y5Ts4EgaZsAJwK.jpg",
+    "url": "https://www.justwatch.com/in/movie/tranquility-aeterna",
+    "tmdb_id": 1658505,
+    "rating": 6.0,
+    "overview": "N/A",
+    "scraped_at": "2026-09-16"
+  },
+  {
+    "p": "ze5",
+    "t": "TT for Life",
+    "dur": "N/A",
+    "releaseDate": "2026-02-25",
+    "img": "https://image.tmdb.org/t/p/w500/gLE9VkAtsbpYvY1OkSt0AGU9x5M.jpg",
+    "url": "https://www.justwatch.com/in/movie/tt-for-life",
+    "tmdb_id": 1664758,
+    "rating": 0.0,
+    "overview": "N/A",
+    "scraped_at": "2026-09-16"
+  },
+  {
+    "p": "ze5",
+    "t": "The Truth and Tragedy of Moriah Wilson",
+    "dur": "N/A",
+    "releaseDate": "2026-03-19",
+    "img": "https://image.tmdb.org/t/p/w500/zoa2XatA43nKhF1kx8nVcVyH1M0.jpg",
+    "url": "https://www.justwatch.com/in/movie/the-truth-and-tragedy-of-moriah-wilson",
+    "tmdb_id": 1629369,
+    "rating": 7.4,
+    "overview": "N/A",
+    "scraped_at": "2026-09-16"
+  },
+  {
+    "p": "ze5",
+    "t": "ASI Babita Singh Reporting",
+    "dur": "N/A",
+    "releaseDate": "2026-08-28",
+    "img": "https://image.tmdb.org/t/p/w500/8HoxgJXbDWadzBFYGazuRH7xTqK.jpg",
+    "url": "https://www.justwatch.com/in/movie/asi-babita-singh-reporting",
+    "tmdb_id": 1654516,
+    "rating": 5.0,
+    "overview": "N/A",
+    "scraped_at": "2026-09-16"
+  },
+  {
+    "p": "ze5",
+    "t": "Bruce Bruce: I Ain't Playin'",
+    "dur": "N/A",
+    "releaseDate": "2026-03-03",
+    "img": "https://image.tmdb.org/t/p/w500/evZxpA5suqQpfO5Mh2MRakMkQyz.jpg",
+    "url": "https://www.justwatch.com/in/movie/bruce-bruce-i-aint-playin",
+    "tmdb_id": 1633410,
+    "rating": 3.8,
+    "overview": "N/A",
+    "scraped_at": "2026-09-16"
+  },
+  {
+    "p": "ze5",
     "t": "Mudharkanal",
     "dur": "N/A",
     "releaseDate": "2026-07-10",
